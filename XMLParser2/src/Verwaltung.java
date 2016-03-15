@@ -11,6 +11,7 @@ import java.util.GregorianCalendar;
 import java.io.IOException;
 
 abstract public class Verwaltung {
+	System.out.println("Hello World");
 	public static void main(String[] args) throws JDOMException, IOException {
 		ConnectXMLAusleihe.einfügenAusleihvorgang("999", "9099");
 		ConnectXMLAusleihe.einfügenAusleihvorgang("11111111", "9099");
