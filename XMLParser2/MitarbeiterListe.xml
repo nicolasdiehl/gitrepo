@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+-<MitarbeiterListe>
+
+
+-<Mitarbeiter MitarbeiterID="9901">
+
+<Nachname>Müller</Nachname>
+
+<Vorname>Max</Vorname>
+
+<Standort>Nürnberg</Standort>
+
+<Fuehrerschein>B</Fuehrerschein>
+
+<Fuehrerschein>D</Fuehrerschein>
+
+<Geburtstag>12.04.1992</Geburtstag>
+
+</Mitarbeiter>
+
+
+-<Mitarbeiter MitarbeiterID="9902">
+
+<Nachname>Schmidt</Nachname>
+
+<Vorname>Lina</Vorname>
+
+<Standort>Babenhausen</Standort>
+
+<Fuehrerschein>false</Fuehrerschein>
+
+<Geburtstag>4.2.1970</Geburtstag>
+
+</Mitarbeiter>
+
+
+-<Mitarbeiter MitarbeiterID="9903">
+
+<Nachname>Becker</Nachname>
+
+<Vorname>Eva</Vorname>
+
+<Standort>Babenhausen</Standort>
+
+<Fuehrerschein>A</Fuehrerschein>
+
+<Geburtstag>5.8.1980</Geburtstag>
+
+</Mitarbeiter>
+
+</MitarbeiterListe>

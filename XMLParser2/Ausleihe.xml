@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+-<Ausleihliste>
+
+
+-<Vorgang ID="001">
+
+<FahrzeugID>102</FahrzeugID>
+
+<MitarbeiterID>9901</MitarbeiterID>
+
+</Vorgang>
+
+
+-<Vorgang ID="0099">
+
+<FahrzeugID>102</FahrzeugID>
+
+<MitarbeiterID>9901</MitarbeiterID>
+
+</Vorgang>
+
+
+-<Vorgang ID="003">
+
+<FahrzeugID>103</FahrzeugID>
+
+<MitarbeiterID>9903</MitarbeiterID>
+
+</Vorgang>
+
+</Ausleihliste>

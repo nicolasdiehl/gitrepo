@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+-
+<Fuhrpark>
+	-
+	<Fahrzeug ID="101">
+
+		<Marke>BMW</Marke>
+
+		<Modell>7er</Modell>
+
+		<Ausstattung>voll</Ausstattung>
+
+	</Fahrzeug>
+	-
+	<Fahrzeug ID="102">
+
+		<Marke>Mercedes</Marke>
+
+		<Modell>E-Klasse</Modell>
+
+		<Ausstattung>voll</Ausstattung>
+
+	</Fahrzeug>
+	-
+	<Fahrzeug ID="103">
+
+		<Marke>Audi</Marke>
+
+		<Modell>A6</Modell>
+
+		<Ausstattung>voll</Ausstattung>
+
+	</Fahrzeug>
+
+</Fuhrpark>
