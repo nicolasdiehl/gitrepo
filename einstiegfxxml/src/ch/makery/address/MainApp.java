@@ -16,7 +16,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;//dddd
+        this.primaryStage = primaryStage;//dd
         this.primaryStage.setTitle("AddressApp");
 
         initRootLayout();
