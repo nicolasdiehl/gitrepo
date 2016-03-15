@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane dividerPositions="0.29797979797979796" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -51,7 +50,7 @@
                         <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
-                  <Button layoutX="235.0" layoutY="253.0" mnemonicParsing="false" text="New" />
+                  <Button fx:id="myButton" layoutX="235.0" layoutY="253.0" mnemonicParsing="false" onAction="#handleButtonAction" text="New" />
                   <Button layoutX="287.0" layoutY="253.0" mnemonicParsing="false" text="Edit..." />
                   <Button layoutX="339.0" layoutY="253.0" mnemonicParsing="false" text="Delete" />
                </children>
