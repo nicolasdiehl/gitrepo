@@ -5,31 +5,39 @@
 	-
 	<Fahrzeug ID="101">
 
-		<Marke>BMW</Marke>
+		<Fahrzeugtyp>Cityflitzer</Fahrzeugtyp>
 
-		<Modell>7er</Modell>
+		<geliehen>true</geliehen>
 
-		<Ausstattung>voll</Ausstattung>
+		<Zweck>Stadtfahrt</Zweck>
 
+		<Kennzeichen>DA-O815</Kennzeichen>
+		
 	</Fahrzeug>
 	-
 	<Fahrzeug ID="102">
 
-		<Marke>Mercedes</Marke>
+		<Fahrzeugtyp>Limousine</Fahrzeugtyp>
 
-		<Modell>E-Klasse</Modell>
+		<geliehen>false</geliehen>
 
-		<Ausstattung>voll</Ausstattung>
+		<Zweck>Überlandfahrt</Zweck>
+		
+		<Kennzeichen>R-CO234</Kennzeichen>
+		
 
 	</Fahrzeug>
 	-
 	<Fahrzeug ID="103">
 
-		<Marke>Audi</Marke>
+		<Fahrzeugtyp>Transporter</Fahrzeugtyp>
 
-		<Modell>A6</Modell>
+		<geliehen>true</geliehen>
 
-		<Ausstattung>voll</Ausstattung>
+		<Zweck>Transport</Zweck>
+		
+		<Kennzeichen>H-CO923</Kennzeichen>
+		
 
 	</Fahrzeug>
 
