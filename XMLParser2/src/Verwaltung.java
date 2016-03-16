@@ -12,6 +12,8 @@ import java.io.IOException;
 
 public class Verwaltung {
 	public static void main(String[] args) throws JDOMException, IOException {
+		Calendar cal = Calendar.getInstance();
+		cal.set(1990, 03, 14); // set(int year, int month, int date)
 		System.out.println("Hello World");
 
 		//ConnectXMLAusleihe.einfügenAusleihvorgang("999", "9099");
@@ -29,9 +31,7 @@ public class Verwaltung {
 		ConnectXMLAusleihe.einfügenAusleihvorgang("999", "000");
 		System.out.println("Ausgabe nach Bestellvorgang");
 		ConnectXMLAusleihe.readAusleihe();
-
-		Calendar cal = Calendar.getInstance();
-		cal.set(1990, 03, 14); // set(int year, int month, int date)
+		
 		Mitarbeiter einMitarbeiter = new Mitarbeiter("Schmidt", "Maria", true, 4349);
 
 		// erzeugen von Objekten der Klasse Fahrzeug bzw. Pkw
@@ -40,6 +40,11 @@ public class Verwaltung {
 	}
 	public static Fahrzeug einlesenFahrzeug(){
 		Fahrzeug neuesFahrzeug = new Fahrzeug("Cityflitzer", false, "Stadtfahrt", "X-XXXX");
+		// eingabe fehlt
+		String fahrzeugtyp = einlesenText("Fahrzeugtyp: ");
+		boolean ausgeliehen = false;
+		String zweck = einlesenText("Zweck: ");
+		String kennzeichen = einlesenText("Kennzeichen: ");
 		return neuesFahrzeug;
 	}
 	public static Ausleihe einlesenAusleihvorgang() {
