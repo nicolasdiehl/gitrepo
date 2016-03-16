@@ -1,21 +1,24 @@
-import java.util.Date;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 public class Mitarbeiter {
 
 	public String nachname;
 	public String vorname;
-	public String standort;
-	public String fuehrerschein;
-	public Calendar geburtstag;
+	public boolean fuehrerschein;
+	public long persNr;
 
-	public Mitarbeiter(String nachname, String vorname, String standort, String fuehrerschein, Calendar geburtstag) {
+	public long getPersNr() {
+		return persNr;
+	}
+
+	public void setPersNr(long persNr) {
+		this.persNr = persNr;
+	}
+
+	public Mitarbeiter(String nachname, String vorname, boolean fuehrerschein) {
 		this.nachname = nachname;
 		this.vorname = vorname;
-		this.standort = standort;
 		this.fuehrerschein = fuehrerschein;
-		this.geburtstag = geburtstag;
 	}
 
 	public String getNachname() {
@@ -34,28 +37,12 @@ public class Mitarbeiter {
 		this.vorname = vorname;
 	}
 
-	public String getStandort() {
-		return standort;
-	}
-
-	public void setStandort(String standort) {
-		this.standort = standort;
-	}
-
-	public String getFuehrerschein() {
+	public boolean isFuehrerschein() {
 		return fuehrerschein;
 	}
 
-	public void setFuehrerschein(String fuehrerschein) {
+	public void setFuehrerschein(boolean fuehrerschein) {
 		this.fuehrerschein = fuehrerschein;
-	}
-
-	public Calendar getGeburtstag() {
-		return geburtstag;
-	}
-
-	public void setGeburtstag(Calendar geburtstag) {
-		this.geburtstag = geburtstag;
 	}
 
 }

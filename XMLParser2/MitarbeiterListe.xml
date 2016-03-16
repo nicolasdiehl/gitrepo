@@ -1,52 +1,48 @@
 <?xml version="1.0"?>
 
--<MitarbeiterListe>
+-
+<MitarbeiterListe>
 
 
--<Mitarbeiter MitarbeiterID="9901">
+	-
+	<Mitarbeiter MitarbeiterID="9901">
 
-<Nachname>Müller</Nachname>
+		<Nachname>Müller</Nachname>
 
-<Vorname>Max</Vorname>
+		<Vorname>Max</Vorname>
 
-<Standort>Nürnberg</Standort>
+		<PersNr>9901</PersNr>
 
-<Fuehrerschein>B</Fuehrerschein>
+		<Fuehrerschein>true</Fuehrerschein>
 
-<Fuehrerschein>D</Fuehrerschein>
-
-<Geburtstag>12.04.1992</Geburtstag>
-
-</Mitarbeiter>
+	</Mitarbeiter>
 
 
--<Mitarbeiter MitarbeiterID="9902">
+	-
+	<Mitarbeiter MitarbeiterID="9902">
 
-<Nachname>Schmidt</Nachname>
+		<Nachname>Schmidt</Nachname>
 
-<Vorname>Lina</Vorname>
+		<Vorname>Lina</Vorname>
 
-<Standort>Babenhausen</Standort>
+		<PersNr>9902</PersNr>
 
-<Fuehrerschein>false</Fuehrerschein>
+		<Fuehrerschein>false</Fuehrerschein>
 
-<Geburtstag>4.2.1970</Geburtstag>
-
-</Mitarbeiter>
+	</Mitarbeiter>
 
 
--<Mitarbeiter MitarbeiterID="9903">
+	-
+	<Mitarbeiter MitarbeiterID="9903">
 
-<Nachname>Becker</Nachname>
+		<Nachname>Becker</Nachname>
 
-<Vorname>Eva</Vorname>
+		<Vorname>Eva</Vorname>
 
-<Standort>Babenhausen</Standort>
+		<PersNr>9903</PersNr>
 
-<Fuehrerschein>A</Fuehrerschein>
+		<Fuehrerschein>true</Fuehrerschein>
 
-<Geburtstag>5.8.1980</Geburtstag>
-
-</Mitarbeiter>
+	</Mitarbeiter>
 
 </MitarbeiterListe>

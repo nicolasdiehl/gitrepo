@@ -1,5 +1,5 @@
 abstract public class Fahrzeug {
-	public static int zaehler;  //Klassenvariable
+
 	public static String fahrzeugtyp;
 	public static boolean geliehen;
 	public static String zweck;
