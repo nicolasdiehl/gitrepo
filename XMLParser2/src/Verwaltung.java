@@ -38,6 +38,16 @@ public class Verwaltung {
 		Fahrzeug meinFahrzeug = einlesenFahrzeug();
 		// Ausgabebeispiel
 	}
+
+	public static Mitarbeiter einlesenMitarbeiter(){
+		String nachname = einlesenText("Nachname: ");
+		String vorname = einlesenText("Vorname: ");
+		boolean fuehrerschein = einlesenBool("Führerschein: ");
+		long persNr = einlesenLong("Personalnummer: ");
+		Mitarbeiter neuerMitarbeiter = new Mitarbeiter(nachname, vorname, fuehrerschein, persNr);
+		return neuerMitarbeiter;
+	}
+	
 	public static Fahrzeug einlesenFahrzeug(){
 		Fahrzeug neuesFahrzeug = new Fahrzeug("Cityflitzer", false, "Stadtfahrt", "X-XXXX");
 		// eingabe fehlt
@@ -47,6 +57,7 @@ public class Verwaltung {
 		String kennzeichen = einlesenText("Kennzeichen: ");
 		return neuesFahrzeug;
 	}
+
 	public static Ausleihe einlesenAusleihvorgang() {
 		System.out.println("______________");
 		System.out.println("Hier starten Sie den Ausleihvorgang");
@@ -64,12 +75,20 @@ public class Verwaltung {
 		return inData;
 	}
 
-	public static int einlesenZahl(String eingabewert) {
+	public static int einlesenInt(String eingabewert) {
 		String inData;
 		Scanner scan = new Scanner(System.in);
 		System.out.println(eingabewert);
 		inData = scan.nextLine();
 		return Integer.parseInt(inData);
+	}
+	
+	public static long einlesenLong(String eingabewert) {
+		String inData;
+		Scanner scan = new Scanner(System.in);
+		System.out.println(eingabewert);
+		inData = scan.nextLine();
+		return Long.parseLong(inData);
 	}
 
 	public static Boolean einlesenBool(String eingabewert) {
