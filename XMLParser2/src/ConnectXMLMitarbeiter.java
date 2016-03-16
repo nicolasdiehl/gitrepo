@@ -5,13 +5,13 @@ import java.util.Objects;
 import java.util.Calendar;
 
 import org.jdom2.*;
+import org.jdom2.input.SAXBuilder;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
-import org.jdom2.input.SAXBuilder;
 import org.jdom2.JDOMException;
-import org.jdom2.output.Format;
-import org.jdom2.output.XMLOutputter;
 
 public class ConnectXMLMitarbeiter extends ConnectXML{
 //	   public static void main(String[] args) throws JDOMException{
@@ -48,7 +48,7 @@ public class ConnectXMLMitarbeiter extends ConnectXML{
 		      }
 		   }
 	   
-	   public static void einfügenMitarbeiter(String nname, String vname, String fschein, long persNr) throws JDOMException{
+	   public static void einfügenMitarbeiter(String nname, String vname, boolean fschein, long persNr) throws JDOMException{
 		   try {
 		         File inputFile = new File("MitarbeiterListe.xml");	//Zugriff auf XML Datei
 		         SAXBuilder saxBuilder = new SAXBuilder();
@@ -61,7 +61,7 @@ public class ConnectXMLMitarbeiter extends ConnectXML{
 		         Element mVorname= new Element ("Vorname");
 		         mVorname.setText(vname);
 		         Element mFuehrerschein= new Element ("Fuehrerschein");
-		         mFuehrerschein.setText(fschein);
+		         mFuehrerschein.setText(Objects.toString(fschein));
 		         Element mPersNr= new Element ("PersNr");
 		         mPersNr.setText(Objects.toString(persNr, null));
 		            
@@ -80,5 +80,5 @@ public class ConnectXMLMitarbeiter extends ConnectXML{
 		      }catch(IOException e){
 		         e.printStackTrace();
 		      }	
-		   }//schließt Methode	
+		   }	
 }

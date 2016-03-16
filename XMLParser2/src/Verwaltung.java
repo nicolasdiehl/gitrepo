@@ -22,11 +22,13 @@ public class Verwaltung {
 
 		//String temp = ConnectXMLAusleihe.createUniqueID("Fuhrpark.xml");
 		//System.out.println(temp);
-		ConnectXMLFahrzeug.readFahrzeugListe();
+		//ConnectXMLFahrzeug.readFahrzeugListe();
 		ConnectXMLMitarbeiter.readMitarbeiterListe();
-		ConnectXMLAusleihe.readAusleihe();
-
-		Ausleihe Ausleihetemp = Verwaltung.einlesenAusleihvorgang();
+		//ConnectXMLAusleihe.readAusleihe();
+		
+		ConnectXMLMitarbeiter.einfügenMitarbeiter("A", "B", true, 32342);
+		ConnectXMLMitarbeiter.readMitarbeiterListe();
+		/*Ausleihe Ausleihetemp = Verwaltung.einlesenAusleihvorgang();
 		ConnectXMLAusleihe.einfügenAusleihvorgang(Ausleihetemp.getMitarbeiterID(), Ausleihetemp.getFahrzeugID());
 		ConnectXMLAusleihe.einfügenAusleihvorgang("999", "000");
 		System.out.println("Ausgabe nach Bestellvorgang");
@@ -36,7 +38,7 @@ public class Verwaltung {
 
 		// erzeugen von Objekten der Klasse Fahrzeug bzw. Pkw
 		Fahrzeug meinFahrzeug = einlesenFahrzeug();
-		// Ausgabebeispiel
+		// Ausgabebeispiel*/
 	}
 
 	public static Mitarbeiter einlesenMitarbeiter(){

@@ -1,4 +1,3 @@
-
 public class Ausleihe {
 	public String getMitarbeiterID() {
 		return MitarbeiterID;
