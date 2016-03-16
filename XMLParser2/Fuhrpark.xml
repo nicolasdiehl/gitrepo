@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
--
 <Fuhrpark>
-	-
+	
 	<Fahrzeug ID="101">
 
 		<Fahrzeugtyp>Cityflitzer</Fahrzeugtyp>
 
-		<geliehen>true</geliehen>
+		<Geliehen>true</Geliehen>
 
 		<Zweck>Stadtfahrt</Zweck>
 
 		<Kennzeichen>DA-O815</Kennzeichen>
 		
 	</Fahrzeug>
-	-
+	
 	<Fahrzeug ID="102">
 
 		<Fahrzeugtyp>Limousine</Fahrzeugtyp>
 
-		<geliehen>false</geliehen>
+		<Geliehen>false</Geliehen>
 
 		<Zweck>Überlandfahrt</Zweck>
 		
@@ -27,12 +26,12 @@
 		
 
 	</Fahrzeug>
-	-
+	
 	<Fahrzeug ID="103">
 
 		<Fahrzeugtyp>Transporter</Fahrzeugtyp>
 
-		<geliehen>true</geliehen>
+		<Geliehen>true</Geliehen>
 
 		<Zweck>Transport</Zweck>
 		

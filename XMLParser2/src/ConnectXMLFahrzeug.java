@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 import org.jdom2.*;
 import org.jdom2.Attribute;
@@ -18,7 +19,7 @@ public class ConnectXMLFahrzeug extends ConnectXML{
 	   
 	   public static void readFahrzeugListe(){
 	      try {
-	         File inputFile = new File("Fahrzeug.xml");
+	         File inputFile = new File("Fuhrpark.xml");
 	         SAXBuilder saxBuilder = new SAXBuilder();
 	         Document document = saxBuilder.build(inputFile);
 	         System.out.println("Root element :" + document.getRootElement().getName());
@@ -33,9 +34,10 @@ public class ConnectXMLFahrzeug extends ConnectXML{
 	            System.out.println("\n Current Element :" + fuhrp.getName());
 	            Attribute attribute =  fuhrp.getAttribute("ID");
 	            System.out.println("Fuhrpark roll no : " + attribute.getValue() );
-	            System.out.println("Marke :      " + fuhrp.getChild("Marke").getText());
-	            System.out.println("Modell:      "+ fuhrp.getChild("Modell").getText());
-	            System.out.println("Ausstattung: "+ fuhrp.getChild("Ausstattung").getText());
+	            System.out.println("Fahrzeugtyp:      " + fuhrp.getChild("Fahrzeugtyp").getText());
+	            System.out.println("Geliehen:      "+ fuhrp.getChild("Geliehen").getText());
+	            System.out.println("Zweck: "+ fuhrp.getChild("Zweck").getText());	            
+	            System.out.println("Kennzeichen: "+ fuhrp.getChild("Kennzeichen").getText());
 	         }
 	      }catch(JDOMException e){
 	         e.printStackTrace();
@@ -44,24 +46,27 @@ public class ConnectXMLFahrzeug extends ConnectXML{
 	      }
 	   }
 	   
-	   public static void einfügenFahrzeug(String marke, String modell, String ausstattung) throws JDOMException{
+	   public static void einfügenFahrzeug(String fahrzeugtyp, boolean geliehen, String zweck, String kennzeichen) throws JDOMException{
 		   try {
-		         File inputFile = new File("Fahrzeug.xml");
+		         File inputFile = new File("Fuhrpark.xml");
 		         SAXBuilder saxBuilder = new SAXBuilder();
 		         Document document = saxBuilder.build(inputFile);
-		         String tempID= createUniqueID("Fahrzeug.xml");
+		         String tempID= createUniqueID("Fuhrpark.xml");
 		         Element neuesAuto= new Element ("Fahrzeug");
 		         neuesAuto.setAttribute(new Attribute ("ID", tempID));
-		         Element neuesAutoMarke= new Element ("Marke");
-		         neuesAutoMarke.setText(marke);
-		         Element neuesAutoModell= new Element ("Modell");
-		         neuesAutoModell.setText(modell);
-		         Element neuesAutoAusstattung= new Element ("Ausstattung");
-		         neuesAutoAusstattung.setText(ausstattung);
+		         Element neuerFahrzeugtyp= new Element ("Fahrzeugtyp");
+		         neuerFahrzeugtyp.setText(fahrzeugtyp);
+		         Element neuesGeliehen= new Element ("Geliehen");
+		         neuesGeliehen.setText(Objects.toString(geliehen));
+		         Element neuerZweck= new Element ("Zweck");
+		         neuerZweck.setText(zweck);
+		         Element neuesKennzeichen= new Element ("Kennzeichen");
+		         neuesKennzeichen.setText(kennzeichen);
 		            
-		         neuesAuto.addContent(neuesAutoMarke);
-		         neuesAuto.addContent(neuesAutoModell);
-		         neuesAuto.addContent(neuesAutoAusstattung);
+		         neuesAuto.addContent(neuerFahrzeugtyp);
+		         neuesAuto.addContent(neuesGeliehen);
+		         neuesAuto.addContent(neuerZweck);
+		         neuesAuto.addContent(neuesKennzeichen);		         
 
 		         document.getRootElement().addContent(neuesAuto);
 

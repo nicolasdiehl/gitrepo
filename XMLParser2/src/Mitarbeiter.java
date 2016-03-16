@@ -15,10 +15,11 @@ public class Mitarbeiter {
 		this.persNr = persNr;
 	}
 
-	public Mitarbeiter(String nachname, String vorname, boolean fuehrerschein) {
+	public Mitarbeiter(String nachname, String vorname, boolean fuehrerschein, long persNr) {
 		this.nachname = nachname;
 		this.vorname = vorname;
 		this.fuehrerschein = fuehrerschein;
+		this.persNr = persNr;
 	}
 
 	public String getNachname() {

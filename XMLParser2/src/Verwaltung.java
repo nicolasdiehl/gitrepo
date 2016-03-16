@@ -10,16 +10,16 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.io.IOException;
 
-abstract public class Verwaltung {
+public class Verwaltung {
 	public static void main(String[] args) throws JDOMException, IOException {
 		System.out.println("Hello World");
 
-		ConnectXMLAusleihe.einfügenAusleihvorgang("999", "9099");
-		ConnectXMLAusleihe.einfügenAusleihvorgang("11111111", "9099");
-		ConnectXMLFahrzeug.einfügenFahrzeug("Jaguar", "E-Type", "minimal");
+		//ConnectXMLAusleihe.einfügenAusleihvorgang("999", "9099");
+		//ConnectXMLAusleihe.einfügenAusleihvorgang("11111111", "9099");
+		//ConnectXMLFahrzeug.einfügenFahrzeug("Jaguar", "E-Type", "minimal");
 
-		String temp = ConnectXMLAusleihe.createUniqueID("Fuhrpark.xml");
-		System.out.println(temp);
+		//String temp = ConnectXMLAusleihe.createUniqueID("Fuhrpark.xml");
+		//System.out.println(temp);
 		ConnectXMLFahrzeug.readFahrzeugListe();
 		ConnectXMLMitarbeiter.readMitarbeiterListe();
 		ConnectXMLAusleihe.readAusleihe();
@@ -32,15 +32,15 @@ abstract public class Verwaltung {
 
 		Calendar cal = Calendar.getInstance();
 		cal.set(1990, 03, 14); // set(int year, int month, int date)
-		Mitarbeiter einMitarbeiter = new Mitarbeiter("Schmidt", "Maria", "Berlin", "B", cal);
+		Mitarbeiter einMitarbeiter = new Mitarbeiter("Schmidt", "Maria", true, 4349);
 
 		// erzeugen von Objekten der Klasse Fahrzeug bzw. Pkw
 		Fahrzeug meinFahrzeug = einlesenFahrzeug();
 		// Ausgabebeispiel
 	}
 	public static Fahrzeug einlesenFahrzeug(){
-		
-		return einlesenFahrzeug();
+		Fahrzeug neuesFahrzeug = new Fahrzeug("Cityflitzer", false, "Stadtfahrt", "X-XXXX");
+		return neuesFahrzeug;
 	}
 	public static Ausleihe einlesenAusleihvorgang() {
 		System.out.println("______________");

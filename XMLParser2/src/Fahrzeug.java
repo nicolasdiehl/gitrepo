@@ -1,22 +1,15 @@
-abstract public class Fahrzeug {
+public class Fahrzeug {
 
 	public static String fahrzeugtyp;
 	public static boolean geliehen;
 	public static String zweck;
 	public static String kennzeichen;
-	
-	public static String getKennzeichen() {
-		return kennzeichen;
-	}
 
-	public static void setKennzeichen(String kennzeichen) {
-		Fahrzeug.kennzeichen = kennzeichen;
-	}
-
-	protected Fahrzeug(String fahrzeugtyp, boolean geliehen, String zweck){ //Konstruktor Fahrzeug
+	protected Fahrzeug(String fahrzeugtyp, boolean geliehen, String zweck, String kennzeichen){ //Konstruktor Fahrzeug
 		this.fahrzeugtyp = fahrzeugtyp;
 		this.geliehen = geliehen;
 		this.zweck = zweck;
+		this.kennzeichen = kennzeichen;
 	}
 
 	public static String getFahrzeugtyp() {
@@ -41,5 +34,13 @@ abstract public class Fahrzeug {
 
 	public static void setZweck(String zweck) {
 		Fahrzeug.zweck = zweck;
+	}
+	
+	public static String getKennzeichen() {
+		return kennzeichen;
+	}
+
+	public static void setKennzeichen(String kennzeichen) {
+		Fahrzeug.kennzeichen = kennzeichen;
 	}
 }
