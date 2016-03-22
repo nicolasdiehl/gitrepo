@@ -1,0 +1,119 @@
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import ch.makery.address.FXMLVerwaltung;
+import ch.makery.address.model.Person;
+
+public class MainOverviewController {
+    @FXML
+    private TableView<Person> personTable;
+    @FXML
+    private TableColumn<Person, String> firstNameColumn;
+    @FXML
+    private TableColumn<Person, String> lastNameCoFXMLVerwaltunglumn;
+
+    @FXML
+    private Label vornameLabel;
+    @FXML
+    private Label nameLabel;
+    @FXML
+    private Label fuehrerscheinLabel;
+    @FXML
+    private Label personalnummerLabel;
+  
+
+
+  @FXML
+    private Label kennzeichenLabel;
+    @FXML
+    private Label geliehenLabel;
+    @FXML
+    private Label typLabel;
+    @FXML
+    private Label zweckLabel;
+
+
+    // Reference to the main application.
+    private FXMLVerwaltung fxmlVerwaltung;
+
+   
+    @FXML
+   
+   
+    
+    private void showPersonDetails(Person person) {
+        if (person != null) {
+            // Fill the labels with info from the person object.
+            vornameLabel.setText(person.getVorname());
+            nameLabel.setText(person.getNachname());
+            personalnummerLabel.setText(person.getPersonalnummer());
+            fuehrerscheinLabel.setText(person.getFuehrerschein());
+            
+            // TODO: We need a way to convert the birthday into a String! 
+            // birthdayLabel.setText(...);
+        } else {
+            // Person is null, remove all the text.
+            nameLabel.setText("");
+            nameLabel.setText("");
+            fuehrerscheinLabel.setText("");
+            personalnummerLabel.setText("");
+        }
+    }
+    private void showFahrzeugDetails(Vehicle fahrzeug) {
+        if (fahrzeug!= null) {
+            // Fill the labels with info from the person object.
+            typLabel.setText(fahrzeug.typ());
+            geliehenLabel.setText(fahrzeug.getGeliehen());
+            kennzeichenLabel.setText(fahrzeug.getKennzeichen());
+            zweckLabel.setText(fahrzeug.getZweck()));
+            
+            // TODO: We need a way to convert the birthday into a String! 
+            // birthdayLabel.setText(...);
+        } else {
+            // Person is null, remove all the text.
+            typLabel.setText("");
+            geliehenLabel.setText("");
+            kennzeichenLabel.setText("");
+           zweckLabel.setText("");
+        }
+    }
+    @FXML
+    private void initialize() {
+        // Initialize the person table with the two columns.
+        // Initialize the person table with the two columns.
+        vornameColumn.setCellValueFactory(cellData -> cellData.getValue().vornameProperty());
+        nachnameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+        vornameColumn.setCellValueFactory(
+                cellData -> cellData.getValue().firstNameProperty());
+        nachnameColumn.setCellValueFactory(
+                cellData -> cellData.getValue().lastNameProperty());
+
+        // Clear person details.
+        showPersonDetails(null);
+
+        // Listen for selection changes and show the person details when changed.
+        personTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> showPersonDetails(newValue));
+    }
+   
+    @FXML
+    private void handleDeletePerson() {
+        int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            personTable.getItems().remove(selectedIndex);
+        } else {
+            // Nothing selected.
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.initOwner(mainApp.getPrimaryStage());
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Person Selected");
+            alert.setContentText("Please select a person in the table.");
+
+            alert.showAndWait();
+        }
+    }
+
+}
+
+

@@ -15,6 +15,32 @@ public class Verwaltung {
 		Calendar cal = Calendar.getInstance();
 		cal.set(1990, 03, 14); // set(int year, int month, int date)
 		System.out.println("Hello World");
+	    private ObservableList<Person> personData = FXCollections.observableArrayList();
+
+	    /**
+	     * Constructor
+	     */
+	    public Verwaltung() {
+	        // Add some sample data
+	        personData.add(new Person("Hans", "Muster"));
+	        personData.add(new Person("Ruth", "Mueller"));
+	        personData.add(new Person("Heinz", "Kurz"));
+	        personData.add(new Person("Cornelia", "Meier"));
+	        personData.add(new Person("Werner", "Meyer"));
+	        personData.add(new Person("Lydia", "Kunz"));
+	        personData.add(new Person("Anna", "Best"));
+	        personData.add(new Person("Stefan", "Meier"));
+	        personData.add(new Person("Martin", "Mueller"));
+	    }
+
+	    /**
+	     * Returns the data as an observable list of Persons. 
+	     * @return
+	     */
+	    public ObservableList<Person> getPersonData() {
+	        return personData;
+	    }
+
 
 		//ConnectXMLAusleihe.einfügenAusleihvorgang("999", "9099");
 		//ConnectXMLAusleihe.einfügenAusleihvorgang("11111111", "9099");
