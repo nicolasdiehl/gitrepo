@@ -22,7 +22,7 @@ public class MainOverviewController {
     @FXML
     private Label vornameLabel;
     @FXML
-    private Label nameLabel;
+    private Label nachnameLabel;
     @FXML
     private Label fuehrerscheinLabel;
     @FXML
@@ -52,7 +52,7 @@ public class MainOverviewController {
         if (person != null) {
             // Fill the labels with info from the person object.
             vornameLabel.setText(person.getVorname());
-            nameLabel.setText(person.getNachname());
+            nachnameLabel.setText(person.getNachname());
             personalnummerLabel.setText(person.getPersonalnummer());
             fuehrerscheinLabel.setText(person.getFuehrerschein());
             
@@ -60,8 +60,8 @@ public class MainOverviewController {
             // birthdayLabel.setText(...);
         } else {
             // Person is null, remove all the text.
-            nameLabel.setText("");
-            nameLabel.setText("");
+            nachnameLabel.setText("");
+            nachnameLabel.setText("");
             fuehrerscheinLabel.setText("");
             personalnummerLabel.setText("");
         }
