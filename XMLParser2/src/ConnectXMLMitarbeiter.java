@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
@@ -15,35 +16,26 @@ import org.jdom2.JDOMException;
 
 public class ConnectXMLMitarbeiter extends ConnectXML{
  
-	   public static void readMitarbeiterListe(){
-		      try {
+	   public static List<Element> readMitarbeiterListe(){
+		   List<Element> mitarbeiterList = null;   
+		   try {
 		         File inputFile = new File("MitarbeiterListe.xml");
 		         SAXBuilder saxBuilder = new SAXBuilder();
 		         Document document = saxBuilder.build(inputFile);
+		         Element rootNode = document.getRootElement();
 
-		         System.out.println("Root element :" + document.getRootElement().getName());
-		         Element classElement = document.getRootElement();
+		         mitarbeiterList = rootNode.getChildren();
 
-		         List<Element> mitarbeiterList = classElement.getChildren();
-		         System.out.println("----------------------------");
-
-		         for (int temp = 0; temp < mitarbeiterList.size(); temp++) {    
-		            Element mitarbeiter = mitarbeiterList.get(temp);
-		            System.out.println("\n Current Element :" 
-		               + mitarbeiter.getName());
+		         for (int i = 0; i < mitarbeiterList.size(); i++) {    
+		            Element mitarbeiter = mitarbeiterList.get(i);
 		            Attribute attribute =  mitarbeiter.getAttribute("MitarbeiterID");
-		            System.out.println("Fuhrpark roll no : " 
-		               + attribute.getValue() );
-		            System.out.println("Nachname:         " + mitarbeiter.getChild("Nachname").getText());
-		            System.out.println("Vorname:           " + mitarbeiter.getChild("Vorname").getText());
-		            System.out.println("Fuehrerschein:     " + mitarbeiter.getChild("Fuehrerschein").getText());	   
-		            System.out.println("PersNr:        " + mitarbeiter.getChild("PersNr").getText());
 		         }
 		      }catch(JDOMException e){
 		         e.printStackTrace();
 		      }catch(IOException ioe){
 		         ioe.printStackTrace();
 		      }
+			return mitarbeiterList;
 		   }
 	   
 	   public static void einfügenMitarbeiter(String nname, String vname, boolean fschein, long persNr) throws JDOMException{
@@ -51,8 +43,9 @@ public class ConnectXMLMitarbeiter extends ConnectXML{
 		         File inputFile = new File("MitarbeiterListe.xml");	//Zugriff auf XML Datei
 		         SAXBuilder saxBuilder = new SAXBuilder();
 		         Document document = saxBuilder.build(inputFile);
-		         String tempID= createUniqueID("MitarbeiterListe.xml");
-		         Element nMitarbeiter= new Element ("Mitarbeiter"); //Neues Mitarbeiterelement
+		         
+		         String tempID = createUniqueID("MitarbeiterListe.xml");
+		         Element nMitarbeiter= new Element ("Mitarbeiter");
 		         nMitarbeiter.setAttribute(new Attribute ("MitarbeiterID", tempID));
 		         Element mNachname= new Element ("Nachname");
 		         mNachname.setText(nname);
@@ -74,7 +67,7 @@ public class ConnectXMLMitarbeiter extends ConnectXML{
 
 		         // display xml
 		         xmlOutput.setFormat(Format.getPrettyFormat());
-		         xmlOutput.output(document, System.out); 
+		         xmlOutput.output(document, new FileWriter(inputFile));  
 		      }catch(IOException e){
 		         e.printStackTrace();
 		      }	

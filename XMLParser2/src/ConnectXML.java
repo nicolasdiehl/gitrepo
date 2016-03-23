@@ -16,25 +16,26 @@ public class ConnectXML {
 			         Document document = saxBuilder.build(inputFile);
 			         Element classElement = document.getRootElement();
 			         List<Element> Liste = classElement.getChildren();
-			         int tempi=0;
+			         int idInt=0;
 			         int highest=0;
-			         String temps="";
-			         for (int temp = 0; temp < Liste.size(); temp++) { 
-			            Element Vorgang = Liste.get(temp);
+			         String idString="";
+			         for (int i = 0; i < Liste.size(); i++) { 
+			            Element currentElement = Liste.get(i);
 
-			            temps= Vorgang.getAttributeValue("ID");
-			            tempi=Integer.parseInt(temps);
-			            if (highest < tempi){
-			            	highest= tempi;
+			            idString = currentElement.getAttributeValue("MitarbeiterID");
+			            System.out.println(idString);
+			            idInt=Integer.parseInt(idString);
+			            if (highest < idInt){
+			            	highest= idInt;
 			            }
 			         }
 			         
 			         highest++;
-			         temps= Integer.toString(highest);
-		          return temps;
+			         idString= Integer.toString(highest);
+		          return idString;
 			      }catch(JDOMException e){
 			         e.printStackTrace();
 			      }
-		      return "random test value";
+		      return "error: creation of id failed somehow";
 	   }
 }

@@ -12,8 +12,8 @@ import java.io.IOException;
 
 public class Verwaltung {
 	public static void main(String[] args) throws JDOMException, IOException {
-		Calendar cal = Calendar.getInstance();
-		cal.set(1990, 03, 14); // set(int year, int month, int date)
+		//Calendar cal = Calendar.getInstance();
+		//cal.set(1990, 03, 14); // set(int year, int month, int date)
 		System.out.println("Hello World");
 
 		//ConnectXMLAusleihe.einfügenAusleihvorgang("999", "9099");
@@ -23,11 +23,12 @@ public class Verwaltung {
 		//String temp = ConnectXMLAusleihe.createUniqueID("Fuhrpark.xml");
 		//System.out.println(temp);
 		//ConnectXMLFahrzeug.readFahrzeugListe();
-		ConnectXMLMitarbeiter.readMitarbeiterListe();
+		//ConnectXMLMitarbeiter.readMitarbeiterListe();
 		//ConnectXMLAusleihe.readAusleihe();
 		
-		ConnectXMLMitarbeiter.einfügenMitarbeiter("A", "B", true, 32342);
-		ConnectXMLMitarbeiter.readMitarbeiterListe();
+		Mitarbeiter tempMitarbeiter = einlesenMitarbeiter();
+		ConnectXMLMitarbeiter.einfügenMitarbeiter(tempMitarbeiter.getNachname(), tempMitarbeiter.getVorname(), tempMitarbeiter.isFuehrerschein(), tempMitarbeiter.getPersNr());
+		//ConnectXMLMitarbeiter.readMitarbeiterListe();
 		/*Ausleihe Ausleihetemp = Verwaltung.einlesenAusleihvorgang();
 		ConnectXMLAusleihe.einfügenAusleihvorgang(Ausleihetemp.getMitarbeiterID(), Ausleihetemp.getFahrzeugID());
 		ConnectXMLAusleihe.einfügenAusleihvorgang("999", "000");
