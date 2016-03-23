@@ -48,7 +48,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="243.0" layoutY="392.0" text="Leihen ab" />
+            <Label layoutX="243.0" layoutY="392.0" text="Leihen von" />
             <Label layoutX="482.0" layoutY="392.0" text="Leihen bis" />
             <Label layoutX="358.0" layoutY="480.0" text="Übersicht">
                <font>

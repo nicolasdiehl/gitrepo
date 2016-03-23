@@ -28,7 +28,7 @@
       </TableView>
       <Label layoutX="187.0" layoutY="56.0" text="Personen Informationen" />
       <Label layoutX="573.0" layoutY="56.0" text="Fahrzeug Informationen" />
-      <Label layoutX="187.0" layoutY="103.0" text="Name:" />
+      <Label layoutX="187.0" layoutY="103.0" text="Nachname:" />
       <Label layoutX="187.0" layoutY="138.0" text="Vorname:" />
       <Label layoutX="187.0" layoutY="172.0" text="Personalnummer:" />
       <Label layoutX="187.0" layoutY="214.0" text="Führerschein:" />
