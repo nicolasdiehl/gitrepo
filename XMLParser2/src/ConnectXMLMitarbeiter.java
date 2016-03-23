@@ -14,8 +14,6 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 
 public class ConnectXMLMitarbeiter extends ConnectXML{
-//	   public static void main(String[] args) throws JDOMException{
-//	   }
  
 	   public static void readMitarbeiterListe(){
 		      try {
