@@ -7,8 +7,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.MainOverviewController">
    <children>
       <AnchorPane>
          <children>
@@ -216,7 +215,7 @@
                                     </Tab>
                                   <Tab text="Einsicht Personen">
                                        <content>
-                                          <GridPane prefHeight="400.0" prefWidth="280.0">
+                                          <GridPane fx:id="personTable" prefHeight="400.0" prefWidth="280.0">
                                             <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="130.0" />
                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
@@ -238,12 +237,12 @@
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <Label layoutX="20.0" layoutY="2.0" prefHeight="17.0" prefWidth="51.0" text="Name" textFill="#002dff" GridPane.columnIndex="2">
+                                                <Label fx:id="nachNameColumn" layoutX="20.0" layoutY="2.0" prefHeight="17.0" prefWidth="51.0" text="Name" textFill="#002dff" GridPane.columnIndex="2">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
                                                 </Label>
-                                                <Label text="Vorname" textFill="#002dff" GridPane.columnIndex="1">
+                                                <Label fx:id="vorNameColumn" text="Vorname" textFill="#002dff" GridPane.columnIndex="1">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
@@ -253,8 +252,8 @@
                                                       <Font size="14.0" />
                                                    </font>
                                                 </Label>
-                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                <Label fx:id="vornameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label fx:id="nameLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                                 <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                                 <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                 <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
@@ -314,6 +313,7 @@
                                     </Lighting>
                                  </effect>
                               </TabPane>
+                              <Button layoutX="14.0" layoutY="434.0" mnemonicParsing="false" text="Button" />
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="304.0">

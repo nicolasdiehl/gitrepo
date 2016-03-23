@@ -44,7 +44,7 @@ public class Person {
         this.personalnummer = new SimpleStringProperty("111");
         this.fuehrerschein = new SimpleStringProperty("B");
         
-SimpleObjectProperty<LocalDate>(LocalDate.of(1999, 2, 21));
+//SimpleObjectProperty<LocalDate>(LocalDate.of(1999, 2, 21));
     }
 
     public String getVorname() {

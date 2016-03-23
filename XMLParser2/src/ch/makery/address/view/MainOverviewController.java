@@ -1,17 +1,23 @@
+package ch.makery.address.view;
+
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Window;
 import ch.makery.address.FXMLVerwaltung;
 import ch.makery.address.model.Person;
+import ch.makery.address.model.Vehicle;
 
 public class MainOverviewController {
     @FXML
     private TableView<Person> personTable;
     @FXML
-    private TableColumn<Person, String> firstNameColumn;
+    private TableColumn<Person, String> vorNameColumn;
     @FXML
-    private TableColumn<Person, String> lastNameCoFXMLVerwaltunglumn;
+    private TableColumn<Person, String> nachNameColumn;
 
     @FXML
     private Label vornameLabel;
@@ -60,13 +66,13 @@ public class MainOverviewController {
             personalnummerLabel.setText("");
         }
     }
-    private void showFahrzeugDetails(Vehicle fahrzeug) {
-        if (fahrzeug!= null) {
+    private void showFahrzeugDetails(Vehicle vehicle) {
+        if (vehicle!= null) {
             // Fill the labels with info from the person object.
-            typLabel.setText(fahrzeug.typ());
-            geliehenLabel.setText(fahrzeug.getGeliehen());
-            kennzeichenLabel.setText(fahrzeug.getKennzeichen());
-            zweckLabel.setText(fahrzeug.getZweck()));
+            typLabel.setText(vehicle.typ());
+            geliehenLabel.setText(vehicle.getGeliehen());
+            kennzeichenLabel.setText(vehicle.getKennzeichen());
+            zweckLabel.setText(vehicle.getZweck());
             
             // TODO: We need a way to convert the birthday into a String! 
             // birthdayLabel.setText(...);
@@ -82,12 +88,12 @@ public class MainOverviewController {
     private void initialize() {
         // Initialize the person table with the two columns.
         // Initialize the person table with the two columns.
-        vornameColumn.setCellValueFactory(cellData -> cellData.getValue().vornameProperty());
-        nachnameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-        vornameColumn.setCellValueFactory(
-                cellData -> cellData.getValue().firstNameProperty());
-        nachnameColumn.setCellValueFactory(
-                cellData -> cellData.getValue().lastNameProperty());
+        vorNameColumn.setCellValueFactory(cellData -> cellData.getValue().vornameProperty());
+        nachNameColumn.setCellValueFactory(cellData -> cellData.getValue().nachnameProperty());
+        vorNameColumn.setCellValueFactory(
+                cellData -> cellData.getValue().nachnameProperty());
+        nachNameColumn.setCellValueFactory(
+                cellData -> cellData.getValue().nachnameProperty());
 
         // Clear person details.
         showPersonDetails(null);
@@ -105,7 +111,7 @@ public class MainOverviewController {
         } else {
             // Nothing selected.
             Alert alert = new Alert(AlertType.WARNING);
-            alert.initOwner(mainApp.getPrimaryStage());
+            alert.initOwner(MainOverviewController.getPrimaryStage());
             alert.setTitle("No Selection");
             alert.setHeaderText("No Person Selected");
             alert.setContentText("Please select a person in the table.");
@@ -113,6 +119,10 @@ public class MainOverviewController {
             alert.showAndWait();
         }
     }
+	private static Window getPrimaryStage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
 
