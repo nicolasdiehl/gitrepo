@@ -12,37 +12,16 @@ import java.io.IOException;
 
 public class Verwaltung {
 	public static void main(String[] args) throws JDOMException, IOException {
-		//Calendar cal = Calendar.getInstance();
-		//cal.set(1990, 03, 14); // set(int year, int month, int date)
+		// Calendar cal = Calendar.getInstance();
+		// cal.set(1990, 03, 14); // set(int year, int month, int date)
 		System.out.println("Hello World");
 
-		//ConnectXMLAusleihe.einfügenAusleihvorgang("999", "9099");
-		//ConnectXMLAusleihe.einfügenAusleihvorgang("11111111", "9099");
-		//ConnectXMLFahrzeug.einfügenFahrzeug("Jaguar", "E-Type", "minimal");
-
-		//String temp = ConnectXMLAusleihe.createUniqueID("Fuhrpark.xml");
-		//System.out.println(temp);
-		//ConnectXMLFahrzeug.readFahrzeugListe();
-		//ConnectXMLMitarbeiter.readMitarbeiterListe();
-		//ConnectXMLAusleihe.readAusleihe();
-		
 		Mitarbeiter tempMitarbeiter = einlesenMitarbeiter();
-		ConnectXMLMitarbeiter.einfügenMitarbeiter(tempMitarbeiter.getNachname(), tempMitarbeiter.getVorname(), tempMitarbeiter.isFuehrerschein(), tempMitarbeiter.getPersNr());
-		//ConnectXMLMitarbeiter.readMitarbeiterListe();
-		/*Ausleihe Ausleihetemp = Verwaltung.einlesenAusleihvorgang();
-		ConnectXMLAusleihe.einfügenAusleihvorgang(Ausleihetemp.getMitarbeiterID(), Ausleihetemp.getFahrzeugID());
-		ConnectXMLAusleihe.einfügenAusleihvorgang("999", "000");
-		System.out.println("Ausgabe nach Bestellvorgang");
-		ConnectXMLAusleihe.readAusleihe();
-		
-		Mitarbeiter einMitarbeiter = new Mitarbeiter("Schmidt", "Maria", true, 4349);
-
-		// erzeugen von Objekten der Klasse Fahrzeug bzw. Pkw
-		Fahrzeug meinFahrzeug = einlesenFahrzeug();
-		// Ausgabebeispiel*/
+		ConnectXMLMitarbeiter.einfügenMitarbeiter(tempMitarbeiter.getNachname(), tempMitarbeiter.getVorname(),
+				tempMitarbeiter.isFuehrerschein(), tempMitarbeiter.getPersNr());
 	}
 
-	public static Mitarbeiter einlesenMitarbeiter(){
+	public static Mitarbeiter einlesenMitarbeiter() {
 		String nachname = einlesenText("Nachname: ");
 		String vorname = einlesenText("Vorname: ");
 		boolean fuehrerschein = einlesenBool("Führerschein: ");
@@ -50,8 +29,8 @@ public class Verwaltung {
 		Mitarbeiter neuerMitarbeiter = new Mitarbeiter(nachname, vorname, fuehrerschein, persNr);
 		return neuerMitarbeiter;
 	}
-	
-	public static Fahrzeug einlesenFahrzeug(){
+
+	public static Fahrzeug einlesenFahrzeug() {
 		Fahrzeug neuesFahrzeug = new Fahrzeug("Cityflitzer", false, "Stadtfahrt", "X-XXXX");
 		// eingabe fehlt
 		String fahrzeugtyp = einlesenText("Fahrzeugtyp: ");
@@ -85,7 +64,7 @@ public class Verwaltung {
 		inData = scan.nextLine();
 		return Integer.parseInt(inData);
 	}
-	
+
 	public static long einlesenLong(String eingabewert) {
 		String inData;
 		Scanner scan = new Scanner(System.in);

@@ -19,8 +19,6 @@ public class GenerateXMLDriver {
 	  public static String generateChannelXML(){
 		  Document document = new Document ();
 		  Element channelElement = new Element ("channel");
-//		  nameElement.addContent("Zane Aca");
-//		  channelElement.addContent(nameElement);
 		  return null;
 	  }
 	  public static void generateTopicXML(Element channelElement, String topicname, String[] topicTutorials){

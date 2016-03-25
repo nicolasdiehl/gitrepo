@@ -1,45 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MitarbeiterListe>
-  <Mitarbeiter MitarbeiterID="9901">
-    <Nachname>M?ller</Nachname>
+  <Mitarbeiter MitarbeiterID="1">
+    <Nachname>Muller</Nachname>
     <Vorname>Max</Vorname>
     <PersNr>9901</PersNr>
     <Fuehrerschein>true</Fuehrerschein>
   </Mitarbeiter>
-  <Mitarbeiter MitarbeiterID="9902">
+  <Mitarbeiter MitarbeiterID="2">
     <Nachname>Schmidt</Nachname>
     <Vorname>Lina</Vorname>
     <PersNr>9902</PersNr>
     <Fuehrerschein>false</Fuehrerschein>
   </Mitarbeiter>
-  <Mitarbeiter MitarbeiterID="9903">
-    <Nachname>Becker</Nachname>
-    <Vorname>Eva</Vorname>
-    <PersNr>9903</PersNr>
-    <Fuehrerschein>true</Fuehrerschein>
-  </Mitarbeiter>
-  <Mitarbeiter MitarbeiterID="12352">
-    <Nachname>A</Nachname>
-    <Vorname>B</Vorname>
-    <Fuehrerschein>true</Fuehrerschein>
-    <PersNr>32342</PersNr>
-  </Mitarbeiter>
-  <Mitarbeiter MitarbeiterID="15">
-    <Nachname>A</Nachname>
-    <Vorname>B</Vorname>
-    <Fuehrerschein>true</Fuehrerschein>
-    <PersNr>32342</PersNr>
-  </Mitarbeiter>
-  <Mitarbeiter MitarbeiterID="15">
-    <Nachname>Diehl</Nachname>
-    <Vorname>Nicolas</Vorname>
-    <Fuehrerschein>true</Fuehrerschein>
-    <PersNr>1337</PersNr>
-  </Mitarbeiter>
-  <Mitarbeiter MitarbeiterID="12353">
-    <Nachname>a</Nachname>
-    <Vorname>b</Vorname>
-    <Fuehrerschein>true</Fuehrerschein>
-    <PersNr>123456543</PersNr>
+  <Mitarbeiter MitarbeiterID="3">
+    <Nachname>Daun</Nachname>
+    <Vorname>Max</Vorname>
+    <Fuehrerschein>false</Fuehrerschein>
+    <PersNr>11123</PersNr>
   </Mitarbeiter>
 </MitarbeiterListe>
