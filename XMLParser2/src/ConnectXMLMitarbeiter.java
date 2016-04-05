@@ -32,11 +32,11 @@ public class ConnectXMLMitarbeiter extends ConnectXML {
 				Element mitarbeiter = mitarbeiterList.get(temp);
 				System.out.println("\n Current Element :" + mitarbeiter.getName());
 				Attribute attribute = mitarbeiter.getAttribute("ID");
-				System.out.println("Zeile Nummer : " + attribute.getValue());
-				System.out.println("Nachname:         " + mitarbeiter.getChild("Nachname").getText());
-				System.out.println("Vorname:           " + mitarbeiter.getChild("Vorname").getText());
-				System.out.println("Fuehrerschein:     " + mitarbeiter.getChild("Fuehrerschein").getText());
-				System.out.println("PersNr:        " + mitarbeiter.getChild("PersNr").getText());
+				System.out.println("Zeile Nummer:\t" + attribute.getValue());
+				System.out.println("Nachname:\t" + mitarbeiter.getChild("Nachname").getText());
+				System.out.println("Vorname:\t" + mitarbeiter.getChild("Vorname").getText());
+				System.out.println("Fuehrerschein:\t" + mitarbeiter.getChild("Fuehrerschein").getText());
+				System.out.println("PersNr:\t" + mitarbeiter.getChild("PersNr").getText());
 			}
 		} catch (JDOMException e) {
 			e.printStackTrace();

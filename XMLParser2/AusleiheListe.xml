@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ausleiheliste>
+  <Vorgang ID="001">
+    <Kennzeichen>102</Kennzeichen>
+    <MitarbeiterID>9901</MitarbeiterID>
+    <Leihbeginn>12.12.2015</Leihbeginn>
+    <Leihende>20.12.2015</Leihende>
+  </Vorgang>
+  <Vorgang ID="0099">
+    <Kennzeichen>102</Kennzeichen>
+    <MitarbeiterID>9901</MitarbeiterID>
+    <Leihbeginn>01.01.2016</Leihbeginn>
+    <Leihende>10.01.2016</Leihende>
+  </Vorgang>
+  <Vorgang ID="003">
+    <Kennzeichen>103</Kennzeichen>
+    <MitarbeiterID>9903</MitarbeiterID>
+    <Leihbeginn>14.03.2016</Leihbeginn>
+    <Leihende>18.03.2016</Leihende>
+  </Vorgang>
+  <Vorgang ID="100">
+    <Kennzeichen>H-CO943</Kennzeichen>
+    <MitarbeiterID>9901</MitarbeiterID>
+  </Vorgang>
+  <Vorgang ID="101">
+    <Kennzeichen>H-CO943</Kennzeichen>
+    <MitarbeiterID>9901</MitarbeiterID>
+  </Vorgang>
+  <Vorgang ID="102">
+    <Kennzeichen>H-CO943</Kennzeichen>
+    <MitarbeiterID>9901</MitarbeiterID>
+  </Vorgang>
+</Ausleiheliste>

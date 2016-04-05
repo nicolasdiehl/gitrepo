@@ -18,6 +18,17 @@ public class Verwaltung {
 	public static void main(String[] args) throws JDOMException, IOException {
 		System.out.println("Hello World");
 
+		Calendar cal = Calendar.getInstance();
+
+		// Die Monate werden mit 0 (= Januar) beginnend gezaehlt!
+		// (Die Tage im Monat beginnen dagegen mit 1)
+		String testDatum = cal.get(Calendar.DAY_OF_MONTH) + "." + (cal.get(Calendar.MONTH) + 1) + "."
+				+ cal.get(Calendar.YEAR);
+		System.out.println(testDatum);
+		System.out.println("Datum: " + cal.get(Calendar.DAY_OF_MONTH) + "." + (cal.get(Calendar.MONTH) + 1) + "."
+				+ cal.get(Calendar.YEAR));
+
+		System.out.println("Uhrzeit: " + cal.get(Calendar.HOUR_OF_DAY) + ":" + cal.get(Calendar.MINUTE));
 		/*
 		 * Mitarbeiter tempMitarbeiter = einlesenMitarbeiter();
 		 * ConnectXMLMitarbeiter.einfügenMitarbeiter(tempMitarbeiter.getNachname
@@ -34,6 +45,9 @@ public class Verwaltung {
 		 * tempFahrzeug.getKennzeichen());
 		 */
 		// ConnectXMLFahrzeug.readFahrzeugListe();
+		Ausleihe neueAusleihe = einlesenAusleihvorgang();
+		ConnectXMLAusleihe.einfügenAusleihvorgang("9901", "H-CO943", "21.12.2015", "23.12.2015");
+		ConnectXMLAusleihe.readAusleihe();
 	}
 
 	public static Mitarbeiter einlesenMitarbeiter() {
@@ -58,12 +72,22 @@ public class Verwaltung {
 	public static Ausleihe einlesenAusleihvorgang() {
 		System.out.println("______________");
 		System.out.println("Hier starten Sie den Ausleihvorgang");
-		String MitarbeiterID = einlesenText("MitarbeiterID:");
-		String FahrzeugID = einlesenText("FahrzeugID: ");
-		Ausleihe ausleihe = new Ausleihe(MitarbeiterID, FahrzeugID);
+		String mitarbeiterID = einlesenText("MitarbeiterID: ");
+		String kennzeichen = einlesenText("Kennzeichen: ");
+		String leihbeginn = einlesenText("Leihbeginn: ");
+		String leihende = einlesenText("Leihende: ");
+		
+		Ausleihe ausleihe = new Ausleihe(mitarbeiterID, kennzeichen, leihbeginn, leihende);
 		return ausleihe;
 	}
-
+	public static String einlesenDatum(String eingabewert){
+		String inData;
+		Scanner scan = new Scanner(System.in);
+		System.out.println(eingabewert);
+		inData = scan.nextLine();
+		return inData;
+	}
+	
 	public static String einlesenText(String eingabewert) {
 		String inData;
 		Scanner scan = new Scanner(System.in);
@@ -106,13 +130,13 @@ public class Verwaltung {
 					fehler = false;
 					return false;
 				} else {
-					System.out.println("Ihre Eingabe war: " + inData + "Dies ist keine gültige Eingabe!");
+					System.out.println("Ihre Eingabe war: " + inData + "Das ist eine ungültige Eingabe!");
 					fehler = true;
 				}
 			}
 		} while (fehler); // Wurde weder j noch n eingegeben
 
-		System.out.println("Fehlerhafte Eingabe, kommt das Programm hier hin, ist richtig was schief gelaufen!!!");
+		System.out.println("Fehlerhafte Eingabe! Versuchen Sie es noch einmal!");
 		return false;
 	}
 }

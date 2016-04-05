@@ -31,11 +31,11 @@ public class ConnectXMLFahrzeug extends ConnectXML{
 				Element fahrzeug = fahrzeugList.get(temp);
 				System.out.println("\n Current Element :" + fahrzeug.getName());
 				Attribute attribute =  fahrzeug.getAttribute("ID");
-				System.out.println("Zeile Nummer : " + attribute.getValue() );
-				System.out.println("Fahrzeugtyp:    	"+ fahrzeug.getChild("Fahrzeugtyp").getText());
-				System.out.println("Geliehen:     		"+ fahrzeug.getChild("Geliehen").getText());
-				System.out.println("Zweck: 				"+ fahrzeug.getChild("Zweck").getText());	            
-				System.out.println("Kennzeichen: 		"+ fahrzeug.getChild("Kennzeichen").getText());
+				System.out.println("Zeile Nummer :\t" + attribute.getValue() );
+				System.out.println("Fahrzeugtyp:\t"+ fahrzeug.getChild("Fahrzeugtyp").getText());
+				System.out.println("Geliehen:\t"+ fahrzeug.getChild("Geliehen").getText());
+				System.out.println("Zweck:\t"+ fahrzeug.getChild("Zweck").getText());	            
+				System.out.println("Kennzeichen:\t"+ fahrzeug.getChild("Kennzeichen").getText());
 			}
 		}catch(JDOMException e){
 			e.printStackTrace();
