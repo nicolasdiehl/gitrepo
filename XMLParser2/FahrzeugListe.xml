@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FahrzeugListe>
+  <Fahrzeug ID="101">
+    <Fahrzeugtyp>Cityflitzer</Fahrzeugtyp>
+    <Geliehen>true</Geliehen>
+    <Zweck>Stadtfahrt</Zweck>
+    <Kennzeichen>DA-O815</Kennzeichen>
+  </Fahrzeug>
+  <Fahrzeug ID="102">
+    <Fahrzeugtyp>Limousine</Fahrzeugtyp>
+    <Geliehen>false</Geliehen>
+    <Zweck>?berlandfahrt</Zweck>
+    <Kennzeichen>R-CO234</Kennzeichen>
+  </Fahrzeug>
+  <Fahrzeug ID="103">
+    <Fahrzeugtyp>Panzer</Fahrzeugtyp>
+    <Geliehen>false</Geliehen>
+    <Zweck>Bombardieren</Zweck>
+    <Kennzeichen>unbekannt</Kennzeichen>
+  </Fahrzeug>
+  <Fahrzeug ID="104">
+    <Fahrzeugtyp>dfgdt</Fahrzeugtyp>
+    <Geliehen>false</Geliehen>
+    <Zweck>dfdftfg</Zweck>
+    <Kennzeichen>fgf</Kennzeichen>
+  </Fahrzeug>
+</FahrzeugListe>

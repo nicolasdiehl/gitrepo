@@ -7,18 +7,19 @@ public class Mitarbeiter {
 	public boolean fuehrerschein;
 	public long persNr;
 
+	// konstruktor
+	public Mitarbeiter(String nachname, String vorname, boolean fuehrerschein, long persNr) {
+		this.nachname = nachname;
+		this.vorname = vorname;
+		this.fuehrerschein = fuehrerschein;
+		this.persNr = persNr;
+	}
+	// getter und setter
 	public long getPersNr() {
 		return persNr;
 	}
 
 	public void setPersNr(long persNr) {
-		this.persNr = persNr;
-	}
-
-	public Mitarbeiter(String nachname, String vorname, boolean fuehrerschein, long persNr) {
-		this.nachname = nachname;
-		this.vorname = vorname;
-		this.fuehrerschein = fuehrerschein;
 		this.persNr = persNr;
 	}
 

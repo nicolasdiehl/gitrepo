@@ -1,21 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MitarbeiterListe>
-  <Mitarbeiter MitarbeiterID="1">
+  <Mitarbeiter ID="1">
     <Nachname>Muller</Nachname>
     <Vorname>Max</Vorname>
     <PersNr>9901</PersNr>
     <Fuehrerschein>true</Fuehrerschein>
   </Mitarbeiter>
-  <Mitarbeiter MitarbeiterID="2">
+  <Mitarbeiter ID="2">
     <Nachname>Schmidt</Nachname>
     <Vorname>Lina</Vorname>
     <PersNr>9902</PersNr>
     <Fuehrerschein>false</Fuehrerschein>
   </Mitarbeiter>
-  <Mitarbeiter MitarbeiterID="3">
+  <Mitarbeiter ID="3">
     <Nachname>Daun</Nachname>
     <Vorname>Max</Vorname>
     <Fuehrerschein>false</Fuehrerschein>
     <PersNr>11123</PersNr>
+  </Mitarbeiter>
+  <Mitarbeiter ID="4">
+    <Nachname>ja</Nachname>
+    <Vorname>nein</Vorname>
+    <Fuehrerschein>true</Fuehrerschein>
+    <PersNr>2323</PersNr>
+  </Mitarbeiter>
+  <Mitarbeiter ID="5">
+    <Nachname>ja</Nachname>
+    <Vorname>nein</Vorname>
+    <Fuehrerschein>true</Fuehrerschein>
+    <PersNr>2323</PersNr>
   </Mitarbeiter>
 </MitarbeiterListe>

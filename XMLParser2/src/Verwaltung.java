@@ -6,19 +6,34 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
+
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.io.IOException;
 
 public class Verwaltung {
 	public static void main(String[] args) throws JDOMException, IOException {
-		// Calendar cal = Calendar.getInstance();
-		// cal.set(1990, 03, 14); // set(int year, int month, int date)
 		System.out.println("Hello World");
 
-		Mitarbeiter tempMitarbeiter = einlesenMitarbeiter();
-		ConnectXMLMitarbeiter.einfügenMitarbeiter(tempMitarbeiter.getNachname(), tempMitarbeiter.getVorname(),
-				tempMitarbeiter.isFuehrerschein(), tempMitarbeiter.getPersNr());
+		/*
+		 * Mitarbeiter tempMitarbeiter = einlesenMitarbeiter();
+		 * ConnectXMLMitarbeiter.einfügenMitarbeiter(tempMitarbeiter.getNachname
+		 * (), tempMitarbeiter.getVorname(), tempMitarbeiter.isFuehrerschein(),
+		 * tempMitarbeiter.getPersNr());
+		 */
+		// ConnectXMLMitarbeiter.readMitarbeiterListe();
+		// List<Element> mitarbeiterList =
+		// ConnectXMLMitarbeiter.readMitarbeiterListe();
+		/*
+		 * Fahrzeug tempFahrzeug = einlesenFahrzeug();
+		 * ConnectXMLFahrzeug.einfügenFahrzeug(tempFahrzeug.getFahrzeugtyp(),
+		 * tempFahrzeug.isGeliehen(), tempFahrzeug.getZweck(),
+		 * tempFahrzeug.getKennzeichen());
+		 */
+		// ConnectXMLFahrzeug.readFahrzeugListe();
 	}
 
 	public static Mitarbeiter einlesenMitarbeiter() {
@@ -31,12 +46,12 @@ public class Verwaltung {
 	}
 
 	public static Fahrzeug einlesenFahrzeug() {
-		Fahrzeug neuesFahrzeug = new Fahrzeug("Cityflitzer", false, "Stadtfahrt", "X-XXXX");
-		// eingabe fehlt
+
 		String fahrzeugtyp = einlesenText("Fahrzeugtyp: ");
-		boolean ausgeliehen = false;
+		boolean geliehen = einlesenBool("Geliehen: ");
 		String zweck = einlesenText("Zweck: ");
 		String kennzeichen = einlesenText("Kennzeichen: ");
+		Fahrzeug neuesFahrzeug = new Fahrzeug(fahrzeugtyp, geliehen, zweck, kennzeichen);
 		return neuesFahrzeug;
 	}
 

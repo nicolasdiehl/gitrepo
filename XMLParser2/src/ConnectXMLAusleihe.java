@@ -31,9 +31,9 @@ public class ConnectXMLAusleihe extends ConnectXML{
 		            Element Vorgang = AusleihListe.get(temp);
 		            System.out.println("Liste der Ausleihvorgänge :" + Vorgang.getName());
 		            Attribute attribute =  Vorgang.getAttribute("ID");
-		            System.out.println("Vorgang   : "  + attribute.getValue() );
-		            System.out.println("FahrzeugID :         " + Vorgang.getChild("FahrzeugID").getText());
-		            System.out.println("MitarbeiterID:       " + Vorgang.getChild("MitarbeiterID").getText());
+		            System.out.println("Vorgang: 		 	" + attribute.getValue() );
+		            System.out.println("FahrzeugID:         " + Vorgang.getChild("FahrzeugID").getText());
+		            System.out.println("MitarbeiterID:      " + Vorgang.getChild("MitarbeiterID").getText());
 		         }
 		      }catch(JDOMException e){
 		         e.printStackTrace();

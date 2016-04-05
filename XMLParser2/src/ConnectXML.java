@@ -22,7 +22,7 @@ public class ConnectXML {
 			         for (int i = 0; i < Liste.size(); i++) { 
 			            Element currentElement = Liste.get(i);
 
-			            idString = currentElement.getAttributeValue("MitarbeiterID");
+			            idString = currentElement.getAttributeValue("ID");
 			            idInt=Integer.parseInt(idString);
 			            if (highest < idInt){
 			            	highest= idInt;

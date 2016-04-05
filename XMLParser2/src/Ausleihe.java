@@ -1,26 +1,32 @@
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Date;
 public class Ausleihe {
+
+	public String mitarbeiterID;
+	public String kennzeichen;
+	public Date leihbeginn;
+	public Date leihende;
+
+	public Ausleihe(String mID, String kennz) {
+		this.mitarbeiterID = mID;
+		this.kennzeichen = kennz;
+	}
+
 	public String getMitarbeiterID() {
-		return MitarbeiterID;
+		return mitarbeiterID;
 	}
 
 	public void setMitarbeiterID(String mitarbeiterID) {
-		MitarbeiterID = mitarbeiterID;
+		this.mitarbeiterID = mitarbeiterID;
 	}
 
-	public String getFahrzeugID() {
-		return FahrzeugID;
+	public String getKennzeichen() {
+		return kennzeichen;
 	}
 
-	public void setFahrzeugID(String fahrzeugID) {
-		FahrzeugID = fahrzeugID;
-	}
-
-	public String MitarbeiterID;
-	public String FahrzeugID;
-	
-	public Ausleihe(String mID, String fID){
-		this.MitarbeiterID=mID;
-		this.FahrzeugID=fID;
+	public void setKennzeichen(String kennzeichen) {
+		this.kennzeichen = kennzeichen;
 	}
 
 }
