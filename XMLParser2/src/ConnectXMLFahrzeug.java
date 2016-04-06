@@ -80,34 +80,5 @@ public class ConnectXMLFahrzeug extends ConnectXML{
 		}catch(IOException e){
 			e.printStackTrace();
 		}	
-	}//schlieﬂt Methode	   
-
-	//	   public static String createUniqueID() throws JDOMException, IOException{
-	//		      try {  
-	//			         File inputFile = new File("Fahrzeug.xml");
-	//			         SAXBuilder saxBuilder = new SAXBuilder();
-	//			         Document document = saxBuilder.build(inputFile);
-	//			         Element classElement = document.getRootElement();
-	//			         List<Element> Fahrzeugliste = classElement.getChildren();
-	//			         int tempi=0;
-	//			         int highest=0;
-	//			         String temps="";
-	//			         for (int temp = 0; temp < Fahrzeugliste.size(); temp++) { 
-	//			            Element Vorgang = Fahrzeugliste.get(temp);
-	//
-	//			            temps= Vorgang.getAttributeValue("ID");
-	//			            tempi=Integer.parseInt(temps);
-	//			            if (highest < tempi){
-	//			            	highest= tempi;
-	//			            }
-	//			         }
-	//			         
-	//			         highest++;
-	//			         temps= Integer.toString(highest);
-	//		          return temps;
-	//			      }catch(JDOMException e){
-	//			         e.printStackTrace();
-	//			      }
-	//		      return "random test value";
-	//	   }
+	}  
 }

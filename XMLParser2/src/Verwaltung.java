@@ -16,7 +16,6 @@ import java.io.IOException;
 
 public class Verwaltung {
 	public static void main(String[] args) throws JDOMException, IOException {
-		System.out.println("Hello World");
 
 		Calendar cal = Calendar.getInstance();
 
@@ -29,22 +28,17 @@ public class Verwaltung {
 				+ cal.get(Calendar.YEAR));
 
 		System.out.println("Uhrzeit: " + cal.get(Calendar.HOUR_OF_DAY) + ":" + cal.get(Calendar.MINUTE));
-		/*
-		 * Mitarbeiter tempMitarbeiter = einlesenMitarbeiter();
-		 * ConnectXMLMitarbeiter.einfügenMitarbeiter(tempMitarbeiter.getNachname
-		 * (), tempMitarbeiter.getVorname(), tempMitarbeiter.isFuehrerschein(),
-		 * tempMitarbeiter.getPersNr());
-		 */
-		// ConnectXMLMitarbeiter.readMitarbeiterListe();
-		// List<Element> mitarbeiterList =
-		// ConnectXMLMitarbeiter.readMitarbeiterListe();
-		/*
-		 * Fahrzeug tempFahrzeug = einlesenFahrzeug();
-		 * ConnectXMLFahrzeug.einfügenFahrzeug(tempFahrzeug.getFahrzeugtyp(),
-		 * tempFahrzeug.isGeliehen(), tempFahrzeug.getZweck(),
-		 * tempFahrzeug.getKennzeichen());
-		 */
-		// ConnectXMLFahrzeug.readFahrzeugListe();
+
+		Mitarbeiter tempMitarbeiter = einlesenMitarbeiter();
+		ConnectXMLMitarbeiter.einfügenMitarbeiter(tempMitarbeiter.getNachname(), tempMitarbeiter.getVorname(),
+				tempMitarbeiter.isFuehrerschein(), tempMitarbeiter.getPersNr());
+		ConnectXMLMitarbeiter.readMitarbeiterListe();
+
+		Fahrzeug tempFahrzeug = einlesenFahrzeug();
+		ConnectXMLFahrzeug.einfügenFahrzeug(tempFahrzeug.getFahrzeugtyp(), tempFahrzeug.isGeliehen(),
+				tempFahrzeug.getZweck(), tempFahrzeug.getKennzeichen());
+		ConnectXMLFahrzeug.readFahrzeugListe();
+
 		Ausleihe tempAusleihe = einlesenAusleihvorgang();
 		ConnectXMLAusleihe.einfügenAusleihvorgang(tempAusleihe.getKennzeichen(), tempAusleihe.getMitarbeiterID(),
 				tempAusleihe.getLeihbeginn(), tempAusleihe.getLeihende());
@@ -77,18 +71,19 @@ public class Verwaltung {
 		String kennzeichen = einlesenText("Kennzeichen: ");
 		String leihbeginn = einlesenText("Leihbeginn: ");
 		String leihende = einlesenText("Leihende: ");
-		
+
 		Ausleihe neueAusleihe = new Ausleihe(mitarbeiterID, kennzeichen, leihbeginn, leihende);
 		return neueAusleihe;
 	}
-	public static String einlesenDatum(String eingabewert){
+
+	public static String einlesenDatum(String eingabewert) {
 		String inData;
 		Scanner scan = new Scanner(System.in);
 		System.out.println(eingabewert);
 		inData = scan.nextLine();
 		return inData;
 	}
-	
+
 	public static String einlesenText(String eingabewert) {
 		String inData;
 		Scanner scan = new Scanner(System.in);

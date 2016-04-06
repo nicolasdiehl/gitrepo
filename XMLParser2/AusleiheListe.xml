@@ -30,4 +30,10 @@
     <Leihbeginn>31.03.2016</Leihbeginn>
     <Leihende>10.04.2016</Leihende>
   </Vorgang>
+  <Vorgang ID="102">
+    <Kennzeichen>6666</Kennzeichen>
+    <MitarbeiterID>CC-CC666</MitarbeiterID>
+    <Leihbeginn>01.04.2016</Leihbeginn>
+    <Leihende>04.04.2016</Leihende>
+  </Vorgang>
 </Ausleiheliste>

@@ -24,4 +24,10 @@
     <Zweck>dfdftfg</Zweck>
     <Kennzeichen>fgf</Kennzeichen>
   </Fahrzeug>
+  <Fahrzeug ID="105">
+    <Fahrzeugtyp>Transporter</Fahrzeugtyp>
+    <Geliehen>false</Geliehen>
+    <Zweck>Transportieren</Zweck>
+    <Kennzeichen>TR-AN533</Kennzeichen>
+  </Fahrzeug>
 </FahrzeugListe>

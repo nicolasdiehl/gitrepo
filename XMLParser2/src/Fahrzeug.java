@@ -4,14 +4,14 @@ public class Fahrzeug {
 	public static boolean geliehen;
 	public static String zweck;
 	public static String kennzeichen;
-	//konstruktor
+	// Konstruktor
 	protected Fahrzeug(String fahrzeugtyp, boolean geliehen, String zweck, String kennzeichen){ //Konstruktor Fahrzeug
 		this.fahrzeugtyp = fahrzeugtyp;
 		this.geliehen = geliehen;
 		this.zweck = zweck;
 		this.kennzeichen = kennzeichen;
 	}
-	//getter und setter
+	// Getter und setter
 	public static String getFahrzeugtyp() {
 		return fahrzeugtyp;
 	}

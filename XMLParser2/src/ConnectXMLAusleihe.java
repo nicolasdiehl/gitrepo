@@ -49,7 +49,7 @@ public class ConnectXMLAusleihe extends ConnectXML{
 		         File inputFile = new File("AusleiheListe.xml");
 		         SAXBuilder saxBuilder = new SAXBuilder();
 		         Document document = saxBuilder.build(inputFile);
-
+		         // erstellte Elemente entsprechen Attributen in der XML
 		         Element neueAusleihe = new Element ("Vorgang");
 		         String newID = createUniqueID("AusleiheListe.xml");
 		         neueAusleihe.setAttribute(new Attribute ("ID", newID));

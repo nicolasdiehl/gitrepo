@@ -3,7 +3,7 @@ import java.util.GregorianCalendar;
 import java.util.Date;
 
 public class Ausleihe {
-
+	// Attribute
 	public String mitarbeiterID;
 	public String kennzeichen;
 	public String leihbeginn;
