@@ -3,8 +3,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Scanner;
 
-import org.jdom2.*;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -81,4 +81,36 @@ public class ConnectXMLFahrzeug extends ConnectXML{
 			e.printStackTrace();
 		}	
 	}  
+
+	public static void sucheFahrzeugtyp() {
+		String suchtyp = "";
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Welchen Fahrzeugtyp suchen Sie?");
+		suchtyp = scan.next();
+		List<Element> fahrzeugList1 = null;
+		try {
+			File inputFile = new File("FahrzeugListe.xml");
+			SAXBuilder saxBuilder = new SAXBuilder();
+			Document document = saxBuilder.build(inputFile);
+			Element classElement = document.getRootElement();
+			fahrzeugList1 = classElement.getChildren();
+			for (int temp = 0; temp < fahrzeugList1.size(); temp++) {
+				Element mitarbeiter1 = fahrzeugList1.get(temp);
+				Element attribute1 = mitarbeiter1.getChild("Fahrzeugtyp");
+				String fahrzeugtyp = attribute1.getValue();
+				if (fahrzeugtyp.equals(suchtyp)) {
+					System.out.println("\nElement:\t" + mitarbeiter1.getName());
+					System.out.println("Fahrzeugtyp:\t" + mitarbeiter1.getChild("Fahrzeugtyp").getText());
+					System.out.println("Geliehen:\t" + mitarbeiter1.getChild("Geliehen").getText());
+					System.out.println("Zweck:\t\t" + mitarbeiter1.getChild("Zweck").getText());
+					System.out.println("Kennzeichen:\t" + mitarbeiter1.getChild("Kennzeichen").getText());
+				}
+			}
+		} catch (JDOMException e) {
+			e.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+	}
+
 }

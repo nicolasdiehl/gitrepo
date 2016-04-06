@@ -1,17 +1,7 @@
 import java.util.Scanner;
 
 import org.jdom2.JDOMException;
-import org.jdom2.Attribute;
-import org.jdom2.Document;
-import org.jdom2.Element;
-import org.jdom2.JDOMException;
-import org.jdom2.input.SAXBuilder;
-
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
 import java.io.IOException;
 
 public class Verwaltung {
@@ -26,6 +16,8 @@ public class Verwaltung {
 
 		System.out.println("Uhrzeit: " + cal.get(Calendar.HOUR_OF_DAY) + ":" + cal.get(Calendar.MINUTE));
 
+		ConnectXMLFahrzeug.sucheFahrzeugtyp();
+		
 		Mitarbeiter tempMitarbeiter = einlesenMitarbeiter();
 		ConnectXMLMitarbeiter.einfügenMitarbeiter(tempMitarbeiter.getNachname(), tempMitarbeiter.getVorname(),
 				tempMitarbeiter.isFuehrerschein(), tempMitarbeiter.getPersNr());

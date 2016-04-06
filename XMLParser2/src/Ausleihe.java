@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class Ausleihe {
 	// Attribute
-	public String mitarbeiterID;
 	public String kennzeichen;
+	public String mitarbeiterID;
 	public String leihbeginn;
 	public String leihende;
 	// Konstruktor
-	public Ausleihe(String mID, String kennz, String leihbeginn, String leihende) {
-		this.mitarbeiterID = mID;
+	public Ausleihe(String kennz, String mID, String leihbeginn, String leihende) {
 		this.kennzeichen = kennz;
+		this.mitarbeiterID = mID;
 		this.leihbeginn = leihbeginn;
 		this.leihende = leihende;
 	}

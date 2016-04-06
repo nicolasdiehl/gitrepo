@@ -1,5 +1,3 @@
-import java.util.Calendar;
-
 public class Mitarbeiter {
 
 	public String nachname;

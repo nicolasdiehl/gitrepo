@@ -1,12 +1,7 @@
 import java.io.File;
 import java.io.FileWriter;
-import java.util.Date;
-import java.util.Calendar;
 import java.io.IOException;
 import java.util.List;
-import java.lang.Integer;
-
-import org.jdom2.*;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;

@@ -1,44 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Ausleiheliste>
   <Vorgang ID="001">
-    <Kennzeichen>102</Kennzeichen>
+    <Kennzeichen>DA-CI101</Kennzeichen>
     <MitarbeiterID>9901</MitarbeiterID>
     <Leihbeginn>12.12.2015</Leihbeginn>
     <Leihende>20.12.2015</Leihende>
   </Vorgang>
-  <Vorgang ID="0099">
-    <Kennzeichen>102</Kennzeichen>
+  <Vorgang ID="002">
+    <Kennzeichen>DA-KO102</Kennzeichen>
     <MitarbeiterID>9901</MitarbeiterID>
     <Leihbeginn>01.01.2016</Leihbeginn>
     <Leihende>10.01.2016</Leihende>
   </Vorgang>
   <Vorgang ID="003">
-    <Kennzeichen>103</Kennzeichen>
+    <Kennzeichen>DA-TR101</Kennzeichen>
     <MitarbeiterID>9903</MitarbeiterID>
     <Leihbeginn>14.03.2016</Leihbeginn>
     <Leihende>18.03.2016</Leihende>
   </Vorgang>
-  <Vorgang ID="100">
-    <Kennzeichen>9920</Kennzeichen>
-    <MitarbeiterID>DA-CO490</MitarbeiterID>
-    <Leihbeginn>04.04.2016</Leihbeginn>
-    <Leihende>07.04.2016</Leihende>
-  </Vorgang>
-  <Vorgang ID="101">
-    <Kennzeichen>2525</Kennzeichen>
-    <MitarbeiterID>CO-NT100</MitarbeiterID>
-    <Leihbeginn>31.03.2016</Leihbeginn>
-    <Leihende>10.04.2016</Leihende>
-  </Vorgang>
-  <Vorgang ID="102">
-    <Kennzeichen>6666</Kennzeichen>
-    <MitarbeiterID>CC-CC666</MitarbeiterID>
-    <Leihbeginn>01.04.2016</Leihbeginn>
-    <Leihende>04.04.2016</Leihende>
-  </Vorgang>
-  <Vorgang ID="103">
-    <Kennzeichen>2323</Kennzeichen>
-    <MitarbeiterID>H-CO943</MitarbeiterID>
+  <Vorgang ID="004">
+    <Kennzeichen>DA-TR102</Kennzeichen>
+    <MitarbeiterID>9902</MitarbeiterID>
     <Leihbeginn>12.12.2015</Leihbeginn>
     <Leihende>14.12.2015</Leihende>
   </Vorgang>

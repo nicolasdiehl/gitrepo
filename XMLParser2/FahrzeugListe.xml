@@ -1,39 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FahrzeugListe>
-  <Fahrzeug ID="101">
-    <Fahrzeugtyp>Cityflitzer</Fahrzeugtyp>
-    <Geliehen>true</Geliehen>
-    <Zweck>Stadtfahrt</Zweck>
-    <Kennzeichen>DA-O815</Kennzeichen>
-  </Fahrzeug>
-  <Fahrzeug ID="102">
-    <Fahrzeugtyp>Limousine</Fahrzeugtyp>
-    <Geliehen>false</Geliehen>
-    <Zweck>?berlandfahrt</Zweck>
-    <Kennzeichen>R-CO234</Kennzeichen>
-  </Fahrzeug>
-  <Fahrzeug ID="103">
-    <Fahrzeugtyp>Panzer</Fahrzeugtyp>
-    <Geliehen>false</Geliehen>
-    <Zweck>Bombardieren</Zweck>
-    <Kennzeichen>unbekannt</Kennzeichen>
-  </Fahrzeug>
-  <Fahrzeug ID="104">
-    <Fahrzeugtyp>dfgdt</Fahrzeugtyp>
-    <Geliehen>false</Geliehen>
-    <Zweck>dfdftfg</Zweck>
-    <Kennzeichen>fgf</Kennzeichen>
-  </Fahrzeug>
-  <Fahrzeug ID="105">
-    <Fahrzeugtyp>Transporter</Fahrzeugtyp>
-    <Geliehen>false</Geliehen>
-    <Zweck>Transportieren</Zweck>
-    <Kennzeichen>TR-AN533</Kennzeichen>
-  </Fahrzeug>
-  <Fahrzeug ID="106">
-    <Fahrzeugtyp>Panzer</Fahrzeugtyp>
-    <Geliehen>false</Geliehen>
-    <Zweck>Bombardieren</Zweck>
-    <Kennzeichen>PA-NZ37</Kennzeichen>
-  </Fahrzeug>
+	<Fahrzeug ID="101">
+		<Fahrzeugtyp>Cityflitzer</Fahrzeugtyp>
+		<Geliehen>false</Geliehen>
+		<Zweck>Stadtfahrt</Zweck>
+		<Kennzeichen>DA-CI100</Kennzeichen>
+	</Fahrzeug>
+	<Fahrzeug ID="102">
+		<Fahrzeugtyp>Cityflitzer</Fahrzeugtyp>
+		<Geliehen>false</Geliehen>
+		<Zweck>Stadtfahrt</Zweck>
+		<Kennzeichen>DA-CI101</Kennzeichen>
+	</Fahrzeug>
+	<Fahrzeug ID="103">
+		<Fahrzeugtyp>Limousine</Fahrzeugtyp>
+		<Geliehen>false</Geliehen>
+		<Zweck>Ueberlandfahrt</Zweck>
+		<Kennzeichen>DA-LI100</Kennzeichen>
+	</Fahrzeug>
+	<Fahrzeug ID="104">
+		<Fahrzeugtyp>Limousine</Fahrzeugtyp>
+		<Geliehen>false</Geliehen>
+		<Zweck>Ueberlandfahrt</Zweck>
+		<Kennzeichen>DA-LI101</Kennzeichen>
+	</Fahrzeug>
+	<Fahrzeug ID="105">
+		<Fahrzeugtyp>Transporter</Fahrzeugtyp>
+		<Geliehen>false</Geliehen>
+		<Zweck>Transport</Zweck>
+		<Kennzeichen>DA-TR100</Kennzeichen>
+	</Fahrzeug>
+	<Fahrzeug ID="106">
+		<Fahrzeugtyp>Transporter</Fahrzeugtyp>
+		<Geliehen>false</Geliehen>
+		<Zweck>Transport</Zweck>
+		<Kennzeichen>DA-TR101</Kennzeichen>
+	</Fahrzeug>
+	<Fahrzeug ID="107">
+		<Fahrzeugtyp>Kombi</Fahrzeugtyp>
+		<Geliehen>false</Geliehen>
+		<Zweck>Transport</Zweck>
+		<Kennzeichen>DA-KO100</Kennzeichen>
+	</Fahrzeug>
+	<Fahrzeug ID="108">
+		<Fahrzeugtyp>Kombi</Fahrzeugtyp>
+		<Geliehen>false</Geliehen>
+		<Zweck>Transport</Zweck>
+		<Kennzeichen>DA-KO101</Kennzeichen>
+	</Fahrzeug>
 </FahrzeugListe>
