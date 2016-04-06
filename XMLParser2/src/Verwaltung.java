@@ -45,8 +45,9 @@ public class Verwaltung {
 		 * tempFahrzeug.getKennzeichen());
 		 */
 		// ConnectXMLFahrzeug.readFahrzeugListe();
-		Ausleihe neueAusleihe = einlesenAusleihvorgang();
-		ConnectXMLAusleihe.einfügenAusleihvorgang("9901", "H-CO943", "21.12.2015", "23.12.2015");
+		Ausleihe tempAusleihe = einlesenAusleihvorgang();
+		ConnectXMLAusleihe.einfügenAusleihvorgang(tempAusleihe.getKennzeichen(), tempAusleihe.getMitarbeiterID(),
+				tempAusleihe.getLeihbeginn(), tempAusleihe.getLeihende());
 		ConnectXMLAusleihe.readAusleihe();
 	}
 
@@ -77,8 +78,8 @@ public class Verwaltung {
 		String leihbeginn = einlesenText("Leihbeginn: ");
 		String leihende = einlesenText("Leihende: ");
 		
-		Ausleihe ausleihe = new Ausleihe(mitarbeiterID, kennzeichen, leihbeginn, leihende);
-		return ausleihe;
+		Ausleihe neueAusleihe = new Ausleihe(mitarbeiterID, kennzeichen, leihbeginn, leihende);
+		return neueAusleihe;
 	}
 	public static String einlesenDatum(String eingabewert){
 		String inData;

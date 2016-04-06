@@ -64,6 +64,8 @@ public class ConnectXMLAusleihe extends ConnectXML{
 		         
 		         neueAusleihe.addContent(avKennzeichen);
 		         neueAusleihe.addContent(avMitarbeiter);
+		         neueAusleihe.addContent(avLeihbeginn);
+		         neueAusleihe.addContent(avLeihende);
 		         
 		         document.getRootElement().addContent(neueAusleihe);
 		         XMLOutputter xmlOutput = new XMLOutputter();
