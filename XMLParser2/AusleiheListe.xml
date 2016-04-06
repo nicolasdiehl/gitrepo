@@ -36,4 +36,10 @@
     <Leihbeginn>01.04.2016</Leihbeginn>
     <Leihende>04.04.2016</Leihende>
   </Vorgang>
+  <Vorgang ID="103">
+    <Kennzeichen>2323</Kennzeichen>
+    <MitarbeiterID>H-CO943</MitarbeiterID>
+    <Leihbeginn>12.12.2015</Leihbeginn>
+    <Leihende>14.12.2015</Leihende>
+  </Vorgang>
 </Ausleiheliste>

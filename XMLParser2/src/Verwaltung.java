@@ -40,6 +40,8 @@ public class Verwaltung {
 		ConnectXMLAusleihe.einfügenAusleihvorgang(tempAusleihe.getKennzeichen(), tempAusleihe.getMitarbeiterID(),
 				tempAusleihe.getLeihbeginn(), tempAusleihe.getLeihende());
 		ConnectXMLAusleihe.readAusleihe();
+		
+		SuchBaumBSP.Suche();
 	}
 
 	public static Mitarbeiter einlesenMitarbeiter() {

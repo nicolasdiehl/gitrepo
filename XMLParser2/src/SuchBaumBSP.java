@@ -13,7 +13,7 @@ class SuchBaumBSP
 	static int persNr = 0;
 	static SuchBaum baum;
 
-	public static void main(String[] arg) throws DataConversionException
+	public static void Suche() throws DataConversionException
 	{
 		Scanner sc = new Scanner(System.in);
 		baum = new SuchBaum(persNr);

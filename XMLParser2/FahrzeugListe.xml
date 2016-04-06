@@ -30,4 +30,10 @@
     <Zweck>Transportieren</Zweck>
     <Kennzeichen>TR-AN533</Kennzeichen>
   </Fahrzeug>
+  <Fahrzeug ID="106">
+    <Fahrzeugtyp>Panzer</Fahrzeugtyp>
+    <Geliehen>false</Geliehen>
+    <Zweck>Bombardieren</Zweck>
+    <Kennzeichen>PA-NZ37</Kennzeichen>
+  </Fahrzeug>
 </FahrzeugListe>
