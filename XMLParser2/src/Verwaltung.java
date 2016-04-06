@@ -16,8 +16,8 @@ public class Verwaltung {
 
 		System.out.println("Uhrzeit: " + cal.get(Calendar.HOUR_OF_DAY) + ":" + cal.get(Calendar.MINUTE));
 
-		ConnectXMLFahrzeug.sucheFahrzeugtyp();
-		
+		//ConnectXMLFahrzeug.sucheFahrzeugtyp();
+		XMLMaker.createXML();
 		Mitarbeiter tempMitarbeiter = einlesenMitarbeiter();
 		ConnectXMLMitarbeiter.einfügenMitarbeiter(tempMitarbeiter.getNachname(), tempMitarbeiter.getVorname(),
 				tempMitarbeiter.isFuehrerschein(), tempMitarbeiter.getPersNr());
