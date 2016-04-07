@@ -3,21 +3,21 @@ public class Mitarbeiter {
 	public String nachname;
 	public String vorname;
 	public String fuehrerschein;
-	public long persNr;
+	public String persNr;
 
 	// konstruktor
-	public Mitarbeiter(String nachname, String vorname, String fuehrerschein, long persNr) {
+	public Mitarbeiter(String nachname, String vorname, String fuehrerschein, String persNr) {
 		this.nachname = nachname;
 		this.vorname = vorname;
 		this.fuehrerschein = fuehrerschein;
 		this.persNr = persNr;
 	}
 	// getter und setter
-	public long getPersNr() {
+	public String getPersNr() {
 		return persNr;
 	}
 
-	public void setPersNr(long persNr) {
+	public void setPersNr(String persNr) {
 		this.persNr = persNr;
 	}
 

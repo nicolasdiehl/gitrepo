@@ -40,7 +40,7 @@ public class Verwaltung {
 		String nachname = einlesenText("Nachname: ");
 		String vorname = einlesenText("Vorname: ");
 		String fuehrerschein = einlesenText("Führerschein: ");
-		long persNr = einlesenLong("Personalnummer: ");
+		String persNr = einlesenText("Personalnummer: ");
 		Mitarbeiter neuerMitarbeiter = new Mitarbeiter(nachname, vorname, fuehrerschein, persNr);
 		return neuerMitarbeiter;
 	}

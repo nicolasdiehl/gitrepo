@@ -3,25 +3,15 @@
   <Vorgang ID="001">
     <Kennzeichen>DA-CI101</Kennzeichen>
     <MitarbeiterID>9901</MitarbeiterID>
+    <Leihzweck>Nein</Leihzweck>
     <Leihbeginn>12.12.2015</Leihbeginn>
     <Leihende>20.12.2015</Leihende>
   </Vorgang>
-  <Vorgang ID="002">
-    <Kennzeichen>DA-KO102</Kennzeichen>
-    <MitarbeiterID>9901</MitarbeiterID>
-    <Leihbeginn>01.01.2016</Leihbeginn>
-    <Leihende>10.01.2016</Leihende>
-  </Vorgang>
-  <Vorgang ID="003">
-    <Kennzeichen>DA-TR101</Kennzeichen>
-    <MitarbeiterID>9903</MitarbeiterID>
-    <Leihbeginn>14.03.2016</Leihbeginn>
-    <Leihende>18.03.2016</Leihende>
-  </Vorgang>
-  <Vorgang ID="004">
-    <Kennzeichen>DA-TR102</Kennzeichen>
-    <MitarbeiterID>9902</MitarbeiterID>
-    <Leihbeginn>12.12.2015</Leihbeginn>
-    <Leihende>14.12.2015</Leihende>
+  <Vorgang ID="2">
+    <Kennzeichen>Kennzeichen</Kennzeichen>
+    <MitarbeiterID>123456789</MitarbeiterID>
+    <Leihzweck>Leihzweck</Leihzweck>
+    <Leihbeginn>07.04.2016</Leihbeginn>
+    <Leihende>08.04.2016</Leihende>
   </Vorgang>
 </Ausleiheliste>

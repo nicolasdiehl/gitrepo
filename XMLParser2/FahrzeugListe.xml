@@ -1,63 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FahrzeugListe>
-	<Fahrzeug ID="101">
-		<Fahrzeugtyp>Cityflitzer</Fahrzeugtyp>
-		<Geliehen>false</Geliehen>
-		<Zweck>Stadtfahrt</Zweck>
-		<Kennzeichen>DA-CI100</Kennzeichen>
-	</Fahrzeug>
-	<Fahrzeug ID="102">
-		<Fahrzeugtyp>Cityflitzer</Fahrzeugtyp>
-		<Geliehen>false</Geliehen>
-		<Zweck>Stadtfahrt</Zweck>
-		<Kennzeichen>DA-CI101</Kennzeichen>
-	</Fahrzeug>
-	<Fahrzeug ID="103">
-		<Fahrzeugtyp>Limousine</Fahrzeugtyp>
-		<Geliehen>false</Geliehen>
-		<Zweck>Ueberlandfahrt</Zweck>
-		<Kennzeichen>DA-LI100</Kennzeichen>
-	</Fahrzeug>
-	<Fahrzeug ID="104">
-		<Fahrzeugtyp>Limousine</Fahrzeugtyp>
-		<Geliehen>false</Geliehen>
-		<Zweck>Ueberlandfahrt</Zweck>
-		<Kennzeichen>DA-LI101</Kennzeichen>
-	</Fahrzeug>
-	<Fahrzeug ID="105">
-		<Fahrzeugtyp>Transporter</Fahrzeugtyp>
-		<Geliehen>false</Geliehen>
-		<Zweck>Transport</Zweck>
-		<Kennzeichen>DA-TR100</Kennzeichen>
-	</Fahrzeug>
-	<Fahrzeug ID="106">
-		<Fahrzeugtyp>Transporter</Fahrzeugtyp>
-		<Geliehen>false</Geliehen>
-		<Zweck>Transport</Zweck>
-		<Kennzeichen>DA-TR101</Kennzeichen>
-	</Fahrzeug>
-	<Fahrzeug ID="107">
-		<Fahrzeugtyp>Kombi</Fahrzeugtyp>
-		<Geliehen>false</Geliehen>
-		<Zweck>Transport</Zweck>
-		<Kennzeichen>DA-KO100</Kennzeichen>
-	</Fahrzeug>
-	<Fahrzeug ID="108">
-		<Fahrzeugtyp>Kombi</Fahrzeugtyp>
-		<Geliehen>false</Geliehen>
-		<Zweck>Transport</Zweck>
-		<Kennzeichen>DA-KO101</Kennzeichen>
-	</Fahrzeug>
-	<Fahrzeug ID="109">
-		<Fahrzeugtyp>Lkw</Fahrzeugtyp>
-		<Geliehen>false</Geliehen>
-		<Zweck>Transport</Zweck>
-		<Kennzeichen>DA-LK100</Kennzeichen>
-	</Fahrzeug>
-	<Fahrzeug ID="110">
-		<Fahrzeugtyp>Lkw</Fahrzeugtyp>
-		<Geliehen>false</Geliehen>
-		<Zweck>Transport</Zweck>
-		<Kennzeichen>DA-LK101</Kennzeichen>
-	</Fahrzeug>
+  <Fahrzeug ID="101">
+    <Fahrzeugtyp>Cityflitzer</Fahrzeugtyp>
+    <Geliehen>false</Geliehen>
+    <Zweck>Stadtfahrt</Zweck>
+    <Kennzeichen>DA-CI100</Kennzeichen>
+  </Fahrzeug>
+  <Fahrzeug ID="102">
+    <Fahrzeugtyp>Cityflitzer</Fahrzeugtyp>
+    <Geliehen>false</Geliehen>
+    <Zweck>Stadtfahrt</Zweck>
+    <Kennzeichen>DA-CI101</Kennzeichen>
+  </Fahrzeug>
+  <Fahrzeug ID="103">
+    <Fahrzeugtyp>Limousine</Fahrzeugtyp>
+    <Geliehen>false</Geliehen>
+    <Zweck>Ueberlandfahrt</Zweck>
+    <Kennzeichen>DA-LI100</Kennzeichen>
+  </Fahrzeug>
+  <Fahrzeug ID="104">
+    <Fahrzeugtyp>Limousine</Fahrzeugtyp>
+    <Geliehen>false</Geliehen>
+    <Zweck>Ueberlandfahrt</Zweck>
+    <Kennzeichen>DA-LI101</Kennzeichen>
+  </Fahrzeug>
+  <Fahrzeug ID="105">
+    <Fahrzeugtyp>Transporter</Fahrzeugtyp>
+    <Geliehen>false</Geliehen>
+    <Zweck>Transport</Zweck>
+    <Kennzeichen>DA-TR100</Kennzeichen>
+  </Fahrzeug>
+  <Fahrzeug ID="106">
+    <Fahrzeugtyp>Transporter</Fahrzeugtyp>
+    <Geliehen>false</Geliehen>
+    <Zweck>Transport</Zweck>
+    <Kennzeichen>DA-TR101</Kennzeichen>
+  </Fahrzeug>
+  <Fahrzeug ID="107">
+    <Fahrzeugtyp>Kombi</Fahrzeugtyp>
+    <Geliehen>false</Geliehen>
+    <Zweck>Transport</Zweck>
+    <Kennzeichen>DA-KO100</Kennzeichen>
+  </Fahrzeug>
+  <Fahrzeug ID="108">
+    <Fahrzeugtyp>Kombi</Fahrzeugtyp>
+    <Geliehen>false</Geliehen>
+    <Zweck>Transport</Zweck>
+    <Kennzeichen>DA-KO101</Kennzeichen>
+  </Fahrzeug>
+  <Fahrzeug ID="109">
+    <Fahrzeugtyp>Lkw</Fahrzeugtyp>
+    <Geliehen>false</Geliehen>
+    <Zweck>Transport</Zweck>
+    <Kennzeichen>DA-LK100</Kennzeichen>
+  </Fahrzeug>
+  <Fahrzeug ID="110">
+    <Fahrzeugtyp>Lkw</Fahrzeugtyp>
+    <Geliehen>false</Geliehen>
+    <Zweck>Transport</Zweck>
+    <Kennzeichen>DA-LK101</Kennzeichen>
+  </Fahrzeug>
+  <Fahrzeug ID="111">
+    <Fahrzeugtyp>Limousine</Fahrzeugtyp>
+    <Geliehen>true</Geliehen>
+    <Zweck>Nein</Zweck>
+    <Kennzeichen>124ED</Kennzeichen>
+  </Fahrzeug>
+  <Fahrzeug ID="112">
+    <Fahrzeugtyp>Fahrzeugtyp</Fahrzeugtyp>
+    <Geliehen>false</Geliehen>
+    <Zweck>Zweck</Zweck>
+    <Kennzeichen>Kennzeichen</Kennzeichen>
+  </Fahrzeug>
 </FahrzeugListe>

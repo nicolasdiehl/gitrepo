@@ -44,7 +44,7 @@ public class ConnectXMLMitarbeiter extends ConnectXML {
 		return mitarbeiterList;
 	}
 
-	public static void einfügenMitarbeiter(String nname, String vname, String fschein, long persNr)
+	public static void einfügenMitarbeiter(String nname, String vname, String fschein, String persNr)
 			throws JDOMException {
 		try {
 			File inputFile = new File("MitarbeiterListe.xml"); // Zugriff auf

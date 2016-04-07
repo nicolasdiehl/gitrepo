@@ -6,9 +6,9 @@ public class Ausleihe {
 	// Attribute
 	public String kennzeichen;
 	public String mitarbeiterID;
+	public String leihzweck;
 	public String leihbeginn;
 	public String leihende;
-	public String leihzweck;
 
 	// Konstruktor
 	public Ausleihe(String kennz, String mID, String leihzweck, String leihbeginn, String leihende) {
