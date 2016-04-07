@@ -16,11 +16,11 @@ public class Verwaltung {
 
 		System.out.println("Uhrzeit: " + cal.get(Calendar.HOUR_OF_DAY) + ":" + cal.get(Calendar.MINUTE));
 
-		//ConnectXMLFahrzeug.sucheFahrzeugtyp();
+		// ConnectXMLFahrzeug.sucheFahrzeugtyp();
 		XMLMaker.createXML();
 		Mitarbeiter tempMitarbeiter = einlesenMitarbeiter();
 		ConnectXMLMitarbeiter.einfügenMitarbeiter(tempMitarbeiter.getNachname(), tempMitarbeiter.getVorname(),
-				tempMitarbeiter.isFuehrerschein(), tempMitarbeiter.getPersNr());
+				tempMitarbeiter.getFuehrerschein(), tempMitarbeiter.getPersNr());
 		ConnectXMLMitarbeiter.readMitarbeiterListe();
 
 		Fahrzeug tempFahrzeug = einlesenFahrzeug();
@@ -30,16 +30,16 @@ public class Verwaltung {
 
 		Ausleihe tempAusleihe = einlesenAusleihvorgang();
 		ConnectXMLAusleihe.einfügenAusleihvorgang(tempAusleihe.getKennzeichen(), tempAusleihe.getMitarbeiterID(),
-				tempAusleihe.getLeihbeginn(), tempAusleihe.getLeihende());
+				tempAusleihe.getLeihzweck(), tempAusleihe.getLeihbeginn(), tempAusleihe.getLeihende());
 		ConnectXMLAusleihe.readAusleihe();
-		
+
 		SuchBaumBSP.Suche();
 	}
 
 	public static Mitarbeiter einlesenMitarbeiter() {
 		String nachname = einlesenText("Nachname: ");
 		String vorname = einlesenText("Vorname: ");
-		boolean fuehrerschein = einlesenBool("Führerschein: ");
+		String fuehrerschein = einlesenText("Führerschein: ");
 		long persNr = einlesenLong("Personalnummer: ");
 		Mitarbeiter neuerMitarbeiter = new Mitarbeiter(nachname, vorname, fuehrerschein, persNr);
 		return neuerMitarbeiter;
@@ -60,10 +60,11 @@ public class Verwaltung {
 		System.out.println("Hier starten Sie den Ausleihvorgang");
 		String mitarbeiterID = einlesenText("MitarbeiterID: ");
 		String kennzeichen = einlesenText("Kennzeichen: ");
+		String leihzweck = einlesenText("Leihzweck: ");
 		String leihbeginn = einlesenText("Leihbeginn: ");
 		String leihende = einlesenText("Leihende: ");
 
-		Ausleihe neueAusleihe = new Ausleihe(mitarbeiterID, kennzeichen, leihbeginn, leihende);
+		Ausleihe neueAusleihe = new Ausleihe(mitarbeiterID, kennzeichen, leihzweck, leihbeginn, leihende);
 		return neueAusleihe;
 	}
 

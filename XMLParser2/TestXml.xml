@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<FahrzeugListe>
-  <Fahrzeug id="1">
-    <Fahrzeugtyp>Transporter</Fahrzeugtyp>
-    <Geliehen>nein</Geliehen>
-    <Zweck>Transport</Zweck>
-    <Kennzeichen>DA-TR101</Kennzeichen>
-  </Fahrzeug>
-</FahrzeugListe>

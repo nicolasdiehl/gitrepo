@@ -48,4 +48,16 @@
 		<Zweck>Transport</Zweck>
 		<Kennzeichen>DA-KO101</Kennzeichen>
 	</Fahrzeug>
+	<Fahrzeug ID="109">
+		<Fahrzeugtyp>Lkw</Fahrzeugtyp>
+		<Geliehen>false</Geliehen>
+		<Zweck>Transport</Zweck>
+		<Kennzeichen>DA-LK100</Kennzeichen>
+	</Fahrzeug>
+	<Fahrzeug ID="110">
+		<Fahrzeugtyp>Lkw</Fahrzeugtyp>
+		<Geliehen>false</Geliehen>
+		<Zweck>Transport</Zweck>
+		<Kennzeichen>DA-LK101</Kennzeichen>
+	</Fahrzeug>
 </FahrzeugListe>

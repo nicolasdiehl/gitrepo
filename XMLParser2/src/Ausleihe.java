@@ -8,14 +8,26 @@ public class Ausleihe {
 	public String mitarbeiterID;
 	public String leihbeginn;
 	public String leihende;
+	public String leihzweck;
+
 	// Konstruktor
-	public Ausleihe(String kennz, String mID, String leihbeginn, String leihende) {
+	public Ausleihe(String kennz, String mID, String leihzweck, String leihbeginn, String leihende) {
 		this.kennzeichen = kennz;
 		this.mitarbeiterID = mID;
+		this.leihzweck = leihzweck;
 		this.leihbeginn = leihbeginn;
 		this.leihende = leihende;
 	}
+
 	// Getter und Setter
+	public String getLeihzweck() {
+		return leihzweck;
+	}
+
+	public void setLeihzweck(String leihzweck) {
+		this.leihzweck = leihzweck;
+	}
+
 	public String getLeihbeginn() {
 		return leihbeginn;
 	}

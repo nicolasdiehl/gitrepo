@@ -2,11 +2,11 @@ public class Mitarbeiter {
 
 	public String nachname;
 	public String vorname;
-	public boolean fuehrerschein;
+	public String fuehrerschein;
 	public long persNr;
 
 	// konstruktor
-	public Mitarbeiter(String nachname, String vorname, boolean fuehrerschein, long persNr) {
+	public Mitarbeiter(String nachname, String vorname, String fuehrerschein, long persNr) {
 		this.nachname = nachname;
 		this.vorname = vorname;
 		this.fuehrerschein = fuehrerschein;
@@ -37,11 +37,11 @@ public class Mitarbeiter {
 		this.vorname = vorname;
 	}
 
-	public boolean isFuehrerschein() {
+	public String getFuehrerschein() {
 		return fuehrerschein;
 	}
 
-	public void setFuehrerschein(boolean fuehrerschein) {
+	public void setFuehrerschein(String fuehrerschein) {
 		this.fuehrerschein = fuehrerschein;
 	}
 

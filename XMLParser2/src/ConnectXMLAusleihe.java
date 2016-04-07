@@ -30,6 +30,7 @@ public class ConnectXMLAusleihe extends ConnectXML{
 		            System.out.println("Vorgang:\t" + attribute.getValue() );
 		            System.out.println("Kennzeichen:\t" + Vorgang.getChild("Kennzeichen").getText());
 		            System.out.println("MitarbeiterID:\t" + Vorgang.getChild("MitarbeiterID").getText());
+		            System.out.println("Leihzweck:\t" + Vorgang.getChild("Leihzweck").getText());
 		            System.out.println("Leihbeginn:\t" + Vorgang.getChild("Leihbeginn").getText());
 		            System.out.println("Leihende:\t" + Vorgang.getChild("Leihende").getText());
 		         }
@@ -38,8 +39,8 @@ public class ConnectXMLAusleihe extends ConnectXML{
 		      }catch(IOException ioe){
 		         ioe.printStackTrace();
 		      }
-		   }  
-	   public static void einfügenAusleihvorgang(String mitarbeiterID, String kennzeichen, String leihbeginn, String leihende) throws JDOMException{
+		   }
+	   public static void einfügenAusleihvorgang(String mitarbeiterID, String kennzeichen, String leihzweck, String leihbeginn, String leihende) throws JDOMException{
 		   try {
 		         File inputFile = new File("AusleiheListe.xml");
 		         SAXBuilder saxBuilder = new SAXBuilder();
@@ -52,6 +53,8 @@ public class ConnectXMLAusleihe extends ConnectXML{
 		         avKennzeichen.setText(kennzeichen);
 		         Element avMitarbeiter = new Element ("MitarbeiterID");
 		         avMitarbeiter.setText(mitarbeiterID);
+		         Element avLeihzweck = new Element ("Leihzweck");
+		         avLeihzweck.setText(leihzweck);
 		         Element avLeihbeginn = new Element ("Leihbeginn");
 		         avLeihbeginn.setText(leihbeginn);
 		         Element avLeihende = new Element ("Leihende");
@@ -59,6 +62,7 @@ public class ConnectXMLAusleihe extends ConnectXML{
 		         
 		         neueAusleihe.addContent(avKennzeichen);
 		         neueAusleihe.addContent(avMitarbeiter);
+		         neueAusleihe.addContent(avLeihzweck);
 		         neueAusleihe.addContent(avLeihbeginn);
 		         neueAusleihe.addContent(avLeihende);
 		         
