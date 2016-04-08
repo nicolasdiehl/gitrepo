@@ -10,39 +10,39 @@ class SuchBaum
 		this.inhalt = zahl;
 	}
 	Knoten wurzel = null;
-	void fuegeEin(int persNr) 			// in Baum einfügen
+	void fuegeEin(int personalnummer) 			// in Baum einfügen
 	{
 		if (wurzel == null)
 		{
-			wurzel = new Knoten(persNr);
+			wurzel = new Knoten(personalnummer);
 		}
 		else
 		{
-			fuegeEin(wurzel, persNr);
+			fuegeEin(wurzel, personalnummer);
 		}
 	}
-	void fuegeEin(Knoten ast, int persNr)// in Baum einfügen
+	void fuegeEin(Knoten ast, int personalnummer)// in Baum einfügen
 	{
-		if (persNr < ast.inhalt) 		// links einfuegen
+		if (personalnummer < ast.inhalt) 		// links einfuegen
 		{
 			if (ast.links == null)
 			{
-				ast.links = new Knoten(persNr);
+				ast.links = new Knoten(personalnummer);
 			}
 			else
 			{
-				fuegeEin(ast.links, persNr);
+				fuegeEin(ast.links, personalnummer);
 			}
 		}
-		else if (persNr > ast.inhalt)	// rechts einfuegen
+		else if (personalnummer > ast.inhalt)	// rechts einfuegen
 		{
 			if (ast.rechts == null)
 			{
-				ast.rechts = new Knoten(persNr);
+				ast.rechts = new Knoten(personalnummer);
 			}
 			else
 			{
-				fuegeEin(ast.rechts, persNr);
+				fuegeEin(ast.rechts, personalnummer);
 			}
 		}
 	}

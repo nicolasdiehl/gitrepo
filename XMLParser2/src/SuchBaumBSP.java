@@ -10,27 +10,27 @@ import org.jdom2.JDOMException;
 
 class SuchBaumBSP
 {
-	static int persNr = 0;
+	static int personalnummer = 0;
 	static SuchBaum baum;
 
 	public static void Suche() throws DataConversionException
 	{
 		Scanner sc = new Scanner(System.in);
-		baum = new SuchBaum(persNr);
-		List<Element> mitarbeiterList = null;
+		baum = new SuchBaum(personalnummer);
+		List<Element> personList = null;
 		try
 		{
-			File inputFile = new File("MitarbeiterListe.xml");
+			File inputFile = new File("PersonListe.xml");
 			SAXBuilder saxBuilder = new SAXBuilder();
 			Document document = saxBuilder.build(inputFile);
 			Element classElement = document.getRootElement();
-			mitarbeiterList = classElement.getChildren();
-			for (int temp = 0; temp < mitarbeiterList.size(); temp++)
+			personList = classElement.getChildren();
+			for (int temp = 0; temp < personList.size(); temp++)
 			{
-				Element mitarbeiter = mitarbeiterList.get(temp);
-				Element attribute = mitarbeiter.getChild("PersNr");
-				persNr = Integer.parseInt(attribute.getValue());
-				baum.fuegeEin(persNr);
+				Element person = personList.get(temp);
+				Element attribute = person.getChild("PersNr");
+				personalnummer = Integer.parseInt(attribute.getValue());
+				baum.fuegeEin(personalnummer);
 			}
 		}
 		catch (JDOMException e)
@@ -48,26 +48,26 @@ class SuchBaumBSP
 		if (baum.gefunden(suchzahl))
 		{
 			System.out.println(" gefunden!\n");
-			List<Element> mitarbeiterList1 = null;
+			List<Element> personList1 = null;
 			try
 			{
-				File inputFile = new File("MitarbeiterListe.xml");
+				File inputFile = new File("PersonListe.xml");
 				SAXBuilder saxBuilder = new SAXBuilder();
 				Document document = saxBuilder.build(inputFile);
 				Element classElement = document.getRootElement();
-				mitarbeiterList1 = classElement.getChildren();
-				for (int temp = 0; temp < mitarbeiterList1.size(); temp++)
+				personList1 = classElement.getChildren();
+				for (int temp = 0; temp < personList1.size(); temp++)
 				{
-					Element mitarbeiter1 = mitarbeiterList1.get(temp);
-					Element attribute1 = mitarbeiter1.getChild("PersNr");
-					persNr = Integer.parseInt(attribute1.getValue());
-					if(persNr == suchzahl)
+					Element person1 = personList1.get(temp);
+					Element attribute1 = person1.getChild("PersNr");
+					personalnummer = Integer.parseInt(attribute1.getValue());
+					if(personalnummer == suchzahl)
 					{
-						System.out.println("\nElement:	   " + mitarbeiter1.getName());	
-						System.out.println("Nachname:          " + mitarbeiter1.getChild("Nachname").getText());
-						System.out.println("Vorname:           " + mitarbeiter1.getChild("Vorname").getText());
-						System.out.println("Fuehrerschein:     " + mitarbeiter1.getChild("Fuehrerschein").getText());
-						System.out.println("PersNr:            " + mitarbeiter1.getChild("PersNr").getText());
+						System.out.println("\nElement:	   " + person1.getName());	
+						System.out.println("Nachname:          " + person1.getChild("Nachname").getText());
+						System.out.println("Vorname:           " + person1.getChild("Vorname").getText());
+						System.out.println("Fuehrerschein:     " + person1.getChild("Fuehrerschein").getText());
+						System.out.println("PersNr:            " + person1.getChild("PersNr").getText());
 					}
 				}
 			}

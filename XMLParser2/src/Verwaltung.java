@@ -16,55 +16,55 @@ public class Verwaltung {
 
 		System.out.println("Uhrzeit: " + cal.get(Calendar.HOUR_OF_DAY) + ":" + cal.get(Calendar.MINUTE));
 
-		// ConnectXMLFahrzeug.sucheFahrzeugtyp();
+		// ConnectXMLVehicle.sucheTyp();
 		XMLMaker.createXML();
-		Mitarbeiter tempMitarbeiter = einlesenMitarbeiter();
-		ConnectXMLMitarbeiter.einfügenMitarbeiter(tempMitarbeiter.getNachname(), tempMitarbeiter.getVorname(),
-				tempMitarbeiter.getFuehrerschein(), tempMitarbeiter.getPersNr());
-		ConnectXMLMitarbeiter.readMitarbeiterListe();
+		Person tempPerson = einlesenPerson();
+		ConnectXMLPerson.einfügenPerson(tempPerson.getNachname(), tempPerson.getVorname(),
+				tempPerson.getFuehrerschein(), tempPerson.getPersNr());
+		ConnectXMLPerson.readPersonListe();
 
-		Fahrzeug tempFahrzeug = einlesenFahrzeug();
-		ConnectXMLFahrzeug.einfügenFahrzeug(tempFahrzeug.getFahrzeugtyp(), tempFahrzeug.isGeliehen(),
-				tempFahrzeug.getZweck(), tempFahrzeug.getKennzeichen());
-		ConnectXMLFahrzeug.readFahrzeugListe();
+		Vehicle tempVehicle = einlesenVehicle();
+		ConnectXMLVehicle.einfügenVehicle(tempVehicle.getTyp(), tempVehicle.isGeliehen(),
+				tempVehicle.getZweck(), tempVehicle.getKennzeichen());
+		ConnectXMLVehicle.readVehicleListe();
 
 		Ausleihe tempAusleihe = einlesenAusleihvorgang();
-		ConnectXMLAusleihe.einfügenAusleihvorgang(tempAusleihe.getKennzeichen(), tempAusleihe.getMitarbeiterID(),
+		ConnectXMLAusleihe.einfügenAusleihvorgang(tempAusleihe.getKennzeichen(), tempAusleihe.getPersonID(),
 				tempAusleihe.getLeihzweck(), tempAusleihe.getLeihbeginn(), tempAusleihe.getLeihende());
 		ConnectXMLAusleihe.readAusleihe();
 
 		SuchBaumBSP.Suche();
 	}
 
-	public static Mitarbeiter einlesenMitarbeiter() {
-		String nachname = einlesenText("Nachname: ");
+	public static Person einlesenPerson() {
 		String vorname = einlesenText("Vorname: ");
+		String nachname = einlesenText("Nachname: ");
 		String fuehrerschein = einlesenText("Führerschein: ");
-		String persNr = einlesenText("Personalnummer: ");
-		Mitarbeiter neuerMitarbeiter = new Mitarbeiter(nachname, vorname, fuehrerschein, persNr);
-		return neuerMitarbeiter;
+		String personalnummer = einlesenText("Personalnummer: ");
+		Person neuerPerson = new Person(nachname, vorname, fuehrerschein, personalnummer);
+		return neuerPerson;
 	}
 
-	public static Fahrzeug einlesenFahrzeug() {
+	public static Vehicle einlesenVehicle() {
 
-		String fahrzeugtyp = einlesenText("Fahrzeugtyp: ");
+		String typ = einlesenText("Typ: ");
 		boolean geliehen = einlesenBool("Geliehen: ");
 		String zweck = einlesenText("Zweck: ");
 		String kennzeichen = einlesenText("Kennzeichen: ");
-		Fahrzeug neuesFahrzeug = new Fahrzeug(fahrzeugtyp, geliehen, zweck, kennzeichen);
-		return neuesFahrzeug;
+		Vehicle neuesVehicle = new Vehicle(typ, geliehen, zweck, kennzeichen);
+		return neuesVehicle;
 	}
 
 	public static Ausleihe einlesenAusleihvorgang() {
 		System.out.println("______________");
 		System.out.println("Hier starten Sie den Ausleihvorgang");
-		String mitarbeiterID = einlesenText("MitarbeiterID: ");
+		String personID = einlesenText("PersonID: ");
 		String kennzeichen = einlesenText("Kennzeichen: ");
 		String leihzweck = einlesenText("Leihzweck: ");
 		String leihbeginn = einlesenText("Leihbeginn: ");
 		String leihende = einlesenText("Leihende: ");
 
-		Ausleihe neueAusleihe = new Ausleihe(mitarbeiterID, kennzeichen, leihzweck, leihbeginn, leihende);
+		Ausleihe neueAusleihe = new Ausleihe(personID, kennzeichen, leihzweck, leihbeginn, leihende);
 		return neueAusleihe;
 	}
 

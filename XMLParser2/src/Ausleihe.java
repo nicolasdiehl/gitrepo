@@ -5,7 +5,7 @@ import java.util.Date;
 public class Ausleihe {
 	// Attribute
 	public String kennzeichen;
-	public String mitarbeiterID;
+	public String personID;
 	public String leihzweck;
 	public String leihbeginn;
 	public String leihende;
@@ -13,7 +13,7 @@ public class Ausleihe {
 	// Konstruktor
 	public Ausleihe(String kennz, String mID, String leihzweck, String leihbeginn, String leihende) {
 		this.kennzeichen = kennz;
-		this.mitarbeiterID = mID;
+		this.personID = mID;
 		this.leihzweck = leihzweck;
 		this.leihbeginn = leihbeginn;
 		this.leihende = leihende;
@@ -44,12 +44,12 @@ public class Ausleihe {
 		this.leihende = leihende;
 	}
 
-	public String getMitarbeiterID() {
-		return mitarbeiterID;
+	public String getPersonID() {
+		return personID;
 	}
 
-	public void setMitarbeiterID(String mitarbeiterID) {
-		this.mitarbeiterID = mitarbeiterID;
+	public void setPersonID(String personID) {
+		this.personID = personID;
 	}
 
 	public String getKennzeichen() {

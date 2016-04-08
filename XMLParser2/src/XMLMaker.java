@@ -10,21 +10,21 @@ import org.jdom2.output.XMLOutputter;
 
 class XMLMaker {
 	public static void createXML() throws JDOMException, IOException{
-	Element fahrzeugtypListe = new Element("FahrzeugtypListe");  
+	Element typListe = new Element("TypListe");  
 
-    Document document = new Document(fahrzeugtypListe);  
+    Document document = new Document(typListe);  
 
-    Element fahrzeug = new Element("Fahrzeug");  
+    Element vehicle = new Element("Vehicle");  
 
-	String tempID= ConnectXML.createUniqueID("FahrzeugListe.xml");
+	String tempID= ConnectXML.createUniqueID("VehicleListe.xml");
 
-    fahrzeug.setAttribute(new Attribute("ID", tempID));
-    fahrzeug.addContent(new Element("Fahrzeugtyp").setText("Transporter"));  // gefundene Ergebnisse müssen hier rein
-    fahrzeug.addContent(new Element("Geliehen").setText("false"));  		 // for-Schleife, FahrzeugListe.xml in
-    fahrzeug.addContent(new Element("Zweck").setText("Transport"));  		 // Array speichern?, danach durchsuchen?
-    fahrzeug.addContent(new Element("Kennzeichen").setText("DA-TR101"));  
+    vehicle.setAttribute(new Attribute("ID", tempID));
+    vehicle.addContent(new Element("Typ").setText("Transporter"));  // gefundene Ergebnisse müssen hier rein
+    vehicle.addContent(new Element("Geliehen").setText("false"));  		 // for-Schleife, VehicleListe.xml in
+    vehicle.addContent(new Element("Zweck").setText("Transport"));  		 // Array speichern?, danach durchsuchen?
+    vehicle.addContent(new Element("Kennzeichen").setText("DA-TR101"));  
     
-    document.getRootElement().addContent(fahrzeug);  
+    document.getRootElement().addContent(vehicle);  
 
     XMLOutputter xmlOutput = new XMLOutputter();  
 

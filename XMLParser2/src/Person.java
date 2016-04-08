@@ -1,24 +1,24 @@
-public class Mitarbeiter {
+public class Person {
 
 	public String nachname;
 	public String vorname;
 	public String fuehrerschein;
-	public String persNr;
+	public String personalnummer;
 
 	// konstruktor
-	public Mitarbeiter(String nachname, String vorname, String fuehrerschein, String persNr) {
-		this.nachname = nachname;
+	public Person(String vorname, String nachname, String fuehrerschein, String personalnummer) {
 		this.vorname = vorname;
+		this.nachname = nachname;
 		this.fuehrerschein = fuehrerschein;
-		this.persNr = persNr;
+		this.personalnummer = personalnummer;
 	}
 	// getter und setter
 	public String getPersNr() {
-		return persNr;
+		return personalnummer;
 	}
 
-	public void setPersNr(String persNr) {
-		this.persNr = persNr;
+	public void setPersNr(String personalnummer) {
+		this.personalnummer = personalnummer;
 	}
 
 	public String getNachname() {
