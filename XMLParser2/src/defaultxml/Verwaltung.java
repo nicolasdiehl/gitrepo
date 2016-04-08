@@ -1,6 +1,10 @@
+package defaultxml;
 import java.util.Scanner;
 
 import org.jdom2.JDOMException;
+
+import ch.makery.address.model.Person;
+
 import java.util.Calendar;
 import java.io.IOException;
 
@@ -20,7 +24,7 @@ public class Verwaltung {
 		XMLMaker.createXML();
 		Person tempPerson = einlesenPerson();
 		ConnectXMLPerson.einfügenPerson(tempPerson.getNachname(), tempPerson.getVorname(),
-				tempPerson.getFuehrerschein(), tempPerson.getPersNr());
+				tempPerson.getFuehrerschein(), tempPerson.getPersonalnummer());
 		ConnectXMLPerson.readPersonListe();
 
 		Vehicle tempVehicle = einlesenVehicle();

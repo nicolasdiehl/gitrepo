@@ -1,3 +1,4 @@
+package defaultxml;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -34,7 +35,7 @@ public class ConnectXMLPerson extends ConnectXML {
 				System.out.println("Nachname:\t" + person.getChild("Nachname").getText());
 				System.out.println("Vorname:\t" + person.getChild("Vorname").getText());
 				System.out.println("Fuehrerschein:\t" + person.getChild("Fuehrerschein").getText());
-				System.out.println("PersNr:\t" + person.getChild("PersNr").getText());
+				System.out.println("PersNr:\t" + person.getChild("Personalnummer").getText());
 			}
 		} catch (JDOMException e) {
 			e.printStackTrace();

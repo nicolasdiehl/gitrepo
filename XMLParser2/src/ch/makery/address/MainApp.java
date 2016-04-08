@@ -1,12 +1,20 @@
 package ch.makery.address;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
+
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
 
 import ch.makery.address.model.Person;
 import ch.makery.address.model.Vehicle;
 import ch.makery.address.view.MainOverviewController;
 import ch.makery.address.view.PersonEditController;
 import ch.makery.address.view.VehicleEditDialogController;
+import defaultxml.ConnectXML;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,6 +24,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import defaultxml.ConnectXMLPerson;
 
 public class MainApp extends Application {
 	 private ObservableList<Person> personData = FXCollections.observableArrayList();
@@ -25,7 +34,25 @@ public class MainApp extends Application {
 	     * Constructor
 	     */
 	    public MainApp() {
-	        // Add some sample data
+	    	List<Element> liste = null;
+    		try {
+    			File inputFile = new File("PersonListe.xml");
+    			SAXBuilder saxBuilder = new SAXBuilder();
+    			Document document = saxBuilder.build(inputFile);
+    			System.out.println("Root element :" + document.getRootElement().getName());
+    			Element classElement = document.getRootElement();
+
+    			liste = classElement.getChildren();
+    			for (int temp = 0; temp < liste.size(); temp++) {
+    				Element person = liste.get(temp);
+    				personData.add(new Person(person.getChild("Vorname").getText(), person.getChild("Nachname").getText(),person.getChild("Fuehrerschein").getText(),person.getChild("Personalnummer").getText()));
+    			}
+    		} catch (JDOMException e) {
+    			e.printStackTrace();
+    		} catch (IOException ioe) {
+    			ioe.printStackTrace();
+    		}
+	        /* Add some sample data
 	        personData.add(new Person("Hans", "Muster"));
 	        personData.add(new Person("Ruth", "Mueller"));
 	        personData.add(new Person("Heinz", "Kurz"));
@@ -41,7 +68,7 @@ public class MainApp extends Application {
 	        vehicleData.add(new Vehicle("Merceds","Langstrecke"));
 	        vehicleData.add(new Vehicle("Renault","Kursstrecke"));
 	        vehicleData.add(new Vehicle("Peugeot","Langstrecke"));
-	        vehicleData.add(new Vehicle("Renault","Kursstrecke"));
+	        vehicleData.add(new Vehicle("Renault","Kursstrecke"));*/
 	    }
 
 	    /**

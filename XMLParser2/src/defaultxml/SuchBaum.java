@@ -1,3 +1,4 @@
+package defaultxml;
 class SuchBaum
 {
 	SuchBaum links; 							// linker Teilbaum

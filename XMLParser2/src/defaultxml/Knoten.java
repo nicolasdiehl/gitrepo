@@ -1,3 +1,4 @@
+package defaultxml;
 public class Knoten
 {
 	int inhalt;
