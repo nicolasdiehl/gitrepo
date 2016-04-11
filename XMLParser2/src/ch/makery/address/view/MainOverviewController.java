@@ -12,6 +12,7 @@ import ch.makery.address.model.Vehicle;
 
 
 public class MainOverviewController {
+	
     @FXML
     private TableView<Person> personTable;
     @FXML
@@ -225,6 +226,7 @@ public class MainOverviewController {
             alert.showAndWait();
         }
     }
+    
   
    
     
@@ -241,4 +243,6 @@ public class MainOverviewController {
         vehicleTable.setItems(mainApp.getVehicleData());
    
     }
+    
+    
 }
