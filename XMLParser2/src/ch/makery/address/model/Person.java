@@ -69,7 +69,7 @@ public class Person {
 		this.personalnummer.set(personalnummer);
 	}
 
-	public StringProperty personalnummer() {
+	public StringProperty personalnummerProperty() {
 		return personalnummer;
 	}
 

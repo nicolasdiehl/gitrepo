@@ -34,6 +34,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import defaultxml.ConnectXMLPerson;
+import ch.makery.address.view.BuchenController;
 
 public class MainApp extends Application {
 	 private ObservableList<Person> personData = FXCollections.observableArrayList();
@@ -211,6 +212,32 @@ public class MainApp extends Application {
             return false;
         }
     }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //hier versuch BuchenController!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public void showBuchen () {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/Buchen.fxml"));
+            AnchorPane mainOverview = (AnchorPane) loader.load();
+
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(mainOverview);
+
+            // Give the controller access to the main app.
+            MainOverviewController controller = loader.getController();
+          controller.setMainApp(this);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    
+    
+    
     public boolean showVehicleEditDialog(Vehicle vehicle) {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
