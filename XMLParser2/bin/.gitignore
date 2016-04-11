@@ -1,12 +1,2 @@
-/Ausleihe.class
-/ConnectXML.class
-/ConnectXMLAusleihe.class
-/ConnectXMLFahrzeug.class
-/ConnectXMLMitarbeiter.class
-/Fahrzeug.class
-/Knoten.class
-/Mitarbeiter.class
-/SuchBaum.class
-/SuchBaumBSP.class
-/Verwaltung.class
-/XMLMaker.class
+/ch/
+/defaultxml/
