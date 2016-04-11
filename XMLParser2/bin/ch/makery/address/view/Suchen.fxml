@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0">
+         <children>
+            <Label layoutX="361.0" layoutY="14.0" text="Suchen">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <TableView layoutX="42.0" layoutY="91.0" prefHeight="100.0" prefWidth="695.0">
+              <columns>
+                <TableColumn prefWidth="108.0" text="Personalnummer" />
+                <TableColumn prefWidth="73.0" text="Vorname" />
+                  <TableColumn prefWidth="81.0" text="Nachname" />
+                  <TableColumn prefWidth="92.0" text="Führerschein" />
+                  <TableColumn prefWidth="84.0" text="Fahrzeugtyp" />
+                  <TableColumn prefWidth="81.0" text="Kennzeichen" />
+                  <TableColumn minWidth="0.0" prefWidth="60.0" text="Geliehen" />
+                  <TableColumn prefWidth="65.0" text="Von" />
+                  <TableColumn prefWidth="46.0" text="Bis" />
+              </columns>
+            </TableView>
+            <TextField layoutX="85.0" layoutY="285.0" />
+            <TextField layoutX="494.0" layoutY="285.0" />
+            <Label layoutX="99.0" layoutY="252.0" text="Person nach ID suchen" />
+            <Label layoutX="481.0" layoutY="252.0" text="Person nach Kennzeichen suchen" />
+            <Button layoutX="357.0" layoutY="323.0" mnemonicParsing="false" text="OK" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

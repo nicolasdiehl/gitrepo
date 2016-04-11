@@ -34,41 +34,52 @@ public class MainApp extends Application {
 	     * Constructor
 	     */
 	    public MainApp() {
-	    	List<Element> liste = null;
     		try {
+    			List<Element> liste;
     			File inputFile = new File("PersonListe.xml");
     			SAXBuilder saxBuilder = new SAXBuilder();
     			Document document = saxBuilder.build(inputFile);
-    			System.out.println("Root element :" + document.getRootElement().getName());
     			Element classElement = document.getRootElement();
 
     			liste = classElement.getChildren();
     			for (int temp = 0; temp < liste.size(); temp++) {
     				Element person = liste.get(temp);
-    				personData.add(new Person(person.getChild("Vorname").getText(), person.getChild("Nachname").getText(),person.getChild("Fuehrerschein").getText(),person.getChild("Personalnummer").getText()));
+    				String vorn = person.getChild("Vorname").getText();
+    				String nachn = person.getChild("Nachname").getText();
+    				String fuesch = person.getChild("Fuehrerschein").getText();
+    				if (!fuesch.equals("B")&&!fuesch.equals("C")) fuesch = "nein";
+    				String pen = person.getChild("Personalnummer").getText();
+    				personData.add(new Person(vorn, nachn, fuesch, pen));
     			}
     		} catch (JDOMException e) {
     			e.printStackTrace();
     		} catch (IOException ioe) {
     			ioe.printStackTrace();
     		}
-	        /* Add some sample data
-	        personData.add(new Person("Hans", "Muster"));
-	        personData.add(new Person("Ruth", "Mueller"));
-	        personData.add(new Person("Heinz", "Kurz"));
-	        personData.add(new Person("Cornelia", "Meier"));
-	        personData.add(new Person("Werner", "Meyer"));
-	        personData.add(new Person("Lydia", "Kunz"));
-	        personData.add(new Person("Anna", "Best"));
-	        personData.add(new Person("Stefan", "Meier"));
-	        personData.add(new Person("Martin", "Mueller"));
-	        
-	        vehicleData.add(new Vehicle("Audi","Langstrecke"));
-	        vehicleData.add(new Vehicle("BMW","Kursstrecke"));
-	        vehicleData.add(new Vehicle("Merceds","Langstrecke"));
-	        vehicleData.add(new Vehicle("Renault","Kursstrecke"));
-	        vehicleData.add(new Vehicle("Peugeot","Langstrecke"));
-	        vehicleData.add(new Vehicle("Renault","Kursstrecke"));*/
+    		
+    		try {
+    			List<Element> liste;
+    			File inputFile = new File("VehicleListe.xml");
+    			SAXBuilder saxBuilder = new SAXBuilder();
+    			Document document = saxBuilder.build(inputFile);
+    			Element classElement = document.getRootElement();
+
+    			liste = classElement.getChildren();
+    			for (int temp = 0; temp < liste.size(); temp++) {
+    				Element vehicle = liste.get(temp);
+    				String tp = vehicle.getChild("Typ").getText();
+    				String zw = vehicle.getChild("Zweck").getText();
+    				String gl = vehicle.getChild("Geliehen").getText();
+    				if (gl.equals("false")) gl = "nein";
+    				else gl = "ja";
+    				String ke = vehicle.getChild("Kennzeichen").getText();
+    				vehicleData.add(new Vehicle(tp, zw, gl, ke));
+    			}
+    		} catch (JDOMException e) {
+    			e.printStackTrace();
+    		} catch (IOException ioe) {
+    			ioe.printStackTrace();
+    		}
 	    }
 
 	    /**

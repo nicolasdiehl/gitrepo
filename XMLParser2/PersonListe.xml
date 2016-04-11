@@ -4,60 +4,60 @@
     <Nachname>Mueller</Nachname>
     <Vorname>Max</Vorname>
     <Fuehrerschein>B</Fuehrerschein>
-    <PersNr>9901</PersNr>
+    <Personalnummer>9901</Personalnummer>
   </Person>
   <Person ID="2">
     <Nachname>Schmidt</Nachname>
     <Vorname>Lina</Vorname>
     <Fuehrerschein>D</Fuehrerschein>
-    <PersNr>9902</PersNr>
+    <Personalnummer>9902</Personalnummer>
   </Person>
   <Person ID="3">
     <Nachname>Daun</Nachname>
     <Vorname>Max</Vorname>
     <Fuehrerschein>B</Fuehrerschein>
-    <PersNr>11123</PersNr>
+    <Personalnummer>11123</Personalnummer>
   </Person>
   <Person ID="4">
     <Nachname>Reimer</Nachname>
     <Vorname>Rudi</Vorname>
     <Fuehrerschein>B</Fuehrerschein>
-    <PersNr>2323</PersNr>
+    <Personalnummer>2323</Personalnummer>
   </Person>
   <Person ID="5">
     <Nachname>Mueller</Nachname>
     <Vorname>Ralf</Vorname>
     <Fuehrerschein>D</Fuehrerschein>
-    <PersNr>2623</PersNr>
+    <Personalnummer>2623</Personalnummer>
   </Person>
   <Person ID="6">
     <Nachname>Fiedler</Nachname>
     <Vorname>Felix</Vorname>
     <Fuehrerschein>0</Fuehrerschein>
-    <PersNr>322423</PersNr>
+    <Personalnummer>322423</Personalnummer>
   </Person>
   <Person ID="7">
     <Nachname>Schmidt</Nachname>
     <Vorname>Franziska</Vorname>
     <Fuehrerschein>0</Fuehrerschein>
-    <PersNr>3310</PersNr>
+    <Personalnummer>3310</Personalnummer>
   </Person>
   <Person ID="8">
     <Nachname>Ulm</Nachname>
     <Vorname>Herbert</Vorname>
     <Fuehrerschein>B</Fuehrerschein>
-    <PersNr>2321</PersNr>
+    <Personalnummer>2321</Personalnummer>
   </Person>
   <Person ID="9">
     <Nachname>Challo</Nachname>
     <Vorname>Nicolas</Vorname>
     <Fuehrerschein>n</Fuehrerschein>
-    <PersNr>236323</PersNr>
+    <Personalnummer>236323</Personalnummer>
   </Person>
   <Person ID="10">
     <Nachname>Nachname</Nachname>
     <Vorname>Vorname</Vorname>
     <Fuehrerschein>n</Fuehrerschein>
-    <PersNr>123456789</PersNr>
+    <Personalnummer>123456789</Personalnummer>
   </Person>
 </PersonListe>

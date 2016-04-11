@@ -7,17 +7,17 @@ import javafx.beans.property.StringProperty;
 
 public class Vehicle {
 
-    private final StringProperty zweck;
-    private final StringProperty kennzeichen;
     private final StringProperty typ;
+    private final StringProperty zweck;
     private final StringProperty geliehen;
+    private final StringProperty kennzeichen;
   
 
     /**
      * Default constructor.
      */
     public Vehicle() {
-        this(null, null);
+        this(null, null, null, null);
     }
 
     /**
@@ -26,13 +26,11 @@ public class Vehicle {
      * @param firstName
      * @param lastName
      */
-    public Vehicle(String typ, String zweck) {
+    public Vehicle(String typ, String zweck, String geliehen, String kennzeichen) {
         this.typ = new SimpleStringProperty(typ);
         this.zweck = new SimpleStringProperty(zweck);
-
-        // Some initial dummy data, just for convenient testing.
-        this.kennzeichen = new SimpleStringProperty("ad-34");
-        this.geliehen = new SimpleStringProperty("Ja");
+        this.geliehen = new SimpleStringProperty(geliehen);
+        this.kennzeichen = new SimpleStringProperty(kennzeichen);
        
     }
 
