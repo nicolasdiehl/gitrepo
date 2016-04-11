@@ -14,7 +14,7 @@ public class PersonEditController {
 	    @FXML
 	    private TextField nachNameField;
 	    @FXML
-	    private TextField idField;
+	    private TextField personalnummerField;
 	    @FXML
 	    private TextField fuehrerscheinField;
 	
@@ -52,7 +52,7 @@ public class PersonEditController {
 
 	        vorNameField.setText(person.getVorname());
 	        nachNameField.setText(person.getNachname());
-	        idField.setText(person.getPersonalnummer());
+	        personalnummerField.setText(person.getPersonalnummer());
 	        fuehrerscheinField.setText(person.getFuehrerschein());
 	  
 	    }
@@ -74,7 +74,7 @@ public class PersonEditController {
 	        if (isInputValid()) {
 	            person.setVorname(vorNameField.getText());
 	            person.setNachname(nachNameField.getText());
-	            person.setPersonalnummer(idField.getText());
+	            person.setPersonalnummer(personalnummerField.getText());
 	            person.setFuehrerschein(fuehrerscheinField.getText());
 	      
 
@@ -105,12 +105,12 @@ public class PersonEditController {
 	        if (nachNameField.getText() == null || nachNameField.getText().length() == 0) {
 	            errorMessage += "No valid last name!\n"; 
 	        }
-	        if (idField.getText() == null || idField.getText().length() == 0) {
-	            errorMessage += "No valid street!\n"; 
+	        if (personalnummerField.getText() == null || personalnummerField.getText().length() == 0) {
+	            errorMessage += "No pers.number !\n"; 
 	        }
 
 	        if (fuehrerscheinField.getText() == null || fuehrerscheinField.getText().length() == 0) {
-	            errorMessage += "No valid postal code!\n"; 
+	            errorMessage += "No valid fuehrerschein\n"; 
 	        } 
 	        if (errorMessage.length() == 0) {
 	            return true;

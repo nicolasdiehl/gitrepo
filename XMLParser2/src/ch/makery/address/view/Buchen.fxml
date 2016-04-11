@@ -6,8 +6,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0">
          <children>
@@ -15,7 +14,7 @@
               <columns>
                 <TableColumn prefWidth="75.0" text="Nachname" />
                 <TableColumn prefWidth="75.0" text="Vorname" />
-                  <TableColumn prefWidth="75.0" text="ID" />
+                  <TableColumn prefWidth="75.0" text="Pers. Nr." />
                   <TableColumn prefWidth="96.0" text="Führerschein" />
               </columns>
             </TableView>
@@ -26,16 +25,17 @@
                   <TableColumn prefWidth="75.0" text="Zweck" />
               </columns>
             </TableView>
-            <TableView layoutX="28.0" layoutY="507.0" prefHeight="98.0" prefWidth="682.0">
+            <TableView layoutX="35.0" layoutY="507.0" prefHeight="98.0" prefWidth="760.0">
               <columns>
+                <TableColumn prefWidth="75.0" text="ID" />
                 <TableColumn prefWidth="75.0" text="Nachname" />
-                <TableColumn prefWidth="75.0" text="Vorname" />
-                  <TableColumn prefWidth="75.0" text="ID" />
-                  <TableColumn prefWidth="91.0" text="Führerschein" />
-                  <TableColumn prefWidth="82.0" text="Kennzeichen" />
+                  <TableColumn prefWidth="75.0" text="Vorname" />
+                  <TableColumn prefWidth="91.0" text="Pers. Nr." />
+                  <TableColumn prefWidth="82.0" text="Führerschein" />
+                  <TableColumn prefWidth="73.0" text="Kennzeichen" />
                   <TableColumn prefWidth="73.0" text="Typ" />
-                  <TableColumn prefWidth="73.0" text="Zweck" />
-                  <TableColumn prefWidth="56.0" text="Von" />
+                  <TableColumn prefWidth="56.0" text="Zweck" />
+                  <TableColumn prefWidth="75.0" text="Von" />
                   <TableColumn prefWidth="75.0" text="Bis" />
               </columns>
             </TableView>

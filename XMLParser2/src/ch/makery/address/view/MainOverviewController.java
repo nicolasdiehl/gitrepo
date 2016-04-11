@@ -40,7 +40,7 @@ public class MainOverviewController {
     @FXML
     private Label nachNameLabel;
     @FXML
-    private Label idLabel;
+    private Label personalnummerLabel;
     @FXML
     private Label fuehrerscheinLabel;
    
@@ -70,10 +70,7 @@ public class MainOverviewController {
         nachNameColumn.setCellValueFactory(cellData -> cellData.getValue().nachnameProperty());
         typColumn.setCellValueFactory(cellData -> cellData.getValue().typProperty());
         zweckColumn.setCellValueFactory(cellData -> cellData.getValue().zweckProperty());
-       typColumn.setCellValueFactory(
-                cellData -> cellData.getValue().typProperty());
-        zweckColumn.setCellValueFactory(
-                cellData -> cellData.getValue().zweckProperty());
+      
 
         // Clear person details.
         showPersonDetails(null);
@@ -98,7 +95,7 @@ public class MainOverviewController {
             vorNameLabel.setText(person.getVorname());
             nachNameLabel.setText(person.getNachname());
             fuehrerscheinLabel.setText(person.getFuehrerschein());
-            idLabel.setText(person.getPersonalnummer());
+            personalnummerLabel.setText(person.getPersonalnummer());
             
 
             // TODO: We need a way to convert the birthday into a String! 
@@ -108,7 +105,7 @@ public class MainOverviewController {
             vorNameLabel.setText("");
             nachNameLabel.setText("");
             fuehrerscheinLabel.setText("");
-            idLabel.setText("");
+            personalnummerLabel.setText("");
           
         }
     }

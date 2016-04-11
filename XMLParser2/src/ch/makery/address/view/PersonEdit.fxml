@@ -39,7 +39,7 @@
                </font></Label>
             <TextField fx:id="vorNameField" GridPane.columnIndex="1" />
             <TextField fx:id="nachNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="idField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="personalnummerField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="fuehrerscheinField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
