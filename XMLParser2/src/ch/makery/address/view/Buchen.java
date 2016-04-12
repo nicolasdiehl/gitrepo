@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 
 ////////////////////////////////////////////////////////////////////////
-//Hilfsklasse für das Fenser Buchen!!!!!!!!!!!!!!!!!!!!!!!!!
+//Hilfsklasse für das Fenser Buchen!!!!!!!!!!!!!!!!!!!!!!!!!//
 public class Buchen extends Stage {
 	
 	    Stage stage;
