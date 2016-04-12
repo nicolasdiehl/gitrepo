@@ -28,6 +28,8 @@ public class RootLayoutController {
     private void handleNew() {
         mainApp.getPersonData().clear();
         mainApp.setPersonFilePath(null);
+        mainApp.setVehicleFilePath(null);
+        mainApp.getVehicleData().clear();
     }
 
     /**
@@ -47,6 +49,7 @@ public class RootLayoutController {
 
         if (file != null) {
             mainApp.loadPersonDataFromFile(file);
+            mainApp.loadVehicleDataFromFile(file);
         }
     }
 
@@ -57,8 +60,10 @@ public class RootLayoutController {
     @FXML
     private void handleSave() {
         File personFile = mainApp.getPersonFilePath();
-        if (personFile != null) {
+        File vehicleFile = mainApp.getVehicleFilePath();
+        if (personFile != null && vehicleFile!=null) {
             mainApp.savePersonDataToFile(personFile);
+            mainApp.saveVehicleDataToFile(vehicleFile);
             saved=true;
         } else {
         	
@@ -66,7 +71,7 @@ public class RootLayoutController {
             saved=true;
         }
     }
-
+  
     /**
      * Opens a FileChooser to let the user select a file to save to.
      */
@@ -88,10 +93,11 @@ public class RootLayoutController {
                 file = new File(file.getPath() + ".xml");
             }
             mainApp.savePersonDataToFile(file);
+            mainApp.saveVehicleDataToFile(file);
             saved=true;
         }
     }
-
+    
     /**
      * Opens an about dialog.
      */
