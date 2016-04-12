@@ -1,5 +1,6 @@
 package ch.makery.address;
 
+import java.beans.EventHandler;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -25,7 +26,9 @@ import defaultxml.ConnectXML;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -116,7 +119,17 @@ public class MainApp extends Application {
 
         showMainOverview();
     }
-
+    // HIER FÜR DAS BUCHEN FENSTER 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////77
+    public void buchen(Stage buchenStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("Buchen.fxml"));
+        
+        Scene scene = new Scene(root);
+        
+        buchenStage.setScene(scene);
+       buchenStage.show();
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * Initializes the root layout.
      */
@@ -216,25 +229,28 @@ public class MainApp extends Application {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //hier versuch BuchenController!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   
     public void showBuchen () {
-        try {
+       
+    	try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/Buchen.fxml"));
             AnchorPane mainOverview = (AnchorPane) loader.load();
-
+            
             // Set person overview into the center of root layout.
             rootLayout.setCenter(mainOverview);
 
             // Give the controller access to the main app.
             MainOverviewController controller = loader.getController();
           controller.setMainApp(this);
-
+          
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
+    	
+   
     
     
     
@@ -345,5 +361,7 @@ public class MainApp extends Application {
             alert.showAndWait();
         }
     }
+
+	
     
 }
