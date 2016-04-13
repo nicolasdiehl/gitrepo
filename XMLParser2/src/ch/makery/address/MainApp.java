@@ -39,7 +39,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-
+// testo
 public class MainApp extends Application {
 	 private ObservableList<Person> personData = FXCollections.observableArrayList();
 	 private ObservableList<Vehicle> vehicleData = FXCollections.observableArrayList();
