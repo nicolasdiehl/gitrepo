@@ -25,22 +25,22 @@
                   <TableColumn fx:id="zweckColumn" prefWidth="75.0" text="Zweck" />
               </columns>
             </TableView>
-            <TableView layoutX="35.0" layoutY="507.0" prefHeight="98.0" prefWidth="760.0">
+            <TableView fx:id="buchenTable" layoutX="35.0" layoutY="507.0" prefHeight="98.0" prefWidth="760.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="ID" />
-                <TableColumn prefWidth="75.0" text="Nachname" />
-                  <TableColumn prefWidth="75.0" text="Vorname" />
-                  <TableColumn prefWidth="91.0" text="Pers. Nr." />
-                  <TableColumn prefWidth="82.0" text="Führerschein" />
-                  <TableColumn prefWidth="73.0" text="Kennzeichen" />
-                  <TableColumn prefWidth="73.0" text="Typ" />
-                  <TableColumn prefWidth="56.0" text="Zweck" />
-                  <TableColumn prefWidth="75.0" text="Von" />
-                  <TableColumn prefWidth="75.0" text="Bis" />
+                <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="nachNameBuchenColumn" prefWidth="75.0" text="Nachname" />
+                  <TableColumn fx:id="vorNameBuchenColumn" prefWidth="75.0" text="Vorname" />
+                  <TableColumn fx:id="personalnummerBuchenColumn" prefWidth="91.0" text="Pers. Nr." />
+                  <TableColumn fx:id="fuehrerscheinBuchenColumn" prefWidth="82.0" text="Führerschein" />
+                  <TableColumn fx:id="kennzeichenBuchenColumn" prefWidth="73.0" text="Kennzeichen" />
+                  <TableColumn fx:id="typBuchenColumn" prefWidth="73.0" text="Typ" />
+                  <TableColumn fx:id="zweckBuchenColumn" prefWidth="56.0" text="Zweck" />
+                  <TableColumn fx:id="vonBuchenColumn" prefWidth="75.0" text="Von" />
+                  <TableColumn fx:id="bisBuchenColumn" prefWidth="75.0" text="Bis" />
               </columns>
             </TableView>
-            <DatePicker layoutX="170.0" layoutY="418.0" />
-            <DatePicker layoutX="409.0" layoutY="418.0" />
+            <DatePicker fx:id="vonDatePicker" layoutX="170.0" layoutY="418.0" />
+            <DatePicker fx:id="bisDatePicker" layoutX="409.0" layoutY="418.0" />
             <Button layoutX="344.0" layoutY="690.0" mnemonicParsing="false" text="Buchen" />
             <Label layoutX="160.0" layoutY="71.0" text="Zu buchende Person" />
             <Label layoutX="543.0" layoutY="71.0" text="Fahrzeug Übersicht" />
@@ -51,7 +51,7 @@
             </Label>
             <Label layoutX="243.0" layoutY="392.0" text="Leihen von" />
             <Label layoutX="482.0" layoutY="392.0" text="Leihen bis" />
-            <Label layoutX="358.0" layoutY="480.0" text="Übersicht">
+            <Label layoutX="371.0" layoutY="480.0" text="Übersicht">
                <font>
                   <Font size="14.0" />
                </font>
