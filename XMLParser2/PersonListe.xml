@@ -9,7 +9,7 @@
   <Person ID="2">
     <Nachname>Schmidt</Nachname>
     <Vorname>Lina</Vorname>
-    <Fuehrerschein>D</Fuehrerschein>
+    <Fuehrerschein>C</Fuehrerschein>
     <Personalnummer>9902</Personalnummer>
   </Person>
   <Person ID="3">
@@ -27,19 +27,19 @@
   <Person ID="5">
     <Nachname>Mueller</Nachname>
     <Vorname>Ralf</Vorname>
-    <Fuehrerschein>D</Fuehrerschein>
+    <Fuehrerschein>C</Fuehrerschein>
     <Personalnummer>2623</Personalnummer>
   </Person>
   <Person ID="6">
     <Nachname>Fiedler</Nachname>
     <Vorname>Felix</Vorname>
-    <Fuehrerschein>0</Fuehrerschein>
+    <Fuehrerschein>Nein</Fuehrerschein>
     <Personalnummer>322423</Personalnummer>
   </Person>
   <Person ID="7">
     <Nachname>Schmidt</Nachname>
     <Vorname>Franziska</Vorname>
-    <Fuehrerschein>0</Fuehrerschein>
+    <Fuehrerschein>Nein</Fuehrerschein>
     <Personalnummer>3310</Personalnummer>
   </Person>
   <Person ID="8">
@@ -51,13 +51,13 @@
   <Person ID="9">
     <Nachname>Challo</Nachname>
     <Vorname>Nicolas</Vorname>
-    <Fuehrerschein>n</Fuehrerschein>
+    <Fuehrerschein>Nein</Fuehrerschein>
     <Personalnummer>236323</Personalnummer>
   </Person>
   <Person ID="10">
     <Nachname>Nachname</Nachname>
     <Vorname>Vorname</Vorname>
-    <Fuehrerschein>n</Fuehrerschein>
+    <Fuehrerschein>Nein</Fuehrerschein>
     <Personalnummer>123456789</Personalnummer>
   </Person>
 </PersonListe>

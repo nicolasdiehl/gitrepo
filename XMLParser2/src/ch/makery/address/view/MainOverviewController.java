@@ -230,9 +230,8 @@ public class MainOverviewController {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////handle Buchen!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
     @FXML
-
     private void handleBuchenButton(ActionEvent event)throws IOException{
-    new Buchen(); // für die Hilfsklasse
+    mainApp.Buchendialog(); // für die Hilfsklasse
     }
    
 

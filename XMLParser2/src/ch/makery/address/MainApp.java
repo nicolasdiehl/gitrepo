@@ -19,6 +19,7 @@ import ch.makery.address.model.Person;
 import ch.makery.address.model.PersonListWrapper;
 import ch.makery.address.model.Vehicle;
 import ch.makery.address.model.VehicleListWrapper;
+import ch.makery.address.view.BuchenController;
 import ch.makery.address.view.MainOverviewController;
 import ch.makery.address.view.PersonEditController;
 import ch.makery.address.view.RootLayoutController;
@@ -119,16 +120,7 @@ public class MainApp extends Application {
 
         showMainOverview();
     }
-    // HIER FÜR DAS BUCHEN FENSTER 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////77
-    public void buchen(Stage buchenStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Buchen.fxml"));
-        
-        Scene scene = new Scene(root);
-        
-        buchenStage.setScene(scene);
-       buchenStage.show();
-    }
+    
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * Initializes the root layout.
@@ -230,25 +222,7 @@ public class MainApp extends Application {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //hier versuch BuchenController!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
    
-    public void showBuchen () {
-       
-    	try {
-            // Load the fxml file and create a new stage for the popup dialog.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/Buchen.fxml"));
-            AnchorPane mainOverview = (AnchorPane) loader.load();
-            
-            // Set person overview into the center of root layout.
-            rootLayout.setCenter(mainOverview);
-
-            // Give the controller access to the main app.
-            MainOverviewController controller = loader.getController();
-          controller.setMainApp(this);
-          
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+ 
     	
    
     
@@ -442,6 +416,28 @@ public class MainApp extends Application {
             alert.showAndWait();
         }
     }
+//Erstellen eines neuen Fensters: BuchenFenster
+	public void Buchendialog() {
+		try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/Buchen.fxml"));
+            AnchorPane buchen = (AnchorPane) loader.load();
+            
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(buchen);
+
+            // Give the controller access to the main app.
+            BuchenController controller = loader.getController();
+          controller.setMainApp(this);
+          
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		
+	}
+
+	
 
 	
     
