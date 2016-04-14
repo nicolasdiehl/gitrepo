@@ -7,6 +7,9 @@ import java.util.Objects;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
+
+import ch.makery.address.model.Person;
+
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -82,6 +85,45 @@ public class ConnectXMLPerson extends ConnectXML {
 		}
 	}
 
+	public static void einfügenPerson(Person person)
+			throws JDOMException {
+		try {
+			File inputFile = new File("PersonListe.xml"); // Zugriff auf
+																// XML Datei
+			SAXBuilder saxBuilder = new SAXBuilder();
+			Document document = saxBuilder.build(inputFile);
+
+			String tempID = createUniqueID("PersonListe.xml");
+			Element nPerson = new Element("Person");
+			nPerson.setAttribute(new Attribute("ID", tempID));
+			Element mNachname = new Element("Nachname");
+			mNachname.setText(person.getNachname());
+			Element mVorname = new Element("Vorname");
+			mVorname.setText(person.getVorname());
+			Element mFuehrerschein = new Element("Fuehrerschein");
+			mFuehrerschein.setText(person.getFuehrerschein());
+			Element mPersNr = new Element("PersNr");
+			mPersNr.setText(Objects.toString(person.getPersonalnummer(), null));
+
+			nPerson.addContent(mNachname);
+			nPerson.addContent(mVorname);
+			nPerson.addContent(mFuehrerschein);
+			nPerson.addContent(mPersNr);
+
+			document.getRootElement().addContent(nPerson);
+
+			XMLOutputter xmlOutput = new XMLOutputter();
+
+			// display xml
+			xmlOutput.setFormat(Format.getPrettyFormat());
+			xmlOutput.output(document, new FileWriter(inputFile));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 	public static void lineareSuche() {
 		int suchzahl = 0;
 		Scanner scan = new Scanner(System.in);

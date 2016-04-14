@@ -50,7 +50,6 @@ public class BuchenController {
 	        personalnummerColumn.setCellValueFactory(cellData -> cellData.getValue().personalnummerProperty());
 	        fuehrerscheinColumn.setCellValueFactory(cellData -> cellData.getValue().fuehrerscheinProperty());
 	        typColumn.setCellValueFactory(cellData -> cellData.getValue().typProperty());
-	        zweckColumn.setCellValueFactory(cellData -> cellData.getValue().zweckProperty());
 	        kennzeichenColumn.setCellValueFactory(cellData -> cellData.getValue().kennzeichenProperty());
 	
 	        }

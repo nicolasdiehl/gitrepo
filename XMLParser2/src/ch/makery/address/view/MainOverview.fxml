@@ -13,93 +13,45 @@
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="323.0" layoutY="14.0" text="MLDNC Autoverleih" textAlignment="CENTER" textFill="#32e517">
-               <font>
-                  <Font name="System Bold Italic" size="18.0" />
-               </font>
-               <effect>
-                  <Lighting>
-                     <bumpInput>
-                        <Shadow />
-                     </bumpInput>
-                     <light>
-                        <Light.Distant />
-                     </light>
-                  </Lighting>
-               </effect>
-            </Label>
-            <TableView fx:id="personTable" layoutX="7.0" layoutY="81.0" prefHeight="200.0" prefWidth="175.0">
+            <TableView fx:id="personTable" layoutX="26.0" layoutY="49.0" prefHeight="182.0" prefWidth="287.0">
               <columns>
-                <TableColumn fx:id="nachNameColumn" prefWidth="90.0" text="Name" />
-                <TableColumn fx:id="vorNameColumn" prefWidth="90.0" text="Vorname" />
+                <TableColumn fx:id="personTableNachname" prefWidth="74.0" text="Name" />
+                <TableColumn fx:id="personTableVorname" prefWidth="60.0" text="Vorname" />
+                  <TableColumn fx:id="personTablePersonalnummer" prefWidth="100.0" text="Personalnummer" />
+                  <TableColumn fx:id="personTableFuehrerschein" prefWidth="47.0" text="Führerschein" />
               </columns>
             </TableView>
-            <TableView fx:id="vehicleTable" layoutX="390.0" layoutY="80.0" prefHeight="200.0" prefWidth="175.0">
+            <TableView fx:id="vehicleTable" layoutX="408.0" layoutY="49.0" prefHeight="182.0" prefWidth="270.0">
                <columns>
-                  <TableColumn fx:id="typColumn" prefWidth="90.0" text="Typ" />
-                  <TableColumn fx:id="zweckColumn" prefWidth="90.0" text="Zweck" />
+                  <TableColumn fx:id="vehicleTableTyp" prefWidth="90.0" text="Typ" />
+                  <TableColumn fx:id="vehicleTableKennzeichen" prefWidth="90.0" text="Kennzeichen" />
+                  <TableColumn fx:id="vehicleTableGeliehen" prefWidth="56.0" text="geliehen" />
                </columns>
             </TableView>
-            <Label layoutX="187.0" layoutY="56.0" text="Personen Informationen">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
-            <Label layoutX="573.0" layoutY="56.0" text="Fahrzeug Informationen">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
-            <Label layoutX="187.0" layoutY="103.0" text="Nachname:" textFill="#a1e36d" textOverrun="CLIP">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
-            <Label layoutX="187.0" layoutY="138.0" text="Vorname:" textFill="#a1e36d">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
-            <Label layoutX="187.0" layoutY="176.0" text="Personalnummer:" textFill="#a1e36d">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
-            <Label layoutX="187.0" layoutY="214.0" text="Führerschein:" textFill="#a1e36d">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
-            <Label fx:id="nachNameLabel" layoutX="311.0" layoutY="103.0" text="Label" />
-            <Label fx:id="vorNameLabel" layoutX="311.0" layoutY="138.0" text="Label" />
-            <Label fx:id="personalnummerLabel" layoutX="311.0" layoutY="176.0" text="Label" />
-            <Label fx:id="fuehrerscheinLabel" layoutX="311.0" layoutY="214.0" text="Label" />
-            <Label layoutX="576.0" layoutY="103.0" text="Typ:" textFill="#a1e36d">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
-            <Label layoutX="576.0" layoutY="138.0" text="Kennzeichen:" textFill="#a1e36d">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
-            <Label layoutX="576.0" layoutY="176.0" text="Zweck:" textFill="#a1e36d">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
-            <Label layoutX="576.0" layoutY="214.0" text="Geliehen:" textFill="#a1e36d">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
-            <Label fx:id="typLabel" layoutX="687.0" layoutY="103.0" text="Label" />
-            <Label fx:id="kennzeichenLabel" layoutX="687.0" layoutY="138.0" text="Label" />
-            <Label fx:id="zweckLabel" layoutX="687.0" layoutY="176.0" text="Label" />
-            <Label fx:id="geliehenLabel" layoutX="687.0" layoutY="214.0" text="Label" />
-            <Button layoutX="193.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleNewPerson" text="New" />
-            <Button layoutX="314.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleDeletePerson" text="Delete" />
-            <Button layoutX="580.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleNewVehicle" text="New" />
-            <Button layoutX="714.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleDeleteVehicle" text="Delete" />
-            <Button layoutX="177.0" layoutY="399.0" mnemonicParsing="false" onAction="#handleBuchenButton" text="Buchen" />
-            <Button layoutX="359.0" layoutY="399.0" mnemonicParsing="false" text="Übersicht" />
-            <Button layoutX="584.0" layoutY="399.0" mnemonicParsing="false" text="Suchen" />
-            <Label layoutX="134.0" layoutY="377.0" text="Öffnet Fenster für Buchungen" />
-            <Label layoutX="348.0" layoutY="377.0" text="Öffnet Übersicht" />
-            <Label layoutX="562.0" layoutY="377.0" text="Öffnet Suchfenster" />
-            <Button layoutX="253.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleEditPerson" text="Edit" />
-            <Button layoutX="647.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleEditVehicle" text="Edit" />
+            <Button layoutX="26.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleNewPerson" text="New" />
+            <Button layoutX="123.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleDeletePerson" text="Delete" />
+            <Button layoutX="75.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleEditPerson" text="Edit" />
+            <TableView fx:id="bookingTable" layoutX="294.0" layoutY="286.0" prefHeight="182.0" prefWidth="476.0">
+               <columns>
+                  <TableColumn fx:id="bookingTableVon" prefWidth="90.0" text="Von" />
+                  <TableColumn fx:id="bookingTableBis" prefWidth="90.0" text="Bis" />
+                  <TableColumn fx:id="bookingTablePersonalnummer" prefWidth="90.0" text="Personalnummer" />
+                  <TableColumn fx:id="bookingTableKennzeichen" prefWidth="90.0" text="Kennzeichen" />
+                  <TableColumn fx:id="bookingTableZweck" prefWidth="90.0" text="Zweck" />
+               </columns>
+            </TableView>
+            <Button layoutX="262.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleXmlPersonLoad" text="Load from XML" />
+            <Button layoutX="177.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleXmlPersonSave" text="Save to XML" />
+            <Button layoutX="559.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleXmlVehicleSave" text="Save to XML" />
+            <Button layoutX="644.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleXmlVehicleLoad" text="Load from XML" />
+            <Button layoutX="457.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleEditVehicle" text="Edit" />
+            <Button layoutX="505.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleDeleteVehicle" text="Delete" />
+            <Button layoutX="408.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleNewVehicle" text="New" />
+            <Button layoutX="445.0" layoutY="256.0" mnemonicParsing="false" onAction="#handleXmlBookingSave" text="Save to XML" />
+            <Button layoutX="530.0" layoutY="256.0" mnemonicParsing="false" onAction="#handleXmlBookingLoad" text="Load from XML" />
+            <Button layoutX="343.0" layoutY="256.0" mnemonicParsing="false" onAction="#handleEditBooking" text="Edit" />
+            <Button layoutX="391.0" layoutY="256.0" mnemonicParsing="false" onAction="#handleDeleteBooking" text="Delete" />
+            <Button layoutX="294.0" layoutY="256.0" mnemonicParsing="false" onAction="#handleNewBooking" text="New" />
          </children>
       </AnchorPane>
    </children>

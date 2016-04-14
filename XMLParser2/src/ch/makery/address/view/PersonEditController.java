@@ -7,19 +7,17 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import ch.makery.address.model.Person;
+import defaultxml.ConnectXMLPerson;
 //
 public class PersonEditController {
 	 @FXML
-	    private TextField vorNameField;
+	    private TextField vornameField;
 	    @FXML
-	    private TextField nachNameField;
+	    private TextField nachnameField;
 	    @FXML
 	    private TextField personalnummerField;
 	    @FXML
 	    private TextField fuehrerscheinField;
-	
-	 
-
 
 	    private Stage dialogStage;
 	    private Person person;
@@ -50,8 +48,8 @@ public class PersonEditController {
 	    public void setPerson(Person person) {
 	        this.person = person;
 
-	        vorNameField.setText(person.getVorname());
-	        nachNameField.setText(person.getNachname());
+	        vornameField.setText(person.getVorname());
+	        nachnameField.setText(person.getNachname());
 	        personalnummerField.setText(person.getPersonalnummer());
 	        fuehrerscheinField.setText(person.getFuehrerschein());
 	  
@@ -72,12 +70,12 @@ public class PersonEditController {
 	    @FXML
 	    private void handleOk() {
 	        if (isInputValid()) {
-	            person.setVorname(vorNameField.getText());
-	            person.setNachname(nachNameField.getText());
+	            person.setVorname(vornameField.getText());
+	            person.setNachname(nachnameField.getText());
 	            person.setPersonalnummer(personalnummerField.getText());
 	            person.setFuehrerschein(fuehrerscheinField.getText());
-	      
-
+	            
+            	ConnectXMLPerson.editierenPerson(person);
 	            okClicked = true;
 	            dialogStage.close();
 	        }
@@ -99,10 +97,10 @@ public class PersonEditController {
 	    private boolean isInputValid() {
 	        String errorMessage = "";
 
-	        if (vorNameField.getText() == null || vorNameField.getText().length() == 0) {
+	        if (vornameField.getText() == null || vornameField.getText().length() == 0) {
 	            errorMessage += "No valid first name!\n"; 
 	        }
-	        if (nachNameField.getText() == null || nachNameField.getText().length() == 0) {
+	        if (nachnameField.getText() == null || nachnameField.getText().length() == 0) {
 	            errorMessage += "No valid last name!\n"; 
 	        }
 	        if (personalnummerField.getText() == null || personalnummerField.getText().length() == 0) {

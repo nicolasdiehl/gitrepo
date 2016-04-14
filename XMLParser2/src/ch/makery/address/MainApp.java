@@ -15,14 +15,16 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
+import ch.makery.address.model.Booking;
 import ch.makery.address.model.Person;
 import ch.makery.address.model.PersonListWrapper;
 import ch.makery.address.model.Vehicle;
 import ch.makery.address.model.VehicleListWrapper;
+import ch.makery.address.view.BookingEditController;
 import ch.makery.address.view.MainOverviewController;
 import ch.makery.address.view.PersonEditController;
 import ch.makery.address.view.RootLayoutController;
-import ch.makery.address.view.VehicleEditDialogController;
+import ch.makery.address.view.VehicleEditController;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -42,6 +44,7 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
 	 private ObservableList<Person> personData = FXCollections.observableArrayList();
 	 private ObservableList<Vehicle> vehicleData = FXCollections.observableArrayList();
+	 private ObservableList<Booking> bookingData = FXCollections.observableArrayList();
 
 	    /**
 	     * Constructor
@@ -57,19 +60,19 @@ public class MainApp extends Application {
     			liste = classElement.getChildren();
     			for (int temp = 0; temp < liste.size(); temp++) {
     				Element person = liste.get(temp);
+    				String id = person.getChild("ID").getText();
     				String vorn = person.getChild("Vorname").getText();
     				String nachn = person.getChild("Nachname").getText();
     				String fuesch = person.getChild("Fuehrerschein").getText();
     				if (!fuesch.equals("B")&&!fuesch.equals("C")) fuesch = "nein";
     				String pen = person.getChild("Personalnummer").getText();
-    				personData.add(new Person(vorn, nachn, fuesch, pen));
+    				personData.add(new Person(id, vorn, nachn, fuesch, pen));
     			}
     		} catch (JDOMException e) {
     			e.printStackTrace();
     		} catch (IOException ioe) {
     			ioe.printStackTrace();
     		}
-    		
     		try {
     			List<Element> liste;
     			File inputFile = new File("VehicleListe.xml");
@@ -79,14 +82,39 @@ public class MainApp extends Application {
 
     			liste = classElement.getChildren();
     			for (int temp = 0; temp < liste.size(); temp++) {
+    				System.out.println("vehicletemp ="+temp);
     				Element vehicle = liste.get(temp);
     				String tp = vehicle.getChild("Typ").getText();
-    				String zw = vehicle.getChild("Zweck").getText();
     				String gl = vehicle.getChild("Geliehen").getText();
     				if (gl.equals("false")) gl = "nein";
     				else gl = "ja";
     				String ke = vehicle.getChild("Kennzeichen").getText();
-    				vehicleData.add(new Vehicle(tp, zw, gl, ke));
+    				vehicleData.add(new Vehicle(tp, gl, ke));
+    			}
+    		} catch (JDOMException e) {
+    			e.printStackTrace();
+    		} catch (IOException ioe) {
+    			ioe.printStackTrace();
+    		}
+    		
+    		try {
+    			List<Element> liste;
+    			File inputFile = new File("BookingListe.xml");
+    			SAXBuilder saxBuilder = new SAXBuilder();
+    			Document document = saxBuilder.build(inputFile);
+    			Element classElement = document.getRootElement();
+
+    			liste = classElement.getChildren();
+    			for (int temp = 0; temp < liste.size(); temp++) {
+    				System.out.println("bookingtemp ="+temp);
+    				Element booking = liste.get(temp);
+    				String vo = booking.getChild("Von").getText();
+    				String bi = booking.getChild("Bis").getText();
+    				String pe = booking.getChild("Personalnummer").getText();
+    				String ke = booking.getChild("Kennzeichen").getText();
+    				String zw = booking.getChild("Zweck").getText();
+    				if (bookingData.add(new Booking(vo, bi, pe, ke, zw)) == true) {
+    				}
     			}
     		} catch (JDOMException e) {
     			e.printStackTrace();
@@ -104,6 +132,9 @@ public class MainApp extends Application {
 	    }
 	    public ObservableList<Vehicle> getVehicleData() {
 	        return vehicleData;
+	    }
+	    public ObservableList<Booking> getBookingData() {
+	        return bookingData;
 	    }
 	    
 	  
@@ -129,7 +160,7 @@ public class MainApp extends Application {
         buchenStage.setScene(scene);
        buchenStage.show();
     }
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * Initializes the root layout.
      */
@@ -157,7 +188,7 @@ public class MainApp extends Application {
         // Try to load last opened person file.
         File file = getPersonFilePath();
         if (file != null) {
-            loadPersonDataFromFile(file);
+            //loadPersonDataFromFile(file);
         }
     }
 
@@ -196,7 +227,7 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    public boolean showPersonEditDialog(Person person) {
+    public boolean showPersonEdit(Person person) {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
@@ -225,10 +256,65 @@ public class MainApp extends Application {
             return false;
         }
     }
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //hier versuch BuchenController!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    public boolean showVehicleEdit(Vehicle vehicle) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/VehicleEdit.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Edit Vehicle");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the person into the controller.
+            VehicleEditController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setVehicle(vehicle);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean showBookingEdit(Booking booking) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/BookingEdit.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Edit Booking");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            
+            BookingEditController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setBooking(booking);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
    
     public void showBuchen () {
        
@@ -249,40 +335,7 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
-    	
-   
-    
-    
-    
-    public boolean showVehicleEditDialog(Vehicle vehicle) {
-        try {
-            // Load the fxml file and create a new stage for the popup dialog.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/VehicleEditDialog.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
 
-            // Create the dialog Stage.
-            Stage dialogStage = new Stage();
-            dialogStage.setTitle("Edit Vehicle");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(primaryStage);
-            Scene scene = new Scene(page);
-            dialogStage.setScene(scene);
-
-            // Set the person into the controller.
-            VehicleEditDialogController controller = loader.getController();
-            controller.setDialogStage(dialogStage);
-            controller.setVehicle(vehicle);
-
-            // Show the dialog and wait until the user closes it
-            dialogStage.showAndWait();
-
-            return controller.isOkClicked();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
     public File getPersonFilePath() {
         Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
         String filePath = prefs.get("filePath", null);
@@ -443,6 +496,4 @@ public class MainApp extends Application {
         }
     }
 
-	
-    
 }

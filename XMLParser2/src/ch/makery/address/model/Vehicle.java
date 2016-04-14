@@ -8,7 +8,6 @@ import javafx.beans.property.StringProperty;
 public class Vehicle {
 
     private final StringProperty typ;
-    private final StringProperty zweck;
     private final StringProperty geliehen;
     private final StringProperty kennzeichen;
   
@@ -17,7 +16,7 @@ public class Vehicle {
      * Default constructor.
      */
     public Vehicle() {
-        this(null, null, null, null);
+        this(null, null, null);
     }
 
     /**
@@ -26,9 +25,8 @@ public class Vehicle {
      * @param firstName
      * @param lastName
      */
-    public Vehicle(String typ, String zweck, String geliehen, String kennzeichen) {
+    public Vehicle(String typ, String geliehen, String kennzeichen) {
         this.typ = new SimpleStringProperty(typ);
-        this.zweck = new SimpleStringProperty(zweck);
         this.geliehen = new SimpleStringProperty(geliehen);
         this.kennzeichen = new SimpleStringProperty(kennzeichen);
        
@@ -56,18 +54,6 @@ public class Vehicle {
 
     public StringProperty typProperty() {
         return typ;
-    }
-
-    public String getZweck() {
-        return zweck.get();
-    }
-
-    public void setZweck(String zweck) {
-        this.zweck.set(zweck);
-    }
-
-    public StringProperty zweckProperty() {
-        return zweck;
     }
 
     public String getGeliehen() {

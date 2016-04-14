@@ -4,6 +4,7 @@ import java.util.Scanner;
 import org.jdom2.JDOMException;
 
 import ch.makery.address.model.Person;
+import ch.makery.address.model.Vehicle;
 
 import java.util.Calendar;
 import java.io.IOException;
@@ -28,8 +29,7 @@ public class Verwaltung {
 		ConnectXMLPerson.readPersonListe();
 
 		Vehicle tempVehicle = einlesenVehicle();
-		ConnectXMLVehicle.einfügenVehicle(tempVehicle.getTyp(), tempVehicle.isGeliehen(),
-				tempVehicle.getZweck(), tempVehicle.getKennzeichen());
+		ConnectXMLVehicle.einfügenVehicle(tempVehicle.getTyp(),tempVehicle.getGeliehen(), tempVehicle.getKennzeichen());
 		ConnectXMLVehicle.readVehicleListe();
 
 		Ausleihe tempAusleihe = einlesenAusleihvorgang();
@@ -41,21 +41,29 @@ public class Verwaltung {
 	}
 
 	public static Person einlesenPerson() {
+		String idtemp=null;
+		try {
+			idtemp = ConnectXML.createUniqueID("PersonListe.xml");
+		} catch (JDOMException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String id = idtemp;
 		String vorname = einlesenText("Vorname: ");
 		String nachname = einlesenText("Nachname: ");
 		String fuehrerschein = einlesenText("Führerschein: ");
 		String personalnummer = einlesenText("Personalnummer: ");
-		Person neuerPerson = new Person(nachname, vorname, fuehrerschein, personalnummer);
-		return neuerPerson;
+		Person neuPerson = new Person(id, nachname, vorname, fuehrerschein, personalnummer);
+		return neuPerson;
 	}
 
 	public static Vehicle einlesenVehicle() {
 
 		String typ = einlesenText("Typ: ");
-		boolean geliehen = einlesenBool("Geliehen: ");
+		String geliehen = einlesenText("Geliehen: ");
 		String zweck = einlesenText("Zweck: ");
 		String kennzeichen = einlesenText("Kennzeichen: ");
-		Vehicle neuesVehicle = new Vehicle(typ, geliehen, zweck, kennzeichen);
+		Vehicle neuesVehicle = new Vehicle(typ, geliehen, kennzeichen);
 		return neuesVehicle;
 	}
 
