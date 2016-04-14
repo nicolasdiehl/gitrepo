@@ -15,6 +15,7 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
+import ch.makery.address.model.Buchen;
 import ch.makery.address.model.Person;
 import ch.makery.address.model.PersonListWrapper;
 import ch.makery.address.model.Vehicle;
@@ -43,6 +44,7 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
 	 private ObservableList<Person> personData = FXCollections.observableArrayList();
 	 private ObservableList<Vehicle> vehicleData = FXCollections.observableArrayList();
+	 private ObservableList<Buchen>buchenData = FXCollections.observableArrayList();
 
 	    /**
 	     * Constructor
@@ -94,7 +96,43 @@ public class MainApp extends Application {
     		} catch (IOException ioe) {
     			ioe.printStackTrace();
     		}
-	    }
+	    
+	    
+	    
+	    // versuch Buchen XML////////////////////////////////////////////////////////////////////////////////////////////////////
+	    try {
+			List<Element> liste;
+			File inputFile = new File("Buchen.xml");
+			SAXBuilder saxBuilder = new SAXBuilder();
+			Document document = saxBuilder.build(inputFile);
+			Element classElement = document.getRootElement();
+
+			liste = classElement.getChildren();
+			for (int temp = 0; temp < liste.size(); temp++) {
+				Element buchen = liste.get(temp);
+				String tp = buchen.getChild("Typ").getText();
+				String zw = buchen.getChild("Zweck").getText();
+				String id = buchen.getChild("ID").getText();
+				String vorn = buchen.getChild("Vorname").getText();
+				String nachn = buchen.getChild("Nachname").getText();
+				String fuesch =buchen.getChild("Fuehrerschein").getText();
+				String von = buchen.getChild("Von").getText();
+				String bis=buchen.getChild("Bis").getText();
+				String dauer=buchen.getChild("Dauer").getText();
+				String kennzeichen=buchen.getChild("Kennzeichen").getText();
+				
+				String ke = buchen.getChild("Kennzeichen").getText();
+				buchenData.add(new Buchen(tp, zw, id, ke, vorn, nachn, fuesch, von, bis, dauer,kennzeichen));
+			}
+		} catch (JDOMException e) {
+			e.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+    }
+	    
+
+	    
 
 	    /**
 	     * Returns the data as an observable list of Persons. 
@@ -105,6 +143,9 @@ public class MainApp extends Application {
 	    }
 	    public ObservableList<Vehicle> getVehicleData() {
 	        return vehicleData;
+	    }
+	    public ObservableList<Buchen> getBuchenData(){
+	    	return buchenData;
 	    }
 	    
 	  
@@ -257,6 +298,8 @@ public class MainApp extends Application {
             return false;
         }
     }
+    
+    //Speichern, Laden //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public File getPersonFilePath() {
         Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
         String filePath = prefs.get("filePath", null);
