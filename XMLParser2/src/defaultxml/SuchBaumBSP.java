@@ -9,12 +9,12 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 
-class SuchBaumBSP
+public class SuchBaumBSP
 {
-	static int personalnummer = 0;
+	static int personalnummer;
 	static SuchBaum baum;
 
-	public static void Suche() throws DataConversionException
+	public void Suche(int suchzahl)
 	{
 		Scanner sc = new Scanner(System.in);
 		baum = new SuchBaum(personalnummer);
@@ -29,8 +29,8 @@ class SuchBaumBSP
 			for (int temp = 0; temp < personList.size(); temp++)
 			{
 				Element person = personList.get(temp);
-				Element attribute = person.getChild("PersNr");
-				personalnummer = Integer.parseInt(attribute.getValue());
+				Element persnr = person.getChild("Personalnummer");
+				personalnummer = Integer.parseInt(persnr.getValue());
 				baum.fuegeEin(personalnummer);
 			}
 		}
@@ -43,8 +43,6 @@ class SuchBaumBSP
 			ioe.printStackTrace();
 		}
 		baum.laufeDurch();
-		System.out.print("Nach welcher Personalnummer soll gesucht werden?\n");
-		int suchzahl = sc.nextInt();
 		System.out.print("Die Personalnummer " + suchzahl + " wurde");
 		if (baum.gefunden(suchzahl))
 		{
@@ -60,8 +58,8 @@ class SuchBaumBSP
 				for (int temp = 0; temp < personList1.size(); temp++)
 				{
 					Element person1 = personList1.get(temp);
-					Element attribute1 = person1.getChild("PersNr");
-					personalnummer = Integer.parseInt(attribute1.getValue());
+					Element persnr1 = person1.getChild("Personalnummer");
+					personalnummer = Integer.parseInt(persnr1.getValue());
 					if(personalnummer == suchzahl)
 					{
 						System.out.println("\nElement:	   " + person1.getName());	

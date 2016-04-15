@@ -37,7 +37,6 @@ public class Verwaltung {
 				tempAusleihe.getLeihzweck(), tempAusleihe.getLeihbeginn(), tempAusleihe.getLeihende());
 		ConnectXMLAusleihe.readAusleihe();
 
-		SuchBaumBSP.Suche();
 	}
 
 	public static Person einlesenPerson() {

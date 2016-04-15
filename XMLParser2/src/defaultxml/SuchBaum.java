@@ -1,5 +1,5 @@
 package defaultxml;
-class SuchBaum
+public class SuchBaum
 {
 	SuchBaum links; 							// linker Teilbaum
 	SuchBaum rechts; 							// rechter Teilbaum

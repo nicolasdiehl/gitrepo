@@ -6,8 +6,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.SuchenController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0">
          <children>
@@ -29,11 +28,13 @@
                   <TableColumn prefWidth="46.0" text="Bis" />
               </columns>
             </TableView>
-            <TextField layoutX="85.0" layoutY="285.0" />
+            <TextField fx:id="searchTablePersNr" layoutX="85.0" layoutY="285.0" />
             <TextField layoutX="494.0" layoutY="285.0" />
-            <Label layoutX="99.0" layoutY="252.0" text="Person nach ID suchen" />
-            <Label layoutX="481.0" layoutY="252.0" text="Person nach Kennzeichen suchen" />
-            <Button layoutX="357.0" layoutY="323.0" mnemonicParsing="false" text="OK" />
+            <Label layoutX="274.0" layoutY="227.0" text="Person nach Personalnummer suchen" />
+            <Label layoutX="533.0" layoutY="252.0" text="lineare Suche" />
+            <Button layoutX="390.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleZurueck" text="Zurück" />
+            <Button layoutX="287.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleSuchen" text="Suche" />
+            <Label layoutX="125.0" layoutY="252.0" text="binäre Suche" />
          </children>
       </AnchorPane>
    </children>

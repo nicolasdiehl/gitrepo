@@ -547,12 +547,30 @@ public class MainApp extends Application {
             // Give the controller access to the main app.
             BuchenController controller = loader.getController();
           controller.setMainApp(this);
-          controller.setBuchen(booking);// meiselbachway!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+          controller.setBuchen(booking);
          
 		} catch (IOException e) {
             e.printStackTrace();
         }
-		
-	}	
+	}
+	public void Suchendialog() {
+		try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/Suchen.fxml"));
+            AnchorPane suchen = (AnchorPane) loader.load();
 
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(suchen);
+
+            // Give the controller access to the main app.
+            SuchenController controller = loader.getController();
+          controller.setMainApp(this);
+
+
+		} catch (IOException e) {
+            e.printStackTrace();
+        }
+
+	} 
 }

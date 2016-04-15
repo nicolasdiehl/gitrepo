@@ -93,7 +93,7 @@
             <Button layoutX="580.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleNewVehicle" text="New" />
             <Button layoutX="714.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleDeleteVehicle" text="Delete" />
             <Button layoutX="802.0" layoutY="648.0" mnemonicParsing="false" onAction="#handleBuchenButton" text="Buchen" />
-            <Button layoutX="900.0" layoutY="648.0" mnemonicParsing="false" text="Suchen" />
+            <Button layoutX="900.0" layoutY="648.0" mnemonicParsing="false" onAction="#handleSuchenButton" text="Suchen" />
             <Label layoutX="792.0" layoutY="609.0" text="Buchenfenster" />
             <Label layoutX="897.0" layoutY="609.0" text="Suchfenster" />
             <Button layoutX="253.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleEditPerson" text="Edit" />
