@@ -1,12 +1,5 @@
 
 
-            	for (int temp = 0; temp < supercarslist.size(); temp++) {
-                    Element tempElement = supercarslist.get(temp);
-                    if("luxurycars".equals(tempElement.getName())){
-                       rootElement.removeContent(tempElement);
-                    }        	 
-                 }
-
 package ch.makery.address;
 
 import java.beans.EventHandler;
