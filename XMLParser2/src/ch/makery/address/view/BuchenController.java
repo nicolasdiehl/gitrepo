@@ -175,7 +175,7 @@ public class BuchenController {
 	    }
 	    */
 	    // wenn man buchen drückt, sollte das in der Übersicht Tableview eingefügt werden
-	    public void setPerson(Buchen buchen) {
+	    public void setBuchen(Buchen buchen) {
 	        this.buchen = buchen;
 
 	        vorNameBooking.setText(buchen.getVorname());
@@ -193,11 +193,14 @@ public class BuchenController {
 	        
 	    
 	    }
+	    public boolean isBuchenClicked() {
+	        return buchenClicked;
+	    }
 	    @FXML
 	    private void handleBuchen() {
 	       
-	            buchen.setNachname(vorNameBooking.getText());
-	            buchen.setVorname(nachNameBooking.getText());
+	            buchen.setNachname(nachNameBooking.getText());
+	            buchen.setVorname(vorNameBooking.getText());
 	            buchen.setPersonalnummer(personalnummerBooking.getText());
 	            buchen.setFuehrerschein(fuehrerscheinBooking.getText());
 	            buchen.setID(idBooking.getText());
@@ -208,10 +211,9 @@ public class BuchenController {
 	            buchen.setBis(bisBooking.getText());
 	            buchen.setDauer(verbleibendBooking.getText());
 	          
-
 	            buchenClicked = true;
 	          //  dialogStage.close();
-	        
+	            mainApp.showMainOverview();
 	    }
 	   
 	    
@@ -223,6 +225,6 @@ public class BuchenController {
 	        // Add observable list data to the table
 	        personBookingTable.setItems(mainApp.getPersonData());
 	     vehicleBookingTable.setItems(mainApp.getVehicleData());
-	    
+	     buchen = new Buchen(); 
 	    }
 }

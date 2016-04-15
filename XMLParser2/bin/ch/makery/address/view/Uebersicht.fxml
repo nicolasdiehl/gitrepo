@@ -6,23 +6,23 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="758.0" prefWidth="800.0">
          <children>
-            <TableView layoutX="14.0" layoutY="87.0" prefHeight="389.0" prefWidth="750.0">
+            <TableView fx:id="bookingTable" layoutY="87.0" prefHeight="389.0" prefWidth="808.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Nachname" />
-                <TableColumn prefWidth="75.0" text="Vorname" />
-                  <TableColumn prefWidth="75.0" text="ID" />
-                  <TableColumn prefWidth="75.0" text="Führerschein" />
-                  <TableColumn prefWidth="75.0" text="Kennzeichen" />
-                  <TableColumn prefWidth="75.0" text="Typ" />
-                  <TableColumn prefWidth="75.0" text="Nutzen" />
-                  <TableColumn prefWidth="75.0" text="Geliehen" />
-                  <TableColumn prefWidth="75.0" text="Von" />
-                  <TableColumn prefWidth="75.0" text="Bis" />
+                <TableColumn fx:id="nachNameColumn" prefWidth="75.0" text="Nachname" />
+                <TableColumn fx:id="vorNameColumn" prefWidth="75.0" text="Vorname" />
+                  <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="fuehrerscheinColumn" prefWidth="75.0" text="Führerschein" />
+                  <TableColumn fx:id="kennzeichenColumn" prefWidth="75.0" text="Kennzeichen" />
+                  <TableColumn fx:id="typColumn" prefWidth="75.0" text="Typ" />
+                  <TableColumn fx:id="nutzenColumn" prefWidth="75.0" text="Nutzen" />
+                  <TableColumn fx:id="geliehenColumn" prefWidth="75.0" text="Geliehen" />
+                  <TableColumn fx:id="vonColumn" prefWidth="75.0" text="Von" />
+                  <TableColumn fx:id="bisColumn" prefWidth="75.0" text="Bis" />
+                  <TableColumn fx:id="dauerColumn" prefWidth="75.0" text="Dauer" />
               </columns>
             </TableView>
             <Button layoutX="53.0" layoutY="527.0" mnemonicParsing="false" text="Sort ID" />

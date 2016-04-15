@@ -233,7 +233,12 @@ public class MainOverviewController {
     private void handleBuchenButton(ActionEvent event)throws IOException{
     mainApp.Buchendialog(); // für die Hilfsklasse
     }
-   
+    ///////////////////////////////////////////////////////////////////////////
+    ////////////////////////handle Uebersicht////////////////////////////////////
+   @FXML
+   private void handleUebersichtButton(ActionEvent event) throws IOException{
+	   mainApp.Uebersichtdialog();
+   }
 
     
     /**

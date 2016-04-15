@@ -1,13 +1,6 @@
 package ch.makery.address.model;
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-
-/**
- * Model class for a Person.
- *
- * 
- */
 public class Buchen {
 
 	private final StringProperty vorname;
@@ -181,4 +174,4 @@ public class Buchen {
 		return fuehrerschein;
 	}
 
-} 
+}
