@@ -85,7 +85,7 @@
                   <Label fx:id="verbleibendBooking" text="Label" GridPane.columnIndex="10" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <Button layoutX="430.0" layoutY="644.0" mnemonicParsing="false" text="Abbrechen und Zurück" />
+            <Button layoutX="430.0" layoutY="644.0" mnemonicParsing="false" onAction="#handleAbbrechen" text="Abbrechen und Zurück" />
          </children>
       </AnchorPane>
    </children>

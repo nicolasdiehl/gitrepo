@@ -88,9 +88,11 @@ public class BuchenController {
 	 @FXML
 	 private Label kennzeichenBooking;
 	 
+	 
 	 private Buchen buchen;
 	 private MainApp mainApp;
 	 private boolean buchenClicked=false;
+	 private boolean abbrechenClicked=false;
 	 
 	 public  BuchenController() {	    	
 	    }
@@ -196,7 +198,15 @@ public class BuchenController {
 	    public boolean isBuchenClicked() {
 	        return buchenClicked;
 	    }
-	    @FXML
+	    public boolean isAbbrechenClicked(){
+	    	return abbrechenClicked();
+	    }
+	    private boolean abbrechenClicked() {
+			// TODO Auto-generated method stub
+			return abbrechenClicked;
+		}
+
+		@FXML
 	    private void handleBuchen() {
 	       
 	            buchen.setNachname(nachNameBooking.getText());
@@ -210,12 +220,15 @@ public class BuchenController {
 	            buchen.setVon(vonBooking.getText());
 	            buchen.setBis(bisBooking.getText());
 	            buchen.setDauer(verbleibendBooking.getText());
-	          
 	            buchenClicked = true;
 	          //  dialogStage.close();
 	            mainApp.showMainOverview();
 	    }
-	   
+	   @FXML
+	   private void handleAbbrechen(){
+		   abbrechenClicked=true;
+		   mainApp.showMainOverview();
+	   }
 	    
 	    
 	

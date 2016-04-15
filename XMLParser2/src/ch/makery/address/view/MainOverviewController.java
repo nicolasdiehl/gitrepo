@@ -235,10 +235,7 @@ public class MainOverviewController {
     }
     ///////////////////////////////////////////////////////////////////////////
     ////////////////////////handle Uebersicht////////////////////////////////////
-   @FXML
-   private void handleUebersichtButton(ActionEvent event) throws IOException{
-	   mainApp.Uebersichtdialog();
-   }
+ 
 
     
     /**

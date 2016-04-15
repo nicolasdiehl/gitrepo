@@ -26,8 +26,8 @@ import ch.makery.address.model.Person;
 import ch.makery.address.model.PersonListWrapper;
 import ch.makery.address.model.Vehicle;
 import ch.makery.address.model.VehicleListWrapper;
-
 import ch.makery.address.view.*;
+import ch.makery.address.model.Uebersicht;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -54,6 +54,7 @@ import defaultxml.*;
 
 // testo
 public class MainApp extends Application {
+	private ObservableList<Uebersicht> uebersichtData = FXCollections.observableArrayList();
 	 private ObservableList<Person> personData = FXCollections.observableArrayList();
 	 private ObservableList<Vehicle> vehicleData = FXCollections.observableArrayList();
 	 private ObservableList<Buchen>buchenData = FXCollections.observableArrayList();
@@ -205,6 +206,7 @@ public class MainApp extends Application {
 	     * Returns the data as an observable list of Persons. 
 	     * @return
 	     */
+	   
 	    public ObservableList<Person> getPersonData() {
 	        return personData;
 	    }
@@ -552,24 +554,5 @@ public class MainApp extends Application {
         }
 		
 	}	
-	public void Uebersichtdialog() {
-		try {
-            // Load the fxml file and create a new stage for the popup dialog.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/Uebersicht.fxml"));
-            AnchorPane uebersicht = (AnchorPane) loader.load();
-            
-            // Set person overview into the center of root layout.
-            rootLayout.setCenter(uebersicht);
 
-            // Give the controller access to the main app.
-            UebersichtController controller = loader.getController();
-          controller.setMainApp(this);
-       
-         
-		} catch (IOException e) {
-            e.printStackTrace();
-        }
-		
-	}
 }
