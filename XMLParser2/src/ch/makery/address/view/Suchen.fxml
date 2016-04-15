@@ -8,13 +8,13 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.SuchenController">
    <children>
+      <Label text="Suchen">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0">
          <children>
-            <Label layoutX="361.0" layoutY="14.0" text="Suchen">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
             <TableView layoutX="42.0" layoutY="91.0" prefHeight="100.0" prefWidth="695.0">
               <columns>
                 <TableColumn prefWidth="108.0" text="Personalnummer" />
@@ -35,6 +35,7 @@
             <Button layoutX="390.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleZurueck" text="Zurück" />
             <Button layoutX="287.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleSuchen" text="Suche" />
             <Label layoutX="125.0" layoutY="252.0" text="binäre Suche" />
+            <Label fx:id="suchenLabel" layoutX="71.0" layoutY="210.0" prefHeight="17.0" prefWidth="183.0" />
          </children>
       </AnchorPane>
    </children>

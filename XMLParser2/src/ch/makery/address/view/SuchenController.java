@@ -2,11 +2,13 @@ package ch.makery.address.view;
 
 import ch.makery.address.model.*;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import ch.makery.address.MainApp;
 import defaultxml.SuchBaumBSP;
 import ch.makery.address.view.*;
+import defaultxml.SuchBaumBSP;
 //
 public class SuchenController {
 	@FXML
@@ -15,6 +17,8 @@ public class SuchenController {
 	private TableView<Vehicle> vehicleBookingTable;
 	@FXML
 	private TextField searchTablePersNr;
+	@FXML
+	private Label suchenLabel;
 	private Suchen suchen;
 	private MainApp mainApp;
 	private boolean zurueckClicked = false;
@@ -29,7 +33,9 @@ public class SuchenController {
 		SuchBaumBSP suchbaum = new SuchBaumBSP();
 		int suchzahl = Integer.parseInt(searchTablePersNr.getText());
 		suchbaum.Suche(suchzahl);
-		mainApp.showMainOverview();
+		String temp="" +suchzahl;
+		suchenLabel.setText(SuchBaumBSP.person1.getChild("Nachname"));// label setzen geht nicht!!!!!!!! ARRAY LIST????? NICO WAY!!!
+		
 	}
 
 	@FXML
