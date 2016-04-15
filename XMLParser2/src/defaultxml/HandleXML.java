@@ -29,16 +29,19 @@ public class HandleXML extends ConnectXML {
 			Element classElement = document.getRootElement();
 			List<Element> liste = classElement.getChildren();
 			for (int i = 0; i < liste.size(); i++) {
-				if (classElement.getText().equals("Person")) fArray.add(new Person());
-				else if (classElement.getText().equals("Vehicle")) fArray.add(new Vehicle());
-				else if (classElement.getText().equals("Booking")) fArray.add(new Booking());
 				Element item = liste.get(i);
 				List<Element> itemProperties = item.getChildren();
+				ArrayList<String> tempValues = new ArrayList<String>();
 				System.out.println("\n");
 				Attribute attribute = item.getAttribute("ID");
 				for (int j = 0; j < itemProperties.size(); j++) {
-					System.out.println(itemProperties.get(j)+"\t" + item.getText());
+					String tempB = item.getText();
+					System.out.println(itemProperties.get(j).getText()+"\t" + tempB);
+					tempValues.add(tempB);
 				}
+				if (classElement.getText().equals("Person")) fArray.add(new Person(tempValues.get(0),tempValues.get(0),tempValues.get(1),tempValues.get(2), tempValues.get(3)));
+				else if (classElement.getText().equals("Vehicle")) fArray.add(new Vehicle(tempValues.get(0),tempValues.get(1),tempValues.get(2)));
+				else if (classElement.getText().equals("Booking")) fArray.add(new Booking(tempValues.get(0), tempValues.get(0), tempValues.get(1), tempValues.get(2), tempValues.get(3)));
 			}
 		} catch (JDOMException e) {
 			e.printStackTrace();
@@ -55,21 +58,25 @@ public class HandleXML extends ConnectXML {
 		SAXBuilder saxBuilder = new SAXBuilder();
 		Document document = saxBuilder.build(file);
 		Element classElement = document.getRootElement();
-		if (classElement.getText().equals("Person")) newItem = new Person();
-		else if (classElement.getText().equals("Vehicle")) newItem = new Vehicle();
-		else if (classElement.getText().equals("Booking")) newItem = new Booking();
-
 		liste = classElement.getChildren();
 		for (int i = 0; i < liste.size(); i++) {
 			Element item = liste.get(i);
 			List<Element> itemProperties = item.getChildren();
+			ArrayList<String> tempValues = new ArrayList<String>();
 			Attribute attribute = item.getAttribute("ID");
-			if (attribute.equals(id)) {
+			if (attribute.getText().equals(id)) {
 				
 				for (int t = 0; t < itemProperties.size(); t++) {
-					Element typElement=itemProperties.get(t);
+					Element typElement = itemProperties.get(t);
+					String tempB = item.getText();
+					System.out.println(itemProperties.get(j).getText()+"\t" + tempB);
+					tempValues.add(tempB);
 					System.out.println(typElement.getName()+"\t"+typElement.getText());
+					
 				}
+				if (classElement.getText().equals("Person")) newItem = new Person(tempValues.get(0),tempValues.get(0),tempValues.get(1),tempValues.get(2), tempValues.get(3));
+				else if (classElement.getText().equals("Vehicle")) newItem = new Vehicle(tempValues.get(0),tempValues.get(1),tempValues.get(2));
+				else if (classElement.getText().equals("Booking")) newItem = new Booking(tempValues.get(0), tempValues.get(0), tempValues.get(1), tempValues.get(2), tempValues.get(3));
 			}
 		}
 	} catch (JDOMException e) {
@@ -146,10 +153,10 @@ public class HandleXML extends ConnectXML {
 				List<Element> itemProperties = Einitem.getChildren();
 				System.out.println("\n");
 				Attribute attribute = Einitem.getAttribute("ID");
-				
+				String id = attribute.getValue();
 				for (int j = 0; j < itemProperties.size(); j++) {
-					if (true) {
-						fList.add(attribute);
+					if (itemProperties.get(j).equals(typ)&&id.equals(wert)) {
+						fList.add(id);
 						break;
 					}
 				}
