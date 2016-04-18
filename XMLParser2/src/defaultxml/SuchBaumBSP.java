@@ -66,7 +66,7 @@ public class SuchBaumBSP
 						System.out.println("Nachname:          " + person1.getChild("Nachname").getText());
 						System.out.println("Vorname:           " + person1.getChild("Vorname").getText());
 						System.out.println("Fuehrerschein:     " + person1.getChild("Fuehrerschein").getText());
-						System.out.println("PersNr:            " + person1.getChild("PersNr").getText());
+						System.out.println("Personalnummer:            " + person1.getChild("Personalnummer").getText());
 					}
 				}
 			}
