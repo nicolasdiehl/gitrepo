@@ -1,11 +1,12 @@
 package ch.makery.address.model;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.jdom2.JDOMException;
 
 import defaultxml.ConnectXML;
-import defaultxml.ConnectXMLPerson;
+import defaultxml.HandleXML;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -37,7 +38,8 @@ public class Person {
 	public Person(String id, String vorname, String nachname, String fuehrerschein, String personalnummer) {
 		SimpleStringProperty tempid = null;
 		try {
-			tempid = new SimpleStringProperty(ConnectXML.createUniqueID("PersonListe.xml"));
+			File file = new File("PersonListe.xml");
+			tempid = new SimpleStringProperty(ConnectXML.createUniqueID(file));
 		} catch (JDOMException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

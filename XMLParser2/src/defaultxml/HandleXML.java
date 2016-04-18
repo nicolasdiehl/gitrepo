@@ -20,28 +20,32 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class HandleXML extends ConnectXML {
-
-	public static ArrayList<Object> auslesen(File file) {
+	
+	public static ArrayList<Object> xmlZuArrayList(File file) {
 		ArrayList<Object> fArray = new ArrayList<Object>();
 		try {
 			SAXBuilder saxBuilder = new SAXBuilder();
 			Document document = saxBuilder.build(file);
-			Element classElement = document.getRootElement();
-			List<Element> liste = classElement.getChildren();
-			for (int i = 0; i < liste.size(); i++) {
-				Element item = liste.get(i);
-				List<Element> itemProperties = item.getChildren();
-				ArrayList<String> tempValues = new ArrayList<String>();
-				System.out.println("\n");
-				Attribute attribute = item.getAttribute("ID");
-				for (int j = 0; j < itemProperties.size(); j++) {
-					String tempB = item.getText();
-					System.out.println(itemProperties.get(j).getText()+"\t" + tempB);
-					tempValues.add(tempB);
+			Element rootElement = document.getRootElement();
+			List<Element> listeDerElemente = rootElement.getChildren();
+			for (int i = 0; i < listeDerElemente.size(); i++) {
+				Element einzelnesElement = listeDerElemente.get(i);
+				List<Element> listeDerBodenElemente = einzelnesElement.getChildren();
+				ArrayList<String> tempWerte = new ArrayList<String>();
+				Attribute einzelnesElementId = einzelnesElement.getAttribute("ID");
+				String einzelnesElementIdWert = einzelnesElementId.getValue();
+				System.out.println("ID: " + einzelnesElementIdWert);
+				for (int j = 0; j < listeDerBodenElemente.size(); j++) {
+					Element einzelnesBodenElement = listeDerBodenElemente.get(j);
+					String einzelnesBodenElementName = einzelnesBodenElement.getName();
+					String einzelnesBodenElementWert = einzelnesBodenElement.getText();
+					System.out.println(einzelnesBodenElementName + ":\t" + einzelnesBodenElementWert);
+					tempWerte.add(einzelnesBodenElementWert);
 				}
-				if (classElement.getText().equals("Person")) fArray.add(new Person(tempValues.get(0),tempValues.get(0),tempValues.get(1),tempValues.get(2), tempValues.get(3)));
-				else if (classElement.getText().equals("Vehicle")) fArray.add(new Vehicle(tempValues.get(0),tempValues.get(1),tempValues.get(2)));
-				else if (classElement.getText().equals("Booking")) fArray.add(new Booking(tempValues.get(0), tempValues.get(0), tempValues.get(1), tempValues.get(2), tempValues.get(3)));
+				System.out.println("");
+				if (rootElement.getName().equals("PersonListe")) fArray.add(new Person(tempWerte.get(0),tempWerte.get(0),tempWerte.get(1),tempWerte.get(2), tempWerte.get(3)));
+				else if (rootElement.getName().equals("VehicleListe")) fArray.add(new Vehicle(tempWerte.get(0),tempWerte.get(1),tempWerte.get(2)));
+				else fArray.add(new Booking(tempWerte.get(0), tempWerte.get(1), tempWerte.get(2), tempWerte.get(3), tempWerte.get(4)));
 			}
 		} catch (JDOMException e) {
 			e.printStackTrace();
@@ -51,32 +55,32 @@ public class HandleXML extends ConnectXML {
 		return fArray;
 	}
 
-	public static Object auslesen(File file, String id) {
+	public static Object xmlUndIdZuObjekt(File file, String id) {
 	Object newItem = null;
 	try {
-		List<Element> liste = null;
 		SAXBuilder saxBuilder = new SAXBuilder();
 		Document document = saxBuilder.build(file);
-		Element classElement = document.getRootElement();
-		liste = classElement.getChildren();
-		for (int i = 0; i < liste.size(); i++) {
-			Element item = liste.get(i);
-			List<Element> itemProperties = item.getChildren();
-			ArrayList<String> tempValues = new ArrayList<String>();
-			Attribute attribute = item.getAttribute("ID");
-			if (attribute.getText().equals(id)) {
-				
-				for (int t = 0; t < itemProperties.size(); t++) {
-					Element typElement = itemProperties.get(t);
-					String tempB = item.getText();
-					System.out.println(itemProperties.get(j).getText()+"\t" + tempB);
-					tempValues.add(tempB);
-					System.out.println(typElement.getName()+"\t"+typElement.getText());
-					
+		Element rootElement = document.getRootElement();
+		List<Element> listeDerElemente = rootElement.getChildren();
+		for (int i = 0; i < listeDerElemente.size(); i++) {
+			Element einzelnesElement = listeDerElemente.get(i);
+			Attribute einzelnesElementId = einzelnesElement.getAttribute("ID");
+			String einzelnesElementIdWert = einzelnesElementId.getValue();
+			if (einzelnesElementIdWert.equals(id)) {
+				System.out.println("ID: " + einzelnesElementIdWert);
+				ArrayList<String> tempWerte = new ArrayList<String>();
+				List<Element> listeDerBodenelemente = einzelnesElement.getChildren();
+				for (int j = 0; j < listeDerBodenelemente.size(); j++) {
+					Element einzelnesBodenelement = listeDerBodenelemente.get(j);
+					String einzelnesBodenelementName = einzelnesBodenelement.getName(); // Fuehrerschein
+					String einzelnesBodenelementWert = einzelnesBodenelement.getText(); // B
+					System.out.println(einzelnesBodenelementName + ":\t" + einzelnesBodenelementWert);
+					tempWerte.add(einzelnesBodenelementWert);
 				}
-				if (classElement.getText().equals("Person")) newItem = new Person(tempValues.get(0),tempValues.get(0),tempValues.get(1),tempValues.get(2), tempValues.get(3));
-				else if (classElement.getText().equals("Vehicle")) newItem = new Vehicle(tempValues.get(0),tempValues.get(1),tempValues.get(2));
-				else if (classElement.getText().equals("Booking")) newItem = new Booking(tempValues.get(0), tempValues.get(0), tempValues.get(1), tempValues.get(2), tempValues.get(3));
+				System.out.println("");
+				if (rootElement.getName().equals("PersonListe")) newItem = new Person(tempWerte.get(0),tempWerte.get(0),tempWerte.get(1),tempWerte.get(2), tempWerte.get(3));
+				else if (rootElement.getName().equals("VehicleListe")) newItem = new Vehicle(tempWerte.get(0),tempWerte.get(1),tempWerte.get(2));
+				else  newItem = new Booking(tempWerte.get(0), tempWerte.get(1), tempWerte.get(2), tempWerte.get(3), tempWerte.get(4));
 			}
 		}
 	} catch (JDOMException e) {
@@ -86,21 +90,54 @@ public class HandleXML extends ConnectXML {
 	}
 	return newItem;
 }
-	
-	public static void einfügen(File file, String typ, String[] attribute, String[] werte)
+
+	public static Object xmlUndZeileZuObjekt(File file, String zeilenNummer) {
+	Object newItem = null;
+	try {
+		List<Element> listeDerElemente = null;
+		SAXBuilder saxBuilder = new SAXBuilder();
+		Document document = saxBuilder.build(file);
+		Element rootElement = document.getRootElement();
+		listeDerElemente = rootElement.getChildren();
+		Element einzelnesElement = listeDerElemente.get(Integer.parseInt(zeilenNummer));
+		Attribute einzelnesElementId = einzelnesElement.getAttribute("ID");
+		String einzelnesElementIdWert = einzelnesElementId.getValue();
+		System.out.println("ID: " + einzelnesElementIdWert);
+		ArrayList<String> tempWerte = new ArrayList<String>();
+		List<Element> listeDerBodenelemente = einzelnesElement.getChildren();
+		for (int j = 0; j < listeDerBodenelemente.size(); j++) {
+			Element einzelnesBodenelement = listeDerBodenelemente.get(j);
+			String einzelnesBodenelementName = einzelnesBodenelement.getName(); // Fuehrerschein
+			String einzelnesBodenelementWert = einzelnesBodenelement.getText(); // B
+			System.out.println(einzelnesBodenelementName + ":\t" + einzelnesBodenelementWert);
+			tempWerte.add(einzelnesBodenelementWert);
+		}
+		System.out.println("");
+		if (rootElement.getName().equals("PersonListe")) newItem = new Person(tempWerte.get(0),tempWerte.get(0),tempWerte.get(1),tempWerte.get(2), tempWerte.get(3));
+		else if (rootElement.getName().equals("VehicleListe")) newItem = new Vehicle(tempWerte.get(0),tempWerte.get(1),tempWerte.get(2));
+		else  newItem = new Booking(tempWerte.get(0), tempWerte.get(1), tempWerte.get(2), tempWerte.get(3), tempWerte.get(4));
+	} catch (JDOMException e) {
+		e.printStackTrace();
+	} catch (IOException ioe) {
+		ioe.printStackTrace();
+	}
+	return newItem;
+}
+
+	public static void inXmlAnhängen(File file, String typ, String[] attributNamen, String[] werte)
 			throws JDOMException {
 		try {
 			SAXBuilder saxBuilder = new SAXBuilder();
 			Document document = saxBuilder.build(file);
 			String newID = createUniqueID(file);
-			Element item = new Element(typ);
-			item.setAttribute(new Attribute("ID", newID));
-			for (int i = 0; i < attribute.length; i++) {
-				Element newElement = new Element(attribute[i]);
-				newElement.setText(werte[i]);
-				item.addContent(newElement);
+			Element einzelnesElement = new Element(typ);
+			einzelnesElement.setAttribute(new Attribute("ID", newID));
+			for (int i = 0; i < attributNamen.length; i++) {
+				Element einzelnesBodenelement = new Element(attributNamen[i]);
+				einzelnesBodenelement.setText(werte[i]);
+				einzelnesElement.addContent(einzelnesBodenelement);
 			}
-			document.getRootElement().addContent(item);
+			document.getRootElement().addContent(einzelnesElement);
 			XMLOutputter xmlOutput = new XMLOutputter();
 			xmlOutput.setFormat(Format.getPrettyFormat());
 			xmlOutput.output(document, new FileWriter(file));
@@ -109,25 +146,107 @@ public class HandleXML extends ConnectXML {
 		}
 	}
 	
-	public static void bearbeiten(File file, String id, String[] typ, String[] wert) {
+	public static void inXmlAnhängen(File file, Object objekt)
+			throws JDOMException {
 		try {
 			SAXBuilder saxBuilder = new SAXBuilder();
 			Document document = saxBuilder.build(file);
-			Element classElement = document.getRootElement();
-			List<Element> liste = classElement.getChildren();
-			for (int i = 0; i < liste.size(); i++) {
-				Element item = liste.get(i);
-				List<Element> itemProperties = item.getChildren();
-				Attribute attribute = item.getAttribute("ID");
-				if (attribute.equals(id)) {
-					for (int t = 0; t < typ.length; t++) {
-						for (int p = 0; p < itemProperties.size(); p++) {
-							Element typElement=itemProperties.get(p);
-							if (typElement.equals(typ[t])) {
-								itemProperties.get(p).getParent().removeContent(itemProperties.get(p));
-								Element newElement = new Element(typ[p]);
-								newElement.setText(wert[p]);
-								item.addContent(newElement);
+			Element rootElement = document.getRootElement();
+			String rootElementName = rootElement.getName(); // PersonListe
+			String newID = createUniqueID(file);
+			Element einzelnesElement = null;
+			String newValue;
+			Element einzelnesBodenelement;
+			if (rootElement.getName().equals("PersonListe")) {
+				einzelnesElement = new Element("Person");
+				einzelnesElement.setAttribute(new Attribute("ID", newID));
+				einzelnesBodenelement = new Element("Nachname");
+				newValue = ((Person)objekt).getNachname();
+				einzelnesBodenelement.setText(newValue);
+				einzelnesElement.addContent(einzelnesBodenelement);
+				einzelnesBodenelement = new Element("Vorname");
+				newValue = ((Person)objekt).getVorname();
+				einzelnesBodenelement.setText(newValue);
+				einzelnesElement.addContent(einzelnesBodenelement);
+				einzelnesBodenelement = new Element("Fuehrerschein");
+				newValue = ((Person)objekt).getFuehrerschein();
+				einzelnesBodenelement.setText(newValue);
+				einzelnesElement.addContent(einzelnesBodenelement);
+				einzelnesBodenelement = new Element("Personalnummer");
+				newValue = ((Person)objekt).getPersonalnummer();
+				einzelnesBodenelement.setText(newValue);
+				einzelnesElement.addContent(einzelnesBodenelement);
+			}
+			else if (rootElement.getName().equals("VehicleListe")) {
+				einzelnesElement = new Element("Vehicle");
+				einzelnesElement.setAttribute(new Attribute("ID", newID));
+				einzelnesBodenelement = new Element("Typ");
+				newValue = ((Vehicle)objekt).getTyp();
+				einzelnesBodenelement.setText(newValue);
+				einzelnesElement.addContent(einzelnesBodenelement);
+				einzelnesBodenelement = new Element("Geliehen");
+				newValue = ((Vehicle)objekt).getGeliehen();
+				einzelnesBodenelement.setText(newValue);
+				einzelnesElement.addContent(einzelnesBodenelement);
+				einzelnesBodenelement = new Element("Kennzeichen");
+				newValue = ((Vehicle)objekt).getKennzeichen();
+				einzelnesBodenelement.setText(newValue);
+				einzelnesElement.addContent(einzelnesBodenelement);
+			}
+			else {
+				einzelnesElement = new Element("Booking");
+				einzelnesElement.setAttribute(new Attribute("ID", newID));
+				einzelnesBodenelement = new Element("Von");
+				newValue = ((Booking)objekt).getVon();
+				einzelnesBodenelement.setText(newValue);
+				einzelnesElement.addContent(einzelnesBodenelement);
+				einzelnesBodenelement = new Element("Bis");
+				newValue = ((Booking)objekt).getBis();
+				einzelnesBodenelement.setText(newValue);
+				einzelnesElement.addContent(einzelnesBodenelement);
+				einzelnesBodenelement = new Element("Personalnummer");
+				newValue = ((Booking)objekt).getPersonalnummer();
+				einzelnesBodenelement.setText(newValue);
+				einzelnesElement.addContent(einzelnesBodenelement);
+				einzelnesBodenelement = new Element("Kennzeichen");
+				newValue = ((Booking)objekt).getKennzeichen();
+				einzelnesBodenelement.setText(newValue);
+				einzelnesElement.addContent(einzelnesBodenelement);
+				einzelnesBodenelement = new Element("Zweck");
+				newValue = ((Booking)objekt).getZweck();
+				einzelnesBodenelement.setText(newValue);
+				einzelnesElement.addContent(einzelnesBodenelement);
+			}
+			document.getRootElement().addContent(einzelnesElement);
+			XMLOutputter xmlOutput = new XMLOutputter();
+			xmlOutput.setFormat(Format.getPrettyFormat());
+			xmlOutput.output(document, new FileWriter(file));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void inXmlMitIdBearbeiten(File file, String id, String[] attributNamen, String[] wert) {
+		try {
+			SAXBuilder saxBuilder = new SAXBuilder();
+			Document document = saxBuilder.build(file);
+			Element rootElement = document.getRootElement();
+			List<Element> listeDerElemente = rootElement.getChildren();
+			for (int i = 0; i < listeDerElemente.size(); i++) {
+				Element einzelnesElement = listeDerElemente.get(i);
+				List<Element> listeDerBodenElemente = einzelnesElement.getChildren();
+				Attribute einzelnesElementId = einzelnesElement.getAttribute("ID");
+				String einzelnesElementIdWert = einzelnesElementId.getValue();
+				if (einzelnesElementIdWert.equals(id)) {
+					for (int j = 0; j < attributNamen.length; j++) {
+						for (int k = 0; k < listeDerBodenElemente.size(); k++) {
+							Element einzelnesBodenelement = listeDerBodenElemente.get(k);
+							String einzelnesBodenelementName = einzelnesBodenelement.getName();
+							if (einzelnesBodenelementName.equals(attributNamen[j])) {
+								einzelnesBodenelement.getParent().removeContent(einzelnesBodenelement);
+								Element newElement = new Element(attributNamen[j]);
+								newElement.setText(wert[j]);
+								einzelnesElement.addContent(newElement);
 							}
 						}
 					}
@@ -140,28 +259,24 @@ public class HandleXML extends ConnectXML {
 		}
 	}
 
-	public static ArrayList<Object> lineareSuche(File file, String typ, String wert) {
-		ArrayList<String> fList = new ArrayList<String>();
-		ArrayList<Object> fArray = new ArrayList<Object>();
+	public static void inXmlMitZeilebearbeiten(File file, String zeilenNummer, String[] attributNamen, String[] wert) {
 		try {
 			SAXBuilder saxBuilder = new SAXBuilder();
 			Document document = saxBuilder.build(file);
-			Element classElement = document.getRootElement();
-			List<Element> listeItems = classElement.getChildren();
-			for (int i = 0; i < listeItems.size(); i++) {
-				Element Einitem = listeItems.get(i);
-				List<Element> itemProperties = Einitem.getChildren();
-				System.out.println("\n");
-				Attribute attribute = Einitem.getAttribute("ID");
-				String id = attribute.getValue();
-				for (int j = 0; j < itemProperties.size(); j++) {
-					if (itemProperties.get(j).equals(typ)&&id.equals(wert)) {
-						fList.add(id);
-						break;
+			Element rootElement = document.getRootElement();
+			List<Element> listeDerElemente = rootElement.getChildren();
+			Element einzelnesElement = listeDerElemente.get(Integer.parseInt(zeilenNummer));
+			List<Element> listeDerBodenElemente = einzelnesElement.getChildren();
+			for (int j = 0; j < attributNamen.length; j++) {
+				for (int k = 0; k < listeDerBodenElemente.size(); k++) {
+					Element einzelnesBodenelement = listeDerBodenElemente.get(k);
+					String einzelnesBodenelementName = einzelnesBodenelement.getName();
+					if (einzelnesBodenelementName.equals(attributNamen[j])) {
+						einzelnesBodenelement.getParent().removeContent(einzelnesBodenelement);
+						Element newElement = new Element(attributNamen[j]);
+						newElement.setText(wert[j]);
+						einzelnesElement.addContent(newElement);
 					}
-				}
-				for (int j = 0; j < fList.size(); j++) {
-					fArray.add(auslesen(file, fList.get(j)));
 				}
 			}
 		} catch (JDOMException e) {
@@ -169,14 +284,147 @@ public class HandleXML extends ConnectXML {
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
-		return fArray;
+	}
+
+	public static String sucheFreiesAuto(String zweck) {
+	String autoId="";
+	if (zweck.equals("Transport")) {
+	ArrayList<Object> typListe = xmlUndNameUndWertLineareSucheZuArrayList(new File("VehicleListe.xml"), "Typ", "Lastwagen");
+	} else if (zweck.equals("Stadtfahrt")) {
+		ArrayList<Object> typListe = xmlUndNameUndWertLineareSucheZuArrayList(new File("VehicleListe.xml"), "Typ", "Cityflitzer");
+		ArrayList<Object> typListeVerfeinert = typListe
+		if (typListe == null) {
+			System.out.println("Leider ist kein Fahrzeug der Klasse Cityflitzer mehr verfügbar.");
+			typListe = xmlUndNameUndWertLineareSucheZuArrayList(new File("VehicleListe.xml"), "Typ", "Limousine");
+		}
+	} else if (zweck.equals("Langstreckenfahrt")) {
+		ArrayList<Object> typListe = xmlUndNameUndWertLineareSucheZuArrayList(new File("VehicleListe.xml"), "Typ", "Limousine");
+	}
+	return autoId;
 	}
 	
-	public static void lineareSuche() {
-		int suchzahl = 0;
+	public static ArrayList<Object> xmlUndNameUndWertLineareSucheZuArrayList(File file, String zuSuchenderAttributName, String gesuchterWert) {
+		ArrayList<String> listeGefundenerZeilen = new ArrayList<String>();
+		ArrayList<Object> listeGefundenerObjekte = new ArrayList<Object>();
+		try {
+			SAXBuilder saxBuilder = new SAXBuilder();
+			Document document = saxBuilder.build(file);
+			Element rootElement = document.getRootElement();
+			List<Element> listeDerElemente = rootElement.getChildren();
+			for (int i = 0; i < listeDerElemente.size(); i++) {
+				Element einzelnesElement = listeDerElemente.get(i);
+				List<Element> listeDerBodenElemente = einzelnesElement.getChildren();
+				for (int j = 0; j < listeDerBodenElemente.size(); j++) {
+					Element einzelnesBodenElement = listeDerBodenElemente.get(j);
+					String einzelnesBodenElementName = einzelnesBodenElement.getName();
+					String einzelnesBodenElementWert = einzelnesBodenElement.getText();
+					if (einzelnesBodenElementName.equals(zuSuchenderAttributName) && einzelnesBodenElementWert.equals(gesuchterWert)) {
+						listeGefundenerZeilen.add(Integer.toString(i));
+						break;
+					}
+				}
+				for (int j = 0; j < listeGefundenerZeilen.size(); j++) {
+					listeGefundenerObjekte.add(xmlUndZeileZuObjekt(file, listeGefundenerZeilen.get(j)));
+				}
+			}
+		} catch (JDOMException e) {
+			e.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+		return listeGefundenerObjekte;
+	}
+
+	public static String bitteWertEingeben() {
+		Scanner scan = new Scanner(System.in);
+		String antwort;
+		System.out.println("Nach welchem Wert suchen Sie?");
+		antwort = scan.nextLine();
+		return antwort;
+	}
+	
+	public static String bitteWertEingebenBool() {
+		Scanner scan = new Scanner(System.in);
+		String antwort;
+		System.out.println("ja(j), oder nein(n)?");
+		antwort = scan.nextLine();
+		return antwort;
+	}
+	
+	public static ArrayList<Object> xmlUndUserInputLineareSucheZuArrayList() {
+		ArrayList<Object> listeGefundenerObjekte = null;
+		Scanner scan = new Scanner(System.in);
+		String inputA;
+		String inputB;
+		File file;
+		System.out.println("Was genau suchen Sie? Eine Person(p), einen Leihwagen(l), oder eine Buchung?(b)");
+		inputA = scan.nextLine();
+		switch (inputA) {
+		case "p":
+			file = new File("PersonListe.xml");
+			System.out.println("Suchen Sie den Vornamen(v), Nachnamen(n), Personalnummer(p), oder den Führerscheintyp(f)?");
+			inputB = scan.nextLine();
+			switch (inputB) {
+			case "v":
+				listeGefundenerObjekte = xmlUndNameUndWertLineareSucheZuArrayList(file, "Vorname", bitteWertEingeben());
+				break;
+			case "n":
+				listeGefundenerObjekte = xmlUndNameUndWertLineareSucheZuArrayList(file, "Nachname", bitteWertEingeben());
+				break;
+			case "p":
+				listeGefundenerObjekte = xmlUndNameUndWertLineareSucheZuArrayList(file, "Personalnummer", bitteWertEingeben());
+				break;
+			case "f":
+				listeGefundenerObjekte = xmlUndNameUndWertLineareSucheZuArrayList(file, "Fuehrerschein", bitteWertEingebenBool());
+				break;
+			default:
+				System.out.println("falsche Eingabe!");
+			}
+			break;
+		case "f":
+			file = new File("VehicleListe.xml");
+			System.out.println("Suchen Sie den Fahrzeugtyp(f), das Kennzeichen(k), oder den Leihstatus(l)?");
+			inputB = scan.nextLine();
+			switch (inputB) {
+			case "f":
+				listeGefundenerObjekte = xmlUndNameUndWertLineareSucheZuArrayList(file, "Typ", bitteWertEingeben());
+				break;
+			case "k":
+				listeGefundenerObjekte = xmlUndNameUndWertLineareSucheZuArrayList(file, "Kennzeichen", bitteWertEingeben());
+				break;
+			case "l":
+				listeGefundenerObjekte = xmlUndNameUndWertLineareSucheZuArrayList(file, "Geliehen", bitteWertEingebenBool());
+				break;
+			default:
+				System.out.println("falsche Eingabe!");
+			}
+			break;
+		case "b":
+			file = new File("BookingListe.xml");
+			System.out.println("Suchen Sie eine Personalnummer(f) oder das Kennzeichen(k)?");
+			inputB = scan.nextLine();
+			switch (inputB) {
+			case "p":
+				listeGefundenerObjekte = xmlUndNameUndWertLineareSucheZuArrayList(file, "Personalnummer", bitteWertEingeben());
+				break;
+			case "k":
+				listeGefundenerObjekte = xmlUndNameUndWertLineareSucheZuArrayList(file, "Kennzeichen", bitteWertEingeben());
+				break;
+			default:
+				System.out.println("falsche Eingabe!");
+			}
+			break;
+		default:
+			System.out.println("falsche Eingabe!");
+		}
+		return listeGefundenerObjekte;
+	}
+
+	/*public static void lineareSuche() {
+		String suchzahl = null;
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Welche Personalnummer suchen Sie?");
-		suchzahl = scan.nextInt();
+		suchzahl = scan.nextLine();
 		List<Element> slist = null;
 		try {
 			File inputFile = new File("PersonListe.xml");
@@ -201,5 +449,5 @@ public class HandleXML extends ConnectXML {
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
-	}
+	}*/
 }
