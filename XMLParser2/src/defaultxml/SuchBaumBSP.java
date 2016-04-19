@@ -70,11 +70,15 @@ public class SuchBaumBSP
 						System.out.println("Nachname:          " + person1.getChild("Nachname").getText());
 						System.out.println("Vorname:           " + person1.getChild("Vorname").getText());
 						System.out.println("Fuehrerschein:     " + person1.getChild("Fuehrerschein").getText());
+<<<<<<< HEAD
 						System.out.println("Personalnummer:    " + person1.getChild("Personalnummer").getText());
 						tempNachname = person1.getChild("Nachname").getText();
 						tempVorname = person1.getChild("Vorname").getText();
 						tempFuehrerschein = person1.getChild("Fuehrerschein").getText();
 						tempPersonalnummer = person1.getChild("Personalnummer").getText();
+=======
+						System.out.println("PersNr:            " + person1.getChild("Personalnummer").getText());
+>>>>>>> branch 'ohne_fxml' of https://github.com/nicolasdiehl/gitrepo.git
 						
 					}
 				}
