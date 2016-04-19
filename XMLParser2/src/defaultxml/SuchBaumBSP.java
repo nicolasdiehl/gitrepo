@@ -13,7 +13,11 @@ public class SuchBaumBSP
 {
 	static int personalnummer;
 	static SuchBaum baum;
-
+	String tempNachname;
+	String tempVorname;
+	String tempFuehrerschein;
+	String tempPersonalnummer;
+	
 	public void Suche(int suchzahl)
 	{
 		Scanner sc = new Scanner(System.in);
@@ -66,7 +70,12 @@ public class SuchBaumBSP
 						System.out.println("Nachname:          " + person1.getChild("Nachname").getText());
 						System.out.println("Vorname:           " + person1.getChild("Vorname").getText());
 						System.out.println("Fuehrerschein:     " + person1.getChild("Fuehrerschein").getText());
-						System.out.println("Personalnummer:            " + person1.getChild("Personalnummer").getText());
+						System.out.println("Personalnummer:    " + person1.getChild("Personalnummer").getText());
+						tempNachname = person1.getChild("Nachname").getText();
+						tempVorname = person1.getChild("Vorname").getText();
+						tempFuehrerschein = person1.getChild("Fuehrerschein").getText();
+						tempPersonalnummer = person1.getChild("Personalnummer").getText();
+						
 					}
 				}
 			}
@@ -84,5 +93,37 @@ public class SuchBaumBSP
 			System.out.println(" nicht gefunden.");
 		}
 		sc.close();
+	}
+
+	public String getTempNachname() {
+		return tempNachname;
+	}
+
+	public void setTempNachname(String tempNachname) {
+		this.tempNachname = tempNachname;
+	}
+
+	public String getTempVorname() {
+		return tempVorname;
+	}
+
+	public void setTempVorname(String tempVorname) {
+		this.tempVorname = tempVorname;
+	}
+
+	public String getTempFuehrerschein() {
+		return tempFuehrerschein;
+	}
+
+	public void setTempFuehrerschein(String tempFuehrerschein) {
+		this.tempFuehrerschein = tempFuehrerschein;
+	}
+
+	public String getTempPersonalnummer() {
+		return tempPersonalnummer;
+	}
+
+	public void setTempPersonalnummer(String tempPersonalnummer) {
+		this.tempPersonalnummer = tempPersonalnummer;
 	}
 }

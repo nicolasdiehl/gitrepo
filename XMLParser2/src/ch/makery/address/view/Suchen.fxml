@@ -32,9 +32,10 @@
             <TextField layoutX="494.0" layoutY="285.0" />
             <Label layoutX="274.0" layoutY="227.0" text="Person nach Personalnummer suchen" />
             <Label layoutX="533.0" layoutY="252.0" text="lineare Suche" />
-            <Button layoutX="390.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleZurueck" text="Zurück" />
-            <Button layoutX="287.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleSuchen" text="Suche" />
+            <Button layoutX="390.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleZurueck" text="Zurück" />
+            <Button layoutX="287.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleSuchen" text="Suche" />
             <Label layoutX="125.0" layoutY="252.0" text="binäre Suche" />
+            <TextField fx:id="searchTableFound" layoutX="45.0" layoutY="347.0" prefHeight="25.0" prefWidth="695.0" />
          </children>
       </AnchorPane>
    </children>

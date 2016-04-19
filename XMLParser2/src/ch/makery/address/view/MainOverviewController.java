@@ -28,7 +28,14 @@ public class MainOverviewController {
 	private TableColumn<Vehicle, String> typColumn;
 	@FXML
 	private TableColumn<Vehicle, String> zweckColumn;
-
+	@FXML
+	private TableView<Vehicle> statsTable; 
+	@FXML
+	private TableColumn<Vehicle, String> statsFahrzeug;
+	@FXML
+	private TableColumn<Vehicle, String> statsTyp;
+	@FXML
+	private TableColumn<Vehicle, String> statsAnzahl;
 	@FXML
 	private Label typLabel;
 	@FXML
@@ -162,8 +169,6 @@ public class MainOverviewController {
 		}
 	}
 
-	// new ERZEUGEN
-	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	@FXML
 	private void handleNewPerson() {
 		Person tempPerson = new Person();
@@ -224,27 +229,22 @@ public class MainOverviewController {
 		}
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//////////////////// handle
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Buchen!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 	@FXML
 	private void handleBuchenButton(ActionEvent event) throws IOException {
 		mainApp.Buchendialog(); // für die Hilfsklasse
 	}
-    public boolean isSuchenClicked() {
-        return suchenClicked;
-    }
-	@FXML
-    private void handleSuchenButton(ActionEvent event)throws IOException{
-    mainApp.Suchendialog(); // für die Hilfsklasse
-    suchenClicked = true;
-	} 
 
-	/**
-	 * Is called by the main application to give a reference back to itself.
-	 * 
-	 * @param mainApp
-	 */
+	public boolean isSuchenClicked() {
+		return suchenClicked;
+	}
+
+	@FXML
+
+	private void handleSuchenButton(ActionEvent event) throws IOException {
+		mainApp.Suchendialog(); // für die Hilfsklasse
+		suchenClicked = true;
+	}
+
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
 

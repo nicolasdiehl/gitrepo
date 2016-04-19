@@ -7,7 +7,6 @@ public class Buchen {
 	private final StringProperty nachname;
 	private final StringProperty personalnummer;
 	private final StringProperty fuehrerschein;
-	private final StringProperty ID;
 	private final StringProperty kennzeichen;
 	private final StringProperty typ;
 	private final StringProperty zweck;
@@ -19,7 +18,7 @@ public class Buchen {
 	 * Default constructor.
 	 */
 	public Buchen() {
-		this(null, null, null, null, null, null, null, null, null, null, null);
+		this(null, null, null, null, null, null, null, null, null, null);
 	}
 
 	/**
@@ -28,13 +27,12 @@ public class Buchen {
 	 * @param firstName
 	 * @param lastName
 	 */
-	public Buchen(String ID, String nachname, String vorname, String personalnummer, String fuehrerschein,
+	public Buchen(String nachname, String vorname, String personalnummer, String fuehrerschein,
 			String kennzeichen, String typ, String zweck, String von, String bis, String dauer) {
 		this.vorname = new SimpleStringProperty(vorname);
 		this.nachname = new SimpleStringProperty(nachname);
 		this.personalnummer = new SimpleStringProperty(personalnummer);
 		this.fuehrerschein = new SimpleStringProperty(fuehrerschein);
-		this.ID = new SimpleStringProperty(ID);
 		this.kennzeichen = new SimpleStringProperty(kennzeichen);
 		this.typ = new SimpleStringProperty(typ);
 		this.zweck = new SimpleStringProperty(zweck);
@@ -43,17 +41,6 @@ public class Buchen {
 		this.dauer = new SimpleStringProperty(dauer);
 	}
 
-	public String getID() {
-		return ID.get();
-	}
-
-	public void setID(String ID) {
-		this.ID.set(ID);
-	}
-
-	public StringProperty IDProperty() {
-		return ID;
-	}
 	public String getDauer() {
 		return dauer.get();
 	}

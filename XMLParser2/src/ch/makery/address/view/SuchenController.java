@@ -6,7 +6,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import ch.makery.address.MainApp;
 import defaultxml.SuchBaumBSP;
-import ch.makery.address.view.*;
 //
 public class SuchenController {
 	@FXML
@@ -14,8 +13,9 @@ public class SuchenController {
 	@FXML
 	private TableView<Vehicle> vehicleBookingTable;
 	@FXML
+	private TextField searchTableFound;
+	@FXML
 	private TextField searchTablePersNr;
-	private Suchen suchen;
 	private MainApp mainApp;
 	private boolean zurueckClicked = false;
 
@@ -29,7 +29,9 @@ public class SuchenController {
 		SuchBaumBSP suchbaum = new SuchBaumBSP();
 		int suchzahl = Integer.parseInt(searchTablePersNr.getText());
 		suchbaum.Suche(suchzahl);
-		mainApp.showMainOverview();
+		
+		searchTableFound.setText("Name: " + suchbaum.getTempNachname()+ ", " +suchbaum.getTempVorname()+"    Fuehrerschein: "
+		+suchbaum.getTempFuehrerschein()+"    Personalnummer: "+suchbaum.getTempPersonalnummer());
 	}
 
 	@FXML

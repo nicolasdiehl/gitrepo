@@ -110,15 +110,21 @@
                   <TableColumn prefWidth="60.0" text="Von" />
                   <TableColumn prefWidth="60.0" text="Bis" />
                   <TableColumn prefWidth="60.0" text="Dauer" />
-                  <TableColumn prefWidth="60.0" text="F-Schein" />
+                  <TableColumn prefWidth="64.0" text="F-Schein" />
               </columns>
             </TableView>
-            <Button layoutX="852.0" layoutY="164.0" mnemonicParsing="false" text="Berechne" />
+            <Button layoutX="852.0" layoutY="120.0" mnemonicParsing="false" text="Berechne" />
             <Button layoutX="851.0" layoutY="461.0" mnemonicParsing="false" text="Berechne " />
-            <TextField layoutX="810.0" layoutY="126.0" />
-            <TextField layoutX="810.0" layoutY="424.0" />
-            <Label layoutX="811.0" layoutY="95.0" text="Durchschnittliche Leihdauer" />
-            <Label layoutX="802.0" layoutY="396.0" text="Durchschnittliches Leihfahrzeug" />
+            <TextField layoutX="810.0" layoutY="81.0" />
+            <Label layoutX="792.0" layoutY="56.0" text="Durchschnittliche Nutzungsdauer" />
+            <Label layoutX="794.0" layoutY="155.0" text="Häufigste Ausgeliehene Fahrzeuge" />
+            <TableView fx:id="statsTable" layoutX="793.0" layoutY="193.0" prefHeight="200.0" prefWidth="175.0">
+               <columns>
+                  <TableColumn fx:id="statsFahrzeug" prefWidth="69.0" text="Fahrzeug" />
+                  <TableColumn fx:id="statsTyp" prefWidth="62.0" text="Typ" />
+                  <TableColumn fx:id="statsAnzahl" prefWidth="43.0" text="Anzahl" />
+               </columns>
+            </TableView>
          </children>
       </AnchorPane>
    </children>
