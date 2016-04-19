@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PersonListe>
+<<<<<<< HEAD
   <Person ID="1">
     <Nachname>Mueller</Nachname>
     <Vorname>Max</Vorname>
@@ -18,11 +19,14 @@
     <Fuehrerschein>B</Fuehrerschein>
     <Personalnummer>11123</Personalnummer>
   </Person>
+=======
+>>>>>>> refs/remotes/origin/ohne_fxml_jdom2versuch
   <Person ID="4">
     <Nachname>Reimer</Nachname>
     <Vorname>Rudi</Vorname>
-    <Fuehrerschein>B</Fuehrerschein>
+    <Fuehrerschein>C</Fuehrerschein>
     <Personalnummer>2323</Personalnummer>
+<<<<<<< HEAD
   </Person>
   <Person ID="5">
     <Nachname>Mueller</Nachname>
@@ -104,6 +108,8 @@
     <Vorname>sdsd</Vorname>
     <Fuehrerschein>sdsd</Fuehrerschein>
     <Personalnummer>sdsd</Personalnummer>
+=======
+>>>>>>> refs/remotes/origin/ohne_fxml_jdom2versuch
   </Person>
 </PersonListe>
 >>>>>>> refs/remotes/origin/ohne_fxml_jdom2versuch

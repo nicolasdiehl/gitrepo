@@ -1,38 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BookingListe>
   <Booking ID="1">
-    <Von>12.12.2015</Von>
-    <Bis>20.12.2015</Bis>
-    <Personalnummer>9901</Personalnummer>
-    <Kennzeichen>DA-CI101</Kennzeichen>
-    <Zweck>Bankraub</Zweck>
+    <Von>11:22 11.12.2018</Von>
+    <Bis>11:22 12.12.2018</Bis>
+    <Personalnummer>2323</Personalnummer>
+    <Kennzeichen>DA-XXXX</Kennzeichen>
+    <Zweck>Transport</Zweck>
   </Booking>
   <Booking ID="2">
-    <Von>12.02.2016</Von>
-    <Bis>20.12.2019</Bis>
-    <Personalnummer>9901</Personalnummer>
-    <Kennzeichen>DA-CO11</Kennzeichen>
-    <Zweck>Kaffefahrt</Zweck>
+    <Von>03:03 01.02.2020</Von>
+    <Bis>04:04 02.03.2021</Bis>
+    <Personalnummer>2323</Personalnummer>
+    <Kennzeichen>DA-CI101</Kennzeichen>
+    <Zweck>Stadtfahrt</Zweck>
   </Booking>
-    <Booking ID="3">
-    <Von>12.02.2016</Von>
-    <Bis>20.12.2019</Bis>
-    <Personalnummer>9901</Personalnummer>
-    <Kennzeichen>DA-CO11</Kennzeichen>
-    <Zweck>Kaffefahrt</Zweck>
-  </Booking>
-    <Booking ID="4">
-    <Von>12.02.2016</Von>
-    <Bis>20.12.2019</Bis>
-    <Personalnummer>9901</Personalnummer>
-    <Kennzeichen>DA-CO11</Kennzeichen>
-    <Zweck>Kaffefahrt</Zweck>
-  </Booking>
-    <Booking ID="5">
-    <Von>12.02.2016</Von>
-    <Bis>20.12.2019</Bis>
-    <Personalnummer>9901</Personalnummer>
-    <Kennzeichen>DA-CO11</Kennzeichen>
-    <Zweck>Kaffefahrt</Zweck>
+  <Booking ID="3">
+    <Von>09:08 07.06.2025</Von>
+    <Bis>10:09 08.07.2026</Bis>
+    <Personalnummer>2323</Personalnummer>
+    <Kennzeichen>DA-777</Kennzeichen>
+    <Zweck>Langstreckenfahrt</Zweck>
   </Booking>
 </BookingListe>

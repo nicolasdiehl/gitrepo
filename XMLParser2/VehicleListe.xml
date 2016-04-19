@@ -1,75 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <VehicleListe>
-  <Vehicle ID="101">
-    <Typ>Cityflitzer</Typ>
-    <Geliehen>false</Geliehen>
-    <Zweck>Stadtfahrt</Zweck>
-    <Kennzeichen>DA-CI100</Kennzeichen>
-  </Vehicle>
   <Vehicle ID="102">
     <Typ>Cityflitzer</Typ>
     <Geliehen>false</Geliehen>
-    <Zweck>Stadtfahrt</Zweck>
     <Kennzeichen>DA-CI101</Kennzeichen>
   </Vehicle>
-  <Vehicle ID="103">
-    <Typ>Limousine</Typ>
-    <Geliehen>false</Geliehen>
-    <Zweck>Ueberlandfahrt</Zweck>
-    <Kennzeichen>DA-LI100</Kennzeichen>
-  </Vehicle>
-  <Vehicle ID="104">
-    <Typ>Limousine</Typ>
-    <Geliehen>false</Geliehen>
-    <Zweck>Ueberlandfahrt</Zweck>
-    <Kennzeichen>DA-LI101</Kennzeichen>
-  </Vehicle>
-  <Vehicle ID="105">
-    <Typ>Transporter</Typ>
-    <Geliehen>false</Geliehen>
-    <Zweck>Transport</Zweck>
-    <Kennzeichen>DA-TR100</Kennzeichen>
-  </Vehicle>
-  <Vehicle ID="106">
-    <Typ>Transporter</Typ>
-    <Geliehen>false</Geliehen>
-    <Zweck>Transport</Zweck>
-    <Kennzeichen>DA-TR101</Kennzeichen>
-  </Vehicle>
-  <Vehicle ID="107">
-    <Typ>Kombi</Typ>
-    <Geliehen>false</Geliehen>
-    <Zweck>Transport</Zweck>
-    <Kennzeichen>DA-KO100</Kennzeichen>
-  </Vehicle>
-  <Vehicle ID="108">
-    <Typ>Kombi</Typ>
-    <Geliehen>false</Geliehen>
-    <Zweck>Transport</Zweck>
-    <Kennzeichen>DA-KO101</Kennzeichen>
-  </Vehicle>
-  <Vehicle ID="109">
+    <Vehicle ID="103">
     <Typ>Lkw</Typ>
     <Geliehen>false</Geliehen>
-    <Zweck>Transport</Zweck>
-    <Kennzeichen>DA-LK100</Kennzeichen>
+    <Kennzeichen>DA-XXXX</Kennzeichen>
   </Vehicle>
-  <Vehicle ID="110">
-    <Typ>Lkw</Typ>
-    <Geliehen>false</Geliehen>
-    <Zweck>Transport</Zweck>
-    <Kennzeichen>DA-LK101</Kennzeichen>
-  </Vehicle>
-  <Vehicle ID="111">
+    <Vehicle ID="104">
     <Typ>Limousine</Typ>
-    <Geliehen>true</Geliehen>
-    <Zweck>Nein</Zweck>
-    <Kennzeichen>124ED</Kennzeichen>
-  </Vehicle>
-  <Vehicle ID="112">
-    <Typ>Typ</Typ>
     <Geliehen>false</Geliehen>
-    <Zweck>Zweck</Zweck>
-    <Kennzeichen>Kennzeichen</Kennzeichen>
+    <Kennzeichen>DA-777</Kennzeichen>
   </Vehicle>
 </VehicleListe>
