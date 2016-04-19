@@ -8,16 +8,23 @@ import ch.makery.address.model.Person;
 import ch.makery.address.model.Vehicle;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.io.File;
 import java.io.IOException;
+import static java.util.Arrays.asList;
 
 public class Verwaltung {
 	public static void main(String[] args) throws JDOMException, IOException {
 		// Monate beginnen mit 0
 		// Tage im Monat beginnen mit 1
-		
+		//HandleXML.inXmlAnhängen(new File("BookingListe.xml"), new Booking());
+		String str = "08:01 06.07.2016";
+		System.out.println("zeile 24: str="+str);
+		Calendar cal = umrechnenZeit(str);
+		str = umrechnenZeit(cal);
+		System.out.println("zeile 27: str="+str);
 		Scanner scan = new Scanner(System.in);
 		String eingabe;
 		File personFile = new File("PersonListe.xml");
@@ -35,7 +42,7 @@ public class Verwaltung {
 			eingabe = scan.nextLine();
 			switch (eingabe) {
 			case "a":
-				einlesenBooking();
+				HandleXML.inXmlAnhängen(new File("BookingListe.xml"), einlesenBooking());
 				break;
 			case "0":
 				HandleXML.xmlZuArrayList(personFile);
@@ -56,7 +63,7 @@ public class Verwaltung {
 				HandleXML.inXmlAnhängen(bookingFile, einlesenBooking());
 				break;
 			case "6":
-				HandleXML.
+				//HandleXML.
 				break;
 			case "7":
 				
@@ -118,20 +125,37 @@ public class Verwaltung {
 	}
 
 	public static Vehicle einlesenVehicle() {
-
+		String idtemp=null;
+		try {
+			File file = new File("VehicleListe.xml");
+			idtemp = ConnectXML.createUniqueID(file);
+		} catch (JDOMException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String id = idtemp;
 		String typ = einlesenText("Typ: ");
 		String geliehen = "nein";
 		String kennzeichen = einlesenText("Kennzeichen: ");
-		Vehicle neuesVehicle = new Vehicle(typ, geliehen, kennzeichen);
+		Vehicle neuesVehicle = new Vehicle(id, typ, geliehen, kennzeichen);
 		return neuesVehicle;
 	}
 
 	public static Booking einlesenBooking() {
+		Booking newBooking=null;
+		String zweck = "";
 		String personalnummer = einlesenText("Personalnummer: ");
-		if (HandleXML.xmlUndNameUndWertLineareSucheZuArrayList(new File("PersonList.xml"), "Personalnummer", personalnummer) == null) {
+		if (HandleXML.xmlUndNameUndWerteLineareSucheZuArrayList(new File("PersonListe.xml"), "Personalnummer", new ArrayList<>(asList(personalnummer))).isEmpty()) {
 			System.out.println("Personalnummer nicht vorhanden!");
 		} else {
-			String zweck = einlesenText("Zweck: ((t)ransport, (s)tadtfahrt, (l)angstreckenfahrt)");
+			zweck = einlesenText("Zweck: ((t)ransport, (s)tadtfahrt, (l)angstreckenfahrt)");
+			switch (zweck) {
+				case "t": zweck= "Transport";
+				break;
+				case "s": zweck= "Stadtfahrt";
+				break;
+				case "l": zweck = "Langstreckenfahrt";
+			}
 			if (!hatFahrerlaubnis(personalnummer, zweck)) {
 				System.out.println("Abgelehnt!");
 			} else {
@@ -144,21 +168,17 @@ public class Verwaltung {
 				} else if (calBis.compareTo(calVon)<0){
 					System.out.println("Falsche Eingabe!");
 				} else {
-					ArrayList<Vehicle> auswahl = HandleXML.
+					String kennzeichen = HandleXML.sucheFreiesAuto(zweck, calVon, calBis);
+					if (kennzeichen.equals("")) {
+						System.out.println("kein passendes Fahrzeug gefunden, Fahrrad?");
+					} else {
+						// auto gefunden!
+						newBooking = new Booking("0", umrechnenZeit(calVon), umrechnenZeit(calBis), personalnummer, kennzeichen, zweck);
+					}
 				}
-					// checken ob es ein freies auto gibt
-					// checken ob das auto den richtigen typ hat
-					// calendar in string umwandeln
-				}
-				
 			}
 		}
-		
-
-		String kennzeichen = einlesenText("Kennzeichen: ");
-
-		Booking neueAusleihe = new Booking(von, bis, personalnummer, kennzeichen, zweck);
-		return neueAusleihe;
+		return newBooking;
 	}
 
 	/*public static String einlesenDatum(String eingabewert) {
@@ -205,18 +225,20 @@ public class Verwaltung {
 		}
 		return rueck;
 	}
-	
+	// 01234567891123456
+	// 13:48 11.06.2018
 	public static Calendar umrechnenZeit(String string) {
-		int stunde = string.charAt(0)+string.charAt(1);
-		int minute = string.charAt(3)+string.charAt(4);
-		int tag = string.charAt(6)+string.charAt(7);
-		int monat = string.charAt(9)+string.charAt(10);
-		int jahr = string.charAt(12)+string.charAt(13)+string.charAt(14)+string.charAt(15);
+		System.out.println("umrechnenZeitString: "+string);
+		int stunde = Integer.parseInt(""+string.charAt(0)+""+string.charAt(1));
+		int minute = Integer.parseInt(""+string.charAt(3)+""+string.charAt(4));
+		int tag = Integer.parseInt(""+string.charAt(6)+""+string.charAt(7));
+		int monat = Integer.parseInt(""+string.charAt(9)+""+string.charAt(10));
+		int jahr = Integer.parseInt(""+string.charAt(12)+""+string.charAt(13)+""+string.charAt(14)+""+string.charAt(15));
 		Calendar calendarObject = Calendar.getInstance();
 		calendarObject.set(Calendar.YEAR, jahr);
 		calendarObject.set(Calendar.MONTH, monat-1);
 		calendarObject.set(Calendar.DAY_OF_MONTH, tag);
-		calendarObject.set(Calendar.HOUR, stunde);
+		calendarObject.set(Calendar.HOUR_OF_DAY, stunde);
 		calendarObject.set(Calendar.MINUTE, minute);
 		//Date dateRepresentation = calendarObject.getTime();
 		return calendarObject; 
@@ -224,18 +246,26 @@ public class Verwaltung {
 	
 	public static String umrechnenZeit(Calendar calendar) {
 		String output;
-		int jahr = calendar.get(Calendar.YEAR);
-		int monat = calendar.get(Calendar.MONTH)+1;
-		int tag = calendar.get(Calendar.DAY_OF_MONTH);
-		int stunde = calendar.get(Calendar.HOUR);
-		int minute = calendar.get(Calendar.MINUTE);
+		String jahr = String.valueOf(calendar.get(Calendar.YEAR));
+		String monat = String.valueOf(calendar.get(Calendar.MONTH)+1);
+		String tag = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
+		String stunde = String.valueOf(calendar.get(Calendar.HOUR_OF_DAY));
+		String minute = String.valueOf(calendar.get(Calendar.MINUTE));
+		if (Integer.parseInt(monat)<10) monat = "0"+monat;
+		if (Integer.parseInt(tag)<10) tag = "0"+tag;
+		if (Integer.parseInt(stunde)<10) stunde = "0"+stunde;
+		if (Integer.parseInt(minute)<10) minute = "0"+minute;
 		output = stunde+":"+minute+" "+tag+"."+monat+"."+jahr;
-		return output; 
+		System.out.println("String umrechnenZeitCalendar "+output);
+		return output;
 	}
 	
 	public static boolean hatFahrerlaubnis(String personalnummer, String zweck) {
 		boolean ok = false;
-		ArrayList<Object> list = HandleXML.xmlUndNameUndWertLineareSucheZuArrayList(new File("PersonListe.xml"), "Personalnummer", personalnummer);
+		ArrayList<Object> list = HandleXML.xmlUndNameUndWerteLineareSucheZuArrayList(new File("PersonListe.xml"), "Personalnummer", new ArrayList<>(asList(personalnummer)));
+		if (list.isEmpty()) {
+			System.out.println("list is empty");
+		}
 		Person person = (Person) list.get(0);
 		String fs= person.getFuehrerschein();
 		if (!fs.equals("B")&&!fs.equals("C")) {

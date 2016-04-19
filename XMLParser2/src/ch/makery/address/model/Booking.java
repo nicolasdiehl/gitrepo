@@ -1,6 +1,12 @@
 package ch.makery.address.model;
 
 
+import java.io.File;
+import java.io.IOException;
+
+import org.jdom2.JDOMException;
+
+import defaultxml.ConnectXML;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -12,6 +18,7 @@ public class Booking {
     private final StringProperty personalnummer;
     private final StringProperty kennzeichen;
     private final StringProperty zweck;
+	private final StringProperty id;
     
   
 
@@ -19,11 +26,20 @@ public class Booking {
      * Default constructor.
      */
     public Booking() {
-        this(null, null, null, null, null);
+        this(null, null, null, null, null, null);
     }
 
-    public Booking(String von, String bis, String personalnummer, String kennzeichen, String zweck) {
-        this.von = new SimpleStringProperty(von);
+    public Booking(String id, String von, String bis, String personalnummer, String kennzeichen, String zweck) {
+		SimpleStringProperty tempid = null;
+		try {
+			File file = new File("BookingListe.xml");
+			tempid = new SimpleStringProperty(ConnectXML.createUniqueID(file));
+		} catch (JDOMException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.id = tempid;
+    	this.von = new SimpleStringProperty(von);
         this.bis = new SimpleStringProperty(bis);
         this.personalnummer = new SimpleStringProperty(personalnummer);
         this.kennzeichen = new SimpleStringProperty(kennzeichen);
@@ -80,7 +96,7 @@ public class Booking {
     }
     
     public String getZweck() {
-        return kennzeichen.get();
+        return zweck.get();
     }
 
     public void setZweck(String zweck) {
