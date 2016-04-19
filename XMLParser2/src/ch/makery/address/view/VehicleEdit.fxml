@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.VehicleEditDialogController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.VehicleEditController">
    <children>
       <AnchorPane>
          <children>
@@ -21,7 +21,6 @@
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
@@ -29,22 +28,17 @@
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font></Label>
-                        <Label text="Zweck" GridPane.rowIndex="1">
+                        <Label text="Kennzeichen" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font></Label>
-                        <Label text="Kennzeichen" GridPane.rowIndex="2">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font></Label>
-                        <Label text="Geliehen" GridPane.rowIndex="3">
+                        <Label text="Geliehen" GridPane.rowIndex="2">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font></Label>
                         <TextField fx:id="typField" GridPane.columnIndex="1" />
-                        <TextField fx:id="zweckField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField fx:id="kennzeichenField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="geliehenField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="kennzeichenField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="geliehenField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                   <Button layoutX="256.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleOk" text="OK" />

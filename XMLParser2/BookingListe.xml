@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BookingListe>
+  <Booking ID="1">
+    <Von>12.12.2015</Von>
+    <Bis>20.12.2015</Bis>
+    <Personalnummer>9901</Personalnummer>
+    <Kennzeichen>DA-CI101</Kennzeichen>
+    <Zweck>Bankraub</Zweck>
+  </Booking>
+  <Booking ID="2">
+    <Von>12.02.2016</Von>
+    <Bis>20.12.2019</Bis>
+    <Personalnummer>9901</Personalnummer>
+    <Kennzeichen>DA-CO11</Kennzeichen>
+    <Zweck>Kaffefahrt</Zweck>
+  </Booking>
+    <Booking ID="3">
+    <Von>12.02.2016</Von>
+    <Bis>20.12.2019</Bis>
+    <Personalnummer>9901</Personalnummer>
+    <Kennzeichen>DA-CO11</Kennzeichen>
+    <Zweck>Kaffefahrt</Zweck>
+  </Booking>
+    <Booking ID="4">
+    <Von>12.02.2016</Von>
+    <Bis>20.12.2019</Bis>
+    <Personalnummer>9901</Personalnummer>
+    <Kennzeichen>DA-CO11</Kennzeichen>
+    <Zweck>Kaffefahrt</Zweck>
+  </Booking>
+    <Booking ID="5">
+    <Von>12.02.2016</Von>
+    <Bis>20.12.2019</Bis>
+    <Personalnummer>9901</Personalnummer>
+    <Kennzeichen>DA-CO11</Kennzeichen>
+    <Zweck>Kaffefahrt</Zweck>
+  </Booking>
+</BookingListe>

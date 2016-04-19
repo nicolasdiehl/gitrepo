@@ -48,8 +48,8 @@ public class RootLayoutController {
         File file = fileChooser.showOpenDialog(mainApp.getPrimaryStage());
 
         if (file != null) {
-            mainApp.loadPersonDataFromFile(file);
-            mainApp.loadVehicleDataFromFile(file);
+            //mainApp.loadPersonDataFromFile(file);
+            //mainApp.loadVehicleDataFromFile(file);
         }
     }
 

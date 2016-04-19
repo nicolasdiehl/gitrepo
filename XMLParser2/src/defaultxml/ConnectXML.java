@@ -10,11 +10,10 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
 public class ConnectXML {
-	   public static String createUniqueID(String filename) throws JDOMException, IOException{
+	   public static String createUniqueID(File file) throws JDOMException, IOException{
 		      try {  
-			         File inputFile = new File(filename);
 			         SAXBuilder saxBuilder = new SAXBuilder();
-			         Document document = saxBuilder.build(inputFile);
+			         Document document = saxBuilder.build(file);
 			         Element classElement = document.getRootElement();
 			         List<Element> Liste = classElement.getChildren();
 			         int idInt=0;

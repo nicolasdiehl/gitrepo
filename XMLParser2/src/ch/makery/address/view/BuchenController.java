@@ -12,6 +12,7 @@ import ch.makery.address.MainApp;
 
 //
 public class BuchenController {
+<<<<<<< HEAD
 	@FXML
 	private TableView<Person> personBookingTable;
 	@FXML
@@ -83,6 +84,49 @@ public class BuchenController {
 	private Label verbleibendBooking;
 	@FXML
 	private Label kennzeichenBooking;
+=======
+	 @FXML
+	 private TableView<Person> personBookingTable;
+	 @FXML
+	 private TableView<Vehicle> vehicleBookingTable;
+	 @FXML
+	 private TableColumn<Person,String>vorNameColumn;
+	 @FXML
+	 private TableColumn<Person,String>nachNameColumn;
+	 @FXML
+	 private TableColumn<Person,String>personalnummerColumn;
+	 @FXML
+	 private TableColumn<Person,String>fuehrerscheinColumn;
+	 //Fahrzeug @FXML Columns
+	 @FXML
+	 private TableColumn<Vehicle,String>zweckColumn;
+	 @FXML
+	 private TableColumn<Vehicle,String>kennzeichenColumn;
+	 @FXML
+	 private TableColumn<Vehicle,String>typColumn;
+	 @FXML
+	 private TableColumn<Vehicle,String>geliehenColumn;
+	 
+	 private MainApp mainApp;
+	 
+	 public  BuchenController() {	    	
+	    }
+	 
+	 @FXML
+	    private void initialize() {
+	        // Initialize the person table with the two columns.
+	        vorNameColumn.setCellValueFactory(cellData -> cellData.getValue().vornameProperty());
+	        nachNameColumn.setCellValueFactory(cellData -> cellData.getValue().nachnameProperty());
+	        personalnummerColumn.setCellValueFactory(cellData -> cellData.getValue().personalnummerProperty());
+	        fuehrerscheinColumn.setCellValueFactory(cellData -> cellData.getValue().fuehrerscheinProperty());
+	        typColumn.setCellValueFactory(cellData -> cellData.getValue().typProperty());
+	        kennzeichenColumn.setCellValueFactory(cellData -> cellData.getValue().kennzeichenProperty());
+	
+	        }
+	
+	 public void setMainApp(MainApp mainApp) {
+	        this.mainApp = mainApp;
+>>>>>>> refs/remotes/origin/ohne_fxml_jdom2versuch
 
 	private Buchen buchen;
 	private MainApp mainApp;

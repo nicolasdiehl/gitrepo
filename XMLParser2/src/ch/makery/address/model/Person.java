@@ -1,5 +1,12 @@
 package ch.makery.address.model;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.jdom2.JDOMException;
+
+import defaultxml.ConnectXML;
+import defaultxml.HandleXML;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -9,7 +16,7 @@ import javafx.beans.property.StringProperty;
  * 
  */
 public class Person {
-
+	private final StringProperty id;
 	private final StringProperty vorname;
 	private final StringProperty nachname;
 	private final StringProperty personalnummer;
@@ -19,7 +26,7 @@ public class Person {
 	 * Default constructor.
 	 */
 	public Person() {
-		this(null, null, null, null);
+		this(null, null, null, null, null);
 	}
 
 	/**
@@ -28,7 +35,16 @@ public class Person {
 	 * @param firstName
 	 * @param lastName
 	 */
-	public Person(String vorname, String nachname, String fuehrerschein, String personalnummer) {
+	public Person(String id, String vorname, String nachname, String fuehrerschein, String personalnummer) {
+		SimpleStringProperty tempid = null;
+		try {
+			File file = new File("PersonListe.xml");
+			tempid = new SimpleStringProperty(ConnectXML.createUniqueID(file));
+		} catch (JDOMException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.id = tempid;
 		this.vorname = new SimpleStringProperty(vorname);
 		this.nachname = new SimpleStringProperty(nachname);
 		this.personalnummer = new SimpleStringProperty(personalnummer);
@@ -37,6 +53,18 @@ public class Person {
 		// SimpleObjectProperty<LocalDate>(LocalDate.of(1999, 2, 21));
 	}
 
+	public String getId() {
+		return id.get();
+	}
+
+	public void setId(String id) {
+		this.id.set(id);
+	}
+
+	public StringProperty idProperty() {
+		return id;
+	}
+	
 	public String getVorname() {
 		return vorname.get();
 	}
