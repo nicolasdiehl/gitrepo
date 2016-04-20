@@ -64,7 +64,7 @@ public class Person {
 	public StringProperty idProperty() {
 		return id;
 	}
-	
+
 	public String getVorname() {
 		return vorname.get();
 	}
@@ -114,3 +114,4 @@ public class Person {
 	}
 
 }
+ 

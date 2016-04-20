@@ -16,12 +16,6 @@
               <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Close" />
                   <CheckMenuItem mnemonicParsing="false" onAction="#handleSaveAs" text="Speichern unter" />
                   <CheckMenuItem mnemonicParsing="false" onAction="#handleOpen" text="Öffnen" />
-                  <CheckMenuItem mnemonicParsing="false" onAction="#handleNew" text="Unspecified Action" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

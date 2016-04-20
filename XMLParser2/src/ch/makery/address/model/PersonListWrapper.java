@@ -5,12 +5,11 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
-@XmlRootElement(name = "persons")
+@XmlRootElement(name = "PersonListe")
 public class PersonListWrapper {
-
     private List<Person> persons;
 
-    @XmlElement(name = "person")
+    @XmlElement(name = "Person")
     public List<Person> getPersons() {
         return persons;
     }

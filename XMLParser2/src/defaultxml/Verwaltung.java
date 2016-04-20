@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 import org.jdom2.JDOMException;
 
-import ch.makery.address.model.Booking;
+import ch.makery.address.model.Buchen;
 import ch.makery.address.model.Person;
 import ch.makery.address.model.Vehicle;
 
@@ -19,7 +19,6 @@ public class Verwaltung {
 	public static void main(String[] args) throws JDOMException, IOException {
 		// Monate beginnen mit 0
 		// Tage im Monat beginnen mit 1
-		//HandleXML.inXmlAnhängen(new File("BookingListe.xml"), new Booking());
 		String str = "08:01 06.07.2016";
 		System.out.println("zeile 24: str="+str);
 		Calendar cal = umrechnenZeit(str);
@@ -29,7 +28,7 @@ public class Verwaltung {
 		String eingabe;
 		File personFile = new File("PersonListe.xml");
 		File vehicleFile = new File("VehicleListe.xml");
-		File bookingFile = new File("BookingListe.xml");
+		File buchenFile = new File("Buchen.xml");
 		//XMLMaker.createXML();
 		System.out.println("Was darfs denn heute sein?");
 		while (true) {
@@ -42,7 +41,7 @@ public class Verwaltung {
 			eingabe = scan.nextLine();
 			switch (eingabe) {
 			case "a":
-				HandleXML.inXmlAnhängen(new File("BookingListe.xml"), einlesenBooking());
+				HandleXML.inXmlAnhängen(new File("Buchen.xml"), einlesenBuchen());
 				break;
 			case "0":
 				HandleXML.xmlZuArrayList(personFile);
@@ -51,7 +50,7 @@ public class Verwaltung {
 				HandleXML.xmlZuArrayList(vehicleFile);
 				break;
 			case "2":
-				HandleXML.xmlZuArrayList(bookingFile);
+				HandleXML.xmlZuArrayList(buchenFile);
 				break;
 			case "3":
 				HandleXML.inXmlAnhängen(personFile, einlesenPerson());
@@ -60,7 +59,7 @@ public class Verwaltung {
 				HandleXML.inXmlAnhängen(vehicleFile, einlesenVehicle());
 				break;
 			case "5":
-				HandleXML.inXmlAnhängen(bookingFile, einlesenBooking());
+				HandleXML.inXmlAnhängen(buchenFile, einlesenBuchen());
 				break;
 			case "6":
 				//HandleXML.
@@ -101,12 +100,8 @@ public class Verwaltung {
 		ConnectXMLAusleihe.einfügenAusleihvorgang(tempAusleihe.getKennzeichen(), tempAusleihe.getPersonID(),
 				tempAusleihe.getLeihzweck(), tempAusleihe.getLeihbeginn(), tempAusleihe.getLeihende());
 		ConnectXMLAusleihe.readAusleihe();
-
-<<<<<<< HEAD
-=======
 		SuchBaumBSP.Suche();*/
 		
->>>>>>> refs/remotes/origin/ohne_fxml_jdom2versuch
 	}
 
 	public static Person einlesenPerson() {
@@ -144,8 +139,8 @@ public class Verwaltung {
 		return neuesVehicle;
 	}
 
-	public static Booking einlesenBooking() {
-		Booking newBooking=null;
+	public static Buchen einlesenBuchen() {
+		Buchen newBuchen=null;
 		String zweck = "";
 		String personalnummer = einlesenText("Personalnummer: ");
 		if (HandleXML.xmlUndNameUndWerteLineareSucheZuArrayList(new File("PersonListe.xml"), "Personalnummer", new ArrayList<>(asList(personalnummer))).isEmpty()) {
@@ -176,12 +171,12 @@ public class Verwaltung {
 						System.out.println("kein passendes Fahrzeug gefunden, Fahrrad?");
 					} else {
 						// auto gefunden!
-						newBooking = new Booking("0", umrechnenZeit(calVon), umrechnenZeit(calBis), personalnummer, kennzeichen, zweck);
+						newBuchen = new Buchen("vn", "nn", personalnummer, "fs", kennzeichen, "tp", zweck, umrechnenZeit(calVon), umrechnenZeit(calBis), "dr");
 					}
 				}
 			}
 		}
-		return newBooking;
+		return newBuchen;
 	}
 
 	/*public static String einlesenDatum(String eingabewert) {

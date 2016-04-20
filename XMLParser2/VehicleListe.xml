@@ -1,18 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<VehicleListe>
-  <Vehicle ID="102">
-    <Typ>Cityflitzer</Typ>
-    <Geliehen>false</Geliehen>
-    <Kennzeichen>DA-CI101</Kennzeichen>
-  </Vehicle>
-    <Vehicle ID="103">
-    <Typ>Lkw</Typ>
-    <Geliehen>false</Geliehen>
-    <Kennzeichen>DA-XXXX</Kennzeichen>
-  </Vehicle>
-    <Vehicle ID="104">
-    <Typ>Limousine</Typ>
-    <Geliehen>false</Geliehen>
-    <Kennzeichen>DA-777</Kennzeichen>
-  </Vehicle>
-</VehicleListe>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<vehicles>
+    <vehicle>
+        <geliehen>nein</geliehen>
+        <id>105</id>
+        <kennzeichen>DA-CI101</kennzeichen>
+        <typ>Cityflitzer</typ>
+    </vehicle>
+    <vehicle>
+        <geliehen>nein</geliehen>
+        <id>105</id>
+        <kennzeichen>DA-XXXX</kennzeichen>
+        <typ>Lkw</typ>
+    </vehicle>
+    <vehicle>
+        <geliehen>ja</geliehen>
+        <id>105</id>
+        <kennzeichen>DA-777</kennzeichen>
+        <typ>Limousine</typ>
+    </vehicle>
+</vehicles>

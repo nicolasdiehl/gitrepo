@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.RootLayoutController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleSave" text="Speichern" />
+              <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Close" />
+                  <CheckMenuItem mnemonicParsing="false" onAction="#handleSaveAs" text="Speichern unter" />
+                  <CheckMenuItem mnemonicParsing="false" onAction="#handleOpen" text="Öffnen" />
+                  <CheckMenuItem mnemonicParsing="false" onAction="#handleNew" text="Unspecified Action" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <effect>
+      <Lighting diffuseConstant="1.84" specularConstant="0.25" specularExponent="13.02">
+         <bumpInput>
+            <Shadow />
+         </bumpInput>
+         <light>
+            <Light.Distant color="#d2e8c5" />
+         </light>
+      </Lighting>
+   </effect>
+</BorderPane>

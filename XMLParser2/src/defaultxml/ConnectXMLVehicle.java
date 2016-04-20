@@ -14,8 +14,6 @@ import org.jdom2.JDOMException;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-import ch.makery.address.model.Vehicle;
-
 public class ConnectXMLVehicle extends ConnectXML{
 
 	public static List<Element> readVehicleListe(){
@@ -48,7 +46,7 @@ public class ConnectXMLVehicle extends ConnectXML{
 		return vehicleList;
 	}
 
-	public static void einfügenVehicle(String typ, String kennzeichen, String geliehen)
+	public static void einfügenVehicle(String typ, boolean geliehen, String zweck, String kennzeichen)
 			throws JDOMException{
 		try {
 			File inputFile = new File("VehicleListe.xml"); // Zugriff auf
@@ -56,19 +54,22 @@ public class ConnectXMLVehicle extends ConnectXML{
 			SAXBuilder saxBuilder = new SAXBuilder();
 			Document document = saxBuilder.build(inputFile);
 
-			String tempID= createUniqueID("VehicleListe.xml");
+			String tempID= createUniqueID(new File("VehicleListe.xml"));
 			Element neuesVehicle= new Element ("Vehicle");
 			neuesVehicle.setAttribute(new Attribute ("ID", tempID));
 			Element neuerTyp= new Element ("Typ");
 			neuerTyp.setText(typ);
 			Element neuesGeliehen= new Element ("Geliehen");
 			neuesGeliehen.setText(Objects.toString(geliehen));
+			Element neuerZweck= new Element ("Zweck");
+			neuerZweck.setText(zweck);
 			Element neuesKennzeichen= new Element ("Kennzeichen");
 			neuesKennzeichen.setText(kennzeichen);
 
 			neuesVehicle.addContent(neuerTyp);
-			neuesVehicle.addContent(neuesKennzeichen);	
 			neuesVehicle.addContent(neuesGeliehen);
+			neuesVehicle.addContent(neuerZweck);
+			neuesVehicle.addContent(neuesKennzeichen);		         
 
 			document.getRootElement().addContent(neuesVehicle);
 
@@ -82,40 +83,6 @@ public class ConnectXMLVehicle extends ConnectXML{
 		}	
 	}  
 
-	public static void einfügenVehicle(Vehicle vehicle)
-			throws JDOMException{
-		try {
-			File inputFile = new File("VehicleListe.xml"); // Zugriff auf
-			// XML Datei
-			SAXBuilder saxBuilder = new SAXBuilder();
-			Document document = saxBuilder.build(inputFile);
-
-			String tempID= createUniqueID("VehicleListe.xml");
-			Element neuesVehicle= new Element ("Vehicle");
-			neuesVehicle.setAttribute(new Attribute ("ID", tempID));
-			Element neuerTyp= new Element ("Typ");
-			neuerTyp.setText(vehicle.getTyp());
-			Element neuesKennzeichen= new Element ("Kennzeichen");
-			neuesKennzeichen.setText(vehicle.getKennzeichen());
-			Element neuesGeliehen= new Element ("Geliehen");
-			neuesGeliehen.setText(Objects.toString(vehicle.getGeliehen()));
-
-			neuesVehicle.addContent(neuerTyp);
-			neuesVehicle.addContent(neuesKennzeichen);		 
-			neuesVehicle.addContent(neuesGeliehen);
-
-			document.getRootElement().addContent(neuesVehicle);
-
-			XMLOutputter xmlOutput = new XMLOutputter();
-
-			// display ml
-			xmlOutput.setFormat(Format.getPrettyFormat());
-			xmlOutput.output(document, new FileWriter(inputFile)); 
-		}catch(IOException e){
-			e.printStackTrace();
-		}	
-	}  
-	
 	public static void sucheTyp() {
 		String suchtyp = "";
 		Scanner scan = new Scanner(System.in);

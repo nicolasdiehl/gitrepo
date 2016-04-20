@@ -12,7 +12,7 @@ import org.jdom2.output.XMLOutputter;
 
 import ch.makery.address.model.Person;
 import ch.makery.address.model.Vehicle;
-import ch.makery.address.model.Booking;
+import ch.makery.address.model.Buchen;
 
 import org.jdom2.Attribute;
 import org.jdom2.Document;
@@ -49,7 +49,7 @@ public class HandleXML extends ConnectXML {
 				System.out.println("");
 				if (rootElement.getName().equals("PersonListe")) fArray.add(new Person(tempWerte.get(0),tempWerte.get(0),tempWerte.get(1),tempWerte.get(2), tempWerte.get(3)));
 				else if (rootElement.getName().equals("VehicleListe")) fArray.add(new Vehicle(einzelnesElementIdWert, tempWerte.get(0),tempWerte.get(1),tempWerte.get(2)));
-				else fArray.add(new Booking("0", tempWerte.get(0), tempWerte.get(1), tempWerte.get(2), tempWerte.get(3), tempWerte.get(4)));
+				else fArray.add(new Buchen(tempWerte.get(0), tempWerte.get(1), tempWerte.get(2), tempWerte.get(3), tempWerte.get(4), tempWerte.get(5), tempWerte.get(6), tempWerte.get(7), tempWerte.get(8), tempWerte.get(9)));
 			}
 		} catch (JDOMException e) {
 			e.printStackTrace();
@@ -84,7 +84,7 @@ public class HandleXML extends ConnectXML {
 				System.out.println("");
 				if (rootElement.getName().equals("PersonListe")) newItem = new Person(tempWerte.get(0),tempWerte.get(0),tempWerte.get(1),tempWerte.get(2), tempWerte.get(3));
 				else if (rootElement.getName().equals("VehicleListe")) newItem = new Vehicle(id, tempWerte.get(0),tempWerte.get(1),tempWerte.get(2));
-				else  newItem = new Booking("0", tempWerte.get(0), tempWerte.get(1), tempWerte.get(2), tempWerte.get(3), tempWerte.get(4));
+				else  newItem = new Buchen(tempWerte.get(0), tempWerte.get(1), tempWerte.get(2), tempWerte.get(3), tempWerte.get(4), tempWerte.get(5), tempWerte.get(6), tempWerte.get(7), tempWerte.get(8), tempWerte.get(9));
 			}
 		}
 	} catch (JDOMException e) {
@@ -119,8 +119,10 @@ public class HandleXML extends ConnectXML {
 		System.out.println("");
 		if (rootElement.getName().equals("PersonListe")) newItem = new Person(einzelnesElementIdWert,tempWerte.get(0),tempWerte.get(1),tempWerte.get(2), tempWerte.get(3));
 		else if (rootElement.getName().equals("VehicleListe")) newItem = new Vehicle(einzelnesElementIdWert, tempWerte.get(0),tempWerte.get(1),tempWerte.get(2));
-		else  {newItem = new Booking(einzelnesElementIdWert, tempWerte.get(0), tempWerte.get(1), tempWerte.get(2), tempWerte.get(3), tempWerte.get(4));
-		System.out.println("zeile 123: einzelnesElementIdWert+tempWerte.get(0)+tempWerte.get(1)+tempWerte.get(2)+tempWerte.get(3)+tempWerte.get(4)="+einzelnesElementIdWert+tempWerte.get(0)+tempWerte.get(1)+tempWerte.get(2)+tempWerte.get(3)+tempWerte.get(4));}
+		else  {
+			newItem = new Buchen(tempWerte.get(0), tempWerte.get(1), tempWerte.get(2), tempWerte.get(3), tempWerte.get(4), tempWerte.get(5), tempWerte.get(6), tempWerte.get(7), tempWerte.get(8), tempWerte.get(9));
+			System.out.println("zeile 123: einzelnesElementIdWert+tempWerte.get(0)+tempWerte.get(1)+tempWerte.get(2)+tempWerte.get(3)+tempWerte.get(4)="+einzelnesElementIdWert+tempWerte.get(0)+tempWerte.get(1)+tempWerte.get(2)+tempWerte.get(3)+tempWerte.get(4));
+			}
 	} catch (JDOMException e) {
 		e.printStackTrace();
 	} catch (IOException ioe) {
@@ -203,26 +205,26 @@ public class HandleXML extends ConnectXML {
 				}
 				else {
 					System.out.println("testo!");
-					einzelnesElement = new Element("Booking");
+					einzelnesElement = new Element("Buchen");
 					einzelnesElement.setAttribute(new Attribute("ID", newID));
 					einzelnesBodenelement = new Element("Von");
-					newValue = ((Booking)objekt).getVon();
+					newValue = ((Buchen)objekt).getVon();
 					einzelnesBodenelement.setText(newValue);
 					einzelnesElement.addContent(einzelnesBodenelement);
 					einzelnesBodenelement = new Element("Bis");
-					newValue = ((Booking)objekt).getBis();
+					newValue = ((Buchen)objekt).getBis();
 					einzelnesBodenelement.setText(newValue);
 					einzelnesElement.addContent(einzelnesBodenelement);
 					einzelnesBodenelement = new Element("Personalnummer");
-					newValue = ((Booking)objekt).getPersonalnummer();
+					newValue = ((Buchen)objekt).getPersonalnummer();
 					einzelnesBodenelement.setText(newValue);
 					einzelnesElement.addContent(einzelnesBodenelement);
 					einzelnesBodenelement = new Element("Kennzeichen");
-					newValue = ((Booking)objekt).getKennzeichen();
+					newValue = ((Buchen)objekt).getKennzeichen();
 					einzelnesBodenelement.setText(newValue);
 					einzelnesElement.addContent(einzelnesBodenelement);
 					einzelnesBodenelement = new Element("Zweck");
-					newValue = ((Booking)objekt).getZweck();
+					newValue = ((Buchen)objekt).getZweck();
 					einzelnesBodenelement.setText(newValue);
 					einzelnesElement.addContent(einzelnesBodenelement);
 				}
@@ -317,8 +319,8 @@ public class HandleXML extends ConnectXML {
 			ArrayList<Object> typListe = xmlUndNameUndWerteLineareSucheZuArrayList(new File("VehicleListe.xml"), "Typ", zuSuchen); //				
 			// für jedes element der gefundenen vehikeln
 			for (int i=0;i < typListe.size(); i++) {
-				// erstell ein array aus booking objekten, das tempA heißt und kennzeichen wie ein element der liste fahrzeuge hat 
-				ArrayList<Object> tempA = xmlUndNameUndWerteLineareSucheZuArrayList(new File("BookingListe.xml"), "Kennzeichen", new ArrayList<>(asList(((Vehicle) typListe.get(i)).getKennzeichen())));
+				// erstell ein array aus buchen objekten, das tempA heißt und kennzeichen wie ein element der liste fahrzeuge hat 
+				ArrayList<Object> tempA = xmlUndNameUndWerteLineareSucheZuArrayList(new File("BuchenListe.xml"), "Kennzeichen", new ArrayList<>(asList(((Vehicle) typListe.get(i)).getKennzeichen())));
 				if (tempA.isEmpty()) {
 					// gehe direkt über los und ziehe 4000 € ein
 					// gib die id des autos zurück
@@ -327,8 +329,8 @@ public class HandleXML extends ConnectXML {
 					break;
 				} else {
 					for (int j=0; j<tempA.size();j++) {
-						Calendar von = Verwaltung.umrechnenZeit(((Booking)tempA.get(j)).getVon());
-						Calendar bis = Verwaltung.umrechnenZeit(((Booking)tempA.get(j)).getBis());
+						Calendar von = Verwaltung.umrechnenZeit(((Buchen)tempA.get(j)).getVon());
+						Calendar bis = Verwaltung.umrechnenZeit(((Buchen)tempA.get(j)).getBis());
 						  // neuVon>=von              &&neuBis<=bis || 
 						if ((neuVon.compareTo(von)>=0)&&neuBis.compareTo(bis)<=0 ||
 						  // neuVon>=von              &&neuVon<=bis || 
@@ -436,7 +438,7 @@ public class HandleXML extends ConnectXML {
 			}
 			break;
 		case "b":
-			file = new File("BookingListe.xml");
+			file = new File("BuchenListe.xml");
 			System.out.println("Suchen Sie eine Personalnummer(f) oder das Kennzeichen(k)?");
 			inputB = scan.nextLine();
 			switch (inputB) {

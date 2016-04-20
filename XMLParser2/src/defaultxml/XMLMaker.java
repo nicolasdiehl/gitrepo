@@ -17,8 +17,8 @@ class XMLMaker {
     Document document = new Document(typListe);  
 
     Element vehicle = new Element("Vehicle");  
-    File file = new File("VehicleList.xml");
-	String tempID= ConnectXML.createUniqueID(file);
+
+	String tempID= ConnectXML.createUniqueID(new File("VehicleListe.xml"));
 
     vehicle.setAttribute(new Attribute("ID", tempID));
     vehicle.addContent(new Element("Typ").setText("Transporter"));  // gefundene Ergebnisse müssen hier rein
@@ -33,6 +33,6 @@ class XMLMaker {
     xmlOutput.output(document, System.out);  
 
     xmlOutput.setFormat(Format.getPrettyFormat());  
-    xmlOutput.output(document, new FileWriter("C:\\Test.xml",true));
+    xmlOutput.output(document, new FileWriter("D:\\Test.xml",true));
 	}
 }

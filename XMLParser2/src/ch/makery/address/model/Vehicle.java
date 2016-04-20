@@ -12,12 +12,12 @@ import javafx.beans.property.StringProperty;
 
 
 public class Vehicle {
-	
+
 	private final StringProperty id;
     private final StringProperty typ;
     private final StringProperty geliehen;
     private final StringProperty kennzeichen;
-  
+
 
     /**
      * Default constructor.
@@ -45,7 +45,7 @@ public class Vehicle {
     	this.typ = new SimpleStringProperty(typ);
         this.geliehen = new SimpleStringProperty(geliehen);
         this.kennzeichen = new SimpleStringProperty(kennzeichen);
-       
+
     }
 
 	public String getId() {
@@ -59,7 +59,7 @@ public class Vehicle {
 	public StringProperty idProperty() {
 		return id;
 	}
-    
+
     public String getKennzeichen() {
         return kennzeichen.get();
     }
@@ -95,4 +95,4 @@ public class Vehicle {
     public StringProperty geliehenProperty() {
         return geliehen;
     }
-}
+} 

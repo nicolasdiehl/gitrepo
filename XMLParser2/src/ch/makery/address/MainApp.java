@@ -20,13 +20,9 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-import ch.makery.address.model.Buchen;
-import ch.makery.address.model.Person;
-import ch.makery.address.model.PersonListWrapper;
+import ch.makery.address.model.*;
 import ch.makery.address.model.Vehicle;
-import ch.makery.address.model.VehicleListWrapper;
 import ch.makery.address.view.*;
-import ch.makery.address.model.Uebersicht;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -67,7 +63,7 @@ public class MainApp extends Application {
 				if (!fuesch.equals("B") && !fuesch.equals("C"))
 					fuesch = "nein";
 				String pen = person.getChild("Personalnummer").getText();
-				personData.add(new Person(vorn, nachn, fuesch, pen));
+				personData.add(new Person("", vorn, nachn, fuesch, pen));
 			}
 		} catch (JDOMException e) {
 			e.printStackTrace();
@@ -86,7 +82,6 @@ public class MainApp extends Application {
 			for (int temp = 0; temp < liste.size(); temp++) {
 				Element vehicle = liste.get(temp);
 				String tp = vehicle.getChild("Typ").getText();
-				String zw = vehicle.getChild("Zweck").getText();
 				String gl = vehicle.getChild("Geliehen").getText();
 				if (gl.equals("false")) {
 					gl = "nein";
@@ -94,7 +89,7 @@ public class MainApp extends Application {
 					gl = "ja";
 				}
 				String ke = vehicle.getChild("Kennzeichen").getText();
-				vehicleData.add(new Vehicle(tp, zw, gl, ke));
+				vehicleData.add(new Vehicle("", tp, gl, ke));
 			}
 		} catch (JDOMException e) {
 			e.printStackTrace();
@@ -176,8 +171,8 @@ public class MainApp extends Application {
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("AddressApp");
-		booking = new Buchen();// meiselbach
-								// way!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		booking = new Buchen();
+		
 		initRootLayout();
 
 		showMainOverview();
@@ -353,7 +348,7 @@ public class MainApp extends Application {
 		}
 	}
 
-	public void savePersonDataToFile(File file) {
+	public void savePersonDataToFile(File file) {//file identisch mit vehicle save???
 		try {
 			JAXBContext context = JAXBContext.newInstance(PersonListWrapper.class);
 			Marshaller m = context.createMarshaller();
@@ -441,7 +436,7 @@ public class MainApp extends Application {
 			m.marshal(wrapper, file);
 
 			// Save the file path to the registry.
-			setPersonFilePath(file);
+			setVehicleFilePath(file);
 		} catch (Exception e) { // catches ANY exception
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error");

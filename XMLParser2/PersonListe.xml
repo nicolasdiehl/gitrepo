@@ -1,115 +1,73 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<PersonListe>
-<<<<<<< HEAD
-  <Person ID="1">
-    <Nachname>Mueller</Nachname>
-    <Vorname>Max</Vorname>
-    <Fuehrerschein>B</Fuehrerschein>
-    <Personalnummer>9901</Personalnummer>
-  </Person>
-  <Person ID="2">
-    <Nachname>Schmidt</Nachname>
-    <Vorname>Lina</Vorname>
-    <Fuehrerschein>C</Fuehrerschein>
-    <Personalnummer>9902</Personalnummer>
-  </Person>
-  <Person ID="3">
-    <Nachname>Daun</Nachname>
-    <Vorname>Max</Vorname>
-    <Fuehrerschein>B</Fuehrerschein>
-    <Personalnummer>11123</Personalnummer>
-  </Person>
-=======
->>>>>>> refs/remotes/origin/ohne_fxml_jdom2versuch
-  <Person ID="4">
-    <Nachname>Reimer</Nachname>
-    <Vorname>Rudi</Vorname>
-    <Fuehrerschein>C</Fuehrerschein>
-    <Personalnummer>2323</Personalnummer>
-<<<<<<< HEAD
-  </Person>
-  <Person ID="5">
-    <Nachname>Mueller</Nachname>
-    <Vorname>Ralf</Vorname>
-    <Fuehrerschein>C</Fuehrerschein>
-    <Personalnummer>2623</Personalnummer>
-  </Person>
-  <Person ID="6">
-    <Nachname>Fiedler</Nachname>
-    <Vorname>Felix</Vorname>
-    <Fuehrerschein>Nein</Fuehrerschein>
-    <Personalnummer>322423</Personalnummer>
-  </Person>
-  <Person ID="7">
-    <Nachname>Schmidt</Nachname>
-    <Vorname>Franziska</Vorname>
-    <Fuehrerschein>Nein</Fuehrerschein>
-    <Personalnummer>3310</Personalnummer>
-  </Person>
-  <Person ID="8">
-    <Nachname>Ulm</Nachname>
-    <Vorname>Herbert</Vorname>
-    <Fuehrerschein>B</Fuehrerschein>
-    <Personalnummer>2321</Personalnummer>
-  </Person>
-  <Person ID="9">
-    <Nachname>Challo</Nachname>
-    <Vorname>Nicolas</Vorname>
-    <Fuehrerschein>Nein</Fuehrerschein>
-    <Personalnummer>236323</Personalnummer>
-  </Person>
-  <Person ID="10">
-    <Nachname>Nachname</Nachname>
-    <Vorname>Vorname</Vorname>
-    <Fuehrerschein>Nein</Fuehrerschein>
-    <Personalnummer>123456789</Personalnummer>
-  </Person>
-<<<<<<< HEAD
-</PersonListe>
-=======
-  <Person ID="11">
-    <Nachname>Die</Nachname>
-    <Vorname>Nic</Vorname>
-    <Fuehrerschein>nein</Fuehrerschein>
-    <Personalnummer>12344321</Personalnummer>
-  </Person>
-  <Person ID="12">
-    <Nachname>b</Nachname>
-    <Vorname>a</Vorname>
-    <Fuehrerschein>c</Fuehrerschein>
-    <Personalnummer>123</Personalnummer>
-  </Person>
-  <Person ID="13">
-    <Nachname>f</Nachname>
-    <Vorname>a</Vorname>
-    <Fuehrerschein>h</Fuehrerschein>
-    <Personalnummer>123</Personalnummer>
-  </Person>
-  <Person ID="14">
-    <Nachname>g</Nachname>
-    <Vorname>f</Vorname>
-    <Fuehrerschein>h</Fuehrerschein>
-    <Personalnummer>5678</Personalnummer>
-  </Person>
-  <Person ID="15">
-    <Nachname>j</Nachname>
-    <Vorname>h</Vorname>
-    <Fuehrerschein>k</Fuehrerschein>
-    <Personalnummer>368</Personalnummer>
-  </Person>
-  <Person ID="16">
-    <Nachname>cvcv</Nachname>
-    <Vorname>cvcv</Vorname>
-    <Fuehrerschein>jkjk</Fuehrerschein>
-    <Personalnummer>6784</Personalnummer>
-  </Person>
-  <Person ID="17">
-    <Nachname>sdsd</Nachname>
-    <Vorname>sdsd</Vorname>
-    <Fuehrerschein>sdsd</Fuehrerschein>
-    <Personalnummer>sdsd</Personalnummer>
-=======
->>>>>>> refs/remotes/origin/ohne_fxml_jdom2versuch
-  </Person>
-</PersonListe>
->>>>>>> refs/remotes/origin/ohne_fxml_jdom2versuch
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persons>
+    <person>
+        <fuehrerschein>B</fuehrerschein>
+        <id>11</id>
+        <nachname>Mueller</nachname>
+        <personalnummer>9901</personalnummer>
+        <vorname>Max</vorname>
+    </person>
+    <person>
+        <fuehrerschein>C</fuehrerschein>
+        <id>11</id>
+        <nachname>Schmidt</nachname>
+        <personalnummer>9902</personalnummer>
+        <vorname>Lina</vorname>
+    </person>
+    <person>
+        <fuehrerschein>B</fuehrerschein>
+        <id>11</id>
+        <nachname>Daun</nachname>
+        <personalnummer>11123</personalnummer>
+        <vorname>Max</vorname>
+    </person>
+    <person>
+        <fuehrerschein>B</fuehrerschein>
+        <id>11</id>
+        <nachname>Reimer</nachname>
+        <personalnummer>2323</personalnummer>
+        <vorname>Rudi</vorname>
+    </person>
+    <person>
+        <fuehrerschein>C</fuehrerschein>
+        <id>11</id>
+        <nachname>Mueller</nachname>
+        <personalnummer>2623</personalnummer>
+        <vorname>Ralf</vorname>
+    </person>
+    <person>
+        <fuehrerschein>nein</fuehrerschein>
+        <id>11</id>
+        <nachname>Fiedler</nachname>
+        <personalnummer>322423</personalnummer>
+        <vorname>Felix</vorname>
+    </person>
+    <person>
+        <fuehrerschein>nein</fuehrerschein>
+        <id>11</id>
+        <nachname>Schmidt</nachname>
+        <personalnummer>3310</personalnummer>
+        <vorname>Franziska</vorname>
+    </person>
+    <person>
+        <fuehrerschein>B</fuehrerschein>
+        <id>11</id>
+        <nachname>Ulm</nachname>
+        <personalnummer>2321</personalnummer>
+        <vorname>Herbert</vorname>
+    </person>
+    <person>
+        <fuehrerschein>nein</fuehrerschein>
+        <id>11</id>
+        <nachname>Challo</nachname>
+        <personalnummer>236323</personalnummer>
+        <vorname>Nicolas</vorname>
+    </person>
+    <person>
+        <fuehrerschein>nein</fuehrerschein>
+        <id>11</id>
+        <nachname>Nachname</nachname>
+        <personalnummer>123456789</personalnummer>
+        <vorname>Vorname</vorname>
+    </person>
+</persons>
