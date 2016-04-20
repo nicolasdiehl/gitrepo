@@ -3,8 +3,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 public class Buchen {
 
-	private final StringProperty vorname;
 	private final StringProperty nachname;
+	private final StringProperty vorname;
 	private final StringProperty personalnummer;
 	private final StringProperty fuehrerschein;
 	private final StringProperty kennzeichen;
@@ -29,8 +29,8 @@ public class Buchen {
 	 */
 	public Buchen(String nachname, String vorname, String personalnummer, String fuehrerschein,
 			String kennzeichen, String typ, String zweck, String von, String bis, String dauer) {
-		this.vorname = new SimpleStringProperty(vorname);
 		this.nachname = new SimpleStringProperty(nachname);
+		this.vorname = new SimpleStringProperty(vorname);
 		this.personalnummer = new SimpleStringProperty(personalnummer);
 		this.fuehrerschein = new SimpleStringProperty(fuehrerschein);
 		this.kennzeichen = new SimpleStringProperty(kennzeichen);

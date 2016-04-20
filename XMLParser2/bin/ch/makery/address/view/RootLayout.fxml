@@ -12,10 +12,9 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#handleSave" text="Speichern" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleSave" text="Save" />
+                  <CheckMenuItem mnemonicParsing="false" onAction="#handleSaveAs" text="Save As..." />
               <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Close" />
-                  <CheckMenuItem mnemonicParsing="false" onAction="#handleSaveAs" text="Speichern unter" />
-                  <CheckMenuItem mnemonicParsing="false" onAction="#handleOpen" text="Öffnen" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
