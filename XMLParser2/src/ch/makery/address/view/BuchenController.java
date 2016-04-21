@@ -8,6 +8,13 @@ import javafx.scene.control.TableView;
 import ch.makery.address.model.Buchen;
 import ch.makery.address.model.Person;
 import ch.makery.address.model.Vehicle;
+import defaultxml.Verwaltung;
+
+import java.io.IOException;
+import java.util.Calendar;
+
+import org.jdom2.JDOMException;
+
 import ch.makery.address.MainApp;
 
 //
@@ -177,7 +184,9 @@ public class BuchenController {
 		buchen.setKennzeichen(kennzeichenBooking.getText());
 		buchen.setVon(vonBooking.getText());
 		buchen.setBis(bisBooking.getText());
-		buchen.setDauer(verbleibendBooking.getText());
+		Calendar von=Verwaltung.umrechnenZeit(vonBooking.getText());
+		Calendar bis=Verwaltung.umrechnenZeit(bisBooking.getText());
+		buchen.setDauer(Verwaltung.vergleichenZeit(von, bis));
 		buchenClicked = true;
 		// dialogStage.close();
 		mainApp.showMainOverview();
@@ -193,7 +202,7 @@ public class BuchenController {
 	private void handleVon(){
 		
 	}
-	public void setMainApp(MainApp mainApp) {
+	public void setMainApp(MainApp mainApp) throws JDOMException, IOException {
 		this.mainApp = mainApp;
 
 		// Add observable list data to the table

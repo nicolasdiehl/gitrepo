@@ -5,6 +5,7 @@ import java.io.FileWriter;
 
 import javafx.event.EventHandler;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.prefs.Preferences;
 
@@ -46,61 +47,46 @@ public class MainApp extends Application {
 	private ObservableList<Buchen> buchenData = FXCollections.observableArrayList();
 	public Buchen booking;
 
-	public MainApp() {
-		try {
-			List<Element> liste;
-			File inputFile = new File("PersonListe.xml");
-			SAXBuilder saxBuilder = new SAXBuilder();
-			Document document = saxBuilder.build(inputFile);
-			Element classElement = document.getRootElement();
-
-			liste = classElement.getChildren();
-			for (int temp = 0; temp < liste.size(); temp++) {
-				Element person = liste.get(temp);
-				String vorn = person.getChild("Vorname").getText();
-				String nachn = person.getChild("Nachname").getText();
-				String fuesch = person.getChild("Fuehrerschein").getText();
-				if (!fuesch.equals("B") && !fuesch.equals("C"))
-					fuesch = "nein";
-				String pen = person.getChild("Personalnummer").getText();
-				personData.add(new Person("", vorn, nachn, fuesch, pen));
-			}
-		} catch (JDOMException e) {
-			e.printStackTrace();
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
+	public MainApp() throws JDOMException, IOException {
+		ArrayList<Object> persons;
+		persons = HandleXML.xmlZuArrayList(new File("PersonListe.xml"));
+		for (int i = 0; i < persons.size(); i++) {
+			String id = ((Person) persons.get(i)).getId();
+			String vorn = ((Person) persons.get(i)).getVorname();
+			String nachn = ((Person) persons.get(i)).getNachname();
+			String fuesch = ((Person) persons.get(i)).getFuehrerschein();
+			String pen = ((Person) persons.get(i)).getPersonalnummer();
+			personData.add(new Person(id, vorn, nachn, fuesch, pen));
 		}
-
-		try {
-			List<Element> liste;
-			File inputFile = new File("VehicleListe.xml");
-			SAXBuilder saxBuilder = new SAXBuilder();
-			Document document = saxBuilder.build(inputFile);
-			Element classElement = document.getRootElement();
-
-			liste = classElement.getChildren();
-			for (int temp = 0; temp < liste.size(); temp++) {
-				Element vehicle = liste.get(temp);
-				String tp = vehicle.getChild("Typ").getText();
-				String gl = vehicle.getChild("Geliehen").getText();
-				if (gl.equals("false")) {
-					gl = "nein";
-				} else {
-					gl = "ja";
-				}
-				String ke = vehicle.getChild("Kennzeichen").getText();
-				vehicleData.add(new Vehicle("", tp, gl, ke));
-			}
-		} catch (JDOMException e) {
-			e.printStackTrace();
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
+		ArrayList<Object> vehicles;
+		vehicles = HandleXML.xmlZuArrayList(new File("VehicleListe.xml"));
+		for (int i = 0; i < vehicles.size(); i++) {
+			String id = ((Vehicle) vehicles.get(i)).getId();
+			String typ = ((Vehicle) vehicles.get(i)).getTyp();
+			String geliehen = ((Vehicle) vehicles.get(i)).getGeliehen();
+			String kennzeichen = ((Vehicle) vehicles.get(i)).getKennzeichen();
+			vehicleData.add(new Vehicle(id, typ, geliehen, kennzeichen));
 		}
-
+		ArrayList<Object> buchen;
+		buchen = HandleXML.xmlZuArrayList(new File("BuchenListe.xml"));
+		for (int i = 0; i < buchen.size(); i++) {
+			String id = ((Buchen) buchen.get(i)).getId();
+			String na = ((Buchen) buchen.get(i)).getNachname();
+			String vor = ((Buchen) buchen.get(i)).getVorname();
+			String pe = ((Buchen) buchen.get(i)).getPersonalnummer();
+			String fu = ((Buchen) buchen.get(i)).getFuehrerschein();
+			String ke = ((Buchen) buchen.get(i)).getKennzeichen();
+			String ty = ((Buchen) buchen.get(i)).getTyp();
+			String zw = ((Buchen) buchen.get(i)).getZweck();
+			String von = ((Buchen) buchen.get(i)).getVon();
+			String bi = ((Buchen) buchen.get(i)).getBis();
+			String da = ((Buchen) buchen.get(i)).getDauer();
+			buchenData.add(new Buchen(id, na, vor, pe, fu, ke, ty, zw, von, bi, da));
+		}
 	}
 
 	public static void buchen(String id, String nachname, String vorname, String personalnummer, String fuehrerschein,
-			String kennzeichen, String typ, String zweck, String von, String bis, String dauer) throws JDOMException {
+			String kennzeichen, String typ, String zweck, String von, String bis, String dauer) throws JDOMException, IOException {
 		Buchen buchen = new Buchen();
 		try {
 			File inputFile = new File("Buchen.xml");
@@ -168,11 +154,11 @@ public class MainApp extends Application {
 	private BorderPane rootLayout;
 
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws JDOMException, IOException {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("AddressApp");
 		booking = new Buchen();
-		
+
 		initRootLayout();
 
 		showMainOverview();
@@ -348,7 +334,8 @@ public class MainApp extends Application {
 		}
 	}
 
-	public void savePersonDataToFile(File file) {//file identisch mit vehicle save???
+	public void savePersonDataToFile(File file) {// file identisch mit vehicle
+													// save???
 		try {
 			JAXBContext context = JAXBContext.newInstance(PersonListWrapper.class);
 			Marshaller m = context.createMarshaller();

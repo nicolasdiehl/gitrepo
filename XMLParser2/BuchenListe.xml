@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BuchenListe>
+  <Buchen ID="2">
+    <Nachname>Reimer</Nachname>
+    <Vorname>Rudi</Vorname>
+    <Personalnummer>2323</Personalnummer>
+    <Fuehrerschein>B</Fuehrerschein>
+    <Kennzeichen>DA-CI101</Kennzeichen>
+    <Typ>Cityflitzer</Typ>
+    <Zweck>Stadtfahrt</Zweck>
+    <Von>01:01 01.01.2020</Von>
+    <Bis>02:02 02.02.2021</Bis>
+    <Dauer>1J 1M 1T 1S 1M</Dauer>
+  </Buchen>
+  <Buchen ID="3">
+    <Nachname>Reimer</Nachname>
+    <Vorname>Rudi</Vorname>
+    <Personalnummer>2323</Personalnummer>
+    <Fuehrerschein>fs</Fuehrerschein>
+    <Kennzeichen>DA-777</Kennzeichen>
+    <Typ>Limousine</Typ>
+    <Zweck>Stadtfahrt</Zweck>
+    <Von>10:00 02.03.2019</Von>
+    <Bis>10:00 02.03.2022</Bis>
+    <Dauer>3J</Dauer>
+  </Buchen>
+</BuchenListe>

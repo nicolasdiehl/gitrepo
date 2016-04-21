@@ -29,6 +29,10 @@ public class Verwaltung {
 		File personFile = new File("PersonListe.xml");
 		File vehicleFile = new File("VehicleListe.xml");
 		File buchenFile = new File("Buchen.xml");
+		
+		Calendar test1 = umrechnenZeit("08:01 06.07.2016");
+		Calendar test2 = umrechnenZeit("08:01 09.07.2016");
+		System.out.println(vergleichenZeit(test1,test2));
 		//XMLMaker.createXML();
 		System.out.println("Was darfs denn heute sein?");
 		while (true) {
@@ -41,7 +45,10 @@ public class Verwaltung {
 			eingabe = scan.nextLine();
 			switch (eingabe) {
 			case "a":
-				HandleXML.inXmlAnhängen(new File("Buchen.xml"), einlesenBuchen());
+				System.out.println("neue buchung wird angelegt");
+				Buchen neuGebucht=einlesenBuchen();
+				HandleXML.inXmlAnhängen(new File("BuchenListe.xml"), neuGebucht);
+				HandleXML.printObject(neuGebucht);
 				break;
 			case "0":
 				HandleXML.xmlZuArrayList(personFile);
@@ -83,7 +90,7 @@ public class Verwaltung {
 				
 				break;
 			default:
-				System.out.println("ciao.");
+				System.out.println("nichts");
 			}
 		}
 		
@@ -139,13 +146,17 @@ public class Verwaltung {
 		return neuesVehicle;
 	}
 
-	public static Buchen einlesenBuchen() {
+	public static Buchen einlesenBuchen() throws JDOMException, IOException {
 		Buchen newBuchen=null;
 		String zweck = "";
 		String personalnummer = einlesenText("Personalnummer: ");
-		if (HandleXML.xmlUndNameUndWerteLineareSucheZuArrayList(new File("PersonListe.xml"), "Personalnummer", new ArrayList<>(asList(personalnummer))).isEmpty()) {
+		//System.out.println("personalnummer wird in xml gesucht und die person zurückgegeben");
+		ArrayList<Object> temp = HandleXML.xmlUndNameUndWerteLineareSucheZuArrayList(new File("PersonListe.xml"), "Personalnummer", new ArrayList<>(asList(personalnummer)));
+		if (temp.isEmpty()) {
 			System.out.println("Personalnummer nicht vorhanden!");
 		} else {
+			Person person = (Person)(temp).get(temp.size()-1); // nimm den letzten hinzugefügten
+			HandleXML.printObject(person);
 			zweck = einlesenText("Zweck: ((t)ransport, (s)tadtfahrt, (l)angstreckenfahrt)");
 			switch (zweck) {
 				case "t": zweck= "Transport";
@@ -166,12 +177,15 @@ public class Verwaltung {
 				} else if (calBis.compareTo(calVon)<0){
 					System.out.println("Falsche Eingabe!");
 				} else {
-					String kennzeichen = HandleXML.sucheFreiesAuto(zweck, calVon, calBis);
-					if (kennzeichen.equals("")) {
+					System.out.println("freies auto wird gesucht");
+					Vehicle vehicle = HandleXML.sucheFreiesAuto(zweck, calVon, calBis);
+					if (vehicle.equals(null)) {
 						System.out.println("kein passendes Fahrzeug gefunden, Fahrrad?");
 					} else {
 						// auto gefunden!
-						newBuchen = new Buchen("vn", "nn", personalnummer, "fs", kennzeichen, "tp", zweck, umrechnenZeit(calVon), umrechnenZeit(calBis), "dr");
+						System.out.println("ein freies auto wurde gefunden");
+						System.out.println("nachn= "+person.getNachname());
+						newBuchen = new Buchen(person.getNachname(), person.getVorname(), person.getPersonalnummer(), "fs", vehicle.getKennzeichen(), vehicle.getTyp(), zweck, umrechnenZeit(calVon), umrechnenZeit(calBis), vergleichenZeit(calVon,calBis));
 					}
 				}
 			}
@@ -255,6 +269,46 @@ public class Verwaltung {
 		if (Integer.parseInt(minute)<10) minute = "0"+minute;
 		output = stunde+":"+minute+" "+tag+"."+monat+"."+jahr;
 		System.out.println("String umrechnenZeitCalendar "+output);
+		return output;
+	}
+	
+	public static int elapsed(Calendar before, Calendar after, int field) {
+	    Calendar clone = (Calendar) before.clone(); // Otherwise changes are been reflected.
+	    int elapsed = -1;
+	    while (!clone.after(after)) {
+	        clone.add(field, 1);
+	        elapsed++;
+	    }
+	    return elapsed;
+	}
+	
+	public static String vergleichenZeit(Calendar start, Calendar end) {
+		
+		String output;
+		Integer[] elapsed = new Integer[6];
+		Calendar clone = (Calendar) start.clone(); // Otherwise changes are been reflected.
+		elapsed[0] = elapsed(clone, end, Calendar.YEAR);
+		clone.add(Calendar.YEAR, elapsed[0]);
+		elapsed[1] = elapsed(clone, end, Calendar.MONTH);
+		clone.add(Calendar.MONTH, elapsed[1]);
+		elapsed[2] = elapsed(clone, end, Calendar.DATE);
+		clone.add(Calendar.DATE, elapsed[2]);
+		elapsed[3] = (int) (end.getTimeInMillis() - clone.getTimeInMillis()) / 3600000;
+		clone.add(Calendar.HOUR, elapsed[3]);
+		elapsed[4] = (int) (end.getTimeInMillis() - clone.getTimeInMillis()) / 60000;
+		clone.add(Calendar.MINUTE, elapsed[4]);
+		elapsed[5] = (int) (end.getTimeInMillis() - clone.getTimeInMillis()) / 1000;
+		output = zeitFormat(elapsed);
+		return output;
+	}
+	
+	public static String zeitFormat(Integer[] elapsed) {
+		String output="";
+		if (elapsed[0]>0) output=output+elapsed[0]+"J ";
+		if (elapsed[1]>0) output=output+elapsed[1]+"M ";
+		if (elapsed[2]>0) output=output+elapsed[2]+"T ";
+		if (elapsed[3]>0) output=output+elapsed[3]+"S ";
+		if (elapsed[4]>0) output=output+elapsed[4]+"M ";
 		return output;
 	}
 	

@@ -35,7 +35,18 @@ public class Person {
 	 * @param firstName
 	 * @param lastName
 	 */
-	public Person(String id, String vorname, String nachname, String fuehrerschein, String personalnummer) {
+	public Person(String id, String nachname, String vorname, String fuehrerschein, String personalnummer) {
+
+		this.id = new SimpleStringProperty(id);
+		this.vorname = new SimpleStringProperty(vorname);
+		this.nachname = new SimpleStringProperty(nachname);
+		this.personalnummer = new SimpleStringProperty(personalnummer);
+		this.fuehrerschein = new SimpleStringProperty(fuehrerschein);
+
+		// SimpleObjectProperty<LocalDate>(LocalDate.of(1999, 2, 21));
+	}
+
+	public Person(String vorname, String nachname, String fuehrerschein, String personalnummer) {
 		SimpleStringProperty tempid = null;
 		try {
 			File file = new File("PersonListe.xml");
@@ -45,14 +56,14 @@ public class Person {
 			e.printStackTrace();
 		}
 		this.id = tempid;
-		this.vorname = new SimpleStringProperty(vorname);
 		this.nachname = new SimpleStringProperty(nachname);
+		this.vorname = new SimpleStringProperty(vorname);
 		this.personalnummer = new SimpleStringProperty(personalnummer);
 		this.fuehrerschein = new SimpleStringProperty(fuehrerschein);
 
 		// SimpleObjectProperty<LocalDate>(LocalDate.of(1999, 2, 21));
 	}
-
+	
 	public String getId() {
 		return id.get();
 	}
@@ -63,18 +74,6 @@ public class Person {
 
 	public StringProperty idProperty() {
 		return id;
-	}
-
-	public String getVorname() {
-		return vorname.get();
-	}
-
-	public void setVorname(String vorname) {
-		this.vorname.set(vorname);
-	}
-
-	public StringProperty vornameProperty() {
-		return vorname;
 	}
 
 	public String getNachname() {
@@ -89,6 +88,18 @@ public class Person {
 		return nachname;
 	}
 
+	public String getVorname() {
+		return vorname.get();
+	}
+
+	public void setVorname(String vorname) {
+		this.vorname.set(vorname);
+	}
+
+	public StringProperty vornameProperty() {
+		return vorname;
+	}
+	
 	public String getPersonalnummer() {
 		return personalnummer.get();
 	}

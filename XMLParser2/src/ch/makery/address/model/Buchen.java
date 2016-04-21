@@ -1,10 +1,17 @@
 package ch.makery.address.model;
+import java.io.File;
+import java.io.IOException;
+
+import org.jdom2.JDOMException;
+
+import defaultxml.ConnectXML;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 public class Buchen {
 
-	private final StringProperty vorname;
+	private final StringProperty id;
 	private final StringProperty nachname;
+	private final StringProperty vorname;
 	private final StringProperty personalnummer;
 	private final StringProperty fuehrerschein;
 	private final StringProperty kennzeichen;
@@ -16,9 +23,11 @@ public class Buchen {
 
 	/**
 	 * Default constructor.
+	 * @throws IOException 
+	 * @throws JDOMException 
 	 */
-	public Buchen() {
-		this(null, null, null, null, null, null, null, null, null, null);
+	public Buchen() throws JDOMException, IOException {
+		this(ConnectXML.createUniqueID(new File("BuchenListe.xml")), null, null, null, null, null, null, null, null, null, null);
 	}
 
 	/**
@@ -26,11 +35,14 @@ public class Buchen {
 	 * 
 	 * @param firstName
 	 * @param lastName
+	 * @throws IOException 
+	 * @throws JDOMException 
 	 */
-	public Buchen(String nachname, String vorname, String personalnummer, String fuehrerschein,
-			String kennzeichen, String typ, String zweck, String von, String bis, String dauer) {
-		this.vorname = new SimpleStringProperty(vorname);
+	public Buchen(String id, String nachname, String vorname, String personalnummer, String fuehrerschein,
+			String kennzeichen, String typ, String zweck, String von, String bis, String dauer) throws JDOMException, IOException {
+		this.id = new SimpleStringProperty(id);
 		this.nachname = new SimpleStringProperty(nachname);
+		this.vorname = new SimpleStringProperty(vorname);
 		this.personalnummer = new SimpleStringProperty(personalnummer);
 		this.fuehrerschein = new SimpleStringProperty(fuehrerschein);
 		this.kennzeichen = new SimpleStringProperty(kennzeichen);
@@ -41,6 +53,21 @@ public class Buchen {
 		this.dauer = new SimpleStringProperty(dauer);
 	}
 
+	public Buchen(String nachname, String vorname, String personalnummer, String fuehrerschein,
+			String kennzeichen, String typ, String zweck, String von, String bis, String dauer) throws JDOMException, IOException {
+		this.id = new SimpleStringProperty(ConnectXML.createUniqueID(new File("BuchenListe.xml")));
+		this.nachname = new SimpleStringProperty(nachname);
+		this.vorname = new SimpleStringProperty(vorname);
+		this.personalnummer = new SimpleStringProperty(personalnummer);
+		this.fuehrerschein = new SimpleStringProperty(fuehrerschein);
+		this.kennzeichen = new SimpleStringProperty(kennzeichen);
+		this.typ = new SimpleStringProperty(typ);
+		this.zweck = new SimpleStringProperty(zweck);
+		this.von = new SimpleStringProperty(von);
+		this.bis = new SimpleStringProperty(bis);
+		this.dauer = new SimpleStringProperty(dauer);
+	}
+	
 	public String getDauer() {
 		return dauer.get();
 	}
@@ -159,6 +186,18 @@ public class Buchen {
 
 	public StringProperty fuehrerscheinProperty() {
 		return fuehrerschein;
+	}
+
+	public String getId() {
+		return dauer.get();
+	}
+
+	public void setId(String id) {
+		this.id.set(id);
+	}
+
+	public StringProperty IdProperty() {
+		return id;
 	}
 
 }
