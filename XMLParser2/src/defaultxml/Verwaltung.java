@@ -161,6 +161,8 @@ public class Verwaltung {
 
 	public static Vehicle einlesenVehicle() {
 		String idtemp=null;
+		String geliehen="";
+		String kennzeichen="";
 		try {
 			File file = new File("VehicleListe.xml");
 			idtemp = ConnectXML.createUniqueID(file);
@@ -169,11 +171,13 @@ public class Verwaltung {
 			e.printStackTrace();
 		}
 		String id = idtemp;
-		String typ = einlesenText("Typ: ");
-		String geliehen = "nein";
-		String kennzeichen = einlesenText("Kennzeichen: ");
-		Vehicle neuesVehicle = new Vehicle(id, typ, geliehen, kennzeichen);
-		return neuesVehicle;
+		String typ = einlesenText("Typ: (Cityflitzer, Lkw. Limousine oder Transporter)");
+		if (!typ.equals("Cityflitzer")&&!typ.equals("Lkw")&&!typ.equals("Limousine")&&!typ.equals("Transporter")) {
+			geliehen = "nein";
+			kennzeichen = einlesenText("Kennzeichen: ");
+			
+		}
+		return new Vehicle(id, typ, geliehen, kennzeichen);
 	}
 
 	public static Buchen einlesenBuchen(ArrayList<Object> p, ArrayList<Object> v, ArrayList<Object> b) throws JDOMException, IOException {
