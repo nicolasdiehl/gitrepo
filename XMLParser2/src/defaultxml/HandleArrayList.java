@@ -230,9 +230,9 @@ public class HandleArrayList extends ConnectXML {
 	
 
 	public static ArrayList<Object> inArrayListAnhaengen(ArrayList<Object> arrayList, Object objekt) {
-		if (arrayList.isEmpty() || (objekt instanceof Person && arrayList.get(0) instanceof Person)) arrayList.add(objekt);
-		if (arrayList.isEmpty() || (objekt instanceof Vehicle && arrayList.get(0) instanceof Vehicle)) arrayList.add(objekt);
-		if (arrayList.isEmpty() || (objekt instanceof Buchen && arrayList.get(0) instanceof Buchen)) arrayList.add(objekt);
+		if (!arrayList.isEmpty() && (objekt instanceof Person && arrayList.get(0) instanceof Person)) arrayList.add(objekt);
+		if (!arrayList.isEmpty() && (objekt instanceof Vehicle && arrayList.get(0) instanceof Vehicle)) arrayList.add(objekt);
+		if (!arrayList.isEmpty() && (objekt instanceof Buchen && arrayList.get(0) instanceof Buchen)) arrayList.add(objekt);
 		else System.out.println("Kann Objekt nicht in ArrayList einfügen, Objekt ist nicht vom selben Typ!");
 		return arrayList;
 	}
