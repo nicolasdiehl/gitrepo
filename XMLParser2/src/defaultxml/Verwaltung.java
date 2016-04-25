@@ -180,12 +180,12 @@ public class Verwaltung {
 		return new Vehicle(id, typ, geliehen, kennzeichen);
 	}
 
-	public static Buchen einlesenBuchen(ArrayList<Object> p, ArrayList<Object> v, ArrayList<Object> b) throws JDOMException, IOException {
+	public static Buchen einlesenBuchen(ArrayList<Object> perA, ArrayList<Object> vehA, ArrayList<Object> bucA) throws JDOMException, IOException {
 		Buchen newBuchen=null;
 		String zweck = "";
 		String personalnummer = einlesenText("Personalnummer: ");
 		//System.out.println("personalnummer wird in xml gesucht und die person zurückgegeben");
-		ArrayList<Object> temp = HandleArrayList.ArrayListUndNameUndWerteLineareSucheZuArrayList(p,"Personalnummer",new ArrayList<>(Arrays.asList(personalnummer)));
+		ArrayList<Object> temp = HandleArrayList.ArrayListUndNameUndWerteLineareSucheZuArrayList(perA,"Personalnummer",new ArrayList<>(Arrays.asList(personalnummer)));
 				if (temp.isEmpty()) {
 			System.out.println("Personalnummer nicht vorhanden!");
 		} else {
@@ -212,7 +212,7 @@ public class Verwaltung {
 					System.out.println("Falsche Eingabe!");
 				} else {
 					System.out.println("freies auto wird gesucht");
-					Vehicle vehicle = HandleArrayList.sucheFreiesAutoArrayList(v, b, calVon, calBis, strBis);
+					Vehicle vehicle = HandleArrayList.sucheFreiesAutoArrayList(vehA, bucA, calVon, calBis, zweck);
 					if (vehicle==null) {
 						System.out.println("kein passendes Fahrzeug gefunden, Fahrrad?");
 					} else {
