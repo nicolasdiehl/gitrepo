@@ -1,63 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PersonListe>
   <Person ID="1">
-    <Nachname>Mueller</Nachname>
-    <Vorname>Max</Vorname>
+    <Nachname>fff</Nachname>
+    <Vorname>hhhh</Vorname>
     <Fuehrerschein>B</Fuehrerschein>
-    <Personalnummer>9901</Personalnummer>
+    <Personalnummer>11111115555</Personalnummer>
   </Person>
-  <Person ID="2">
-    <Nachname>Schmidt</Nachname>
-    <Vorname>Lina</Vorname>
-    <Fuehrerschein>C</Fuehrerschein>
-    <Personalnummer>9902</Personalnummer>
-  </Person>
-  <Person ID="3">
-    <Nachname>Daun</Nachname>
-    <Vorname>Max</Vorname>
-    <Fuehrerschein>B</Fuehrerschein>
-    <Personalnummer>11123</Personalnummer>
-  </Person>
-  <Person ID="4">
-    <Nachname>Reimer</Nachname>
-    <Vorname>Rudi</Vorname>
-    <Fuehrerschein>B</Fuehrerschein>
-    <Personalnummer>2323</Personalnummer>
-  </Person>
-  <Person ID="5">
-    <Nachname>Mueller</Nachname>
-    <Vorname>Ralf</Vorname>
-    <Fuehrerschein>C</Fuehrerschein>
-    <Personalnummer>2623</Personalnummer>
-  </Person>
-  <Person ID="6">
-    <Nachname>Fiedler</Nachname>
-    <Vorname>Felix</Vorname>
-    <Fuehrerschein>Nein</Fuehrerschein>
-    <Personalnummer>322423</Personalnummer>
-  </Person>
-  <Person ID="7">
-    <Nachname>Schmidt</Nachname>
-    <Vorname>Franziska</Vorname>
-    <Fuehrerschein>Nein</Fuehrerschein>
-    <Personalnummer>3310</Personalnummer>
-  </Person>
-  <Person ID="8">
-    <Nachname>Ulm</Nachname>
-    <Vorname>Herbert</Vorname>
-    <Fuehrerschein>B</Fuehrerschein>
-    <Personalnummer>2321</Personalnummer>
-  </Person>
-  <Person ID="9">
-    <Nachname>Challo</Nachname>
-    <Vorname>Nicolas</Vorname>
-    <Fuehrerschein>Nein</Fuehrerschein>
-    <Personalnummer>236323</Personalnummer>
-  </Person>
-  <Person ID="10">
-    <Nachname>Nachname</Nachname>
-    <Vorname>Vorname</Vorname>
-    <Fuehrerschein>Nein</Fuehrerschein>
-    <Personalnummer>123456789</Personalnummer>
-  </Person>
-</PersonListe> 
+</PersonListe>

@@ -10,6 +10,8 @@ import javafx.scene.control.TableView;
 
 import java.io.IOException;
 
+import org.jdom2.JDOMException;
+
 import ch.makery.address.MainApp;
 import ch.makery.address.model.Person;
 import ch.makery.address.model.Vehicle;
@@ -194,7 +196,7 @@ public class MainOverviewController {
 	}
 
 	@FXML
-	private void handleBuchenButton(ActionEvent event) throws IOException {
+	private void handleBuchenButton(ActionEvent event) throws IOException, JDOMException {
 		mainApp.Buchendialog(); // für die Hilfsklasse
 	}
 

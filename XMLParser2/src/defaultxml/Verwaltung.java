@@ -13,60 +13,50 @@ import java.util.Calendar;
 import java.util.Date;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+
 import static java.util.Arrays.asList;
 
 public class Verwaltung {
 	public static void main(String[] args) throws JDOMException, IOException {
-		// Monate beginnen mit 0
-		// Tage im Monat beginnen mit 1
-		String str = "08:01 06.07.2016";
-		System.out.println("zeile 24: str="+str);
-		Calendar cal = umrechnenZeit(str);
-		str = umrechnenZeit(cal);
-		System.out.println("zeile 27: str="+str);
-		Scanner scan = new Scanner(System.in);
-		String eingabe;
+		File file = null;
+		System.out.println("Lese Standard-Dateien \"PersonListe.xml\", \"VehicleListe.xml\" und \"BuchenListe.xml\"");
 		File personFile = new File("PersonListe.xml");
 		File vehicleFile = new File("VehicleListe.xml");
-		File buchenFile = new File("Buchen.xml");
-		
-		Calendar test1 = umrechnenZeit("08:01 06.07.2016");
-		Calendar test2 = umrechnenZeit("08:01 09.07.2016");
-		System.out.println(vergleichenZeit(test1,test2));
-		//XMLMaker.createXML();
+		File buchenFile = new File("BuchenListe.xml");
+		ArrayList<Object> arrayListPerson = HandleXML.xmlZuArrayList(personFile, false);
+		ArrayList<Object> arrayListVehicle = HandleXML.xmlZuArrayList(vehicleFile, false);
+		ArrayList<Object> arrayListBuchen = HandleXML.xmlZuArrayList(buchenFile, false);		
+		Scanner scan = new Scanner(System.in);
 		System.out.println("Was darfs denn heute sein?");
+		String eingabe;
 		while (true) {
-			System.out.println("a: Ausleihvorgang");
-			System.out.println("0,1,2: Alle Personen,Wägen,Buchungen ausgeben");
-			System.out.println("3,4,5: Neue Person,Wagen,Buchung anlegen");
-			System.out.println("6,7,8: Person,Wagen,Buchung verändern");
-			System.out.println("s: Person,Wagen,Buchung suchen");
-			System.out.println("x,y,z: Person,Wagen,Buchung XML speichern");
+			System.out.println("0,1,2: Personen, Fahrzeuge oder Buchungen ausgeben");
+			System.out.println("3,4,5: Neue Person, Fahrzeug oder Buchung anlegen");
+			System.out.println("6,7,8: Eine Person, Fahrzeug oder Buchung verändern");
+			System.out.println("s: Etwas suchen");
+			System.out.println("k,l,m: Person,Wagen,Buchen XML laden");
+			System.out.println("x,y,z: Person,Wagen,Buchen XML speichern");
+			System.out.println("r: Alle Listen leeren.");			
 			eingabe = scan.nextLine();
 			switch (eingabe) {
-			case "a":
-				System.out.println("neue buchung wird angelegt");
-				Buchen neuGebucht=einlesenBuchen();
-				HandleXML.inXmlAnhängen(new File("BuchenListe.xml"), neuGebucht);
-				HandleXML.printObject(neuGebucht);
-				break;
 			case "0":
-				HandleXML.xmlZuArrayList(personFile);
+				HandleArrayList.printArrayList(arrayListPerson);
 				break;
 			case "1":
-				HandleXML.xmlZuArrayList(vehicleFile);
+				HandleArrayList.printArrayList(arrayListVehicle);
 				break;
 			case "2":
-				HandleXML.xmlZuArrayList(buchenFile);
+				HandleArrayList.printArrayList(arrayListBuchen);
 				break;
 			case "3":
-				HandleXML.inXmlAnhängen(personFile, einlesenPerson());
+				HandleArrayList.inArrayListAnhaengen(arrayListPerson,einlesenPerson());
 				break;
 			case "4":
-				HandleXML.inXmlAnhängen(vehicleFile, einlesenVehicle());
+				HandleArrayList.inArrayListAnhaengen(arrayListVehicle,einlesenVehicle());
 				break;
 			case "5":
-				HandleXML.inXmlAnhängen(buchenFile, einlesenBuchen());
+				HandleArrayList.inArrayListAnhaengen(arrayListBuchen,einlesenBuchen(arrayListPerson, arrayListVehicle, arrayListBuchen));
 				break;
 			case "6":
 				//HandleXML.
@@ -78,19 +68,59 @@ public class Verwaltung {
 				
 				break;
 			case "s":
-				
+				ArrayList<Object> gefunden = new ArrayList<Object>();
+				gefunden = suchenDialog(arrayListPerson, arrayListVehicle, arrayListBuchen);
+				System.out.println("Liste der gefundenen Objekte:");
+				HandleArrayList.printArrayList(gefunden);
+				System.out.println("Soll die Liste in ein XML gespeichert werden? j n");
+				eingabe = scan.nextLine();
+				if (eingabe.equals("j")) {
+					System.out.println("Welche Datei soll verwendet werden? Leerlassen um in Standard-Datei zu schreiben.");
+					file = new File(scan.nextLine());
+					if (!gefunden.isEmpty() && gefunden.get(0) instanceof Person) HandleXML.arrayListZuXml(gefunden, file, "Person");
+					else if (!gefunden.isEmpty() && gefunden.get(0) instanceof Vehicle) HandleXML.arrayListZuXml(gefunden, file, "Vehicle");
+					else if (!gefunden.isEmpty() && gefunden.get(0) instanceof Buchen) HandleXML.arrayListZuXml(gefunden, file, "Buchen");
+					else System.out.println("Liste ist leer, wurde nicht gespeichert!");
+				}
+				break;
+			case "k":
+				System.out.println("Welche Datei soll verwendet werden?");
+				file = new File(scan.nextLine());
+				arrayListPerson=HandleXML.xmlZuArrayList(file, false);
+				break;
+			case "l":
+				System.out.println("Welche Datei soll verwendet werden?");
+				file = new File(scan.nextLine());
+				arrayListVehicle=HandleXML.xmlZuArrayList(file, false);
+				break;
+			case "m":
+				System.out.println("Welche Datei soll verwendet werden?");
+				file = new File(scan.nextLine());
+				arrayListBuchen=HandleXML.xmlZuArrayList(file, false);
 				break;
 			case "x":
-				
+				System.out.println("Welche Datei soll verwendet werden? Leerlassen um in Standard-Datei zu schreiben.");
+				file = new File(scan.nextLine());
+				HandleXML.arrayListZuXml(arrayListPerson,file,"Person");
 				break;
 			case "y":
-				
+				System.out.println("Welche Datei soll verwendet werden? Leerlassen um in Standard-Datei zu schreiben.");
+				file = new File(scan.nextLine());
+				HandleXML.arrayListZuXml(arrayListVehicle,file,"Vehicle");				
 				break;
 			case "z":
-				
+				System.out.println("Welche Datei soll verwendet werden? Leerlassen um in Standard-Datei zu schreiben.");
+				file = new File(scan.nextLine());
+				HandleXML.arrayListZuXml(arrayListBuchen,file,"Buchen");
+				break;
+			case "r":
+				arrayListPerson.clear();
+				arrayListVehicle.clear();
+				arrayListBuchen.clear();
+				System.out.println("Alle internen Listen wurden gelöscht. Die XML Daten sind noch vorhanden.");
 				break;
 			default:
-				System.out.println("nichts");
+				System.out.println("falsche eingabe.. nochmal");
 			}
 		}
 		
@@ -146,17 +176,17 @@ public class Verwaltung {
 		return neuesVehicle;
 	}
 
-	public static Buchen einlesenBuchen() throws JDOMException, IOException {
+	public static Buchen einlesenBuchen(ArrayList<Object> p, ArrayList<Object> v, ArrayList<Object> b) throws JDOMException, IOException {
 		Buchen newBuchen=null;
 		String zweck = "";
 		String personalnummer = einlesenText("Personalnummer: ");
 		//System.out.println("personalnummer wird in xml gesucht und die person zurückgegeben");
-		ArrayList<Object> temp = HandleXML.xmlUndNameUndWerteLineareSucheZuArrayList(new File("PersonListe.xml"), "Personalnummer", new ArrayList<>(asList(personalnummer)));
-		if (temp.isEmpty()) {
+		ArrayList<Object> temp = HandleArrayList.ArrayListUndNameUndWerteLineareSucheZuArrayList(p,"Personalnummer",new ArrayList<>(Arrays.asList(personalnummer)));
+				if (temp.isEmpty()) {
 			System.out.println("Personalnummer nicht vorhanden!");
 		} else {
 			Person person = (Person)(temp).get(temp.size()-1); // nimm den letzten hinzugefügten
-			HandleXML.printObject(person);
+			HandleArrayList.printObject(person);
 			zweck = einlesenText("Zweck: ((t)ransport, (s)tadtfahrt, (l)angstreckenfahrt)");
 			switch (zweck) {
 				case "t": zweck= "Transport";
@@ -178,8 +208,8 @@ public class Verwaltung {
 					System.out.println("Falsche Eingabe!");
 				} else {
 					System.out.println("freies auto wird gesucht");
-					Vehicle vehicle = HandleXML.sucheFreiesAuto(zweck, calVon, calBis);
-					if (vehicle.equals(null)) {
+					Vehicle vehicle = HandleArrayList.sucheFreiesAutoArrayList(v, b, calVon, calBis, strBis);
+					if (vehicle==null) {
 						System.out.println("kein passendes Fahrzeug gefunden, Fahrrad?");
 					} else {
 						// auto gefunden!
@@ -193,6 +223,120 @@ public class Verwaltung {
 		return newBuchen;
 	}
 
+	public static ArrayList<Object> suchenDialog(ArrayList<Object> arrayListPerson, ArrayList<Object> arrayListVehicle, ArrayList<Object> arrayListBuchen) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Was genau suchen Sie? Eine Person(p), einen Leihwagen(l), oder eine Buchung?(b)");
+		String input = scan.nextLine();
+		ArrayList<String> zuSuchen = new ArrayList<String>();
+		ArrayList<Object> gefundeneObjekte = new ArrayList<Object>(); 
+		switch (input) {
+		case "p":
+			System.out.println("Suchen Sie den Vornamen(v), Nachnamen(n), Personalnummer(p), oder den Führerscheintyp(f)?");
+			input = scan.nextLine();
+			switch (input) {
+			case "v":
+				System.out.println("Welcher Wert soll gesucht werden? (Leere Eingabe im die Suche zu starten)");
+				do {
+					input = scan.nextLine();
+					if (!input.equals("")) {
+						zuSuchen.add(input);
+					}
+				} while (!input.equals(""));
+				gefundeneObjekte=HandleArrayList.ArrayListUndNameUndWerteLineareSucheZuArrayList(arrayListPerson, "Vorname", zuSuchen);
+				break;
+			case "n":
+				System.out.println("Welcher Wert soll gesucht werden? (Leere Eingabe im die Suche zu starten)");
+				do {
+					input = scan.nextLine();
+					if (!input.equals("")) {
+						zuSuchen.add(input);
+					}
+				} while (!input.equals(""));
+				gefundeneObjekte=HandleArrayList.ArrayListUndNameUndWerteLineareSucheZuArrayList(arrayListPerson, "Nachname", zuSuchen);
+				break;
+			case "p":
+				System.out.println("Welcher Wert soll gesucht werden? (Leere Eingabe im die Suche zu starten)");
+				do {
+					input = scan.nextLine();
+					if (!input.equals("")) {
+						zuSuchen.add(input);
+					}
+				} while (!input.equals(""));
+				gefundeneObjekte=HandleArrayList.ArrayListUndNameUndWerteLineareSucheZuArrayList(arrayListPerson, "Personalnummer", zuSuchen);
+				break;
+			case "f":
+				System.out.println("Welcher Wert soll gesucht werden? (Leere Eingabe im die Suche zu starten)");
+				do {
+					input = scan.nextLine();
+					if (!input.equals("")) {
+						zuSuchen.add(input);
+					}
+				} while (!input.equals(""));
+				gefundeneObjekte=HandleArrayList.ArrayListUndNameUndWerteLineareSucheZuArrayList(arrayListPerson, "Fuehrerschein", zuSuchen);
+				break;
+			default:
+				System.out.println("falsche Eingabe!");
+			}
+			break;
+		case "f":
+			System.out.println("Suchen Sie den Fahrzeugtyp(f), das Kennzeichen(k), oder den Leihstatus(l)?");
+			input = scan.nextLine();
+			switch (input) {
+			case "f":
+				do {
+					input = scan.nextLine();
+					if (!input.equals("")) {
+						zuSuchen.add(input);
+					}
+				} while (!input.equals(""));
+				gefundeneObjekte=HandleArrayList.ArrayListUndNameUndWerteLineareSucheZuArrayList(arrayListVehicle, "Typ", zuSuchen);
+				break;
+			case "k":
+				do {
+					input = scan.nextLine();
+					if (!input.equals("")) {
+						zuSuchen.add(input);
+					}
+				} while (!input.equals(""));
+				gefundeneObjekte=HandleArrayList.ArrayListUndNameUndWerteLineareSucheZuArrayList(arrayListVehicle, "Kennzeichen", zuSuchen);
+				break;
+			case "l":
+
+			default:
+				System.out.println("falsche Eingabe!");
+			}
+			break;
+		case "b":
+			System.out.println("Suchen Sie eine Personalnummer(f) oder ein Kennzeichen(k)?");
+			input = scan.nextLine();
+			switch (input) {
+			case "p":
+				do {
+					input = scan.nextLine();
+					if (!input.equals("")) {
+						zuSuchen.add(input);
+					}
+				} while (!input.equals(""));
+				gefundeneObjekte=HandleArrayList.ArrayListUndNameUndWerteLineareSucheZuArrayList(arrayListBuchen, "Personalnummer", zuSuchen);
+				break;
+			case "k":
+				do {
+					input = scan.nextLine();
+					if (!input.equals("")) {
+						zuSuchen.add(input);
+					}
+				} while (!input.equals(""));
+				gefundeneObjekte=HandleArrayList.ArrayListUndNameUndWerteLineareSucheZuArrayList(arrayListBuchen, "Kennzeichen", zuSuchen);
+				break;
+			default:
+				System.out.println("falsche Eingabe!");
+			}
+			break;
+		default:
+			System.out.println("falsche Eingabe!");
+		}
+		return gefundeneObjekte;
+	}
 	/*public static String einlesenDatum(String eingabewert) {
 		String inData;
 		Scanner scan = new Scanner(System.in);
@@ -236,23 +380,27 @@ public class Verwaltung {
 				rueck = "ja";
 		}
 		return rueck;
-	}
+	}//12345678901234567
 	// 01234567891123456
 	// 13:48 11.06.2018
 	public static Calendar umrechnenZeit(String string) {
 		System.out.println("umrechnenZeitString: "+string);
-		int stunde = Integer.parseInt(""+string.charAt(0)+""+string.charAt(1));
-		int minute = Integer.parseInt(""+string.charAt(3)+""+string.charAt(4));
-		int tag = Integer.parseInt(""+string.charAt(6)+""+string.charAt(7));
-		int monat = Integer.parseInt(""+string.charAt(9)+""+string.charAt(10));
-		int jahr = Integer.parseInt(""+string.charAt(12)+""+string.charAt(13)+""+string.charAt(14)+""+string.charAt(15));
 		Calendar calendarObject = Calendar.getInstance();
-		calendarObject.set(Calendar.YEAR, jahr);
-		calendarObject.set(Calendar.MONTH, monat-1);
-		calendarObject.set(Calendar.DAY_OF_MONTH, tag);
-		calendarObject.set(Calendar.HOUR_OF_DAY, stunde);
-		calendarObject.set(Calendar.MINUTE, minute);
-		//Date dateRepresentation = calendarObject.getTime();
+		if (string.length()!=16) {
+			System.out.printf("Fehler bei umrechnenZeit(String string): falsches Format!");
+		} else {
+			int stunde = Integer.parseInt(""+string.charAt(0)+""+string.charAt(1));
+			int minute = Integer.parseInt(""+string.charAt(3)+""+string.charAt(4));
+			int tag = Integer.parseInt(""+string.charAt(6)+""+string.charAt(7));
+			int monat = Integer.parseInt(""+string.charAt(9)+""+string.charAt(10));
+			int jahr = Integer.parseInt(""+string.charAt(12)+""+string.charAt(13)+""+string.charAt(14)+""+string.charAt(15));
+			calendarObject.set(Calendar.YEAR, jahr);
+			calendarObject.set(Calendar.MONTH, monat-1);
+			calendarObject.set(Calendar.DAY_OF_MONTH, tag);
+			calendarObject.set(Calendar.HOUR_OF_DAY, stunde);
+			calendarObject.set(Calendar.MINUTE, minute);
+			//Date dateRepresentation = calendarObject.getTime();
+		}
 		return calendarObject; 
 	}
 	

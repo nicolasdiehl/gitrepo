@@ -49,7 +49,7 @@ public class MainApp extends Application {
 
 	public MainApp() throws JDOMException, IOException {
 		ArrayList<Object> persons;
-		persons = HandleXML.xmlZuArrayList(new File("PersonListe.xml"));
+		persons = HandleXML.xmlZuArrayList(new File("PersonListe.xml"), false);
 		for (int i = 0; i < persons.size(); i++) {
 			String id = ((Person) persons.get(i)).getId();
 			String vorn = ((Person) persons.get(i)).getVorname();
@@ -59,7 +59,7 @@ public class MainApp extends Application {
 			personData.add(new Person(id, vorn, nachn, fuesch, pen));
 		}
 		ArrayList<Object> vehicles;
-		vehicles = HandleXML.xmlZuArrayList(new File("VehicleListe.xml"));
+		vehicles = HandleXML.xmlZuArrayList(new File("VehicleListe.xml"), false);
 		for (int i = 0; i < vehicles.size(); i++) {
 			String id = ((Vehicle) vehicles.get(i)).getId();
 			String typ = ((Vehicle) vehicles.get(i)).getTyp();
@@ -68,7 +68,7 @@ public class MainApp extends Application {
 			vehicleData.add(new Vehicle(id, typ, geliehen, kennzeichen));
 		}
 		ArrayList<Object> buchen;
-		buchen = HandleXML.xmlZuArrayList(new File("BuchenListe.xml"));
+		buchen = HandleXML.xmlZuArrayList(new File("BuchenListe.xml"), false);
 		for (int i = 0; i < buchen.size(); i++) {
 			String id = ((Buchen) buchen.get(i)).getId();
 			String na = ((Buchen) buchen.get(i)).getNachname();
@@ -434,7 +434,7 @@ public class MainApp extends Application {
 		}
 	}
 
-	public void Buchendialog() {
+	public void Buchendialog() throws JDOMException {
 		try {
 			// Load the fxml file and create a new stage for the popup dialog.
 			FXMLLoader loader = new FXMLLoader();
