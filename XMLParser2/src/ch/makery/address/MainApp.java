@@ -94,7 +94,7 @@ public class MainApp extends Application {
 			Document document = saxBuilder.build(inputFile);
 			// erstellte Elemente entsprechen Attributen in der XML
 			Element nbuchen = new Element("Buchen");
-			String newID = ConnectXML.createUniqueID(new File("Buchen.xml"));
+			String newID = HandleXML.createUniqueID(new File("Buchen.xml"));
 			nbuchen.setAttribute(new Attribute("ID", newID));
 			Element avNachname = new Element("Nachname");
 			avNachname.setText(nachname);

@@ -2,10 +2,7 @@ package ch.makery.address.model;
 
 import java.io.File;
 import java.io.IOException;
-
 import org.jdom2.JDOMException;
-
-import defaultxml.ConnectXML;
 import defaultxml.HandleXML;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -50,7 +47,7 @@ public class Person {
 		SimpleStringProperty tempid = null;
 		try {
 			File file = new File("PersonListe.xml");
-			tempid = new SimpleStringProperty(ConnectXML.createUniqueID(file));
+			tempid = new SimpleStringProperty(HandleXML.createUniqueID(file));
 		} catch (JDOMException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

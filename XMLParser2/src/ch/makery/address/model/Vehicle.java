@@ -1,12 +1,9 @@
 package ch.makery.address.model;
 
-
+import defaultxml.HandleXML;
 import java.io.File;
 import java.io.IOException;
-
 import org.jdom2.JDOMException;
-
-import defaultxml.ConnectXML;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -36,7 +33,7 @@ public class Vehicle {
     	SimpleStringProperty tempid = null;
 		try {
 			File file = new File("VehicleListe.xml");
-			tempid = new SimpleStringProperty(ConnectXML.createUniqueID(file));
+			tempid = new SimpleStringProperty(HandleXML.createUniqueID(file));
 		} catch (JDOMException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

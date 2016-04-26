@@ -7,7 +7,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class HandleArrayList extends ConnectXML {
+public class HandleArrayList {
 	
 	public static void printArrayList(ArrayList<Object> arrayList) {
 		if (arrayList.isEmpty()) {

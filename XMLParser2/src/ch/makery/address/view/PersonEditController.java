@@ -1,19 +1,15 @@
 package ch.makery.address.view;
 
 import javafx.fxml.FXML;
-
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.IOException;
-
 import org.jdom2.JDOMException;
-
 import ch.makery.address.model.Person;
-import defaultxml.ConnectXML;
+import defaultxml.HandleXML;
 //
 public class PersonEditController {
 	 @FXML
@@ -80,7 +76,7 @@ public class PersonEditController {
 	    private void handleOk() {
 	        if (isInputValid()) {
 	        	try {
-					person.setId(ConnectXML.createUniqueID(new File ("PersonListe.xml")));
+					person.setId(HandleXML.createUniqueID(new File ("PersonListe.xml")));
 				} catch (JDOMException | IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

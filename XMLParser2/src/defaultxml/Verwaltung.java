@@ -149,7 +149,7 @@ public class Verwaltung {
 		String idtemp=null;
 		try {
 			File file = new File("PersonListe.xml");
-			idtemp = ConnectXML.createUniqueID(file);
+			idtemp = HandleXML.createUniqueID(file);
 		} catch (JDOMException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -169,7 +169,7 @@ public class Verwaltung {
 		String kennzeichen="";
 		try {
 			File file = new File("VehicleListe.xml");
-			idtemp = ConnectXML.createUniqueID(file);
+			idtemp = HandleXML.createUniqueID(file);
 		} catch (JDOMException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

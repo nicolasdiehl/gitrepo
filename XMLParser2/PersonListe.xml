@@ -4,12 +4,42 @@
     <Nachname>fff</Nachname>
     <Vorname>hhhh</Vorname>
     <Fuehrerschein>B</Fuehrerschein>
-    <Personalnummer>11111115555</Personalnummer>
+    <Personalnummer>1555</Personalnummer>
   </Person>
   <Person ID="2">
-    <Nachname>Rudi</Nachname>
-    <Vorname>Reimer</Vorname>
+    <Nachname>Reimer</Nachname>
+    <Vorname>Rudi</Vorname>
     <Fuehrerschein>B</Fuehrerschein>
     <Personalnummer>2323</Personalnummer>
+  </Person>
+  <Person ID="3">
+    <Nachname>Heinrich</Nachname>
+    <Vorname>Schmidt</Vorname>
+    <Fuehrerschein>C</Fuehrerschein>
+    <Personalnummer>1001</Personalnummer>
+  </Person>
+  <Person ID="4">
+    <Nachname>Renate</Nachname>
+    <Vorname>Mueller</Vorname>
+    <Fuehrerschein>B</Fuehrerschein>
+    <Personalnummer>102</Personalnummer>
+  </Person>
+  <Person ID="5">
+    <Nachname>Fritz</Nachname>
+    <Vorname>Fitz</Vorname>
+    <Fuehrerschein>B</Fuehrerschein>
+    <Personalnummer>1003</Personalnummer>
+  </Person>
+  <Person ID="6">
+    <Nachname>Linda</Nachname>
+    <Vorname>Maier</Vorname>
+    <Fuehrerschein>B</Fuehrerschein>
+    <Personalnummer>1005</Personalnummer>
+  </Person>
+  <Person ID="7">
+    <Nachname>Franz</Nachname>
+    <Vorname>Ober</Vorname>
+    <Fuehrerschein>B</Fuehrerschein>
+    <Personalnummer>1007</Personalnummer>
   </Person>
 </PersonListe>

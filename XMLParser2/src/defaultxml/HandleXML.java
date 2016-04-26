@@ -27,7 +27,35 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 
-public class HandleXML extends ConnectXML {
+public class HandleXML {
+
+	public static String createUniqueID(File file) throws JDOMException, IOException {
+		try {
+			SAXBuilder saxBuilder = new SAXBuilder();
+			Document document = saxBuilder.build(file);
+			Element classElement = document.getRootElement();
+			List<Element> Liste = classElement.getChildren();
+			int idInt = 0;
+			int highest = 0;
+			String idString = "";
+			for (int i = 0; i < Liste.size(); i++) {
+				Element currentElement = Liste.get(i);
+
+				idString = currentElement.getAttributeValue("ID");
+				idInt = Integer.parseInt(idString);
+				if (highest < idInt) {
+					highest = idInt;
+				}
+			}
+
+			highest++;
+			idString = Integer.toString(highest);
+			return idString;
+		} catch (JDOMException e) {
+			e.printStackTrace();
+		}
+		return "error: creation of id failed somehow";
+	}
 
 	public static ArrayList<Object> xmlZuArrayList(File file, boolean output) {
 		ArrayList<Object> fArray = new ArrayList<Object>();
@@ -143,9 +171,9 @@ public class HandleXML extends ConnectXML {
 									((Person) objekt).getFuehrerschein(), ((Person) objekt).getPersonalnummer()));
 				} else if (objekt instanceof Vehicle) {
 					einzelnesElement = new Element("Vehicle");
-					elements = new ArrayList<>(Arrays.asList("Typ", "Geliehen"));
-					values = new ArrayList<>(
-							Arrays.asList(((Vehicle) objekt).getTyp(), ((Vehicle) objekt).getGeliehen()));
+					elements = new ArrayList<>(Arrays.asList("Typ", "Geliehen", "Kennzeichen"));
+					values = new ArrayList<>(Arrays.asList(((Vehicle) objekt).getTyp(),
+							((Vehicle) objekt).getGeliehen(), ((Vehicle) objekt).getKennzeichen()));
 
 				} else {
 					einzelnesElement = new Element("Buchen");
@@ -432,16 +460,17 @@ public class HandleXML extends ConnectXML {
 						ar[i][1] = Integer.toString(Integer.parseInt(ar[i][1]) + 1);
 						break;
 					} else {
-						if(ar[i][0]==null){
+						if (ar[i][0] == null) {
 							ar[i][0] = tempke;
 							ar[i][1] = "1";
-							 break;
+							break;
 						}
 					}
-					
+
 				}
 			}
-			System.out.println(ar[0][0] +" "+ ar[0][1] +" "+ar[1][0]+" "+ar[1][1]+" "+ar[2][0]+" "+ar[2][1]);
+			System.out.println(
+					ar[0][0] + " " + ar[0][1] + " " + ar[1][0] + " " + ar[1][1] + " " + ar[2][0] + " " + ar[2][1]);
 		} catch (JDOMException e) {
 			e.printStackTrace();
 		} catch (IOException ioe) {

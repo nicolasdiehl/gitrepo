@@ -1,10 +1,8 @@
 package ch.makery.address.model;
 import java.io.File;
 import java.io.IOException;
-
 import org.jdom2.JDOMException;
-
-import defaultxml.ConnectXML;
+import defaultxml.HandleXML;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 public class Buchen {
@@ -27,7 +25,7 @@ public class Buchen {
 	 * @throws JDOMException 
 	 */
 	public Buchen() throws JDOMException, IOException {
-		this(ConnectXML.createUniqueID(new File("BuchenListe.xml")), null, null, null, null, null, null, null, null, null, null);
+		this(HandleXML.createUniqueID(new File("BuchenListe.xml")), null, null, null, null, null, null, null, null, null, null);
 	}
 
 	/**
@@ -55,7 +53,7 @@ public class Buchen {
 
 	public Buchen(String nachname, String vorname, String personalnummer, String fuehrerschein,
 			String kennzeichen, String typ, String zweck, String von, String bis, String dauer) throws JDOMException, IOException {
-		this.id = new SimpleStringProperty(ConnectXML.createUniqueID(new File("BuchenListe.xml")));
+		this.id = new SimpleStringProperty(HandleXML.createUniqueID(new File("BuchenListe.xml")));
 		this.nachname = new SimpleStringProperty(nachname);
 		this.vorname = new SimpleStringProperty(vorname);
 		this.personalnummer = new SimpleStringProperty(personalnummer);
