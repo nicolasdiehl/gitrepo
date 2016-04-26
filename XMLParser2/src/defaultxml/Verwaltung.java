@@ -37,7 +37,8 @@ public class Verwaltung {
 			System.out.println("s: Etwas suchen");
 			System.out.println("k,l,m: Person,Wagen,Buchen XML laden");
 			System.out.println("x,y,z: Person,Wagen,Buchen XML speichern");
-			System.out.println("r: Alle Listen leeren.");			
+			System.out.println("r: Alle Listen leeren.");
+			System.out.println("b: Beliebteste Fahrzeuge ausgeben.");
 			eingabe = scan.nextLine();
 			switch (eingabe) {
 			case "0":
@@ -66,6 +67,9 @@ public class Verwaltung {
 				break;
 			case "8":
 				
+				break;
+			case "b":
+				HandleXML.getBeliebtestesFahrzeug(); // noch nicht optimal, noch nicht in gui
 				break;
 			case "s":
 				ArrayList<Object> gefunden = new ArrayList<Object>();

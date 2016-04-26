@@ -6,4 +6,10 @@
     <Fuehrerschein>B</Fuehrerschein>
     <Personalnummer>11111115555</Personalnummer>
   </Person>
+  <Person ID="2">
+    <Nachname>Rudi</Nachname>
+    <Vorname>Reimer</Vorname>
+    <Fuehrerschein>B</Fuehrerschein>
+    <Personalnummer>2323</Personalnummer>
+  </Person>
 </PersonListe>

@@ -8,9 +8,9 @@
     <Kennzeichen>DA-CI101</Kennzeichen>
     <Typ>Cityflitzer</Typ>
     <Zweck>Stadtfahrt</Zweck>
-    <Von>01:01 01.01.2020</Von>
-    <Bis>02:02 02.02.2021</Bis>
-    <Dauer>1J 1M 1T 1S 1M</Dauer>
+    <Von>01:01 01.03.2017</Von>
+    <Bis>02:02 02.02.2018</Bis>
+    <Dauer>11M 1T 1S 1M</Dauer>
   </Buchen>
   <Buchen ID="3">
     <Nachname>Reimer</Nachname>
@@ -23,5 +23,41 @@
     <Von>10:00 02.03.2019</Von>
     <Bis>10:00 02.03.2022</Bis>
     <Dauer>3J</Dauer>
+  </Buchen>
+  <Buchen ID="4">
+    <Nachname>Reimer</Nachname>
+    <Vorname>Rudi</Vorname>
+    <Personalnummer>2323</Personalnummer>
+    <Fuehrerschein>B</Fuehrerschein>
+    <Kennzeichen>DA-CI101</Kennzeichen>
+    <Typ>Cityflitzer</Typ>
+    <Zweck>Stadtfahrt</Zweck>
+    <Von>01:01 01.03.2018</Von>
+    <Bis>02:02 02.02.2019</Bis>
+    <Dauer>11M 1T 1S 1M</Dauer>
+  </Buchen>
+  <Buchen ID="5">
+    <Nachname>Reimer</Nachname>
+    <Vorname>Rudi</Vorname>
+    <Personalnummer>2323</Personalnummer>
+    <Fuehrerschein>B</Fuehrerschein>
+    <Kennzeichen>DA-CI101</Kennzeichen>
+    <Typ>Cityflitzer</Typ>
+    <Zweck>Stadtfahrt</Zweck>
+    <Von>01:01 01.03.2019</Von>
+    <Bis>02:02 02.02.2020</Bis>
+    <Dauer>11M 1T 1S 1M</Dauer>
+  </Buchen>
+  <Buchen ID="6">
+    <Nachname>Reimer</Nachname>
+    <Vorname>Rudi</Vorname>
+    <Personalnummer>2323</Personalnummer>
+    <Fuehrerschein>B</Fuehrerschein>
+    <Kennzeichen>DA-CI101</Kennzeichen>
+    <Typ>Cityflitzer</Typ>
+    <Zweck>Stadtfahrt</Zweck>
+    <Von>01:01 01.03.2020</Von>
+    <Bis>02:02 02.02.2021</Bis>
+    <Dauer>11M 1T 1S 1M</Dauer>
   </Buchen>
 </BuchenListe>
