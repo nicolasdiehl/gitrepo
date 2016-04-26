@@ -425,14 +425,12 @@ public class HandleXML extends ConnectXML {
 
 			for (int temp = 0; temp < BuchenListe.size(); temp++) {
 				System.out.println(temp);
-				ar[2][0] = null;
-				ar[2][1] = null;
 				Element Vorgang = BuchenListe.get(temp);
 				String tempke = Vorgang.getChild("Kennzeichen").getText();
 				for (int i = 0; i < 100; i++) {
 					if (tempke.equals(ar[i][0])) {
-						int tempzahl = Integer.parseInt(ar[i][1]) + 1;
-						ar[i][1] = Integer.toString(tempzahl);
+						ar[i][1] = Integer.toString(Integer.parseInt(ar[i][1]) + 1);
+						break;
 					} else {
 						if(ar[i][0]==null){
 							ar[i][0] = tempke;
@@ -440,6 +438,7 @@ public class HandleXML extends ConnectXML {
 							 break;
 						}
 					}
+					
 				}
 			}
 			System.out.println(ar[0][0] +" "+ ar[0][1] +" "+ar[1][0]+" "+ar[1][1]+" "+ar[2][0]+" "+ar[2][1]);

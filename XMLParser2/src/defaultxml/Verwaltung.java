@@ -69,7 +69,7 @@ public class Verwaltung {
 				
 				break;
 			case "b":
-				HandleXML.getBeliebtestesFahrzeug(); // noch nicht optimal, noch nicht in gui
+				HandleXML.getBeliebtestesFahrzeug(); // muss noch sortiert werden, noch nicht in gui
 				break;
 			case "s":
 				ArrayList<Object> gefunden = new ArrayList<Object>();
