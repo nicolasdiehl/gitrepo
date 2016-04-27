@@ -4,6 +4,7 @@ import ch.makery.address.model.Vehicle;
 import ch.makery.address.model.Buchen;
 
 import java.io.File;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -242,5 +243,53 @@ public class HandleArrayList {
 			arrayListB = inArrayListAnhaengen(arrayListB, arrayListA.get(i));
 		}
 		return arrayListB;
+	}
+	
+	public static ArrayList<Object> personArrayListSelectionSortPNAufsteigend(ArrayList<Object> arrayList) {
+		Object tempObject = null;
+		ArrayList<Object> tempArray = new ArrayList<Object>();
+		for (int i = 0; i < arrayList.size(); i++) {
+			tempArray.add(i, arrayList.get(i));
+		}
+		for (int i = 0; i < tempArray.size();i++) {
+			tempObject = tempArray.get(i);
+			Object lowestObject = tempArray.get(i);
+			int lowestObjectPlace = i;
+			for (int j = i + 1; j < tempArray.size(); j++) {
+				BigInteger a = new BigInteger(((Person)tempArray.get(j)).getPersonalnummer());
+				BigInteger b = new BigInteger(((Person)lowestObject).getPersonalnummer());
+				if (a.compareTo(b)<0) {
+					lowestObject = tempArray.get(j);
+					lowestObjectPlace = j;
+				}
+			}
+			tempArray.set(lowestObjectPlace,tempObject);
+			tempArray.set(i,lowestObject);
+		}
+		return tempArray;
+	}
+
+	public static ArrayList<Object> vehicleArrayListSelectionSortKZAufsteigend(ArrayList<Object> arrayList) {
+		Object tempObject = null;
+		ArrayList<Object> tempArray = new ArrayList<Object>();
+		for (int i = 0; i < arrayList.size(); i++) {
+			tempArray.add(i, arrayList.get(i));
+		}
+		for (int i = 0; i < tempArray.size();i++) {
+			tempObject = tempArray.get(i);
+			Object lowestObject = tempArray.get(i);
+			int lowestObjectPlace = i;
+			for (int j = i + 1; j < tempArray.size(); j++) {
+				String a = ((Vehicle)tempArray.get(j)).getKennzeichen();
+				String b = ((Vehicle)lowestObject).getKennzeichen();
+				if (a.compareTo(b)<0) {
+					lowestObject = tempArray.get(j);
+					lowestObjectPlace = j;
+				}
+			}
+			tempArray.set(lowestObjectPlace,tempObject);
+			tempArray.set(i,lowestObject);
+		}
+		return tempArray;
 	}
 }

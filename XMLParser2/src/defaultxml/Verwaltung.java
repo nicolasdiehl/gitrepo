@@ -31,7 +31,9 @@ public class Verwaltung {
 		System.out.println("Was darfs denn heute sein?");
 		String eingabe;
 		while (true) {
+			System.out.println("");
 			System.out.println("0,1,2: Personen, Fahrzeuge oder Buchungen ausgeben");
+			System.out.println("0s: Personen sortiert, 1s: Fahrzeuge sortiert ausgeben");
 			System.out.println("3,4,5: Neue Person, Fahrzeug oder Buchung anlegen");
 			System.out.println("6,7,8: Eine Person, Fahrzeug oder Buchung verändern");
 			System.out.println("s: Etwas suchen");
@@ -44,8 +46,14 @@ public class Verwaltung {
 			case "0":
 				HandleArrayList.printArrayList(arrayListPerson);
 				break;
+			case "0s":
+				HandleArrayList.printArrayList(HandleArrayList.personArrayListSelectionSortPNAufsteigend(arrayListPerson));
+				break;
 			case "1":
 				HandleArrayList.printArrayList(arrayListVehicle);
+				break;
+			case "1s":
+				HandleArrayList.printArrayList(HandleArrayList.vehicleArrayListSelectionSortKZAufsteigend(arrayListVehicle));
 				break;
 			case "2":
 				HandleArrayList.printArrayList(arrayListBuchen);
@@ -167,6 +175,7 @@ public class Verwaltung {
 		String idtemp=null;
 		String geliehen="";
 		String kennzeichen="";
+		Vehicle v = null;
 		try {
 			File file = new File("VehicleListe.xml");
 			idtemp = HandleXML.createUniqueID(file);
@@ -177,11 +186,14 @@ public class Verwaltung {
 		String id = idtemp;
 		String typ = einlesenText("Typ: (Cityflitzer, Lkw. Limousine oder Transporter)");
 		if (!typ.equals("Cityflitzer")&&!typ.equals("Lkw")&&!typ.equals("Limousine")&&!typ.equals("Transporter")) {
+			System.out.println("Falsche Eingabe!");
+			
+		} else {
 			geliehen = "nein";
 			kennzeichen = einlesenText("Kennzeichen: ");
-			
+			v = new Vehicle(id, typ, geliehen, kennzeichen);
 		}
-		return new Vehicle(id, typ, geliehen, kennzeichen);
+		return v;
 	}
 
 	public static Buchen einlesenBuchen(ArrayList<Object> perA, ArrayList<Object> vehA, ArrayList<Object> bucA) throws JDOMException, IOException {
