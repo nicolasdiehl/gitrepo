@@ -6,16 +6,13 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.List;
-import java.util.Objects;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
 import ch.makery.address.model.Person;
 import ch.makery.address.model.Vehicle;
-import javafx.beans.property.SimpleStringProperty;
 import ch.makery.address.model.Buchen;
 
 import org.jdom2.Attribute;
