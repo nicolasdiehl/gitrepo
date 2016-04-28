@@ -10,6 +10,7 @@ import ch.makery.address.model.Person;
 import ch.makery.address.model.Vehicle;
 import defaultxml.Verwaltung;
 
+import java.awt.TextField;
 import java.io.IOException;
 import java.util.Calendar;
 
@@ -52,24 +53,13 @@ public class BuchenController {
 	@FXML
 	private TableColumn<Person, String> fuehrerscheinColumn1;
 	// Fahrzeug @FXML Columns
+
 	@FXML
-	private TableColumn<Vehicle, String> zweckColumn1;
+	private TextField bis;
 	@FXML
-	private TableColumn<Vehicle, String> kennzeichenColumn1;
+	private TextField von;
 	@FXML
-	private TableColumn<Vehicle, String> typColumn1;
-	@FXML
-	private TableColumn<Vehicle, String> vonColumn;
-	@FXML
-	private TableColumn<Vehicle, String> bisColumn;
-	@FXML
-	private TableColumn<Vehicle, String> dauerColumn;
-	@FXML
-	private DatePicker vonDatePicker;
-	@FXML
-	private DatePicker bisDatePicker;
-	@FXML
-	private Label idBooking;
+	private TextField zweck;
 	@FXML
 	private Label nachNameBooking;
 	@FXML
@@ -90,7 +80,10 @@ public class BuchenController {
 	private Label verbleibendBooking;
 	@FXML
 	private Label kennzeichenBooking;
-
+	@FXML
+	private Label dauerBooking;
+	
+	
 	private Buchen buchen;
 	private MainApp mainApp;
 	private boolean buchenClicked = false;
@@ -106,8 +99,7 @@ public class BuchenController {
 		nachNameColumn.setCellValueFactory(cellData -> cellData.getValue().nachnameProperty());
 		personalnummerColumn.setCellValueFactory(cellData -> cellData.getValue().personalnummerProperty());
 		fuehrerscheinColumn.setCellValueFactory(cellData -> cellData.getValue().fuehrerscheinProperty());
-		typColumn.setCellValueFactory(cellData -> cellData.getValue().typProperty());
-		kennzeichenColumn.setCellValueFactory(cellData -> cellData.getValue().kennzeichenProperty());
+
 
 		// LISTENER
 		// HINZUFÜGEN////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
@@ -115,8 +107,7 @@ public class BuchenController {
 				.addListener((observable, oldValue, newValue) -> showPersonDetails(newValue));
 		// Listen for selection changes and show the person details when
 		// changed.
-		vehicleBookingTable.getSelectionModel().selectedItemProperty()
-				.addListener((observable, oldValue, newValue) -> showVehicleDetails(newValue));
+		
 
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		////////////////////////////////////////////////////////////////////
@@ -127,11 +118,14 @@ public class BuchenController {
 
 	private void showPersonDetails(Person person) {
 		if (person != null) {
-			// Fill the labels with info from the person object.
+			// Person zwischenspeichern
+			Person personTemp = person;
+			//Labels befüllen
 			vorNameBooking.setText(person.getVorname());
 			nachNameBooking.setText(person.getNachname());
 			fuehrerscheinBooking.setText(person.getFuehrerschein());
 			personalnummerBooking.setText(person.getPersonalnummer());
+
 		} else {
 			// Person is null, remove all the text.
 			vorNameBooking.setText("");
@@ -148,8 +142,6 @@ public class BuchenController {
 			typBooking.setText(vehicle.getTyp());
 			kennzeichenBooking.setText(vehicle.getKennzeichen());
 
-			// TODO: We need a way to convert the birthday into a String!
-			// birthdayLabel.setText(...);
 		} else {
 			// Person is null, remove all the text.
 			zweckBooking.setText("");
@@ -191,6 +183,7 @@ public class BuchenController {
 		// dialogStage.close();
 		mainApp.showMainOverview();
 	}
+
 
 	@FXML
 	private void handleAbbrechen() {
