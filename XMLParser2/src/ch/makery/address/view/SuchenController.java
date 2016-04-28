@@ -29,8 +29,6 @@ public class SuchenController {
 	@FXML
 	private TextField searchTableFahrzKZLin;
 	@FXML
-	private TextField handleSuchenKZ2;
-	@FXML
 	private TextField searchTablePersNrLin;
 	private MainApp mainApp;
 	private boolean zurueckClicked = false;
