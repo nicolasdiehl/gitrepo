@@ -112,7 +112,7 @@ public class HandleArrayList {
 				for (int i=0;i<arrayList.size();i++) {
 					Person p = (Person)arrayList.get(i);
 					switch (zuSuchenderAttributName) {
-					case "Name":
+					case "Nachname":
 						for (int j=0;j<gesuchteWerte.size();j++) {
 							if (p.getNachname().equals(gesuchteWerte.get(j))) {
 								gefundeneObjekte.add(p);

@@ -42,7 +42,7 @@ public class Verwaltung {
 			System.out.println("0,1,2: Personen, Fahrzeuge oder Buchungen ausgeben");
 			System.out.println("1s: Fahrzeuge sortiert ausgeben");
 			System.out.println("3,4,5: Neue Person, Fahrzeug oder Buchung anlegen");
-			System.out.println("6,7,8: Eine Person, Fahrzeug oder Buchung verändern");
+			//System.out.println("6,7,8: Eine Person, Fahrzeug oder Buchung verändern");
 			System.out.println("s: Etwas suchen");
 			System.out.println("k,l,m: Person,Wagen,Buchen XML laden");
 			System.out.println("x,y,z: Person,Wagen,Buchen XML speichern");
