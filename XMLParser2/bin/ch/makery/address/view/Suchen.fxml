@@ -8,34 +8,34 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.SuchenController">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0">
          <children>
             <Label layoutX="361.0" layoutY="14.0" text="Suchen">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <TableView layoutX="42.0" layoutY="91.0" prefHeight="100.0" prefWidth="695.0">
-              <columns>
-                <TableColumn prefWidth="108.0" text="Personalnummer" />
-                <TableColumn prefWidth="73.0" text="Vorname" />
-                  <TableColumn prefWidth="81.0" text="Nachname" />
-                  <TableColumn prefWidth="92.0" text="Führerschein" />
-                  <TableColumn prefWidth="84.0" text="Fahrzeugtyp" />
-                  <TableColumn prefWidth="81.0" text="Kennzeichen" />
-                  <TableColumn minWidth="0.0" prefWidth="60.0" text="Geliehen" />
-                  <TableColumn prefWidth="65.0" text="Von" />
-                  <TableColumn prefWidth="46.0" text="Bis" />
-              </columns>
-            </TableView>
-            <TextField fx:id="searchTablePersNr" layoutX="85.0" layoutY="285.0" />
-            <TextField layoutX="494.0" layoutY="285.0" />
-            <Label layoutX="274.0" layoutY="227.0" text="Person nach Personalnummer suchen" />
-            <Label layoutX="533.0" layoutY="252.0" text="lineare Suche" />
-            <Button layoutX="390.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleZurueck" text="Zurück" />
-            <Button layoutX="287.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleSuchen" text="Suche" />
-            <Label layoutX="125.0" layoutY="252.0" text="binäre Suche" />
-            <TextField fx:id="searchTableFound" layoutX="45.0" layoutY="347.0" prefHeight="25.0" prefWidth="695.0" />
+            <TextField fx:id="searchTablePersNr" layoutX="77.0" layoutY="102.0" />
+            <TextField fx:id="searchTablePersNrLin" layoutX="565.0" layoutY="102.0" />
+            <Label layoutX="300.0" layoutY="60.0" text="Person nach Personalnummer suchen">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label layoutX="605.0" layoutY="85.0" text="lineare Suche" />
+            <Button layoutX="721.0" layoutY="403.0" mnemonicParsing="false" onAction="#handleZurueck" text="Zurück" />
+            <Button layoutX="127.0" layoutY="133.0" mnemonicParsing="false" onAction="#handleSuchen" text="Suche" />
+            <Label layoutX="126.0" layoutY="85.0" text="binäre Suche" />
+            <TextField fx:id="searchTableFound" layoutX="35.0" layoutY="164.0" prefHeight="25.0" prefWidth="695.0" />
+            <TextField fx:id="searchTableFahrzKZLin" layoutX="326.0" layoutY="254.0" />
+            <Label layoutX="366.0" layoutY="233.0" text="lineare Suche" />
+            <TextField fx:id="searchTableFound1" layoutX="35.0" layoutY="330.0" prefHeight="25.0" prefWidth="695.0" />
+            <Label layoutX="300.0" layoutY="213.0" text="Fahrzeug nach Kennzeichen suchen">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button layoutX="372.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleSuchenKZ2" text="Suche" />
+            <Button layoutX="615.0" layoutY="133.0" mnemonicParsing="false" onAction="#handleSuchen2" text="Suche" />
          </children>
       </AnchorPane>
    </children>
