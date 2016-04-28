@@ -39,7 +39,6 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import defaultxml.*;
 
-// testo
 public class MainApp extends Application {
 	private ObservableList<Uebersicht> uebersichtData = FXCollections.observableArrayList();
 	private ObservableList<Person> personData = FXCollections.observableArrayList();
@@ -48,15 +47,16 @@ public class MainApp extends Application {
 	public Buchen booking;
 
 	public MainApp() throws JDOMException, IOException {
-		ArrayList<Object> persons;
-		persons = HandleXML.xmlZuArrayList(new File("PersonListe.xml"), false);
+		Searchtree searchtree;
+		searchtree = HandleXML.xmlZuSearchtree(new File("PersonListe.xml"), false);
+		ArrayList<Object> persons = searchtree.zuArrayList();
 		for (int i = 0; i < persons.size(); i++) {
 			String id = ((Person) persons.get(i)).getId();
-			String vorn = ((Person) persons.get(i)).getVorname();
 			String nachn = ((Person) persons.get(i)).getNachname();
+			String vorn = ((Person) persons.get(i)).getVorname();
 			String fuesch = ((Person) persons.get(i)).getFuehrerschein();
 			String pen = ((Person) persons.get(i)).getPersonalnummer();
-			personData.add(new Person(id, vorn, nachn, fuesch, pen));
+			personData.add(new Person(id, nachn, vorn, fuesch, pen));
 		}
 		ArrayList<Object> vehicles;
 		vehicles = HandleXML.xmlZuArrayList(new File("VehicleListe.xml"), false);
@@ -318,8 +318,9 @@ public class MainApp extends Application {
 			// Reading XML from the file and unmarshalling.
 			PersonListWrapper wrapper = (PersonListWrapper) um.unmarshal(file);
 
-			personData.clear();
-			personData.addAll(wrapper.getPersons());
+			// ***** persondata load from file geht nicht
+			// ***** personData.clear();
+			// ***** personData.addAll(wrapper.getPersons());
 
 			// Save the file path to the registry.
 			setPersonFilePath(file);

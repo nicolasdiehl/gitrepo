@@ -30,8 +30,8 @@
 				</Label>
 				<TableView fx:id="personTable" layoutX="7.0" layoutY="81.0" prefHeight="200.0" prefWidth="175.0">
 					<columns>
-						<TableColumn fx:id="nachNameColumn" prefWidth="90.0" text="Name" />
-						<TableColumn fx:id="vorNameColumn" prefWidth="90.0" text="Vorname" />
+						<TableColumn fx:id="nachNameColumn" prefWidth="71.0" text="Name" />
+						<TableColumn fx:id="vorNameColumn" prefWidth="86.0" text="Vorname" />
 					</columns>
 				</TableView>
 				<TableView fx:id="vehicleTable" layoutX="390.0" layoutY="80.0" prefHeight="200.0" prefWidth="297.0">
@@ -85,19 +85,18 @@
 				<Label layoutX="897.0" layoutY="609.0" text="Suchfenster" />
 				<Button layoutX="253.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleEditPerson" text="Edit" />
 				<Button layoutX="721.0" layoutY="126.0" mnemonicParsing="false" onAction="#handleEditVehicle" text="Edit" />
-				<TableView layoutX="7.0" layoutY="336.0" prefHeight="200.0" prefWidth="740.0">
+				<TableView fx:id="buchenTable" layoutX="7.0" layoutY="336.0" prefHeight="200.0" prefWidth="768.0">
 					<columns>
-						<TableColumn prefWidth="60.0" text="ID" />
-						<TableColumn prefWidth="75.0" text="Nachname" />
-						<TableColumn prefWidth="75.0" text="Vorname" />
-						<TableColumn prefWidth="60.0" text="Personalnummer" />
-						<TableColumn prefWidth="75.0" text="Typ" />
-						<TableColumn prefWidth="75.0" text="Zweck" />
-						<TableColumn prefWidth="75.0" text="Kenn.Zeich." />
-						<TableColumn prefWidth="60.0" text="Von" />
-						<TableColumn prefWidth="60.0" text="Bis" />
-						<TableColumn prefWidth="60.0" text="Dauer" />
-						<TableColumn prefWidth="64.0" text="F-Schein" />
+						<TableColumn fx:id="BnachnameColumn" prefWidth="75.0" text="Name" />
+						<TableColumn fx:id="BvornameColumn" prefWidth="75.0" text="Vorname" />
+						<TableColumn fx:id="BpersonalnummerColumn" prefWidth="60.0" text="Personalnummer" />
+						<TableColumn fx:id="Bfuehrerschein" prefWidth="42.0" text="Führerschein" />
+						<TableColumn fx:id="Bkennzeichen" prefWidth="59.0" text="Kennzeichen" />
+						<TableColumn fx:id="Btyp" prefWidth="71.0" text="Typ" />
+						<TableColumn fx:id="Bzweck" prefWidth="68.0" text="Zweck" />
+						<TableColumn fx:id="Bvon" prefWidth="102.0" text="Von" />
+						<TableColumn fx:id="Bbis" prefWidth="109.0" text="Bis" />
+						<TableColumn fx:id="Bdauer" prefWidth="94.0" text="Dauer" />
 					</columns>
 				</TableView>
 				<Button layoutX="852.0" layoutY="120.0" mnemonicParsing="false" text="Berechne" />

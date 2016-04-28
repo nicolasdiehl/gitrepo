@@ -6,6 +6,7 @@ import ch.makery.address.model.Buchen;
 import java.io.File;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
 public class HandleArrayList {
@@ -228,7 +229,51 @@ public class HandleArrayList {
 	return gefundeneObjekte;
 	}
 	
+	public static ArrayList<Object> getAmOeftestenGelieheneVehicle(ArrayList<Object> arrayListBuchen, ArrayList<Object> arrayListVehicle) {
+		ArrayList<Object> gefunden = new ArrayList<Object>();
+		for (int i=0; i<arrayListVehicle.size();i++) {
+			gefunden.add(i,arrayListVehicle.get(i));
+		}
+		ArrayList<Integer> tempA = new ArrayList<Integer>();
+		for (int i=0;i<arrayListVehicle.size();i++) {
+			String kennzeichen = ((Vehicle)arrayListVehicle.get(i)).getKennzeichen();
+			ArrayList<String> kennzeichenAsListElement = new ArrayList<String>(Arrays.asList(kennzeichen));
+			Integer anzahl = ArrayListUndNameUndWerteLineareSucheZuArrayList(arrayListBuchen,"Kennzeichen", kennzeichenAsListElement).size();
+			tempA.add(i,anzahl);
+		}
+		Integer highestValue = 0;
+		for (int i=0;i<tempA.size();i++) {
+			Object objectAtCounterI = gefunden.get(i);
+			int highestPosition = i;
+			for (int j = i + 1; j<gefunden.size();j++) {
+				highestValue = tempA.get(j);
+				if (highestValue>tempA.get(highestPosition)) {
+					highestPosition = j;
+				}
+			}
+			tempA.set(highestPosition, tempA.get(i));
+			gefunden.set(i,gefunden.get(highestPosition));
+			tempA.set(i, highestValue);
+			gefunden.set(highestPosition, objectAtCounterI);
+		}
+		return gefunden;
+	}
 	
+	public static ArrayList<Object> getAmLaengstenDurchschnittlichGenutztVehicle(ArrayList<Object> arrayListBuchen, ArrayList<Object> arrayListVehicle) {
+		ArrayList<Object> gefunden = new ArrayList<Object>();
+		for (int i=0; i<arrayListVehicle.size();i++) {
+			gefunden.add(i,arrayListVehicle.get(i));
+		}
+		ArrayList<Object> ausgeliehen = getAmOeftestenGelieheneVehicle(arrayListBuchen, arrayListVehicle);
+		/*for (int i=0; i<ausgeliehen.size();i++) {
+			Vehicle vehicle = (Vehicle)ausgeliehen.get(i);
+			String kennzeichen = vehicle.getKennzeichen();
+			ArrayList<String> kennzeichenAsListElement = new ArrayList<String>(Arrays.asList(kennzeichen));
+			ArrayListUndNameUndWerteLineareSucheZuArrayList(ausgeliehen, zuSuchenderAttributName, gesuchteWerte)
+		}*/
+		
+		return gefunden;
+	}
 
 	public static ArrayList<Object> inArrayListAnhaengen(ArrayList<Object> arrayList, Object objekt) {
 		if (!arrayList.isEmpty() && (objekt instanceof Person && arrayList.get(0) instanceof Person)) arrayList.add(objekt);
@@ -256,8 +301,8 @@ public class HandleArrayList {
 			Object lowestObject = tempArray.get(i);
 			int lowestObjectPlace = i;
 			for (int j = i + 1; j < tempArray.size(); j++) {
-				BigInteger a = new BigInteger(((Person)tempArray.get(j)).getPersonalnummer());
-				BigInteger b = new BigInteger(((Person)lowestObject).getPersonalnummer());
+				Person a = (Person)tempArray.get(j);
+				Person b = (Person)lowestObject;
 				if (a.compareTo(b)<0) {
 					lowestObject = tempArray.get(j);
 					lowestObjectPlace = j;

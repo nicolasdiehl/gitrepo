@@ -2,6 +2,8 @@ package ch.makery.address.model;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigInteger;
+
 import org.jdom2.JDOMException;
 import defaultxml.HandleXML;
 import javafx.beans.property.SimpleStringProperty;
@@ -12,7 +14,7 @@ import javafx.beans.property.StringProperty;
  *
  * 
  */
-public class Person {
+public class Person implements Comparable<Person>{
 	private final StringProperty id;
 	private final StringProperty vorname;
 	private final StringProperty nachname;
@@ -121,5 +123,12 @@ public class Person {
 		return fuehrerschein;
 	}
 
+	 @Override
+	    public int compareTo(Person other){
+	        // compareTo should return < 0 if this is supposed to be
+	        // less than other, > 0 if this is supposed to be greater than 
+	        // other and 0 if they are supposed to be equal
+	        return new BigInteger(this.getPersonalnummer()).compareTo(new BigInteger(other.getPersonalnummer()));
+	    }
 }
  

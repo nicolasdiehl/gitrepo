@@ -98,6 +98,42 @@ public class HandleXML {
 		return fArray;
 	}
 
+	public static Searchtree xmlZuSearchtree(File file, boolean output) {
+		Searchtree fSearchtree = new Searchtree();
+		try {
+			SAXBuilder saxBuilder = new SAXBuilder();
+			Document document = saxBuilder.build(file);
+			Element rootElement = document.getRootElement();
+			List<Element> listeDerElemente = rootElement.getChildren();
+			for (int i = 0; i < listeDerElemente.size(); i++) {
+				Element einzelnesElement = listeDerElemente.get(i);
+				List<Element> listeDerBodenElemente = einzelnesElement.getChildren();
+				ArrayList<String> tempWerte = new ArrayList<String>();
+				Attribute einzelnesElementId = einzelnesElement.getAttribute("ID");
+				String einzelnesElementIdWert = einzelnesElementId.getValue();
+				if (output)
+					System.out.println("ID: " + einzelnesElementIdWert);
+				for (int j = 0; j < listeDerBodenElemente.size(); j++) {
+					Element einzelnesBodenElement = listeDerBodenElemente.get(j);
+					String einzelnesBodenElementName = einzelnesBodenElement.getName();
+					String einzelnesBodenElementWert = einzelnesBodenElement.getText();
+					if (output)
+						System.out.println(einzelnesBodenElementName + ":\t" + einzelnesBodenElementWert);
+					tempWerte.add(einzelnesBodenElementWert);
+				}
+				if (output)
+					System.out.println("");
+					fSearchtree.insert(new Person(einzelnesElementIdWert, tempWerte.get(0), tempWerte.get(1), tempWerte.get(2),
+							tempWerte.get(3)));
+			}
+		} catch (JDOMException e) {
+			e.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+		return fSearchtree;
+	}
+	
 	public static void arrayListZuXml(ArrayList<Object> arrayList, File file, String typ) {
 		if (file.toString().equals("")) { // leer, standard-filename nehmen
 			if (typ.equals("Person")) {
@@ -439,41 +475,40 @@ public class HandleXML {
 		}
 	}
 
-	public static void getBeliebtestesFahrzeug() {
+	public static String[][] getBeliebtestesFahrzeug() {
+		String[][] gefunden = new String[1000][2];
 		try {
 			File inputFile = new File("BuchenListe.xml");
 			SAXBuilder saxBuilder = new SAXBuilder();
 			Document document = saxBuilder.build(inputFile);
 			Element classElement = document.getRootElement();
 			List<Element> BuchenListe = classElement.getChildren();
-			String ar[][] = new String[100][2];
 
 			for (int temp = 0; temp < BuchenListe.size(); temp++) {
 				System.out.println(temp);
 				Element Vorgang = BuchenListe.get(temp);
 				String tempke = Vorgang.getChild("Kennzeichen").getText();
-				for (int i = 0; i < 100; i++) {
-					if (tempke.equals(ar[i][0])) {
-						ar[i][1] = Integer.toString(Integer.parseInt(ar[i][1]) + 1);
+				for (int i = 0; i < 1000; i++) {
+					if (tempke.equals(gefunden[i][0])) {
+						gefunden[i][1] = Integer.toString(Integer.parseInt(gefunden[i][1]) + 1);
 						break;
 					} else {
-						if (ar[i][0] == null) {
-							ar[i][0] = tempke;
-							ar[i][1] = "1";
+						if (gefunden[i][0] == null) {
+							gefunden[i][0] = tempke;
+							gefunden[i][1] = "1";
 							break;
 						}
 					}
-
 				}
 			}
 			System.out.println(
-					ar[0][0] + " " + ar[0][1] + " " + ar[1][0] + " " + ar[1][1] + " " + ar[2][0] + " " + ar[2][1]);
+					gefunden[0][0] + " " + gefunden[0][1] + " " + gefunden[1][0] + " " + gefunden[1][1] + " " + gefunden[2][0] + " " + gefunden[2][1]);
 		} catch (JDOMException e) {
 			e.printStackTrace();
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
-
+		return gefunden;
 	}
 
 	public static ArrayList<Object> xmlUndNameUndWerteLineareSucheZuArrayList(File file, String zuSuchenderAttributName,

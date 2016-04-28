@@ -1,5 +1,6 @@
 package ch.makery.address.view;
 
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import org.jdom2.JDOMException;
 
 import ch.makery.address.MainApp;
+import ch.makery.address.model.Buchen;
 import ch.makery.address.model.Person;
 import ch.makery.address.model.Vehicle;
 
@@ -48,6 +50,28 @@ public class MainOverviewController {
 	private Label personalnummerLabel;
 	@FXML
 	private Label fuehrerscheinLabel;
+	@FXML
+	private TableView<Buchen> buchenTable;
+	@FXML
+	private TableColumn<Buchen, String> BnachnameColumn;
+	@FXML
+	private TableColumn<Buchen, String> BvornameColumn;
+	@FXML
+	private TableColumn<Buchen, String> BpersonalnummerColumn;
+	@FXML
+	private TableColumn<Buchen, String> Bfuehrerschein;
+	@FXML
+	private TableColumn<Buchen, String> Bkennzeichen;
+	@FXML
+	private TableColumn<Buchen, String> Btyp;
+	@FXML
+	private TableColumn<Buchen, String> Bzweck;
+	@FXML
+	private TableColumn<Buchen, String> Bvon;
+	@FXML
+	private TableColumn<Buchen, String> Bbis;
+	@FXML
+	private TableColumn<Buchen, String> Bdauer;
 
 	private boolean suchenClicked = false;
 	// Reference to the main application.
@@ -70,9 +94,22 @@ public class MainOverviewController {
 		// Initialize the person table with the two columns.
 		vorNameColumn.setCellValueFactory(cellData -> cellData.getValue().vornameProperty());
 		nachNameColumn.setCellValueFactory(cellData -> cellData.getValue().nachnameProperty());
+		
+		
 		typColumn.setCellValueFactory(cellData -> cellData.getValue().typProperty());
 		kennzeichenColumn.setCellValueFactory(cellData -> cellData.getValue().kennzeichenProperty());
 		geliehenColumn.setCellValueFactory(cellData -> cellData.getValue().geliehenProperty());
+		
+		BnachnameColumn.setCellValueFactory(cellData -> cellData.getValue().nachnameProperty());
+		BvornameColumn.setCellValueFactory(cellData -> cellData.getValue().vornameProperty());
+		BpersonalnummerColumn.setCellValueFactory(cellData -> cellData.getValue().personalnummerProperty());
+		Bfuehrerschein.setCellValueFactory(cellData -> cellData.getValue().fuehrerscheinProperty());
+		Bkennzeichen.setCellValueFactory(cellData -> cellData.getValue().kennzeichenProperty());
+		Btyp.setCellValueFactory(cellData -> cellData.getValue().typProperty());
+		Bzweck.setCellValueFactory(cellData -> cellData.getValue().zweckProperty());
+		Bvon.setCellValueFactory(cellData -> cellData.getValue().vonProperty());
+		Bbis.setCellValueFactory(cellData -> cellData.getValue().bisProperty());
+		Bdauer.setCellValueFactory(cellData -> cellData.getValue().dauerProperty());
 
 		// Clear person details.
 		showPersonDetails(null);
@@ -84,6 +121,8 @@ public class MainOverviewController {
 		// Listen for selection changes and show the person details when
 		// changed.
 		vehicleTable.getSelectionModel().selectedItemProperty();
+		
+		buchenTable.getSelectionModel().selectedItemProperty();
 
 	}
 
@@ -95,6 +134,7 @@ public class MainOverviewController {
 			fuehrerscheinLabel.setText(person.getFuehrerschein());
 			personalnummerLabel.setText(person.getPersonalnummer());
 		} else {
+			System.out.println("******* person is null!");
 			// Person is null, remove all the text.
 			vorNameLabel.setText("");
 			nachNameLabel.setText("");
@@ -217,6 +257,8 @@ public class MainOverviewController {
 		// Add observable list data to the table
 		personTable.setItems(mainApp.getPersonData());
 		vehicleTable.setItems(mainApp.getVehicleData());
+		buchenTable.setItems(mainApp.getBuchenData());
+		// ********buchenTable.setItems()
 
 	}
 
