@@ -38,14 +38,20 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import defaultxml.*;
+//schnittstelle zwischen xml und fxml. Wird gebraucht um die Tableviews zu füllen mit der erzeugten liste aus 
+//der xml. Hier werden Controller mit der MainApp verknüpft.
 
+//Erstellen einer ObservableList
 public class MainApp extends Application {
 	private static ObservableList<Uebersicht> uebersichtData = FXCollections.observableArrayList();
 	private static ObservableList<Person> personData = FXCollections.observableArrayList();
 	private static ObservableList<Vehicle> vehicleData = FXCollections.observableArrayList();
 	private static ObservableList<Buchen> buchenData = FXCollections.observableArrayList();
 	public Buchen booking;
-
+	
+	//zugriff auf die XML für die ObservableList für die MainOverview
+	
+	//füllt die personTable in der Mainoverview mit der Hilfe von der XML
 	public MainApp() throws JDOMException, IOException {
 		Searchtree searchtree;
 		searchtree = HandleXML.xmlZuSearchtree(new File("PersonListe.xml"), false);
@@ -58,6 +64,7 @@ public class MainApp extends Application {
 			String pen = ((Person) persons.get(i)).getPersonalnummer();
 			personData.add(new Person(id, nachn, vorn, fuesch, pen));
 		}
+		//füllt die vehicleTable in der Mainoverview mit der Hilfe von XML
 		ArrayList<Object> vehicles;
 		vehicles = HandleXML.xmlZuArrayList(new File("VehicleListe.xml"), false);
 		for (int i = 0; i < vehicles.size(); i++) {
@@ -67,6 +74,7 @@ public class MainApp extends Application {
 			String kennzeichen = ((Vehicle) vehicles.get(i)).getKennzeichen();
 			vehicleData.add(new Vehicle(id, typ, geliehen, kennzeichen));
 		}
+		//füllt die buchenTable in der Mainoverview mit der Hilfe von XML
 		ArrayList<Object> buchen;
 		buchen = HandleXML.xmlZuArrayList(new File("BuchenListe.xml"), false);
 		for (int i = 0; i < buchen.size(); i++) {
@@ -84,7 +92,7 @@ public class MainApp extends Application {
 			buchenData.add(new Buchen(id, na, vor, pe, fu, ke, ty, zw, von, bi, da));
 		}
 	}
-
+	//konstruktor für Buchen
 	public static void buchen(String id, String nachname, String vorname, String personalnummer, String fuehrerschein,
 			String kennzeichen, String typ, String zweck, String von, String bis, String dauer) throws JDOMException, IOException {
 		Buchen buchen = new Buchen();
@@ -161,6 +169,7 @@ public class MainApp extends Application {
 	private Stage primaryStage;
 	private BorderPane rootLayout;
 
+	//Anzeigen der verschiedenen Windows
 	@Override
 	public void start(Stage primaryStage) throws JDOMException, IOException {
 		this.primaryStage = primaryStage;
@@ -171,7 +180,7 @@ public class MainApp extends Application {
 
 		showMainOverview();
 	}
-
+	//Initialisierung der RootLayout
 	public void initRootLayout() {
 		try {
 			// Load root layout from fxml file.
@@ -204,7 +213,7 @@ public class MainApp extends Application {
 			loadPersonDataFromFile(file);
 		}
 	}
-
+	//Laden und Zugriff auf die MainOverview für das Fenster MainOverview
 	public void showMainOverview() {
 		try {
 			// Load person overview.
@@ -232,7 +241,8 @@ public class MainApp extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-
+	
+	//EditDialogPerson  größe, Titel wird zugewiesen und bereitgestellt
 	public boolean showPersonEditDialog(Person person) {
 		try {
 			// Load the fxml file and create a new stage for the popup dialog.
@@ -262,7 +272,8 @@ public class MainApp extends Application {
 			return false;
 		}
 	}
-
+	
+	//EditDialogVehicle größe, Titel wird zugewisen und bereitgestellt
 	public boolean showVehicleEditDialog(Vehicle vehicle) {
 		try {
 			// Load the fxml file and create a new stage for the popup dialog.
@@ -292,7 +303,7 @@ public class MainApp extends Application {
 			return false;
 		}
 	}
-
+	
 	public File getPersonFilePath() {
 		Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
 		String filePath = prefs.get("filePath", null);
@@ -318,19 +329,15 @@ public class MainApp extends Application {
 		}
 	}
 
+	//laden von Personendaten
 	public void loadPersonDataFromFile(File file) {
 		try {
 			JAXBContext context = JAXBContext.newInstance(PersonListWrapper.class);
 			Unmarshaller um = context.createUnmarshaller();
 
-			// Reading XML from the file and unmarshalling.
+			//von XML aufgerufen werden
 			PersonListWrapper wrapper = (PersonListWrapper) um.unmarshal(file);
 
-			// ***** persondata load from file geht nicht
-			// ***** personData.clear();
-			// ***** personData.addAll(wrapper.getPersons());
-
-			// Save the file path to the registry.
 			setPersonFilePath(file);
 
 		} catch (Exception e) { // catches ANY exception
@@ -342,7 +349,7 @@ public class MainApp extends Application {
 			alert.showAndWait();
 		}
 	}
-
+	//Speichern von Personendaten (Tableview Daten)
 	public void savePersonDataToFile(File file) {// file identisch mit vehicle
 													// save???
 		try {
@@ -350,11 +357,11 @@ public class MainApp extends Application {
 			Marshaller m = context.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-			// Wrapping our person data.
+			
 			PersonListWrapper wrapper = new PersonListWrapper();
 			wrapper.setPersons(personData);
 
-			// Marshalling and saving XML to the file.
+			//soll in XML übernommen werden
 			m.marshal(wrapper, file);
 
 			// Save the file path to the registry.
@@ -368,7 +375,7 @@ public class MainApp extends Application {
 			alert.showAndWait();
 		}
 	}
-
+	//laden von Vehicle (Tableview Daten)
 	public File getVehicleFilePath() {
 		Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
 		String filePath = prefs.get("filePath", null);
@@ -378,18 +385,18 @@ public class MainApp extends Application {
 			return null;
 		}
 	}
-
+	//speichern von Vehicle (Tableview Daten)
 	public void setVehicleFilePath(File file) {
 		Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
 		if (file != null) {
 			prefs.put("filePath", file.getPath());
 
-			// Update the stage title.
+		
 			primaryStage.setTitle("AddressApp - " + file.getName());
 		} else {
 			prefs.remove("filePath");
 
-			// Update the stage title.
+		
 			primaryStage.setTitle("AddressApp");
 		}
 	}
@@ -399,13 +406,13 @@ public class MainApp extends Application {
 			JAXBContext context = JAXBContext.newInstance(VehicleListWrapper.class);
 			Unmarshaller um = context.createUnmarshaller();
 
-			// Reading XML from the file and unmarshalling.
+			//Auslesen von der XML
 			VehicleListWrapper wrapper = (VehicleListWrapper) um.unmarshal(file);
 
 			vehicleData.clear();
 			vehicleData.addAll(wrapper.getVehicles());
 
-			// Save the file path to the registry.
+			// Speichern
 			setVehicleFilePath(file);
 
 		} catch (Exception e) { // catches ANY exception
@@ -424,11 +431,11 @@ public class MainApp extends Application {
 			Marshaller m = context.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-			// Wrapping our person data.
+	
 			VehicleListWrapper wrapper = new VehicleListWrapper();
 			wrapper.setVehicles(vehicleData);
 
-			// Marshalling and saving XML to the file.
+			// Speichern in der XML
 			m.marshal(wrapper, file);
 
 			// Save the file path to the registry.
@@ -445,7 +452,7 @@ public class MainApp extends Application {
 
 	public void Buchendialog() throws JDOMException {
 		try {
-			// Load the fxml file and create a new stage for the popup dialog.
+			// Laden der FXML und öffnen eines pop up fensters
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("view/Buchen.fxml"));
 			AnchorPane buchen = (AnchorPane) loader.load();
@@ -464,15 +471,15 @@ public class MainApp extends Application {
 
 	public void Suchendialog() {
 		try {
-			// Load the fxml file and create a new stage for the popup dialog.
+			// Laden der FXML und öffnen eines pop up fensters
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("view/Suchen.fxml"));
 			AnchorPane suchen = (AnchorPane) loader.load();
 
-			// Set person overview into the center of root layout.
+		
 			rootLayout.setCenter(suchen);
 
-			// Give the controller access to the main app.
+			// Controller zugriff auf die Main app geben
 			SuchenController controller = loader.getController();
 			controller.setMainApp(this);
 

@@ -10,9 +10,10 @@ import java.io.IOException;
 import org.jdom2.JDOMException;
 import ch.makery.address.model.Person;
 import defaultxml.HandleXML;
-//
+//ein Dialogfenster das beim Editieren oder Neuanlegen aufgerufen wird
 public class PersonEditController {
-	 @FXML
+	// sämtliche für das PersonEdit Fenster relevanten Referenzen
+		@FXML
 	    private TextField vorNameField;
 	    @FXML
 	    private TextField nachNameField;
@@ -23,7 +24,7 @@ public class PersonEditController {
 	
 	 
 
-
+	    
 	    private Stage dialogStage;
 	    private Person person;
 	    private boolean okClicked = false;
@@ -36,42 +37,29 @@ public class PersonEditController {
 	    private void initialize() {
 	    }
 
-	    /**
-	     * Sets the stage of this dialog.
-	     * 
-	     * @param dialogStage
-	     */
+	    //Dialogstage wird hier erzeugt
 	    public void setDialogStage(Stage dialogStage) {
 	        this.dialogStage = dialogStage;
 	    }
 
-	    /**
-	     * Sets the person to be edited in the dialog.
-	     * 
-	     * @param person
-	     */
+
+	     //Person editier Dialog
 	    public void setPerson(Person person) {
 	        this.person = person;
-
 	        vorNameField.setText(person.getVorname());
 	        nachNameField.setText(person.getNachname());
 	        personalnummerField.setText(person.getPersonalnummer());
 	        fuehrerscheinField.setText(person.getFuehrerschein());
-	  
 	    }
 
-	    /**
-	     * Returns true if the user clicked OK, false otherwise.
-	     * 
-	     * @return
-	     */
+	   
+	    //setzt zustand true und wird übernommen bei ok, sonst auf falsch
 	    public boolean isOkClicked() {
 	        return okClicked;
 	    }
 
-	    /**
-	     * Called when the user clicks ok.
-	     */
+
+	    //Vorgang wenn Ok gedrückt wird
 	    @FXML
 	    private void handleOk() {
 	        if (isInputValid()) {
@@ -85,26 +73,19 @@ public class PersonEditController {
 	            person.setNachname(nachNameField.getText());
 	            person.setPersonalnummer(personalnummerField.getText());
 	            person.setFuehrerschein(fuehrerscheinField.getText());
-	      
-
 	            okClicked = true;
 	            dialogStage.close();
 	        }
 	    }
 
-	    /**
-	     * Called when the user clicks cancel.
-	     */
+	   //bei Abbrechen drücken
 	    @FXML
 	    private void handleCancel() {
 	        dialogStage.close();
 	    }
 
-	    /**
-	     * Validates the user input in the text fields.
-	     * 
-	     * @return true if the input is valid
-	     */
+
+	    //überprüft die Richtigkeit der Eingabe
 	    private boolean isInputValid() {
 	        String errorMessage = "";
 

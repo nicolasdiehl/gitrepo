@@ -6,7 +6,7 @@ import defaultxml.HandleXML;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 public class Buchen {
-
+	// hier werden sämltiche Property, Setter und Getter für das Buchen erzeugt.
 	private final StringProperty id;
 	private final StringProperty nachname;
 	private final StringProperty vorname;
@@ -28,14 +28,7 @@ public class Buchen {
 		this(HandleXML.createUniqueID(new File("BuchenListe.xml")), null, null, null, null, null, null, null, null, null, null);
 	}
 
-	/**
-	 * Constructor with some initial data.
-	 * 
-	 * @param firstName
-	 * @param lastName
-	 * @throws IOException 
-	 * @throws JDOMException 
-	 */
+	//Konstruktor
 	public Buchen(String id, String nachname, String vorname, String personalnummer, String fuehrerschein,
 			String kennzeichen, String typ, String zweck, String von, String bis, String dauer) throws JDOMException, IOException {
 		this.id = new SimpleStringProperty(id);
@@ -65,7 +58,7 @@ public class Buchen {
 		this.bis = new SimpleStringProperty(bis);
 		this.dauer = new SimpleStringProperty(dauer);
 	}
-	
+	//sämtliche setter, getter und property
 	public String getDauer() {
 		return dauer.get();
 	}

@@ -1,5 +1,6 @@
 package ch.makery.address.view;
-
+//ein Dialogfenster soll geöffnet werden beim editieren oder neu anlegen
+// eines Fahrzeuges
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Alert;
@@ -13,6 +14,7 @@ import ch.makery.address.model.Vehicle;
 import javafx.scene.control.TextField;
 
 public class VehicleEditDialogController {
+	// sämtliche für das VehicleEditDialog Fenster relevanten Referenzen
 	@FXML
 	private TextField typField;
 	@FXML
@@ -26,75 +28,49 @@ public class VehicleEditDialogController {
     private Vehicle vehicle;
     private boolean okClicked = false;
 
-    /**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
-     */
+
     @FXML
     private void initialize() {
     }
 
-    /**
-     * Sets the stage of this dialog.
-     * 
-     * @param dialogStage
-     */
+    //setzt die Stage des Dialogfensters für Vehicle
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
     }
 
-    /**
-     * Sets the person to be edited in the dialog.
-     * 
-     * @param person
-     */
+   //Dialog ruft Information ab
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
 
         typField.setText(vehicle.getTyp());
        kennzeichenField.setText(vehicle.getKennzeichen());
-        geliehenField.setText(vehicle.getGeliehen());
-       
+        geliehenField.setText(vehicle.getGeliehen());   
     }
 
-    /**
-     * Returns true if the user clicked OK, false otherwise.
-     * 
-     * @return
-     */
+ 
     public boolean isOkClicked() {
         return okClicked;
     }
 
-    /**
-     * Called when the user clicks ok.
-     */
+    //beim Clicken auf den OK button im Edit Vehicle Dialog
     @FXML
     private void handleOk() {
         if (isInputValid()) {
             vehicle.setTyp(typField.getText());
             vehicle.setKennzeichen(kennzeichenField.getText());
             vehicle.setGeliehen(geliehenField.getText());
-          
-
             okClicked = true;
             dialogStage.close();
         }
     }
 
-    /**
-     * Called when the user clicks cancel.
-     */
+    //bei Abbrechen soll das Dialogfenster geschlossen werden
     @FXML
     private void handleCancel() {
         dialogStage.close();
     }
 
-    /**
-     * Validates the user input in the text fields.
-     * 
-     * @return true if the input is valid
-     */
+   //Eingabe soll auf Richtigkeit geprüft werden
     private boolean isInputValid() {
         String errorMessage = "";
 

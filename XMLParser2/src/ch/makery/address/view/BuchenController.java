@@ -22,8 +22,11 @@ import java.util.Calendar;
 import org.jdom2.JDOMException;
 import ch.makery.address.MainApp;
 
-//
+	//Buchen soll es ermöglichen, mit dem Klicken in der Tableview in der gewünschten Spalte und dem 
+	//der Eingabe "von", "bis" "zweck" eine Buchen der gewünschten Daten vorzunehmen und in der Mainoverview
+	//booking Tabelle übernehmen. Auch ist ein zurück knopf eingebaut, der das Fenster MainOverview wieder aufruft
 public class BuchenController {
+	// sämtliche für das Buchenfenster relevanten Referenzen
 	@FXML
 	private TableView<Person> personBookingTable;
 	@FXML
@@ -38,8 +41,6 @@ public class BuchenController {
 	private TableColumn<Person, String> personalnummerColumn;
 	@FXML
 	private TableColumn<Person, String> fuehrerscheinColumn;
-	// Fahrzeug @FXML Columns
-
 	@FXML
 	private TextField testBis;
 	@FXML
@@ -72,71 +73,26 @@ public class BuchenController {
 	
 	private Buchen buchen;
 	private MainApp mainApp;
+	
+	// Zustände der Button buchen und abbrechen
 	private boolean buchenClicked = false;
 	private boolean abbrechenClicked = false;
 
 	public BuchenController() {
 	}
-
+	
+	// Initialisieren der Tableview mit Personendaten
 	@FXML
 	private void initialize() {
-		// Initialize the person table with the two columns.
+		
 		vorNameColumn.setCellValueFactory(cellData -> cellData.getValue().vornameProperty());
 		nachNameColumn.setCellValueFactory(cellData -> cellData.getValue().nachnameProperty());
 		personalnummerColumn.setCellValueFactory(cellData -> cellData.getValue().personalnummerProperty());
 		fuehrerscheinColumn.setCellValueFactory(cellData -> cellData.getValue().fuehrerscheinProperty());
 
-
-		// LISTENER
-		// HINZUFÜGEN////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
-		personBookingTable.getSelectionModel().selectedItemProperty()
-				.addListener((observable, oldValue, newValue) -> showPersonDetails(newValue));
-		// Listen for selection changes and show the person details when
-		// changed.
-		
-
-		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		////////////////////////////////////////////////////////////////////
-		// BuchenTable befüllen
-		////////////////////////////////////////////////////////////////////////
-
 	}
 
-	private void showPersonDetails(Person person) {
-		if (person != null) {
-			// Person zwischenspeichern
-			Person personTemp = person;
-			//Labels befüllen
-			vorNameBooking.setText(person.getVorname());
-			nachNameBooking.setText(person.getNachname());
-			fuehrerscheinBooking.setText(person.getFuehrerschein());
-			personalnummerBooking.setText(person.getPersonalnummer());
-
-		} else {
-			// Person is null, remove all the text.
-			vorNameBooking.setText("");
-			nachNameBooking.setText("");
-			fuehrerscheinBooking.setText("");
-			personalnummerBooking.setText("");
-		}
-	}
-
-	private void showVehicleDetails(Vehicle vehicle) {
-		if (vehicle != null) {
-
-			// Fill the labels with info from the person object.
-			typBooking.setText(vehicle.getTyp());
-			kennzeichenBooking.setText(vehicle.getKennzeichen());
-
-		} else {
-			// Person is null, remove all the text.
-			zweckBooking.setText("");
-			typBooking.setText("");
-			kennzeichenBooking.setText("");
-
-		}
-	}
-
+// Handle Button Klick
 	public boolean isBuchenClicked() {
 		return buchenClicked;
 	}
@@ -150,6 +106,9 @@ public class BuchenController {
 		return abbrechenClicked;
 	}
 
+	//Vorgang bei dem Klicken des Buchen Buttons
+	//Ausgewählte Zeile der Tableview soll übernommen werden und in die MainOverview buchenTable übernommen werden 
+	//Mainoverview soll wieder geöffnet werden
 	@FXML
 	private void handleBuchen() {
 
@@ -170,17 +129,18 @@ public class BuchenController {
 		mainApp.showMainOverview();
 	}
 
-
+	//beim Klicken des Abbrechen Buttons soll man wieder zurück auf MainOverview Window gelangen
 	@FXML
 	private void handleAbbrechen() {
 		abbrechenClicked = true;
 		mainApp.showMainOverview();
 	}
-
+	//Umrechen des eingegeben Strings im Textfeld "von" in Zeit
 	@FXML
 	private void handleVon(){
 		
 	}
+	//erlaubt den Zugriff der mainApp auf Buchen um es aufrufen zu können
 	public void setMainApp(MainApp mainApp) throws JDOMException, IOException {
 		this.mainApp = mainApp;
 

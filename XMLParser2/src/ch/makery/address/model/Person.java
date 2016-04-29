@@ -9,11 +9,7 @@ import defaultxml.HandleXML;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-/**
- * Model class for a Person.
- *
- * 
- */
+// hier werden sämltiche Property, Setter und Getter für Person erzeugt.
 public class Person implements Comparable<Person>{
 	private final StringProperty id;
 	private final StringProperty vorname;
@@ -28,12 +24,7 @@ public class Person implements Comparable<Person>{
 		this(null, null, null, null, null);
 	}
 
-	/**
-	 * Constructor with some initial data.
-	 * 
-	 * @param firstName
-	 * @param lastName
-	 */
+	//Konstruktor
 	public Person(String id, String nachname, String vorname, String fuehrerschein, String personalnummer) {
 
 		this.id = new SimpleStringProperty(id);
@@ -62,7 +53,7 @@ public class Person implements Comparable<Person>{
 
 		// SimpleObjectProperty<LocalDate>(LocalDate.of(1999, 2, 21));
 	}
-	
+	//sämtliche setter, getter und property
 	public String getId() {
 		return id.get();
 	}

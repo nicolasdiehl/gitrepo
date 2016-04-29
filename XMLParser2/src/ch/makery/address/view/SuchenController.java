@@ -12,7 +12,9 @@ import defaultxml.HandleArrayList;
 import defaultxml.HandleXML;
 import defaultxml.Searchtree;
 import defaultxml.SuchBaumBSP;
-//
+//Es wird ein Suchfenster erstellt, welches es ermöglichtn mit der Hilfe von der Personalnummer
+//nach der gewünschten Person zu suchen (linear und binär)
+//das Suchen nach einem Fahrzeug mit der Hilfe von dem Kennzeichen soll mit dem drücken auf ein Button ermöglicht werden
 public class SuchenController {
 	@FXML
 	private TableView<Person> personBookingTable;
@@ -28,6 +30,7 @@ public class SuchenController {
 	private TextField searchTableFahrzKZLin;
 	@FXML
 	private TextField searchTablePersNrLin;
+	
 	private MainApp mainApp;
 	private boolean zurueckClicked = false;
 
@@ -35,7 +38,7 @@ public class SuchenController {
 	
 	public SuchenController() {
 	}
-
+	//Vorgang bei dem Klicken auf den Suchen Button mit Hilfe der Personalnummer (binäre Suche)
 	@FXML
 	private void handleSuchen() { // Person binär suchen
 		// SuchBaumBSP suchbaum = new SuchBaumBSP();
@@ -46,7 +49,7 @@ public class SuchenController {
 		searchTableFound.setText("Name: " + person.getNachname()+ ", " +person.getVorname()+"    Fuehrerschein: "
 		+person.getFuehrerschein()+"    Personalnummer: "+person.getPersonalnummer());
 	}
-	
+	//Vorgang bei dem Klicken auf den linearen suchen Button mit Hilfe der Personalnummer (lineare Suche)
 	@FXML
 	private void handleSuchen2() { // Person linear suchen
 		String suchzahl = searchTablePersNrLin.getText();
@@ -61,7 +64,7 @@ public class SuchenController {
 			}
 		}
 	}
-	
+	//Vorgang bei dem Klicken auf den Suchen Button bei Fahrzeug nach Kennzeichen suchen
 	@FXML
 	private void handleSuchenKZ() {
 		String suchwert = searchTableFahrzKZLin.getText();
@@ -71,20 +74,18 @@ public class SuchenController {
 		Vehicle vehicle = (Vehicle)gefunden.get(gefunden.size()-1);
 		searchTableFound1.setText("Typ: " + vehicle.getTyp()+ ", Kennzeichen: " +vehicle.getKennzeichen());
 	}
-
+	//beim Klicken auf Zurück soll man zur MainOverview zurück gelangen
 	@FXML
 	private void handleZurueck() {
 		zurueckClicked = true;
 		mainApp.showMainOverview();
 	}
-
+	
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
 
-		// Add observable list data to the table
-		//personBookingTable.setItems(mainApp.getPersonData());
 	}
-
+	//Zustand beim Klicken auf den Zurück button
     public boolean isZurueckClicked(){
     	return zurueckClicked();
     }

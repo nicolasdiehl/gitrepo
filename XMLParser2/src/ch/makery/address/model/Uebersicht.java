@@ -9,7 +9,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-
+//	// hier werden sämltiche Property, Setter und Getter für die Übersicht erzeugt.
 public class Uebersicht {
     private final StringProperty id;
     private final StringProperty nachName;

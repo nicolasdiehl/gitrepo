@@ -19,10 +19,7 @@ public class RootLayoutController {
 		this.mainApp = mainApp;
 	}
 
-	/**
-	 * Saves the file to the person file that is currently open. If there is no
-	 * open file, the "save as" dialog is shown.
-	 */
+		//Vorgang Speichern über File Speichern. Falls noch nicht gespeichert dann Speichern unter
 	@FXML
 	private void handleSave() {
 		// File personFile = mainApp.getPersonFilePath();
@@ -40,9 +37,9 @@ public class RootLayoutController {
 		}
 	}
 
-	/**
-	 * Opens a FileChooser to let the user select a file to save to.
-	 */
+
+	// Nutzer kann entscheiden bei Speichern unter wo hin gespeichert wird
+
 	@FXML
 	private void handleSaveAs() {
 		FileChooser fileChooser = new FileChooser();
@@ -65,9 +62,7 @@ public class RootLayoutController {
 		}
 	}
 
-	/**
-	 * Opens an about dialog.
-	 */
+	//der Button about gibt kleine Informationen wer am Projekt beteiligt war
 	@FXML
 	private void handleAbout() {
 		Alert alert = new Alert(AlertType.INFORMATION);
@@ -78,9 +73,8 @@ public class RootLayoutController {
 		alert.showAndWait();
 	}
 
-	/**
-	 * Closes the application.
-	 */
+
+	//schließen über File. Erinnerung wenn man schließt und vorher nicht gespeichert hat
 	@FXML
 	private void handleExit() {
 		if (saved != true) {

@@ -7,7 +7,7 @@ import org.jdom2.JDOMException;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-
+// hier werden sämltiche Property, Setter und Getter für Vehicle erzeugt.
 public class Vehicle {
 
 	private final StringProperty id;
@@ -23,12 +23,7 @@ public class Vehicle {
         this(null, null, null, null);
     }
 
-    /**
-     * Constructor with some initial data.
-     * 
-     * @param firstName
-     * @param lastName
-     */
+    //Konstruktor
     public Vehicle(String id, String typ, String geliehen, String kennzeichen) {
     	SimpleStringProperty tempid = null;
 		try {

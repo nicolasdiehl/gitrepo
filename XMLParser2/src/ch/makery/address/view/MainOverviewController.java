@@ -20,9 +20,12 @@ import ch.makery.address.model.Buchen;
 import ch.makery.address.model.Person;
 import ch.makery.address.model.Vehicle;
 import defaultxml.HandleXML;
-
+//hier wird das Hauptfenster erzeugt, in der man auf verschiedene andere Fenster wie Buchen und Suchen
+// zugegriffen werden kann. Hier wird auch eine Tableview von Personen und Fahrzeuge erzeugt. 
+// Neue Personen/Fahrzeuge sollen anlegbar, löschbar und editierbar sein.
+//Einbau eines Sortierbuttons, welches das Sortieren der PersonTable ermöglicht
 public class MainOverviewController {
-
+	// sämtliche für das MainOverview Fenster relevanten Referenzen
 	@FXML
 	private TableView<Person> personTable;
 	@FXML
@@ -76,6 +79,7 @@ public class MainOverviewController {
 	@FXML
 	private TableColumn<Buchen, String> Bdauer;
 
+	//Zustände der Button buchen und abbrechen
 	private boolean suchenClicked = false;
 	// Reference to the main application.
 	private MainApp mainApp;
@@ -94,7 +98,7 @@ public class MainOverviewController {
 	 */
 	@FXML
 	private void initialize() {
-		// Initialize the person table with the two columns.
+		// Initialisieren der Tableview (befüllen)
 		vorNameColumn.setCellValueFactory(cellData -> cellData.getValue().vornameProperty());
 		nachNameColumn.setCellValueFactory(cellData -> cellData.getValue().nachnameProperty());
 		
@@ -114,10 +118,10 @@ public class MainOverviewController {
 		Bbis.setCellValueFactory(cellData -> cellData.getValue().bisProperty());
 		Bdauer.setCellValueFactory(cellData -> cellData.getValue().dauerProperty());
 
-		// Clear person details.
+		// Person details leeren
 		showPersonDetails(null);
 
-		// Listen for selection changes and show the person details when
+		// Listener bei Auswahl. Gab es veränderungen
 		// changed.
 		personTable.getSelectionModel().selectedItemProperty()
 				.addListener((observable, oldValue, newValue) -> showPersonDetails(newValue));
@@ -128,7 +132,8 @@ public class MainOverviewController {
 		buchenTable.getSelectionModel().selectedItemProperty();
 
 	}
-
+	
+	//befüllen der Label je nach Click in der Tableview von Personen
 	private void showPersonDetails(Person person) {
 		if (person != null) {
 			// Fill the labels with info from the person object.
@@ -146,7 +151,7 @@ public class MainOverviewController {
 
 		}
 	}
-
+	//befüllen der Label je nach Click in der Tableview von Vehicle
 	@FXML
 	private void handleNewVehicle() {
 		Vehicle tempVehicle = new Vehicle();
@@ -155,7 +160,8 @@ public class MainOverviewController {
 			mainApp.getVehicleData().add(tempVehicle);
 		}
 	}
-
+	
+	//Löschen von Vehicle in der Tableview
 	@FXML
 	private void handleDeleteVehicle() {
 		int selectedIndex = vehicleTable.getSelectionModel().getSelectedIndex();
@@ -172,7 +178,7 @@ public class MainOverviewController {
 			alert.showAndWait();
 		}
 	}
-
+	//Editieren von Vehicle in der Tableview
 	@FXML
 	private void handleEditVehicle() {
 		Vehicle selectedVehicle = vehicleTable.getSelectionModel().getSelectedItem();
@@ -190,7 +196,7 @@ public class MainOverviewController {
 			alert.showAndWait();
 		}
 	}
-
+	//Anlegen neuer Personen in der Tableview
 	@FXML
 	private void handleNewPerson() {
 		Person tempPerson = new Person();
@@ -207,6 +213,7 @@ public class MainOverviewController {
 		}
 	}
 
+	//Löschen von Personen in der Tableview
 	@FXML
 	private void handleDeletePerson() {
 		int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
@@ -223,7 +230,7 @@ public class MainOverviewController {
 			alert.showAndWait();
 		}
 	}
-
+	//Editieren von Personen in der Tableview
 	@FXML
 	private void handleEditPerson() {
 		Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
@@ -244,23 +251,24 @@ public class MainOverviewController {
 			alert.showAndWait();
 		}
 	}
-
+	
+	//beim Klicken des Buchenbuttons, soll das Buchenfenster geöffnet werden
 	@FXML
 	private void handleBuchenButton(ActionEvent event) throws IOException, JDOMException {
 		mainApp.Buchendialog(); // für die Hilfsklasse
 	}
-
+	
 	public boolean isSuchenClicked() {
 		return suchenClicked;
 	}
-
+	//beim Klicken des Suchenbuttons, soll das Suchfenster geöffnet werden
 	@FXML
-
 	private void handleSuchenButton(ActionEvent event) throws IOException {
 		mainApp.Suchendialog(); // für die Hilfsklasse
 		suchenClicked = true;
 	}
-
+	
+	//befüllen der verschiedenen Tableviews wird hier vorgenommen
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
 
