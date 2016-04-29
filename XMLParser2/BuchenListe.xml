@@ -10,7 +10,7 @@
     <Zweck>Stadtfahrt</Zweck>
     <Von>01:01 01.03.2017</Von>
     <Bis>02:02 02.02.2018</Bis>
-    <Dauer>11M 1T 1S 1M</Dauer>
+    <Dauer>11M 1T 1S 1m</Dauer>
   </Buchen>
   <Buchen ID="3">
     <Nachname>Reimer</Nachname>
@@ -21,8 +21,8 @@
     <Typ>Limousine</Typ>
     <Zweck>Stadtfahrt</Zweck>
     <Von>10:00 02.03.2019</Von>
-    <Bis>10:00 02.03.2022</Bis>
-    <Dauer>3J</Dauer>
+    <Bis>10:00 02.03.2020</Bis>
+    <Dauer>1J</Dauer>
   </Buchen>
   <Buchen ID="4">
     <Nachname>Reimer</Nachname>
@@ -34,7 +34,7 @@
     <Zweck>Stadtfahrt</Zweck>
     <Von>01:01 01.03.2018</Von>
     <Bis>02:02 02.02.2019</Bis>
-    <Dauer>11M 1T 1S 1M</Dauer>
+    <Dauer>11M 1T 1S 1m</Dauer>
   </Buchen>
   <Buchen ID="5">
     <Nachname>Reimer</Nachname>
@@ -46,7 +46,7 @@
     <Zweck>Stadtfahrt</Zweck>
     <Von>01:01 01.03.2019</Von>
     <Bis>02:02 02.02.2020</Bis>
-    <Dauer>11M 1T 1S 1M</Dauer>
+    <Dauer>11M 1T 1S 1m</Dauer>
   </Buchen>
   <Buchen ID="6">
     <Nachname>Reimer</Nachname>
@@ -58,7 +58,7 @@
     <Zweck>Stadtfahrt</Zweck>
     <Von>01:01 01.03.2020</Von>
     <Bis>02:02 02.02.2021</Bis>
-    <Dauer>11M 1T 1S 1M</Dauer>
+    <Dauer>11M 1T 1S 1m</Dauer>
   </Buchen>
   <Buchen ID="7">
     <Nachname>Reimer</Nachname>
@@ -68,9 +68,9 @@
     <Kennzeichen>DA-LI101</Kennzeichen>
     <Typ>Limousine</Typ>
     <Zweck>Stadtfahrt</Zweck>
-    <Von>01:01 01.05.2016</Von>
-    <Bis>02:02 02.05.2016</Bis>
-    <Dauer>1T 1S 1M</Dauer>
+    <Von>10:00 02.03.2021</Von>
+    <Bis>10:00 02.03.2022</Bis>
+    <Dauer>1J</Dauer>
   </Buchen>
   <Buchen ID="8">
     <Nachname>Reimer</Nachname>
@@ -80,8 +80,8 @@
     <Kennzeichen>DA-LI101</Kennzeichen>
     <Typ>Limousine</Typ>
     <Zweck>Stadtfahrt</Zweck>
-    <Von>01:01 03.05.2016</Von>
-    <Bis>02:02 04.04.2016</Bis>
-    <Dauer>1T 1S 1M</Dauer>
+    <Von>10:00 02.03.2033</Von>
+    <Bis>10:00 02.03.2034</Bis>
+    <Dauer>1J</Dauer>
   </Buchen>
 </BuchenListe>
