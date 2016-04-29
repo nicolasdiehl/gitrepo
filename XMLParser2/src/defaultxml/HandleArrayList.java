@@ -30,9 +30,8 @@ public class HandleArrayList {
 			System.out.printf("Name: %s, Vorname: %s, Führerschein: %s, Personalnummer: %s\n", nn, vn, fu, pe);
 		} else if (object instanceof Vehicle) {
 			String ty = ((Vehicle) object).getTyp();
-			String ge = ((Vehicle) object).getGeliehen();
 			String ke = ((Vehicle) object).getKennzeichen();
-			System.out.printf("Typ: %s, Geliehen: %s, Kennzeichen: %s\n", ty, ge, ke);
+			System.out.printf("Typ: %s, Kennzeichen: %s\n", ty, ke);
 		} else if (object instanceof Buchen) {
 			String nn = ((Buchen) object).getNachname();
 			String vn = ((Buchen) object).getVorname();
@@ -237,8 +236,12 @@ public class HandleArrayList {
 
 	public static ArrayList<Object> getAmOeftestenGelieheneVehicle(ArrayList<Object> arrayListBuchen,
 			ArrayList<Object> arrayListVehicle) {
-		ArrayList<Object> gefunden = new ArrayList<Object>(); // Hier werden Ergebnisse sortiert
-		for (int i = 0; i < arrayListVehicle.size(); i++) { // Array wird von arrayListVehicle kopiert
+		ArrayList<Object> gefunden = new ArrayList<Object>(); // Hier werden
+																// Ergebnisse
+																// sortiert
+		for (int i = 0; i < arrayListVehicle.size(); i++) { // Array wird von
+															// arrayListVehicle
+															// kopiert
 			gefunden.add(i, arrayListVehicle.get(i));
 		}
 		ArrayList<Integer> tempA = new ArrayList<Integer>();
@@ -267,22 +270,57 @@ public class HandleArrayList {
 		return gefunden;
 	}
 
-	/*public static ArrayList<Integer> getDurchschnittlichGenutzt(ArrayList<Object> arrayListBuchen,
-			ArrayList<Object> arrayListVehicle) {
-		ArrayList<Integer> gefunden = new ArrayList<Integer>();
+	public static ArrayList<String> getDurchschnittlichGenutzt(ArrayList<Object> arrayListVehicle,
+			ArrayList<Object> arrayListBuchen) {
+		ArrayList<String> gefunden = new ArrayList<String>();
 		for (int i = 0; i < arrayListVehicle.size(); i++) {
-			gefunden.add(i, arrayListVehicle.get(i));
+			String durchschnittInMinuten;
+			Vehicle vehicle = (Vehicle) arrayListVehicle.get(i);
+			String kennzeichen = vehicle.getKennzeichen();
+			BigInteger zeitBigInt = new BigInteger("0");
+			BigInteger zeit = new BigInteger("0");
+			BigInteger minuten = new BigInteger("0");
+			BigInteger counter = new BigInteger("0");
+			BigInteger eins = new BigInteger("1");
+			boolean hatBuchung = false;
+			for(int j = 0; j < arrayListBuchen.size(); j++){
+				Buchen buchen = (Buchen) arrayListBuchen.get(j);
+				if(buchen.getKennzeichen().equals(kennzeichen)){
+					String dauer = buchen.getDauer();
+					BigInteger dauerProBuchung = new BigInteger(Verwaltung.zeitZuMinuten(dauer));
+					minuten = minuten.add(dauerProBuchung);
+					counter=counter.add(eins);
+					hatBuchung = true;
+				}
+			}
+			if (hatBuchung) {
+				BigInteger alleMinutenProFahrzeug = zeit.add(minuten);
+				zeitBigInt = (alleMinutenProFahrzeug).divide(new BigInteger(counter.toString()));
+				durchschnittInMinuten = zeitBigInt.toString();
+				gefunden.add(Verwaltung.minutenZuZeit(durchschnittInMinuten));
+			
+			} else {
+				gefunden.add("keine Buchungen bisher.");
+			}
+		}
+		return gefunden;
+	}
+			
+/*
+			// dann füge tempzeit zur zeit hinzu
+			x = zeit;
+			gefunden.add(x);
 		}
 		ArrayList<Object> ausgeliehen = getAmOeftestenGelieheneVehicle(arrayListBuchen, arrayListVehicle);
-		/*
-		 * for (int i=0; i<ausgeliehen.size();i++) { Vehicle vehicle =
-		 * (Vehicle)ausgeliehen.get(i); String kennzeichen =
-		 * vehicle.getKennzeichen(); ArrayList<String> kennzeichenAsListElement
-		 * = new ArrayList<String>(Arrays.asList(kennzeichen));
-		 * ArrayListUndNameUndWerteLineareSucheZuArrayList(ausgeliehen,
-		 * zuSuchenderAttributName, gesuchteWerte) }
-		 */
-/*
+		
+		  for (int i=0; i<ausgeliehen.size();i++) { Vehicle vehicle =
+		  (Vehicle)ausgeliehen.get(i); String kennzeichen =
+		  vehicle.getKennzeichen(); ArrayList<String> kennzeichenAsListElement
+		  = new ArrayList<String>(Arrays.asList(kennzeichen));
+		  ArrayListUndNameUndWerteLineareSucheZuArrayList(ausgeliehen, zuSuchenderAttributName, gesuchteWerte);
+		  }
+		 
+
 		return gefunden;
 	}*/
 
