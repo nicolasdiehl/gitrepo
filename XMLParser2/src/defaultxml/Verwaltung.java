@@ -34,19 +34,8 @@ public class Verwaltung {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Was darfs denn heute sein?");
 		String eingabe;
-
-		while (true) {
-			String zeit="10J 10M 10T 10S 10m";
-			System.out.println("zeit: "+zeit);
-			String minuten = zeitZuMinuten(zeit);
-			System.out.println("minuten errechnet:"+minuten);
-			zeit = minutenZuZeit(minuten);
-			System.out.println("zeit errechnet:"+zeit);
-			
-			ArrayList<String> durchsch = HandleArrayList.getDurchschnittlichGenutzt(arrayListVehicle,arrayListBuchen);
-			for (int i=0;i<arrayListVehicle.size();i++) {
-				System.out.println(((Vehicle)arrayListVehicle.get(i)).getKennzeichen()+"\t "+durchsch.get(i));
-			}
+		boolean laufen = true;
+		while (laufen = true) {			
 			System.out.println("");
 			System.out.println("0,1,2: Personen, Fahrzeuge oder Buchungen ausgeben");
 			System.out.println("1s: Fahrzeuge sortiert ausgeben");
@@ -58,6 +47,8 @@ public class Verwaltung {
 			System.out.println("x,y,z: Person,Wagen,Buchen XML speichern");
 			System.out.println("r: Alle Listen leeren.");
 			System.out.println("bb: Beliebteste Fahrzeuge ausgeben.");
+			System.out.println("cc: Alle Fahrzeuge zusammen mit ihrer individuellen durchschnittlichen Leihdauer ausgeben");
+			
 			eingabe = scan.nextLine();
 			switch (eingabe) {
 			case "0":
@@ -129,6 +120,28 @@ public class Verwaltung {
 				 * break; } else if (anzahl==0) { break; } else {
 				 * System.out.println(i+1+". "+kennz+" ("+anzahl+" mal)"); } }
 				 */
+				break;
+			case "cc":
+				ArrayList<String> zeiten = HandleArrayList.getDurchschnittlichGenutzt(arrayListVehicle, arrayListBuchen);
+				for (int i=0;i<arrayListVehicle.size();i++) {
+					System.out.println( ((Vehicle)arrayListVehicle.get(i)).getKennzeichen()+"\t"+zeiten.get(i));
+				}
+				break;
+			case "dd":
+				String insgesamt = HandleArrayList.getDurchschnitt("Alle");
+				String lkw= HandleArrayList.getDurchschnitt("Lkw");
+				String transporter=HandleArrayList.getDurchschnitt("Transporter");
+				String cityflitzer=HandleArrayList.getDurchschnitt("Cityflitzer");
+				String limousine=HandleArrayList.getDurchschnitt("Limousine");
+				System.out.println("Durchschnittliche Leihzeit:");
+				System.out.println("Alle\t"+insgesamt);
+				System.out.println("Lkw\t"+lkw);
+				System.out.println("Transporter\t"+transporter);
+				System.out.println("Cityflitzer\t"+cityflitzer);
+				System.out.println("Limousine\t"+limousine);
+				break;
+			case "beenden":
+				laufen=false;
 				break;
 			case "s":
 				ArrayList<Object> gefunden = new ArrayList<Object>();
@@ -553,12 +566,11 @@ public class Verwaltung {
 		output = zeitFormat(elapsed);
 		return output;
 	}
-
-	// 12J 11M 1T 1S 1M
+	
 	public static String zeitZuMinuten(String zeit) {
 		BigInteger minuten = new BigInteger("0");
 		BigInteger dfus = new BigInteger("365");
-		BigInteger drsg = new BigInteger("30"); // .436875
+		BigInteger drsg = new BigInteger("30");
 		BigInteger vuzg = new BigInteger("24");
 		BigInteger szig = new BigInteger("60");
 		Character charAtI = null;
@@ -621,32 +633,23 @@ public class Verwaltung {
 		BigInteger minutenAmTag = new BigInteger("1440");
 		BigInteger minutenInDerStunde = new BigInteger("60");
 		BigInteger minutes = new BigInteger(minuten);
-		// 70 mod 566545454 = 7/ 525600
 		if (minutes.divide(minutenImJahr).compareTo(new BigInteger("0")) > 0) {
 			zeit = zeit.concat(minutes.divide(minutenImJahr) + "J ");
-			System.out.println(minutes.mod(minutenImJahr));
 			minutes = minutes.mod(minutenImJahr);
 		}
-
 		if (minutes.divide(minutenImMonat).compareTo(new BigInteger("0")) > 0) {
 			zeit = zeit.concat(minutes.divide(minutenImMonat) + "M ");
-			System.out.println(minutes.mod(minutenImMonat));
 			minutes = minutes.mod(minutenImMonat);
 		}
-		
 		if (minutes.divide(minutenAmTag).compareTo(new BigInteger("0")) > 0) {
 			zeit = zeit.concat(minutes.divide(minutenAmTag) + "T ");
-			System.out.println(minutes.mod(minutenAmTag));
 			minutes = minutes.mod(minutenAmTag);
 		}
-		
 		if (minutes.divide(minutenInDerStunde).compareTo(new BigInteger("0")) > 0) {
 			zeit = zeit.concat(minutes.divide(minutenInDerStunde) + "S ");
-			System.out.println(minutes.mod(minutenInDerStunde));
 			minutes = minutes.mod(minutenInDerStunde);
 		}		
 		zeit = zeit.concat(minutes + "m");
-		System.out.println(zeit);
 		return zeit;
 	}
 

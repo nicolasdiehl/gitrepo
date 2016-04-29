@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BuchenListe>
-  <Buchen ID="2">
-    <Nachname>Reimer</Nachname>
-    <Vorname>Rudi</Vorname>
-    <Personalnummer>2323</Personalnummer>
-    <Fuehrerschein>B</Fuehrerschein>
-    <Kennzeichen>DA-CI101</Kennzeichen>
-    <Typ>Cityflitzer</Typ>
-    <Zweck>Stadtfahrt</Zweck>
-    <Von>01:01 01.03.2017</Von>
-    <Bis>02:02 02.02.2018</Bis>
-    <Dauer>11M 1T 1S 1m</Dauer>
-  </Buchen>
   <Buchen ID="3">
     <Nachname>Reimer</Nachname>
     <Vorname>Rudi</Vorname>
@@ -20,9 +8,9 @@
     <Kennzeichen>DA-LI101</Kennzeichen>
     <Typ>Limousine</Typ>
     <Zweck>Stadtfahrt</Zweck>
-    <Von>10:00 02.03.2019</Von>
-    <Bis>10:00 02.03.2020</Bis>
-    <Dauer>1J</Dauer>
+    <Von>00:00 01.01.2016</Von>
+    <Bis>02:15 01.01.2016</Bis>
+    <Dauer>2S 15m</Dauer>
   </Buchen>
   <Buchen ID="4">
     <Nachname>Reimer</Nachname>
@@ -46,7 +34,7 @@
     <Zweck>Stadtfahrt</Zweck>
     <Von>01:01 01.03.2019</Von>
     <Bis>02:02 02.02.2020</Bis>
-    <Dauer>11M 1T 1S 1m</Dauer>
+    <Dauer>1J 11M 1T 1S 1m</Dauer>
   </Buchen>
   <Buchen ID="6">
     <Nachname>Reimer</Nachname>
@@ -68,9 +56,9 @@
     <Kennzeichen>DA-LI101</Kennzeichen>
     <Typ>Limousine</Typ>
     <Zweck>Stadtfahrt</Zweck>
-    <Von>10:00 02.03.2021</Von>
-    <Bis>10:00 02.03.2022</Bis>
-    <Dauer>1J</Dauer>
+    <Von>00:00 01.01.2016</Von>
+    <Bis>06:45 01.01.2016</Bis>
+    <Dauer>6S 45m</Dauer>
   </Buchen>
   <Buchen ID="8">
     <Nachname>Reimer</Nachname>
@@ -80,8 +68,20 @@
     <Kennzeichen>DA-LI101</Kennzeichen>
     <Typ>Limousine</Typ>
     <Zweck>Stadtfahrt</Zweck>
-    <Von>10:00 02.03.2033</Von>
-    <Bis>10:00 02.03.2034</Bis>
-    <Dauer>1J</Dauer>
+    <Von>00:00 01.01.2000</Von>
+    <Bis>23:59 30.12.2999</Bis>
+    <Dauer>6S 45m</Dauer>
+  </Buchen>
+    <Buchen ID="9">
+    <Nachname>Reimer</Nachname>
+    <Vorname>Rudi</Vorname>
+    <Personalnummer>2323</Personalnummer>
+    <Fuehrerschein>B</Fuehrerschein>
+    <Kennzeichen>DA-LI101</Kennzeichen>
+    <Typ>Limousine</Typ>
+    <Zweck>Stadtfahrt</Zweck>
+    <Von>00:00 01.01.2016</Von>
+    <Bis>02:15 01.01.2016</Bis>
+    <Dauer>2S 15m</Dauer>
   </Buchen>
 </BuchenListe>

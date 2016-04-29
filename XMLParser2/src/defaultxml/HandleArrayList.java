@@ -234,6 +234,10 @@ public class HandleArrayList {
 		return gefundeneObjekte;
 	}
 
+	public static String getDurchschnitt(String eingabe) {
+		return "";
+	}
+	
 	public static ArrayList<Object> getAmOeftestenGelieheneVehicle(ArrayList<Object> arrayListBuchen,
 			ArrayList<Object> arrayListVehicle) {
 		ArrayList<Object> gefunden = new ArrayList<Object>(); // Hier werden
