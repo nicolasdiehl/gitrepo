@@ -40,10 +40,10 @@ import javafx.stage.WindowEvent;
 import defaultxml.*;
 
 public class MainApp extends Application {
-	private ObservableList<Uebersicht> uebersichtData = FXCollections.observableArrayList();
-	private ObservableList<Person> personData = FXCollections.observableArrayList();
-	private ObservableList<Vehicle> vehicleData = FXCollections.observableArrayList();
-	private ObservableList<Buchen> buchenData = FXCollections.observableArrayList();
+	private static ObservableList<Uebersicht> uebersichtData = FXCollections.observableArrayList();
+	private static ObservableList<Person> personData = FXCollections.observableArrayList();
+	private static ObservableList<Vehicle> vehicleData = FXCollections.observableArrayList();
+	private static ObservableList<Buchen> buchenData = FXCollections.observableArrayList();
 	public Buchen booking;
 
 	public MainApp() throws JDOMException, IOException {
@@ -138,8 +138,12 @@ public class MainApp extends Application {
 		}
 	}
 
-	public void clearPersonData() {
+	public static void clearPersonData() {
 		personData.clear();
+	}
+	
+	public static void addToPersonData(Person p) {
+		personData.add(p);
 	}
 	
 	public ObservableList<Person> getPersonData() {
@@ -477,4 +481,5 @@ public class MainApp extends Application {
 		}
 
 	}
+
 }

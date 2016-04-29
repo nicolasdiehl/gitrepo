@@ -9,7 +9,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.jdom2.JDOMException;
 
@@ -17,6 +19,7 @@ import ch.makery.address.MainApp;
 import ch.makery.address.model.Buchen;
 import ch.makery.address.model.Person;
 import ch.makery.address.model.Vehicle;
+import defaultxml.HandleXML;
 
 public class MainOverviewController {
 
@@ -193,7 +196,14 @@ public class MainOverviewController {
 		Person tempPerson = new Person();
 		boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
 		if (okClicked) {
-			mainApp.getPersonData().add(tempPerson);
+			ArrayList<Object> temp = HandleXML.xmlZuArrayList(new File("PersonListe.xml"), false);
+			temp.add(tempPerson);
+			HandleXML.arrayListZuXml(temp, new File("PersonListe.xml"),"");
+			MainApp.clearPersonData();
+			for (int i=0; i<temp.size();i++){
+				Person persond=(Person)temp.get(i);
+				MainApp.addToPersonData(persond);
+			}
 		}
 	}
 
