@@ -82,8 +82,7 @@ public class SuchenController {
 		this.mainApp = mainApp;
 
 		// Add observable list data to the table
-		personBookingTable.setItems(mainApp.getPersonData());
-		vehicleBookingTable.setItems(mainApp.getVehicleData());
+		//personBookingTable.setItems(mainApp.getPersonData());
 	}
 
     public boolean isZurueckClicked(){
