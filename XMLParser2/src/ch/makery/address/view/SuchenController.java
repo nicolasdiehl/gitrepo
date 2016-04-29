@@ -4,11 +4,9 @@ import ch.makery.address.model.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import ch.makery.address.MainApp;
 import defaultxml.HandleArrayList;
 import defaultxml.HandleXML;

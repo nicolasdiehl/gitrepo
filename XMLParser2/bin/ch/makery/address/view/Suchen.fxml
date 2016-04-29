@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -39,4 +40,14 @@
          </children>
       </AnchorPane>
    </children>
+   <effect>
+      <Lighting diffuseConstant="2.0" specularConstant="0.21" specularExponent="14.02" surfaceScale="1.39">
+         <bumpInput>
+            <Shadow />
+         </bumpInput>
+         <light>
+            <Light.Distant color="#b2f8ec" />
+         </light>
+      </Lighting>
+   </effect>
 </AnchorPane>

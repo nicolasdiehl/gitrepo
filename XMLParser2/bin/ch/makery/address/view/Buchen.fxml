@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -28,51 +29,21 @@
             <Label layoutX="180.0" layoutY="392.0" text="Leihen von ss:mm TT.MM.JJJJ" />
             <Label layoutX="416.0" layoutY="392.0" text="Leihen bis ss:mm TT.MM.JJJ" />
             <Button layoutX="427.0" layoutY="669.0" mnemonicParsing="false" onAction="#handleAbbrechen" text="Abbrechen" />
-            <TextField fx:id="von" layoutX="183.0" layoutY="430.0" />
-            <TextField fx:id="bis" layoutX="414.0" layoutY="417.0" />
-            <TextField fx:id="zweck" layoutX="291.0" layoutY="486.0" />
+            <TextField fx:id="testVon" layoutX="183.0" layoutY="430.0" />
+            <TextField fx:id="testBis" layoutX="414.0" layoutY="417.0" />
+            <TextField fx:id="testZweck" layoutX="291.0" layoutY="486.0" />
             <Label layoutX="349.0" layoutY="459.0" text="Zweck" />
-            <GridPane layoutX="23.0" layoutY="530.0" prefHeight="90.0" prefWidth="758.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label text="Nachname" />
-                  <Label text="Vorname" GridPane.columnIndex="1" />
-                  <Label text="Pers.Nr." GridPane.columnIndex="2" />
-                  <Label text="Führerschein" GridPane.columnIndex="3" />
-                  <Label text="Kennzeichen" GridPane.columnIndex="4" />
-                  <Label text="Zweck" GridPane.columnIndex="5" />
-                  <Label text="Typ" GridPane.columnIndex="6" />
-                  <Label fx:id="nachNameBooking" text="Label" GridPane.rowIndex="1" />
-                  <Label fx:id="vorNameBooking" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label fx:id="personalnummerBooking" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <Label fx:id="fuehrerscheinBooking" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                  <Label fx:id="kennzeichenBooking" text="Label" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                  <Label fx:id="zweckBooking" text="Label" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                  <Label fx:id="typBooking" text="Label" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-                  <Label text="Von" GridPane.columnIndex="7" />
-                  <Label text="Bis" GridPane.columnIndex="8" />
-                  <Label text="Dauer" GridPane.columnIndex="9" />
-                  <Label fx:id="vonBooking" text="Label" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-                  <Label fx:id="bisBooking" text="Label" GridPane.columnIndex="8" GridPane.rowIndex="1" />
-                  <Label fx:id="dauerBooking" text="Label" GridPane.columnIndex="9" GridPane.rowIndex="1" />
-               </children>
-            </GridPane>
          </children>
       </AnchorPane>
    </children>
+   <effect>
+      <Lighting diffuseConstant="2.0" specularConstant="0.05" specularExponent="7.13">
+         <bumpInput>
+            <Shadow />
+         </bumpInput>
+         <light>
+            <Light.Distant color="#b2f8ec" />
+         </light>
+      </Lighting>
+   </effect>
 </AnchorPane>

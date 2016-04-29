@@ -1,6 +1,14 @@
 package ch.makery.address.view;
 
+import ch.makery.address.model.*;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import ch.makery.address.MainApp;
+
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -9,13 +17,9 @@ import ch.makery.address.model.Buchen;
 import ch.makery.address.model.Person;
 import ch.makery.address.model.Vehicle;
 import defaultxml.Verwaltung;
-
-import java.awt.TextField;
 import java.io.IOException;
 import java.util.Calendar;
-
 import org.jdom2.JDOMException;
-
 import ch.makery.address.MainApp;
 
 //
@@ -25,6 +29,8 @@ public class BuchenController {
 	@FXML
 	private TableView<Vehicle> vehicleBookingTable;
 	@FXML
+	private TableView<Person> bookingTable;
+	@FXML
 	private TableColumn<Person, String> vorNameColumn;
 	@FXML
 	private TableColumn<Person, String> nachNameColumn;
@@ -33,33 +39,13 @@ public class BuchenController {
 	@FXML
 	private TableColumn<Person, String> fuehrerscheinColumn;
 	// Fahrzeug @FXML Columns
-	@FXML
-	private TableColumn<Vehicle, String> zweckColumn;
-	@FXML
-	private TableColumn<Vehicle, String> kennzeichenColumn;
-	@FXML
-	private TableColumn<Vehicle, String> typColumn;
-	@FXML
-	private TableColumn<Vehicle, String> geliehenColumn;
-	// Booking Tabelle unten
-	@FXML
-	private TableView<Person> bookingTable;
-	@FXML
-	private TableColumn<Person, String> vorNameColumn1;
-	@FXML
-	private TableColumn<Person, String> nachNameColumn1;
-	@FXML
-	private TableColumn<Person, String> personalnummerColumn1;
-	@FXML
-	private TableColumn<Person, String> fuehrerscheinColumn1;
-	// Fahrzeug @FXML Columns
 
 	@FXML
-	private TextField bis;
+	private TextField testBis;
 	@FXML
-	private TextField von;
+	private TextField testVon;
 	@FXML
-	private TextField zweck;
+	private TextField testZweck;
 	@FXML
 	private Label nachNameBooking;
 	@FXML
@@ -176,9 +162,9 @@ public class BuchenController {
 		buchen.setKennzeichen(kennzeichenBooking.getText());
 		buchen.setVon(vonBooking.getText());
 		buchen.setBis(bisBooking.getText());
-		Calendar von=Verwaltung.umrechnenZeit(vonBooking.getText());
-		Calendar bis=Verwaltung.umrechnenZeit(bisBooking.getText());
-		buchen.setDauer(Verwaltung.vergleichenZeit(von, bis));
+		Calendar vona=Verwaltung.umrechnenZeit(vonBooking.getText());
+		Calendar bisa=Verwaltung.umrechnenZeit(bisBooking.getText());
+		buchen.setDauer(Verwaltung.vergleichenZeit(vona, bisa));
 		buchenClicked = true;
 		// dialogStage.close();
 		mainApp.showMainOverview();
@@ -200,7 +186,6 @@ public class BuchenController {
 
 		// Add observable list data to the table
 		personBookingTable.setItems(mainApp.getPersonData());
-		vehicleBookingTable.setItems(mainApp.getVehicleData());
 		buchen = new Buchen();
 	}
 }

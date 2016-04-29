@@ -32,6 +32,8 @@ public class Verwaltung {
 		Searchtree searchtreePerson = HandleXML.xmlZuSearchtree(personFile, true);
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Was darfs denn heute sein?");
+		String z = "99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999J 1S 50m";
+		System.out.println(inMinuten(z));
 		String eingabe;
 		// Searchtree test
 		if (searchtreePerson.search("2323")!=null)
@@ -514,7 +516,7 @@ public class Verwaltung {
 	public static String inMinuten(String zeit) {
 		BigInteger minuten = new BigInteger("0");
 		BigInteger dfus = new BigInteger("365");
-		BigInteger drsg = new BigInteger("30.436875");
+		BigInteger drsg = new BigInteger("30"); // .436875
 		BigInteger vuzg = new BigInteger("24");
 		BigInteger szig = new BigInteger("60");
 		Character charAtI = null;
@@ -530,7 +532,7 @@ public class Verwaltung {
 						numberBeforeI=numberBeforeI.concat(buchstabe);
 						System.out.println(numberBeforeI);
 					}
-					minuten.add((new BigInteger(numberBeforeI).multiply(dfus).multiply(vuzg).multiply(szig)));
+					minuten=minuten.add((new BigInteger(numberBeforeI).multiply(dfus).multiply(vuzg).multiply(szig)));
 					beginnendAn = i+2;
 					break;
 				case 'M':
@@ -539,7 +541,7 @@ public class Verwaltung {
 						numberBeforeI=numberBeforeI.concat(buchstabe);
 						System.out.println(numberBeforeI);
 					}
-					minuten.add((new BigInteger(numberBeforeI).multiply(drsg).multiply(vuzg).multiply(szig)));
+					minuten=minuten.add((new BigInteger(numberBeforeI).multiply(drsg).multiply(vuzg).multiply(szig)));
 					beginnendAn = i+2;
 					break;
 				case 'T':
@@ -548,7 +550,7 @@ public class Verwaltung {
 						numberBeforeI=numberBeforeI.concat(buchstabe);
 						System.out.println(numberBeforeI);
 					}
-					minuten.add((new BigInteger(numberBeforeI).multiply(vuzg).multiply(szig)));
+					minuten=minuten.add((new BigInteger(numberBeforeI).multiply(vuzg).multiply(szig)));
 					beginnendAn = i+2;
 					break;
 				case 'S':
@@ -557,7 +559,7 @@ public class Verwaltung {
 						numberBeforeI=numberBeforeI.concat(buchstabe);
 						System.out.println(numberBeforeI);
 					}
-					minuten.add((new BigInteger(numberBeforeI).multiply(szig)));
+					minuten=minuten.add((new BigInteger(numberBeforeI).multiply(szig)));
 					beginnendAn = i+2;
 					break;
 				case 'm':
@@ -566,13 +568,15 @@ public class Verwaltung {
 						numberBeforeI=numberBeforeI.concat(buchstabe);
 						System.out.println(numberBeforeI);
 					}
-					minuten.add(new BigInteger(numberBeforeI));
+					System.out.println(numberBeforeI);
+					minuten=minuten.add(new BigInteger(numberBeforeI));
+					System.out.println(minuten);
 					beginnendAn = i+2;
 					break;
 				}
-				
 			}
 		}
+		System.out.println("märp");
 		return minuten.toString();
 	}
 	

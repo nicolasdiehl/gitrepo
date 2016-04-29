@@ -267,9 +267,9 @@ public class HandleArrayList {
 		return gefunden;
 	}
 
-	public static ArrayList<Object> getAmLaengstenDurchschnittlichGenutztVehicle(ArrayList<Object> arrayListBuchen,
+	/*public static ArrayList<Integer> getDurchschnittlichGenutzt(ArrayList<Object> arrayListBuchen,
 			ArrayList<Object> arrayListVehicle) {
-		ArrayList<Object> gefunden = new ArrayList<Object>();
+		ArrayList<Integer> gefunden = new ArrayList<Integer>();
 		for (int i = 0; i < arrayListVehicle.size(); i++) {
 			gefunden.add(i, arrayListVehicle.get(i));
 		}
@@ -282,9 +282,9 @@ public class HandleArrayList {
 		 * ArrayListUndNameUndWerteLineareSucheZuArrayList(ausgeliehen,
 		 * zuSuchenderAttributName, gesuchteWerte) }
 		 */
-
+/*
 		return gefunden;
-	}
+	}*/
 
 	public static ArrayList<Object> inArrayListAnhaengen(ArrayList<Object> arrayList, Object objekt) {
 		if (!arrayList.isEmpty() && (objekt instanceof Person && arrayList.get(0) instanceof Person))

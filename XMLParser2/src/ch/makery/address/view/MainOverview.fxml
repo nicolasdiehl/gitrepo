@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.MainOverviewController">
 	<children>
-		<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+		<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 			<children>
 				<Label layoutX="323.0" layoutY="14.0" text="MLDNC Autoverleih" textAlignment="CENTER" textFill="#32e517">
 					<font>
@@ -46,7 +46,7 @@
 						<Font name="System Bold" size="12.0" />
 					</font>
 				</Label>
-				<Label layoutX="573.0" layoutY="56.0" text="Fahrzeug Informationen">
+				<Label layoutX="483.0" layoutY="56.0" text="Fahrzeug Informationen">
 					<font>
 						<Font name="System Bold" size="12.0" />
 					</font>
@@ -77,38 +77,32 @@
 				<Label fx:id="fuehrerscheinLabel" layoutX="311.0" layoutY="214.0" text="Label" />
 				<Button layoutX="193.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleNewPerson" text="New" />
 				<Button layoutX="314.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleDeletePerson" text="Delete" />
-				<Button layoutX="720.0" layoutY="91.0" mnemonicParsing="false" onAction="#handleNewVehicle" text="New" />
-				<Button layoutX="714.0" layoutY="160.0" mnemonicParsing="false" onAction="#handleDeleteVehicle" text="Delete" />
-				<Button layoutX="802.0" layoutY="648.0" mnemonicParsing="false" onAction="#handleBuchenButton" text="Buchen" />
-				<Button layoutX="900.0" layoutY="648.0" mnemonicParsing="false" onAction="#handleSuchenButton" text="Suchen" />
-				<Label layoutX="792.0" layoutY="609.0" text="Buchenfenster" />
-				<Label layoutX="897.0" layoutY="609.0" text="Suchfenster" />
+				<Button layoutX="720.0" layoutY="111.0" mnemonicParsing="false" onAction="#handleNewVehicle" text="New" />
+				<Button layoutX="715.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleDeleteVehicle" text="Delete" />
+				<Button layoutX="167.0" layoutY="637.0" mnemonicParsing="false" onAction="#handleBuchenButton" text="Buchen" />
+				<Button layoutX="592.0" layoutY="637.0" mnemonicParsing="false" onAction="#handleSuchenButton" text="Suchen" />
+				<Label layoutX="158.0" layoutY="616.0" text="Buchenfenster">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font></Label>
+				<Label layoutX="589.0" layoutY="616.0" text="Suchfenster">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font></Label>
 				<Button layoutX="253.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleEditPerson" text="Edit" />
-				<Button layoutX="721.0" layoutY="126.0" mnemonicParsing="false" onAction="#handleEditVehicle" text="Edit" />
-				<TableView fx:id="buchenTable" layoutX="7.0" layoutY="336.0" prefHeight="200.0" prefWidth="768.0">
+				<Button layoutX="722.0" layoutY="165.0" mnemonicParsing="false" onAction="#handleEditVehicle" text="Edit" />
+				<TableView fx:id="buchenTable" layoutX="16.0" layoutY="356.0" prefHeight="200.0" prefWidth="768.0">
 					<columns>
 						<TableColumn fx:id="BnachnameColumn" prefWidth="75.0" text="Name" />
 						<TableColumn fx:id="BvornameColumn" prefWidth="75.0" text="Vorname" />
-						<TableColumn fx:id="BpersonalnummerColumn" prefWidth="60.0" text="Personalnummer" />
-						<TableColumn fx:id="Bfuehrerschein" prefWidth="42.0" text="Führerschein" />
-						<TableColumn fx:id="Bkennzeichen" prefWidth="59.0" text="Kennzeichen" />
-						<TableColumn fx:id="Btyp" prefWidth="71.0" text="Typ" />
+						<TableColumn fx:id="BpersonalnummerColumn" prefWidth="60.0" text="Pers.Nr." />
+						<TableColumn fx:id="Bfuehrerschein" prefWidth="57.0" text="F-Schein" />
+						<TableColumn fx:id="Bkennzeichen" prefWidth="71.0" text="KennZeich." />
+						<TableColumn fx:id="Btyp" prefWidth="44.0" text="Typ" />
 						<TableColumn fx:id="Bzweck" prefWidth="68.0" text="Zweck" />
 						<TableColumn fx:id="Bvon" prefWidth="102.0" text="Von" />
 						<TableColumn fx:id="Bbis" prefWidth="109.0" text="Bis" />
 						<TableColumn fx:id="Bdauer" prefWidth="94.0" text="Dauer" />
-					</columns>
-				</TableView>
-				<Button layoutX="852.0" layoutY="120.0" mnemonicParsing="false" text="Berechne" />
-				<Button layoutX="851.0" layoutY="461.0" mnemonicParsing="false" text="Berechne " />
-				<TextField layoutX="810.0" layoutY="81.0" />
-				<Label layoutX="792.0" layoutY="56.0" text="Durchschnittliche Nutzungsdauer" />
-				<Label layoutX="794.0" layoutY="155.0" text="Häufigste Ausgeliehene Fahrzeuge" />
-				<TableView fx:id="statsTable" layoutX="793.0" layoutY="193.0" prefHeight="200.0" prefWidth="175.0">
-					<columns>
-						<TableColumn fx:id="statsFahrzeug" prefWidth="69.0" text="Fahrzeug" />
-						<TableColumn fx:id="statsTyp" prefWidth="62.0" text="Typ" />
-						<TableColumn fx:id="statsAnzahl" prefWidth="43.0" text="Anzahl" />
 					</columns>
 				</TableView>
 			</children>

@@ -138,6 +138,10 @@ public class MainApp extends Application {
 		}
 	}
 
+	public void clearPersonData() {
+		personData.clear();
+	}
+	
 	public ObservableList<Person> getPersonData() {
 		return personData;
 	}
