@@ -100,7 +100,8 @@ public class MainApp extends Application {
 			File inputFile = new File("Buchen.xml");
 			SAXBuilder saxBuilder = new SAXBuilder();
 			Document document = saxBuilder.build(inputFile);
-			// erstellte Elemente entsprechen Attributen in der XML
+			
+			// erstellte Elemente entsprechen Attributen in der XML. Buchen Daten!!!
 			Element nbuchen = new Element("Buchen");
 			String newID = HandleXML.createUniqueID(new File("Buchen.xml"));
 			nbuchen.setAttribute(new Attribute("ID", newID));
@@ -225,7 +226,7 @@ public class MainApp extends Application {
 			// Set person overview into the center of root layout.
 			rootLayout.setCenter(mainOverview);
 
-			// Give the controller access to the main app.
+			// übergibt dem Controller Rechte auf die Mainapp zuzugreifen
 			MainOverviewController controller = loader.getController();
 			controller.setMainApp(this);
 
@@ -245,12 +246,12 @@ public class MainApp extends Application {
 	//EditDialogPerson  größe, Titel wird zugewiesen und bereitgestellt
 	public boolean showPersonEditDialog(Person person) {
 		try {
-			// Load the fxml file and create a new stage for the popup dialog.
+			// Laden von fxml um neues popup dialog zu öffnenL
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("view/PersonEdit.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 
-			// Create the dialog Stage.
+			// Dialog Stage erzeugen
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Edit Person");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -258,12 +259,12 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			// Set the person into the controller.
+			//Person dem Controller hinzufügen
 			PersonEditController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 			controller.setPerson(person);
 
-			// Show the dialog and wait until the user closes it
+			// Dialog zeigen und warten bis es geschlossen wird
 			dialogStage.showAndWait();
 
 			return controller.isOkClicked();
@@ -276,7 +277,7 @@ public class MainApp extends Application {
 	//EditDialogVehicle größe, Titel wird zugewisen und bereitgestellt
 	public boolean showVehicleEditDialog(Vehicle vehicle) {
 		try {
-			// Load the fxml file and create a new stage for the popup dialog.
+			// Laden von fxml um neues popup dialog zu öffnen.
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("view/VehicleEditDialog.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
@@ -289,12 +290,12 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			// Set the person into the controller.
+			//Vehicle dem Controller hinzufügen
 			VehicleEditDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 			controller.setVehicle(vehicle);
 
-			// Show the dialog and wait until the user closes it
+			// Dialog zeigen und warten bis es geschlossen wird
 			dialogStage.showAndWait();
 
 			return controller.isOkClicked();
@@ -319,12 +320,12 @@ public class MainApp extends Application {
 		if (file != null) {
 			prefs.put("filePath", file.getPath());
 
-			// Update the stage title.
+			// Stage Titel wird aktualisiert
 			primaryStage.setTitle("AddressApp - " + file.getName());
 		} else {
 			prefs.remove("filePath");
 
-			// Update the stage title.
+			// Stage Titel wird aktualisiert
 			primaryStage.setTitle("AddressApp");
 		}
 	}
@@ -340,7 +341,7 @@ public class MainApp extends Application {
 
 			setPersonFilePath(file);
 
-		} catch (Exception e) { // catches ANY exception
+		} catch (Exception e) { //alle Exceptions werden aufgefangen
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error");
 			alert.setHeaderText("Could not load data");
@@ -366,7 +367,7 @@ public class MainApp extends Application {
 
 			// Save the file path to the registry.
 			setPersonFilePath(file);
-		} catch (Exception e) { // catches ANY exception
+		} catch (Exception e) { //  //alle Exceptions werden aufgefangen
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error");
 			alert.setHeaderText("Could not save data");
@@ -400,7 +401,7 @@ public class MainApp extends Application {
 			primaryStage.setTitle("AddressApp");
 		}
 	}
-
+	//Laden von gespeicherter Veränderung in VehicleTable
 	public void loadVehicleDataFromFile(File file) {
 		try {
 			JAXBContext context = JAXBContext.newInstance(VehicleListWrapper.class);
@@ -415,7 +416,7 @@ public class MainApp extends Application {
 			// Speichern
 			setVehicleFilePath(file);
 
-		} catch (Exception e) { // catches ANY exception
+		} catch (Exception e) {  //alle Exceptions werden aufgefangen
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error");
 			alert.setHeaderText("Could not load data");
@@ -424,7 +425,7 @@ public class MainApp extends Application {
 			alert.showAndWait();
 		}
 	}
-
+	//Speichern von Veränderung in VehicleTable
 	public void saveVehicleDataToFile(File file) {
 		try {
 			JAXBContext context = JAXBContext.newInstance(VehicleListWrapper.class);
@@ -438,9 +439,9 @@ public class MainApp extends Application {
 			// Speichern in der XML
 			m.marshal(wrapper, file);
 
-			// Save the file path to the registry.
+			// Sepichern des Pfades in die Registry
 			setVehicleFilePath(file);
-		} catch (Exception e) { // catches ANY exception
+		} catch (Exception e) {  //alle Exceptions werden aufgefangen
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error");
 			alert.setHeaderText("Could not save data");
@@ -457,10 +458,10 @@ public class MainApp extends Application {
 			loader.setLocation(MainApp.class.getResource("view/Buchen.fxml"));
 			AnchorPane buchen = (AnchorPane) loader.load();
 
-			// Set person overview into the center of root layout.
+			// Mittig in der Root Layout platzieren
 			rootLayout.setCenter(buchen);
 
-			// Give the controller access to the main app.
+			// Controller zugriffsrecht auf die MainApp geben
 			BuchenController controller = loader.getController();
 			controller.setMainApp(this);
 

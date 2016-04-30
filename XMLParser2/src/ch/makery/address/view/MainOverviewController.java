@@ -20,6 +20,7 @@ import ch.makery.address.model.Buchen;
 import ch.makery.address.model.Person;
 import ch.makery.address.model.Vehicle;
 import defaultxml.HandleXML;
+
 //hier wird das Hauptfenster erzeugt, in der man auf verschiedene andere Fenster wie Buchen und Suchen
 // zugegriffen werden kann. Hier wird auch eine Tableview von Personen und Fahrzeuge erzeugt. 
 // Neue Personen/Fahrzeuge sollen anlegbar, löschbar und editierbar sein.
@@ -81,21 +82,15 @@ public class MainOverviewController {
 
 	//Zustände der Button buchen und abbrechen
 	private boolean suchenClicked = false;
-	// Reference to the main application.
+	// Reference zur Mainapp
 	private MainApp mainApp;
 
-	/**
-	 * The constructor. The constructor is called before the initialize()
-	 * method.
-	 */
+
 	public MainOverviewController() {
 
 	}
 
-	/**
-	 * Initializes the controller class. This method is automatically called
-	 * after the fxml file has been loaded.
-	 */
+	//Initialisieren der Controller Klasse
 	@FXML
 	private void initialize() {
 		// Initialisieren der Tableview (befüllen)
@@ -122,7 +117,7 @@ public class MainOverviewController {
 		showPersonDetails(null);
 
 		// Listener bei Auswahl. Gab es veränderungen
-		// changed.
+		
 		personTable.getSelectionModel().selectedItemProperty()
 				.addListener((observable, oldValue, newValue) -> showPersonDetails(newValue));
 		// Listen for selection changes and show the person details when
@@ -168,7 +163,7 @@ public class MainOverviewController {
 		if (selectedIndex >= 0) {
 			vehicleTable.getItems().remove(selectedIndex);
 		} else {
-			// Nothing selected.
+			// keine Auswahl erzeugt eine Warnung
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.initOwner(mainApp.getPrimaryStage());
 			alert.setTitle("No Selection");
@@ -186,7 +181,7 @@ public class MainOverviewController {
 			boolean okClicked = mainApp.showVehicleEditDialog(selectedVehicle);
 
 		} else {
-			// Nothing selected.
+			// keine Auswahl erzeugt eine Warnung
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.initOwner(mainApp.getPrimaryStage());
 			alert.setTitle("No Selection");
@@ -220,7 +215,7 @@ public class MainOverviewController {
 		if (selectedIndex >= 0) {
 			personTable.getItems().remove(selectedIndex);
 		} else {
-			// Nothing selected.
+			// keine Auswahl erzeugt eine Warnung
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.initOwner(mainApp.getPrimaryStage());
 			alert.setTitle("No Selection");
@@ -241,7 +236,7 @@ public class MainOverviewController {
 			}
 
 		} else {
-			// Nothing selected.
+			// keine Auswahl erzeugt eine Warnung
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.initOwner(mainApp.getPrimaryStage());
 			alert.setTitle("No Selection");
@@ -272,11 +267,11 @@ public class MainOverviewController {
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
 
-		// Add observable list data to the table
+		//Fügt Daten der observable list hinzu
 		personTable.setItems(mainApp.getPersonData());
 		vehicleTable.setItems(mainApp.getVehicleData());
 		buchenTable.setItems(mainApp.getBuchenData());
-		// ********buchenTable.setItems()
+		
 
 	}
 
