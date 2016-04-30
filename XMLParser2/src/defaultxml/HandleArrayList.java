@@ -234,8 +234,82 @@ public class HandleArrayList {
 		return gefundeneObjekte;
 	}
 
-	public static String getDurchschnitt(String eingabe) {
-		return "";
+	public static ArrayList<String> getDurchschnitt(ArrayList<Object> buchungen) {
+		ArrayList<String> rueck= new ArrayList<String>();
+		BigInteger n=new BigInteger("0");
+		BigInteger one = new BigInteger("1");
+		BigInteger mAlle = n;
+		BigInteger mCityflitzer= n;
+		BigInteger mTransporter= n;
+		BigInteger mLkw= n;
+		BigInteger mLimousine= n;
+		BigInteger mAlleCounter= n;
+		BigInteger mCityflitzerCounter= n;
+		BigInteger mTransporterCounter= n;
+		BigInteger mLkwCounter= n;
+		BigInteger mLimousineCounter= n;
+		for (int i = 0;i<buchungen.size();i++) {
+			Buchen buchung = (Buchen)buchungen.get(i);
+			String typ = buchung.getTyp();
+			String dauer = buchung.getDauer();
+			BigInteger dauerInM = new BigInteger(Verwaltung.zeitZuMinuten(dauer));
+			mAlle=mAlle.add(dauerInM);
+			mAlleCounter = mAlleCounter.add(one);
+			switch (typ) {
+			case "Limousine":
+				mLimousine=mLimousine.add(dauerInM);
+				mLimousineCounter = mLimousineCounter.add(one);
+				break;
+			case "Lkw":
+				mLkw=mLkw.add(dauerInM);
+				mLkwCounter = mLkwCounter.add(one);
+				break;
+			case "Transporter":
+				mTransporter=mTransporter.add(dauerInM);
+				mTransporterCounter = mTransporterCounter.add(one);
+				break;
+			case "Cityflitzer":
+				mCityflitzer=mCityflitzer.add(dauerInM);
+				mCityflitzerCounter = mCityflitzerCounter.add(one);
+				break;
+			default:
+				System.out.println("Typ auslesen Fehlschlag: Typ nicht vordefiniert...");
+				break;
+			}
+		}
+		if (mAlleCounter.compareTo(n)>0) {
+			mAlle=mAlle.divide(mAlleCounter);
+			rueck.add("Durchschnittliche Leihzeit für alle: ".concat(Verwaltung.minutenZuZeit(mAlle.toString())));
+
+			if (mCityflitzerCounter.compareTo(n)>0) {
+				mCityflitzer=mCityflitzer.divide(mCityflitzerCounter);
+				rueck.add("Durchschnittliche Leihzeit für Cityflitzer: ".concat(Verwaltung.minutenZuZeit(mCityflitzer.toString())));
+			} else {
+				rueck.add("Cityflitzer wurden nicht ausgeliehen.");
+			}
+			if (mLimousineCounter.compareTo(n)>0) {
+				mLimousine=mLimousine.divide(mLimousineCounter);
+				"Durchschnittliche Leihzeit für Limos: ".concat(Verwaltung.minutenZuZeit(mLimousine.toString()));
+			} else {
+				rueck.add("Limos wurden nicht ausgeliehen.");
+			}
+			if (mTransporterCounter.compareTo(n)>0) {
+				mTransporter=mAlle.divide(mTransporterCounter);
+				"Durchschnittliche Leihzeit für Transporter: ".concat(Verwaltung.minutenZuZeit(mTransporter.toString()));
+			} else {
+				rueck.add("Transporter wurden nicht ausgeliehen.");
+				}
+			if (mLkwCounter.compareTo(n)>0) {
+				mLkw=mAlle.divide(mLkwCounter);
+				"Durchschnittliche Leihzeit für Lkw: ".concat(Verwaltung.minutenZuZeit(mLkw.toString()));
+			} else {
+				rueck.add("Lkw wurden nicht ausgeliehen.");
+			}
+		}
+		else {
+			rueck.add("Es wurden keine Fahrzeuge ausgeliehen...");
+		}
+		return rueck;
 	}
 	
 	public static ArrayList<Object> getAmOeftestenGelieheneVehicle(ArrayList<Object> arrayListBuchen,
@@ -309,24 +383,6 @@ public class HandleArrayList {
 		}
 		return gefunden;
 	}
-			
-/*
-			// dann füge tempzeit zur zeit hinzu
-			x = zeit;
-			gefunden.add(x);
-		}
-		ArrayList<Object> ausgeliehen = getAmOeftestenGelieheneVehicle(arrayListBuchen, arrayListVehicle);
-		
-		  for (int i=0; i<ausgeliehen.size();i++) { Vehicle vehicle =
-		  (Vehicle)ausgeliehen.get(i); String kennzeichen =
-		  vehicle.getKennzeichen(); ArrayList<String> kennzeichenAsListElement
-		  = new ArrayList<String>(Arrays.asList(kennzeichen));
-		  ArrayListUndNameUndWerteLineareSucheZuArrayList(ausgeliehen, zuSuchenderAttributName, gesuchteWerte);
-		  }
-		 
-
-		return gefunden;
-	}*/
 
 	public static ArrayList<Object> inArrayListAnhaengen(ArrayList<Object> arrayList, Object objekt) {
 		if (!arrayList.isEmpty() && (objekt instanceof Person && arrayList.get(0) instanceof Person))

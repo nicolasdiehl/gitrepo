@@ -47,7 +47,8 @@ public class Verwaltung {
 			System.out.println("x,y,z: Person,Wagen,Buchen XML speichern");
 			System.out.println("r: Alle Listen leeren.");
 			System.out.println("bb: Beliebteste Fahrzeuge ausgeben.");
-			System.out.println("cc: Alle Fahrzeuge zusammen mit ihrer individuellen durchschnittlichen Leihdauer ausgeben");
+			System.out.println("cc: Jedes Fahrzeug zusammen mit individueller durchschnittlicher Leihdauer ausgeben.");
+			System.out.println("dd: Durchschnittliche Leihdauer für Fahrzeugtypen und allgemeina usgeben.");			
 			
 			eingabe = scan.nextLine();
 			switch (eingabe) {
@@ -128,17 +129,10 @@ public class Verwaltung {
 				}
 				break;
 			case "dd":
-				String insgesamt = HandleArrayList.getDurchschnitt("Alle");
-				String lkw= HandleArrayList.getDurchschnitt("Lkw");
-				String transporter=HandleArrayList.getDurchschnitt("Transporter");
-				String cityflitzer=HandleArrayList.getDurchschnitt("Cityflitzer");
-				String limousine=HandleArrayList.getDurchschnitt("Limousine");
-				System.out.println("Durchschnittliche Leihzeit:");
-				System.out.println("Alle\t"+insgesamt);
-				System.out.println("Lkw\t"+lkw);
-				System.out.println("Transporter\t"+transporter);
-				System.out.println("Cityflitzer\t"+cityflitzer);
-				System.out.println("Limousine\t"+limousine);
+				ArrayList<String> durchschnitt = HandleArrayList.getDurchschnitt(arrayListBuchen);
+				for (int i = 0; i<durchschnitt.size();i++) {
+				System.out.println(durchschnitt.get(i));
+				}
 				break;
 			case "beenden":
 				laufen=false;
