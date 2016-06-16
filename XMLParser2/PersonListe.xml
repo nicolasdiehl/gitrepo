@@ -40,12 +40,6 @@
     <Nachname>Anthony</Nachname>
     <Vorname>Charles</Vorname>
     <Fuehrerschein>B</Fuehrerschein>
-    <Personalnummer>2323</Personalnummer>
-  </Person>
-  <Person ID="8">
-    <Nachname>Diehl</Nachname>
-    <Vorname>Nicolas</Vorname>
-    <Fuehrerschein>C</Fuehrerschein>
-    <Personalnummer>77777777777777777777777777</Personalnummer>
+    <Personalnummer>2444</Personalnummer>
   </Person>
 </PersonListe>

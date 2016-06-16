@@ -2,7 +2,7 @@
 <VehicleListe>
   <Vehicle ID="2">
     <Typ>Limousine</Typ>
-    <Geliehen>false</Geliehen>
+    <Geliehen>nein</Geliehen>
     <Kennzeichen>DA-LI101</Kennzeichen>
   </Vehicle>
     <Vehicle ID="6">
@@ -12,17 +12,17 @@
   </Vehicle>
   <Vehicle ID="3">
     <Typ>Lkw</Typ>
-    <Geliehen>false</Geliehen>
+    <Geliehen>nein</Geliehen>
     <Kennzeichen>DA-LK101</Kennzeichen>
   </Vehicle>
     <Vehicle ID="1">
     <Typ>Cityflitzer</Typ>
-    <Geliehen>false</Geliehen>
+    <Geliehen>nein</Geliehen>
     <Kennzeichen>DA-CI101</Kennzeichen>
   </Vehicle>
   <Vehicle ID="4">
     <Typ>Transporter</Typ>
-    <Geliehen>false</Geliehen>
+    <Geliehen>nein</Geliehen>
     <Kennzeichen>DA-TR101</Kennzeichen>
   </Vehicle>
   <Vehicle ID="5">

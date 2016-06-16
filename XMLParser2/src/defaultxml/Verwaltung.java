@@ -30,7 +30,7 @@ public class Verwaltung {
 		ArrayList<Object> arrayListPerson = HandleXML.xmlZuArrayList(personFile, false);
 		ArrayList<Object> arrayListVehicle = HandleXML.xmlZuArrayList(vehicleFile, false);
 		ArrayList<Object> arrayListBuchen = HandleXML.xmlZuArrayList(buchenFile, false);
-		Searchtree searchtreePerson = HandleXML.xmlZuSearchtree(personFile, true);
+		Searchtree searchtreePerson = HandleXML.xmlZuSearchtree(personFile, false);
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Was darfs denn heute sein?");
 		String eingabe;
